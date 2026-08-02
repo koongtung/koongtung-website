@@ -1,0 +1,37 @@
+[
+  { "id": "logo", "type": "image", "label": "โลโก้ร้าน", "group": "ทั่วไป" },
+  { "id": "home-hero-title", "type": "text", "label": "หัวข้อหลัก หน้าแรก", "group": "หน้าแรก" },
+  { "id": "home-hero-sub", "type": "text", "label": "คำโปรย หน้าแรก", "group": "หน้าแรก" },
+  { "id": "about-text", "type": "text", "label": "เรื่องราวร้าน (หน้าเกี่ยวกับเรา)", "group": "เกี่ยวกับเรา" },
+  { "id": "contact-phone", "type": "text", "label": "เบอร์โทรศัพท์", "group": "ติดต่อ" },
+  { "id": "contact-line", "type": "text", "label": "Line Official", "group": "ติดต่อ" },
+  { "id": "contact-fb", "type": "text", "label": "ชื่อ Facebook", "group": "ติดต่อ" },
+
+  { "id": "branch-1-hours", "type": "text", "label": "บรรทัดทอง - เวลาเปิด", "group": "สาขา" },
+  { "id": "branch-1-phone", "type": "text", "label": "บรรทัดทอง - เบอร์โทร", "group": "สาขา" },
+  { "id": "branch-2-hours", "type": "text", "label": "พารากอน - เวลาเปิด", "group": "สาขา" },
+  { "id": "branch-2-phone", "type": "text", "label": "พารากอน - เบอร์โทร", "group": "สาขา" },
+  { "id": "branch-3-hours", "type": "text", "label": "เลียบทางด่วนรามอินทรา - เวลาเปิด", "group": "สาขา" },
+  { "id": "branch-3-phone", "type": "text", "label": "เลียบทางด่วนรามอินทรา - เบอร์โทร", "group": "สาขา" },
+  { "id": "branch-4-hours", "type": "text", "label": "ศรีนครินทร์ ด้านนอก - เวลาเปิด", "group": "สาขา" },
+  { "id": "branch-4-phone", "type": "text", "label": "ศรีนครินทร์ ด้านนอก - เบอร์โทร", "group": "สาขา" },
+  { "id": "branch-5-hours", "type": "text", "label": "ศรีนครินทร์ ด้านใน - เวลาเปิด", "group": "สาขา" },
+  { "id": "branch-5-phone", "type": "text", "label": "ศรีนครินทร์ ด้านใน - เบอร์โทร", "group": "สาขา" },
+  { "id": "branch-6-hours", "type": "text", "label": "U-Village รังสิต - เวลาเปิด", "group": "สาขา" },
+  { "id": "branch-6-phone", "type": "text", "label": "U-Village รังสิต - เบอร์โทร", "group": "สาขา" },
+
+  { "id": "img-menu-special-1", "type": "image", "label": "เมนูพิเศษ รูป 1", "group": "เมนู" },
+  { "id": "img-menu-special-2", "type": "image", "label": "เมนูพิเศษ รูป 2", "group": "เมนู" },
+  { "id": "img-menu-special-3", "type": "image", "label": "เมนูพิเศษ รูป 3", "group": "เมนู" },
+  { "id": "img-menu-special-4", "type": "image", "label": "เมนูพิเศษ รูป 4", "group": "เมนู" },
+  { "id": "img-menu-combo-1", "type": "image", "label": "คอมโบมิกซ์ กุ้ง", "group": "เมนู" },
+  { "id": "img-menu-combo-2", "type": "image", "label": "คอมโบมิกซ์ ปลา", "group": "เมนู" },
+  { "id": "img-menu-combo-3", "type": "image", "label": "คอมโบมิกซ์ ปลาหมึก", "group": "เมนู" },
+  { "id": "img-menu-combo-4", "type": "image", "label": "คอมโบมิกซ์ หอยแมลงภู่", "group": "เมนู" },
+  { "id": "img-menu-combo-5", "type": "image", "label": "คอมโบมิกซ์ ชุดรวม", "group": "เมนู" },
+
+  { "id": "img-promo-1", "type": "image", "label": "โปรโมชั่น รูป 1 (บัตรสมาชิก)", "group": "โปรโมชั่น" },
+  { "id": "img-promo-2", "type": "image", "label": "โปรโมชั่น รูป 2 (เมนูใหม่)", "group": "โปรโมชั่น" },
+  { "id": "img-promo-3", "type": "image", "label": "โปรโมชั่น รูป 3 (Lineman)", "group": "โปรโมชั่น" },
+  { "id": "img-promo-4", "type": "image", "label": "โปรโมชั่น รูป 4 (Oho)", "group": "โปรโมชั่น" }
+]

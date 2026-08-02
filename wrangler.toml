@@ -1,0 +1,7 @@
+name = "koongtung-website"
+pages_build_output_dir = "."
+compatibility_date = "2026-01-01"
+
+[[kv_namespaces]]
+binding = "CONTENT"
+id = "7a63f311e734472288ec11edd7ae50af"

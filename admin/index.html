@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>หลังบ้านแก้ไขเว็บ | KOONGTUNG</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark:#16181c; --red:#e2231a; --navy:#17356b; --cream:#faf7f2; --muted:#6b6459; --shadow:0 8px 24px rgba(0,0,0,.12);
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:'Kanit',sans-serif; background:var(--cream); color:#222; }
+  header { background:var(--dark); color:#fff; padding:18px 24px; display:flex; align-items:center; justify-content:space-between; }
+  header h1 { font-size:1.2rem; margin:0; }
+  header a { color:#f0c0bd; font-size:.85rem; }
+  .wrap { max-width:900px; margin:0 auto; padding:24px; }
+  #gate { max-width:420px; margin:80px auto; background:#fff; padding:32px; border-radius:14px; box-shadow:var(--shadow); text-align:center; }
+  #gate input { width:100%; padding:12px; font-size:1rem; border:1px solid #ddd; border-radius:8px; margin:14px 0; font-family:inherit; }
+  #gate button, .save-btn, .reset-btn { background:var(--red); color:#fff; border:none; padding:10px 20px; border-radius:8px; font-family:inherit; font-size:.9rem; cursor:pointer; }
+  .reset-btn { background:#888; margin-left:8px; }
+  #gate button:hover, .save-btn:hover { opacity:.9; }
+  #app { display:none; }
+  .group { background:#fff; border-radius:14px; box-shadow:var(--shadow); padding:22px 24px; margin-bottom:24px; }
+  .group h2 { font-size:1.1rem; margin-top:0; color:var(--navy); border-bottom:2px solid #eee; padding-bottom:10px; }
+  .field { padding:16px 0; border-bottom:1px solid #f0ede7; }
+  .field:last-child { border-bottom:none; }
+  .field label { display:block; font-weight:600; margin-bottom:8px; font-size:.92rem; }
+  .field textarea { width:100%; min-height:70px; padding:10px; border:1px solid #ddd; border-radius:8px; font-family:inherit; font-size:.95rem; resize:vertical; }
+  .field img { max-width:220px; max-height:140px; object-fit:cover; border-radius:8px; display:block; margin-bottom:10px; box-shadow:var(--shadow); }
+  .row { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:8px; }
+  .status { font-size:.82rem; color:var(--muted); margin-left:4px; }
+  .status.ok { color:#1a7a3c; }
+  .status.err { color:var(--red); }
+  .badge-changed { background:#fff3cd; color:#8a6400; font-size:.72rem; padding:2px 8px; border-radius:999px; margin-left:8px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🛠 หลังบ้านแก้ไขเว็บ KOONGTUNG</h1>
+  <a href="/" target="_blank">← กลับไปดูหน้าเว็บจริง</a>
+</header>
+
+<div id="gate">
+  <h2>กรอกรหัสผ่านเพื่อเข้าใช้งาน</h2>
+  <input type="password" id="pw" placeholder="รหัสผ่าน">
+  <button onclick="tryLogin()">เข้าสู่ระบบ</button>
+  <p id="gateMsg" class="status err"></p>
+</div>
+
+<div id="app" class="wrap"></div>
+
+<script>
+var PASSWORD = '';
+var manifest = [];
+var overrides = {};
+
+function tryLogin() {
+  var candidate = document.getElementById('pw').value;
+  if (!candidate) return;
+  var gateMsg = document.getElementById('gateMsg');
+  gateMsg.textContent = 'กำลังตรวจสอบ...';
+  gateMsg.className = 'status';
+  fetch('/api/verify', {
+    method: 'POST',
+    headers: { 'x-admin-password': candidate }
+  }).then(function (res) { return res.json().then(function (j) { return { status: res.status, ok: j.ok }; }); })
+    .then(function (result) {
+      if (result.ok) {
+        PASSWORD = candidate;
+        sessionStorage.setItem('koongtung_admin_pw', PASSWORD);
+        boot();
+      } else {
+        gateMsg.textContent = 'รหัสผ่านไม่ถูกต้อง';
+        gateMsg.className = 'status err';
+      }
+    }).catch(function () {
+      gateMsg.textContent = 'เชื่อมต่อไม่สำเร็จ ลองใหม่อีกครั้ง';
+      gateMsg.className = 'status err';
+    });
+}
+
+function resizeImage(file, cb) {
+  var reader = new FileReader();
+  reader.onload = function (e) {
+    var img = new Image();
+    img.onload = function () {
+      var maxW = 1400;
+      var scale = Math.min(1, maxW / img.width);
+      var canvas = document.createElement('canvas');
+      canvas.width = img.width * scale;
+      canvas.height = img.height * scale;
+      var ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      cb(canvas.toDataURL('image/jpeg', 0.82));
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function saveField(id, value, statusEl) {
+  statusEl.textContent = 'กำลังบันทึก...';
+  statusEl.className = 'status';
+  fetch('/api/save', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'x-admin-password': PASSWORD },
+    body: JSON.stringify({ id: id, value: value })
+  }).then(function (res) {
+    if (res.status === 401) {
+      statusEl.textContent = 'รหัสผ่านไม่ถูกต้อง — กรุณาโหลดหน้านี้ใหม่แล้วกรอกรหัสผ่านอีกครั้ง';
+      statusEl.className = 'status err';
+      sessionStorage.removeItem('koongtung_admin_pw');
+      return;
+    }
+    return res.json();
+  }).then(function (json) {
+    if (json && json.ok) {
+      statusEl.textContent = 'บันทึกแล้ว ✓ (เว็บจะอัปเดตทันที)';
+      statusEl.className = 'status ok';
+      overrides[id] = value;
+    }
+  }).catch(function () {
+    statusEl.textContent = 'บันทึกไม่สำเร็จ ลองใหม่อีกครั้ง';
+    statusEl.className = 'status err';
+  });
+}
+
+function resetField(id, statusEl, defaultValue, refreshFn) {
+  statusEl.textContent = 'กำลังคืนค่าเดิม...';
+  fetch('/api/reset', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'x-admin-password': PASSWORD },
+    body: JSON.stringify({ id: id })
+  }).then(function (res) { return res.json(); })
+    .then(function (json) {
+      if (json && json.ok) {
+        delete overrides[id];
+        statusEl.textContent = 'คืนค่าเดิมแล้ว ✓';
+        statusEl.className = 'status ok';
+        if (refreshFn) refreshFn(defaultValue);
+      }
+    });
+}
+
+function renderField(field) {
+  var current = overrides.hasOwnProperty(field.id) ? overrides[field.id] : field.default;
+  var wrap = document.createElement('div');
+  wrap.className = 'field';
+
+  var label = document.createElement('label');
+  label.textContent = field.label;
+  if (overrides.hasOwnProperty(field.id)) {
+    var badge = document.createElement('span');
+    badge.className = 'badge-changed';
+    badge.textContent = 'แก้ไขแล้ว';
+    label.appendChild(badge);
+  }
+  wrap.appendChild(label);
+
+  var statusEl = document.createElement('span');
+  statusEl.className = 'status';
+
+  if (field.type === 'text') {
+    var textarea = document.createElement('textarea');
+    textarea.value = current || '';
+    wrap.appendChild(textarea);
+
+    var row = document.createElement('div');
+    row.className = 'row';
+    var saveBtn = document.createElement('button');
+    saveBtn.className = 'save-btn';
+    saveBtn.textContent = 'บันทึก';
+    saveBtn.onclick = function () { saveField(field.id, textarea.value, statusEl); };
+    var resetBtn = document.createElement('button');
+    resetBtn.className = 'reset-btn';
+    resetBtn.textContent = 'คืนค่าเดิม';
+    resetBtn.onclick = function () {
+      resetField(field.id, statusEl, field.default, function (def) { textarea.value = def; });
+    };
+    row.appendChild(saveBtn);
+    row.appendChild(resetBtn);
+    row.appendChild(statusEl);
+    wrap.appendChild(row);
+  } else if (field.type === 'image') {
+    var img = document.createElement('img');
+    img.src = current;
+    wrap.appendChild(img);
+
+    var fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = 'image/*';
+    var pendingValue = null;
+    fileInput.onchange = function () {
+      if (!fileInput.files[0]) return;
+      resizeImage(fileInput.files[0], function (dataUrl) {
+        pendingValue = dataUrl;
+        img.src = dataUrl;
+      });
+    };
+    wrap.appendChild(fileInput);
+
+    var row2 = document.createElement('div');
+    row2.className = 'row';
+    var saveBtn2 = document.createElement('button');
+    saveBtn2.className = 'save-btn';
+    saveBtn2.textContent = 'บันทึกรูปนี้';
+    saveBtn2.onclick = function () {
+      if (!pendingValue) { statusEl.textContent = 'กรุณาเลือกรูปก่อน'; statusEl.className='status err'; return; }
+      saveField(field.id, pendingValue, statusEl);
+    };
+    var resetBtn2 = document.createElement('button');
+    resetBtn2.className = 'reset-btn';
+    resetBtn2.textContent = 'คืนค่าเดิม';
+    resetBtn2.onclick = function () {
+      resetField(field.id, statusEl, field.default, function (def) { img.src = def; pendingValue = null; });
+    };
+    row2.appendChild(saveBtn2);
+    row2.appendChild(resetBtn2);
+    row2.appendChild(statusEl);
+    wrap.appendChild(row2);
+  }
+
+  return wrap;
+}
+
+function render() {
+  var app = document.getElementById('app');
+  app.innerHTML = '';
+  var groups = {};
+  manifest.forEach(function (f) {
+    if (!groups[f.group]) groups[f.group] = [];
+    groups[f.group].push(f);
+  });
+  Object.keys(groups).forEach(function (groupName) {
+    var section = document.createElement('div');
+    section.className = 'group';
+    var h2 = document.createElement('h2');
+    h2.textContent = groupName;
+    section.appendChild(h2);
+    groups[groupName].forEach(function (field) {
+      section.appendChild(renderField(field));
+    });
+    app.appendChild(section);
+  });
+}
+
+function boot() {
+  Promise.all([
+    fetch('/content-manifest.json').then(function (r) { return r.json(); }),
+    fetch('/api/content', { cache: 'no-store' }).then(function (r) { return r.json(); })
+  ]).then(function (results) {
+    manifest = results[0];
+    overrides = results[1];
+
+    // fetch default values from the live pages by reading data-cms-id defaults embedded below
+    var defaults = window.__KOONGTUNG_DEFAULTS__ || {};
+    manifest.forEach(function (f) { f.default = defaults[f.id] !== undefined ? defaults[f.id] : (f.type === 'image' ? '' : ''); });
+
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    render();
+  }).catch(function () {
+    document.getElementById('gateMsg').textContent = 'โหลดข้อมูลไม่สำเร็จ ลองรีเฟรชหน้านี้';
+  });
+}
+
+// Default values (fallback content) captured from the original site — used for "คืนค่าเดิม" and initial preview
+window.__KOONGTUNG_DEFAULTS__ = {
+  "logo": "../assets/images/logo.jpg",
+  "home-hero-title": "First Boiling Seafood in Thailand\nSince 2015",
+  "home-hero-sub": "Fresh Seafood, Great Spices delivered right to your table — เครื่องเทศนำเข้ากว่า 15 ชนิด ผสมผสานสไตล์ไทยจนกลายเป็นรสชาติที่เป็นเอกลักษณ์ กุ้งถัง KOONGTUNG",
+  "about-text": "กุ้งถัง KOONGTUNG เป็นร้านต้มซีฟู้ดสไตล์อเมริกันเจ้าแรกของไทย นำเครื่องเทศแท้ที่นำเข้าจากอเมริกากว่า 15 ชนิด มาผสมผสานกับเทคนิคการปรุงแบบไทย จนได้รสชาติที่เป็นเอกลักษณ์เฉพาะตัว ถูกใจทั้งลูกค้าคนไทยและชาวต่างชาติ เราคัดสรรวัตถุดิบพรีเมียม ทั้งกุ้งขาว กุ้งแม่น้ำ หอยลาย ปู พร้อมด้วยของนำเข้าอย่างหอยแมลงภู่ กุ้งมังกร และหอยนางรม เสิร์ฟคู่กับซอส Bang Bang สูตรเฉพาะร้านที่ปรับระดับความเผ็ดได้ตามใจคุณ",
+  "contact-phone": "086-761-5558",
+  "contact-line": "@koongtung",
+  "contact-fb": "กุ้งถัง - Koongtung",
+  "branch-1-hours": "เปิดทุกวัน 15.00–23.59 น.",
+  "branch-1-phone": "085-555-3058, 086-761-5558",
+  "branch-2-hours": "เปิดทุกวัน 10.00–21.00 น.",
+  "branch-2-phone": "086-761-5558",
+  "branch-3-hours": "เปิดทุกวัน 14.00–23.59 น.",
+  "branch-3-phone": "094-292-1188",
+  "branch-4-hours": "เปิดทุกวัน 14.00–23.59 น.",
+  "branch-4-phone": "062-896-2695",
+  "branch-5-hours": "เปิดพฤหัสบดี–อาทิตย์ 16.00–23.59 น.",
+  "branch-5-phone": "062-896-2695",
+  "branch-6-hours": "เปิดทุกวัน 11.00–22.00 น.",
+  "branch-6-phone": "082-190-3235",
+  "img-menu-special-1": "../assets/images/menu-special-1.jpg",
+  "img-menu-special-2": "../assets/images/menu-special-2.jpg",
+  "img-menu-special-3": "../assets/images/menu-special-3.jpg",
+  "img-menu-special-4": "../assets/images/menu-special-4.jpg",
+  "img-menu-combo-1": "../assets/images/menu-combo-1.jpg",
+  "img-menu-combo-2": "../assets/images/menu-combo-2.jpg",
+  "img-menu-combo-3": "../assets/images/menu-combo-3.jpg",
+  "img-menu-combo-4": "../assets/images/menu-combo-4.jpg",
+  "img-menu-combo-5": "../assets/images/menu-combo-5.jpg",
+  "img-promo-1": "../assets/images/promo-3.jpg",
+  "img-promo-2": "../assets/images/promo-1.jpg",
+  "img-promo-3": "../assets/images/promo-4.jpg",
+  "img-promo-4": "../assets/images/promo-5.jpg"
+};
+
+var saved = sessionStorage.getItem('koongtung_admin_pw');
+if (saved) {
+  fetch('/api/verify', { method: 'POST', headers: { 'x-admin-password': saved } })
+    .then(function (res) { return res.json(); })
+    .then(function (j) {
+      if (j.ok) { PASSWORD = saved; boot(); }
+      else { sessionStorage.removeItem('koongtung_admin_pw'); }
+    });
+}
+</script>
+</body>
+</html>
