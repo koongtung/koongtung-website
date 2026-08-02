@@ -35,6 +35,15 @@
   .status.ok { color:#1a7a3c; }
   .status.err { color:var(--red); }
   .badge-changed { background:#fff3cd; color:#8a6400; font-size:.72rem; padding:2px 8px; border-radius:999px; margin-left:8px; }
+  table.stats { width:100%; border-collapse:collapse; font-size:.92rem; }
+  table.stats th, table.stats td { text-align:left; padding:8px 10px; border-bottom:1px solid #f0ede7; }
+  table.stats th { color:var(--muted); font-weight:600; font-size:.8rem; text-transform:uppercase; }
+  table.stats td.count { font-weight:700; color:var(--red); text-align:right; }
+  .bar-bg { background:#f0ede7; border-radius:6px; height:8px; margin-top:4px; overflow:hidden; }
+  .bar-fill { background:var(--navy); height:100%; }
+  .tab-btns { display:flex; gap:10px; margin-bottom:20px; }
+  .tab-btns button { padding:10px 20px; border-radius:8px; border:none; font-family:inherit; cursor:pointer; background:#eee; font-weight:600; }
+  .tab-btns button.active { background:var(--navy); color:#fff; }
 </style>
 </head>
 <body>
@@ -51,7 +60,14 @@
   <p id="gateMsg" class="status err"></p>
 </div>
 
-<div id="app" class="wrap"></div>
+<div id="app" class="wrap">
+  <div class="tab-btns">
+    <button id="tabContentBtn" class="active" onclick="showTab('content')">✏️ แก้ไขเนื้อหา</button>
+    <button id="tabStatsBtn" onclick="showTab('stats')">📊 สถิติการคลิกลิงก์</button>
+  </div>
+  <div id="contentTab"></div>
+  <div id="statsTab" style="display:none;"></div>
+</div>
 
 <script>
 var PASSWORD = '';
@@ -227,8 +243,71 @@ function renderField(field) {
   return wrap;
 }
 
+function showTab(name) {
+  document.getElementById('contentTab').style.display = name === 'content' ? 'block' : 'none';
+  document.getElementById('statsTab').style.display = name === 'stats' ? 'block' : 'none';
+  document.getElementById('tabContentBtn').className = name === 'content' ? 'active' : '';
+  document.getElementById('tabStatsBtn').className = name === 'stats' ? 'active' : '';
+  if (name === 'stats') loadStats();
+}
+
+var TRACK_LABELS = {
+  'social-facebook': 'Facebook (โซเชียล)',
+  'social-line': 'Line (โซเชียล)',
+  'contact-line': 'Line (หน้าติดต่อ)',
+  'contact-facebook': 'Facebook (หน้าติดต่อ)',
+  'hub-facebook': 'Facebook (ทุกช่องทาง)',
+  'hub-line': 'Line (ทุกช่องทาง)',
+  'hub-instagram': 'Instagram',
+  'hub-tiktok': 'Tiktok',
+  'hub-shopee': 'Shopee Official',
+  'hub-member': 'ระบบสมาชิก',
+  'hub-menu-flipbook': 'เมนูฉบับเต็ม (ทุกช่องทาง)',
+  'hub-branches': 'สาขา & เดลิเวอรี่ (ทุกช่องทาง)',
+  'member-system': 'ระบบสมาชิก (หน้าโปรโมชั่น)',
+  'menu-flipbook-full': 'เมนูฉบับเต็ม (ทุกสาขา)',
+  'menu-flipbook-paragon': 'Special Menu สาขาพารากอน'
+};
+var BRANCH_NAMES = {
+  '1': 'บรรทัดทอง', '2': 'พารากอน', '3': 'เลียบทางด่วนรามอินทรา',
+  '4': 'ศรีนครินทร์ ด้านนอก', '5': 'ศรีนครินทร์ ด้านใน', '6': 'U-Village รังสิต'
+};
+function labelFor(id) {
+  if (TRACK_LABELS[id]) return TRACK_LABELS[id];
+  var m = id.match(/^map-branch-(\d)$/);
+  if (m) return 'แผนที่ - ' + BRANCH_NAMES[m[1]];
+  m = id.match(/^delivery-branch-(\d)-(.+)$/);
+  if (m) return 'เดลิเวอรี่ ' + m[2].charAt(0).toUpperCase() + m[2].slice(1) + ' - ' + BRANCH_NAMES[m[1]];
+  return id;
+}
+
+function loadStats() {
+  var el = document.getElementById('statsTab');
+  el.innerHTML = '<div class="group">กำลังโหลด...</div>';
+  fetch('/api/analytics', { headers: { 'x-admin-password': PASSWORD } })
+    .then(function (res) { return res.json(); })
+    .then(function (counts) {
+      var entries = Object.keys(counts).map(function (id) { return { id: id, count: counts[id] }; });
+      entries.sort(function (a, b) { return b.count - a.count; });
+      var max = entries.length ? entries[0].count : 1;
+      var html = '<div class="group"><h2>ลิงก์ที่ถูกคลิกมากที่สุด</h2>';
+      if (!entries.length) {
+        html += '<p style="color:var(--muted)">ยังไม่มีข้อมูลการคลิก — จะเริ่มเก็บสถิติทันทีที่มีลูกค้าคลิกลิงก์บนเว็บ</p>';
+      } else {
+        html += '<table class="stats"><thead><tr><th>ลิงก์</th><th style="text-align:right">จำนวนคลิก</th></tr></thead><tbody>';
+        entries.forEach(function (e) {
+          html += '<tr><td>' + labelFor(e.id) + '<div class="bar-bg"><div class="bar-fill" style="width:' + Math.round(e.count / max * 100) + '%"></div></div></td><td class="count">' + e.count + '</td></tr>';
+        });
+        html += '</tbody></table>';
+      }
+      html += '</div>';
+      el.innerHTML = html;
+    })
+    .catch(function () { el.innerHTML = '<div class="group">โหลดข้อมูลไม่สำเร็จ</div>'; });
+}
+
 function render() {
-  var app = document.getElementById('app');
+  var app = document.getElementById('contentTab');
   app.innerHTML = '';
   var groups = {};
   manifest.forEach(function (f) {

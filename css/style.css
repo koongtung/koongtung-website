@@ -257,6 +257,53 @@ section { padding: 64px 0; }
 }
 .branch-card .card-body a.map-link:hover { color: var(--red); }
 
+.delivery-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.delivery-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 13px;
+  border-radius: 999px;
+  font-size: .78rem;
+  font-weight: 600;
+  color: #fff;
+  transition: transform .15s, opacity .15s;
+}
+.delivery-btn:hover { transform: translateY(-2px); opacity: .9; }
+.delivery-lineman { background: #06c755; }
+.delivery-grab { background: #00b14f; }
+.delivery-shopeefood { background: #ee4d2d; }
+.delivery-robinhood { background: #543ab4; }
+
+.link-hub {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.link-hub a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  padding: 14px 16px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  font-weight: 600;
+  font-size: .92rem;
+  transition: transform .15s;
+}
+.link-hub a:hover { transform: translateY(-3px); color: var(--red); }
+.link-hub .ic { font-size: 1.3rem; }
+
+@media (max-width: 720px) {
+  .link-hub { grid-template-columns: repeat(2, 1fr); }
+}
+
 /* Gallery */
 .gallery {
   display: grid;
