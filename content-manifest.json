@@ -33,5 +33,48 @@
   { "id": "img-promo-1", "type": "image", "label": "โปรโมชั่น รูป 1 (บัตรสมาชิก)", "group": "โปรโมชั่น" },
   { "id": "img-promo-2", "type": "image", "label": "โปรโมชั่น รูป 2 (เมนูใหม่)", "group": "โปรโมชั่น" },
   { "id": "img-promo-3", "type": "image", "label": "โปรโมชั่น รูป 3 (Lineman)", "group": "โปรโมชั่น" },
-  { "id": "img-promo-4", "type": "image", "label": "โปรโมชั่น รูป 4 (Oho)", "group": "โปรโมชั่น" }
+  { "id": "img-promo-4", "type": "image", "label": "โปรโมชั่น รูป 4 (Oho)", "group": "โปรโมชั่น" },
+
+  { "id": "link-member", "type": "link", "label": "ลิงก์ระบบสมาชิก", "group": "ลิงก์" },
+  { "id": "link-facebook", "type": "link", "label": "ลิงก์ Facebook", "group": "ลิงก์" },
+  { "id": "link-line", "type": "link", "label": "ลิงก์ Line Official", "group": "ลิงก์" },
+  { "id": "link-instagram", "type": "link", "label": "ลิงก์ Instagram", "group": "ลิงก์" },
+  { "id": "link-tiktok", "type": "link", "label": "ลิงก์ Tiktok", "group": "ลิงก์" },
+  { "id": "link-shopee", "type": "link", "label": "ลิงก์ Shopee Official", "group": "ลิงก์" },
+  { "id": "link-menu-flipbook-full", "type": "link", "label": "ลิงก์เมนูฉบับเต็ม (ทุกสาขา)", "group": "ลิงก์" },
+  { "id": "link-menu-flipbook-paragon", "type": "link", "label": "ลิงก์ Special Menu สาขาพารากอน", "group": "ลิงก์" },
+
+  { "id": "link-map-branch-1", "type": "link", "label": "แผนที่ - บรรทัดทอง", "group": "แผนที่สาขา" },
+  { "id": "link-map-branch-2", "type": "link", "label": "แผนที่ - พารากอน", "group": "แผนที่สาขา" },
+  { "id": "link-map-branch-3", "type": "link", "label": "แผนที่ - เลียบทางด่วนรามอินทรา", "group": "แผนที่สาขา" },
+  { "id": "link-map-branch-4", "type": "link", "label": "แผนที่ - ศรีนครินทร์ ด้านนอก", "group": "แผนที่สาขา" },
+  { "id": "link-map-branch-5", "type": "link", "label": "แผนที่ - ศรีนครินทร์ ด้านใน", "group": "แผนที่สาขา" },
+  { "id": "link-map-branch-6", "type": "link", "label": "แผนที่ - U-Village รังสิต", "group": "แผนที่สาขา" },
+
+  { "id": "link-delivery-branch-1-lineman", "type": "link", "label": "บรรทัดทอง - Lineman", "group": "เดลิเวอรี่" },
+  { "id": "link-delivery-branch-1-grab", "type": "link", "label": "บรรทัดทอง - Grab", "group": "เดลิเวอรี่" },
+  { "id": "link-delivery-branch-1-shopeefood", "type": "link", "label": "บรรทัดทอง - ShopeeFood", "group": "เดลิเวอรี่" },
+  { "id": "link-delivery-branch-1-robinhood", "type": "link", "label": "บรรทัดทอง - Robinhood", "group": "เดลิเวอรี่" },
+
+  { "id": "link-delivery-branch-2-lineman", "type": "link", "label": "พารากอน - Lineman", "group": "เดลิเวอรี่" },
+
+  { "id": "link-delivery-branch-3-lineman", "type": "link", "label": "รามอินทรา - Lineman", "group": "เดลิเวอรี่" },
+  { "id": "link-delivery-branch-3-grab", "type": "link", "label": "รามอินทรา - Grab", "group": "เดลิเวอรี่" },
+  { "id": "link-delivery-branch-3-shopeefood", "type": "link", "label": "รามอินทรา - ShopeeFood", "group": "เดลิเวอรี่" },
+  { "id": "link-delivery-branch-3-robinhood", "type": "link", "label": "รามอินทรา - Robinhood", "group": "เดลิเวอรี่" },
+
+  { "id": "link-delivery-branch-4-lineman", "type": "link", "label": "ศรีนครินทร์ ด้านนอก - Lineman", "group": "เดลิเวอรี่" },
+  { "id": "link-delivery-branch-4-grab", "type": "link", "label": "ศรีนครินทร์ ด้านนอก - Grab", "group": "เดลิเวอรี่" },
+  { "id": "link-delivery-branch-4-shopeefood", "type": "link", "label": "ศรีนครินทร์ ด้านนอก - ShopeeFood", "group": "เดลิเวอรี่" },
+  { "id": "link-delivery-branch-4-robinhood", "type": "link", "label": "ศรีนครินทร์ ด้านนอก - Robinhood", "group": "เดลิเวอรี่" },
+
+  { "id": "link-delivery-branch-5-lineman", "type": "link", "label": "ศรีนครินทร์ ด้านใน - Lineman", "group": "เดลิเวอรี่" },
+  { "id": "link-delivery-branch-5-grab", "type": "link", "label": "ศรีนครินทร์ ด้านใน - Grab", "group": "เดลิเวอรี่" },
+  { "id": "link-delivery-branch-5-shopeefood", "type": "link", "label": "ศรีนครินทร์ ด้านใน - ShopeeFood", "group": "เดลิเวอรี่" },
+  { "id": "link-delivery-branch-5-robinhood", "type": "link", "label": "ศรีนครินทร์ ด้านใน - Robinhood", "group": "เดลิเวอรี่" },
+
+  { "id": "link-delivery-branch-6-lineman", "type": "link", "label": "U-Village รังสิต - Lineman", "group": "เดลิเวอรี่" },
+  { "id": "link-delivery-branch-6-grab", "type": "link", "label": "U-Village รังสิต - Grab", "group": "เดลิเวอรี่" },
+  { "id": "link-delivery-branch-6-shopeefood", "type": "link", "label": "U-Village รังสิต - ShopeeFood", "group": "เดลิเวอรี่" },
+  { "id": "link-delivery-branch-6-robinhood", "type": "link", "label": "U-Village รังสิต - Robinhood", "group": "เดลิเวอรี่" }
 ]

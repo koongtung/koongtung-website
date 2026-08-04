@@ -5,7 +5,9 @@
       Object.keys(overrides).forEach(function (id) {
         var value = overrides[id];
         document.querySelectorAll('[data-cms-id="' + id + '"]').forEach(function (el) {
-          if (el.tagName === 'IMG') {
+          if (el.hasAttribute('data-cms-link')) {
+            el.href = value;
+          } else if (el.tagName === 'IMG') {
             el.src = value;
           } else if (el.hasAttribute('data-cms-bg')) {
             el.style.backgroundImage = "url('" + value + "')";

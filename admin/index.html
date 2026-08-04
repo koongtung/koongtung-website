@@ -29,6 +29,8 @@
   .field:last-child { border-bottom:none; }
   .field label { display:block; font-weight:600; margin-bottom:8px; font-size:.92rem; }
   .field textarea { width:100%; min-height:70px; padding:10px; border:1px solid #ddd; border-radius:8px; font-family:inherit; font-size:.95rem; resize:vertical; }
+  .field input[type="text"] { width:100%; padding:10px; border:1px solid #ddd; border-radius:8px; font-family:inherit; font-size:.9rem; }
+  .field a.test-link { font-size:.8rem; color:var(--navy); margin-left:4px; }
   .field img { max-width:220px; max-height:140px; object-fit:cover; border-radius:8px; display:block; margin-bottom:10px; box-shadow:var(--shadow); }
   .row { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:8px; }
   .status { font-size:.82rem; color:var(--muted); margin-left:4px; }
@@ -201,6 +203,37 @@ function renderField(field) {
     row.appendChild(resetBtn);
     row.appendChild(statusEl);
     wrap.appendChild(row);
+  } else if (field.type === 'link') {
+    var linkInput = document.createElement('input');
+    linkInput.type = 'text';
+    linkInput.value = current || '';
+    linkInput.placeholder = 'https://...';
+    wrap.appendChild(linkInput);
+
+    var rowL = document.createElement('div');
+    rowL.className = 'row';
+    var saveBtnL = document.createElement('button');
+    saveBtnL.className = 'save-btn';
+    saveBtnL.textContent = 'บันทึก';
+    saveBtnL.onclick = function () { saveField(field.id, linkInput.value.trim(), statusEl); };
+    var resetBtnL = document.createElement('button');
+    resetBtnL.className = 'reset-btn';
+    resetBtnL.textContent = 'คืนค่าเดิม';
+    resetBtnL.onclick = function () {
+      resetField(field.id, statusEl, field.default, function (def) { linkInput.value = def; });
+    };
+    var testLink = document.createElement('a');
+    testLink.className = 'test-link';
+    testLink.textContent = 'ทดสอบลิงก์ ↗';
+    testLink.target = '_blank';
+    testLink.rel = 'noopener';
+    testLink.href = current || '#';
+    linkInput.addEventListener('input', function () { testLink.href = linkInput.value; });
+    rowL.appendChild(saveBtnL);
+    rowL.appendChild(resetBtnL);
+    rowL.appendChild(testLink);
+    rowL.appendChild(statusEl);
+    wrap.appendChild(rowL);
   } else if (field.type === 'image') {
     var img = document.createElement('img');
     img.src = current;
@@ -380,7 +413,50 @@ window.__KOONGTUNG_DEFAULTS__ = {
   "img-promo-1": "../assets/images/promo-3.jpg",
   "img-promo-2": "../assets/images/promo-1.jpg",
   "img-promo-3": "../assets/images/promo-4.jpg",
-  "img-promo-4": "../assets/images/promo-5.jpg"
+  "img-promo-4": "../assets/images/promo-5.jpg",
+
+  "link-member": "https://liff.line.me/2000733931-wPdEZX0R/channels/5000048775/crm/member/dashboard",
+  "link-facebook": "https://www.facebook.com/Koongtung/",
+  "link-line": "https://page.line.me/koongtung",
+  "link-instagram": "https://www.instagram.com/koongtung.original/profilecard/?igsh=OXdmMnY0OHozNXR4",
+  "link-tiktok": "https://bit.ly/3jYcACs",
+  "link-shopee": "https://shopee.co.th/koongtungofficialshop?smtt=0.0.9",
+  "link-menu-flipbook-full": "https://online.fliphtml5.com/ttukh/yrkw/",
+  "link-menu-flipbook-paragon": "https://fliphtml5.com/jecnl/gipl/",
+
+  "link-map-branch-1": "https://goo.gl/maps/eVN7QW9ayeggEzc46",
+  "link-map-branch-2": "https://www.google.co.th/maps/place/%E0%B8%A3%E0%B9%89%E0%B8%B2%E0%B8%99%E0%B8%81%E0%B8%B8%E0%B9%89%E0%B8%87%E0%B8%96%E0%B8%B1%E0%B8%87(%E0%B9%80%E0%B8%88%E0%B9%89%E0%B8%B2%E0%B9%81%E0%B8%A3%E0%B8%81%E0%B9%83%E0%B8%99%E0%B9%80%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%87%E0%B9%84%E0%B8%97%E0%B8%A2)+%E0%B8%AA%E0%B8%B2%E0%B8%82%E0%B8%B2+%E0%B8%9E%E0%B8%B2%E0%B8%A3%E0%B8%B2%E0%B8%81%E0%B8%AD%E0%B8%99+KOONGTUNG+PARAGON/@13.7463345,100.5318872,17z",
+  "link-map-branch-3": "https://bit.ly/382uSJI",
+  "link-map-branch-4": "https://bit.ly/3jbT8zD",
+  "link-map-branch-5": "https://bit.ly/3jbT8zD",
+  "link-map-branch-6": "https://bit.ly/3sB0iQQ",
+
+  "link-delivery-branch-1-lineman": "https://lin.ee/4L3dwoV",
+  "link-delivery-branch-1-grab": "https://food.grab.com/th/th/restaurant/%E0%B8%81%E0%B8%B8%E0%B9%89%E0%B8%87%E0%B8%96%E0%B8%B1%E0%B8%87%E0%B8%8B%E0%B8%B5%E0%B8%9F%E0%B8%B9%E0%B9%89%E0%B8%94-%E0%B9%80%E0%B8%88%E0%B9%89%E0%B8%B2%E0%B9%81%E0%B8%A3%E0%B8%81%E0%B9%83%E0%B8%99%E0%B9%80%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%87%E0%B9%84%E0%B8%97%E0%B8%A2-%E0%B8%9A%E0%B8%A3%E0%B8%A3%E0%B8%97%E0%B8%B1%E0%B8%94%E0%B8%97%E0%B8%AD%E0%B8%87-delivery/3-C4JDLKMGSCLYRE",
+  "link-delivery-branch-1-shopeefood": "https://shopee.co.th/universal-link/now-food/shop/2273059?deep_and_deferred=1&shareChannel=copy_link",
+  "link-delivery-branch-1-robinhood": "https://static.robinhood.in.th/share_link.html?utm_source=consumerapp&utm_medium=sharefavshopbutton&utm_campaign=sharefavshop&utm_content=11171&URI=robinhoodth://merchantlanding/id/11171",
+
+  "link-delivery-branch-2-lineman": "https://wongn.ai/223H3b",
+
+  "link-delivery-branch-3-lineman": "https://bit.ly/3j5kCqv",
+  "link-delivery-branch-3-grab": "https://grab.onelink.me/2695613898?pid=inappsharing&c=3-C3UDL72FRUWXPE&is_retargeting=true&af_dp=grab%3A%2F%2Fopen%3FscreenType%3DGRABFOOD%26sourceID%3DA4pcqCZkS4%26merchantIDs%3D3-C3UDL72FRUWXPE&af_force_deeplink=true&af_web_dp=https%3A%2F%2Fwww.grab.com",
+  "link-delivery-branch-3-shopeefood": "https://bit.ly/3KDNvV2",
+  "link-delivery-branch-3-robinhood": "https://bit.ly/3B6Aj6Z",
+
+  "link-delivery-branch-4-lineman": "https://bit.ly/3j5kCqv",
+  "link-delivery-branch-4-grab": "https://bit.ly/3j6sLLm",
+  "link-delivery-branch-4-shopeefood": "https://bit.ly/3OTgnfu",
+  "link-delivery-branch-4-robinhood": "https://bit.ly/3D3jQSV",
+
+  "link-delivery-branch-5-lineman": "https://bit.ly/3j5kCqv",
+  "link-delivery-branch-5-grab": "https://bit.ly/3j6sLLm",
+  "link-delivery-branch-5-shopeefood": "https://bit.ly/3OTgnfu",
+  "link-delivery-branch-5-robinhood": "https://bit.ly/3D3jQSV",
+
+  "link-delivery-branch-6-lineman": "https://bit.ly/3j5kCqv",
+  "link-delivery-branch-6-grab": "https://bit.ly/3syAdlu",
+  "link-delivery-branch-6-shopeefood": "https://bit.ly/378sCDO",
+  "link-delivery-branch-6-robinhood": "https://bit.ly/3D5VrMm"
 };
 
 var saved = sessionStorage.getItem('koongtung_admin_pw');
