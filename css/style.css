@@ -232,6 +232,16 @@ section { padding: 64px 0; }
 
 .card img { height: 210px; object-fit: cover; width: 100%; }
 
+.card-icon-header {
+  height: 210px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.6rem;
+  background: linear-gradient(135deg, var(--navy), #0d1f3d);
+  color: #fff;
+}
+
 .card-body { padding: 20px; }
 .card-body h3 { margin: 0 0 8px; font-size: 1.15rem; }
 .card-body p { margin: 4px 0; color: var(--muted); font-size: .92rem; }
@@ -505,6 +515,7 @@ footer.site-footer {
   nav.main-nav ul { flex-direction: column; gap: 4px; }
   .nav-toggle { display: block; }
   .grid { grid-template-columns: 1fr; }
+  .grid.cols-2 { grid-template-columns: 1fr; }
   .grid.cols-4 { grid-template-columns: repeat(2, 1fr); }
   .about-flex { flex-direction: column; }
 }
