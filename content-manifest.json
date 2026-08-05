@@ -7,6 +7,12 @@
   { "id": "contact-line", "type": "text", "label": "Line Official", "group": "ติดต่อ" },
   { "id": "contact-fb", "type": "text", "label": "ชื่อ Facebook", "group": "ติดต่อ" },
 
+  { "id": "img-branch-1", "type": "image", "label": "รูปสาขา - บรรทัดทอง", "group": "รูปสาขา" },
+  { "id": "img-branch-2", "type": "image", "label": "รูปสาขา - พารากอน", "group": "รูปสาขา" },
+  { "id": "img-branch-3", "type": "image", "label": "รูปสาขา - เลียบทางด่วนรามอินทรา", "group": "รูปสาขา" },
+  { "id": "img-branch-4", "type": "image", "label": "รูปสาขา - ศรีนครินทร์ ด้านนอก", "group": "รูปสาขา" },
+  { "id": "img-branch-5", "type": "image", "label": "รูปสาขา - ศรีนครินทร์ ด้านใน", "group": "รูปสาขา" },
+
   { "id": "branch-1-hours", "type": "text", "label": "บรรทัดทอง - เวลาเปิด", "group": "สาขา" },
   { "id": "branch-1-phone", "type": "text", "label": "บรรทัดทอง - เบอร์โทร", "group": "สาขา" },
   { "id": "branch-2-hours", "type": "text", "label": "พารากอน - เวลาเปิด", "group": "สาขา" },
@@ -67,5 +73,12 @@
   { "id": "link-delivery-branch-5-lineman", "type": "link", "label": "ศรีนครินทร์ ด้านใน - Lineman", "group": "เดลิเวอรี่" },
   { "id": "link-delivery-branch-5-grab", "type": "link", "label": "ศรีนครินทร์ ด้านใน - Grab", "group": "เดลิเวอรี่" },
   { "id": "link-delivery-branch-5-shopeefood", "type": "link", "label": "ศรีนครินทร์ ด้านใน - ShopeeFood", "group": "เดลิเวอรี่" },
-  { "id": "link-delivery-branch-5-robinhood", "type": "link", "label": "ศรีนครินทร์ ด้านใน - Robinhood", "group": "เดลิเวอรี่" }
+  { "id": "link-delivery-branch-5-robinhood", "type": "link", "label": "ศรีนครินทร์ ด้านใน - Robinhood", "group": "เดลิเวอรี่" },
+
+  { "id": "img-featured-promo-1", "type": "image", "label": "รูปโปรโมชั่นเด็ด #1", "group": "โปรโมชั่นเด่นประจำเดือน" },
+  { "id": "featured-promo-1-caption", "type": "text", "label": "คำโปรย โปรโมชั่นเด็ด #1", "group": "โปรโมชั่นเด่นประจำเดือน" },
+  { "id": "img-featured-promo-2", "type": "image", "label": "รูปโปรโมชั่นเด็ด #2", "group": "โปรโมชั่นเด่นประจำเดือน" },
+  { "id": "featured-promo-2-caption", "type": "text", "label": "คำโปรย โปรโมชั่นเด็ด #2", "group": "โปรโมชั่นเด่นประจำเดือน" },
+  { "id": "img-featured-promo-3", "type": "image", "label": "รูปโปรโมชั่นเด็ด #3", "group": "โปรโมชั่นเด่นประจำเดือน" },
+  { "id": "featured-promo-3-caption", "type": "text", "label": "คำโปรย โปรโมชั่นเด็ด #3", "group": "โปรโมชั่นเด่นประจำเดือน" }
 ]

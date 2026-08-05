@@ -304,6 +304,55 @@ section { padding: 64px 0; }
   .link-hub { grid-template-columns: repeat(2, 1fr); }
 }
 
+/* Featured monthly promo */
+.featured-promo-section {
+  background: linear-gradient(135deg, #1a1a1a, #3a1414);
+  color: #fff;
+}
+.featured-promo-section .eyebrow { color: #ff7a5c; }
+.featured-promo-section .section-head p { color: #e0d5d2; }
+.featured-promo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.featured-promo-card {
+  position: relative;
+  background: #fff;
+  color: #222;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 14px 34px rgba(0,0,0,.35);
+  transition: transform .2s;
+}
+.featured-promo-card:hover { transform: translateY(-6px); }
+.featured-promo-card img { width: 100%; height: 210px; object-fit: cover; display: block; }
+.featured-promo-card .ribbon {
+  position: absolute;
+  top: 16px; left: -8px;
+  background: var(--red);
+  color: #fff;
+  padding: 6px 18px 6px 22px;
+  font-size: .74rem;
+  font-weight: 700;
+  letter-spacing: .5px;
+  border-radius: 0 999px 999px 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,.3);
+}
+.featured-promo-card .caption {
+  padding: 16px 18px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .featured-promo-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 620px) {
+  .featured-promo-grid { grid-template-columns: 1fr; }
+}
+
 /* Gallery */
 .gallery {
   display: grid;
