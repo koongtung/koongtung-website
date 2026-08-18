@@ -59,6 +59,8 @@
   { "id": "icon-shopeefood", "type": "image", "label": "ไอคอน ShopeeFood", "group": "ไอคอน (หน้าลิงก์รวม)" },
   { "id": "icon-robinhood", "type": "image", "label": "ไอคอน Robinhood", "group": "ไอคอน (หน้าลิงก์รวม)" },
 
+  { "id": "video-review-1", "type": "link", "label": "วิดีโอรีวิว (วางลิงก์ YouTube ได้เลย เช่น https://www.youtube.com/watch?v=xxxx)", "group": "วิดีโอรีวิว" },
+
   { "id": "link-member", "type": "link", "label": "ลิงก์ระบบสมาชิก", "group": "ลิงก์" },
   { "id": "link-facebook", "type": "link", "label": "ลิงก์ Facebook", "group": "ลิงก์" },
   { "id": "link-line", "type": "link", "label": "ลิงก์ Line Official", "group": "ลิงก์" },
