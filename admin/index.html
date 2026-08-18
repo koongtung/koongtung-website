@@ -108,14 +108,14 @@ function resizeImage(file, cb) {
   reader.onload = function (e) {
     var img = new Image();
     img.onload = function () {
-      var maxW = 1400;
+      var maxW = 1920;
       var scale = Math.min(1, maxW / img.width);
       var canvas = document.createElement('canvas');
       canvas.width = img.width * scale;
       canvas.height = img.height * scale;
       var ctx = canvas.getContext('2d');
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-      cb(canvas.toDataURL('image/jpeg', 0.82));
+      cb(canvas.toDataURL('image/jpeg', 0.82), img.width);
     };
     img.src = e.target.result;
   };
@@ -181,6 +181,15 @@ function renderField(field) {
   }
   wrap.appendChild(label);
 
+  if (field.hint) {
+    var hintEl = document.createElement('div');
+    hintEl.textContent = '📐 ' + field.hint;
+    hintEl.style.fontSize = '.78rem';
+    hintEl.style.color = 'var(--muted)';
+    hintEl.style.marginBottom = '8px';
+    wrap.appendChild(hintEl);
+  }
+
   var statusEl = document.createElement('span');
   statusEl.className = 'status';
 
@@ -245,14 +254,27 @@ function renderField(field) {
     fileInput.type = 'file';
     fileInput.accept = 'image/*';
     var pendingValue = null;
+    var sizeWarnEl = document.createElement('div');
+    sizeWarnEl.style.fontSize = '.8rem';
+    sizeWarnEl.style.marginTop = '6px';
     fileInput.onchange = function () {
       if (!fileInput.files[0]) return;
-      resizeImage(fileInput.files[0], function (dataUrl) {
+      resizeImage(fileInput.files[0], function (dataUrl, originalWidth) {
         pendingValue = dataUrl;
         img.src = dataUrl;
+        var recMatch = field.hint && field.hint.match(/(\d+)×/);
+        var recWidth = recMatch ? parseInt(recMatch[1], 10) : null;
+        if (recWidth && originalWidth < recWidth) {
+          sizeWarnEl.textContent = '⚠️ รูปที่เลือกกว้าง ' + originalWidth + 'px ซึ่งเล็กกว่าที่แนะนำ (' + recWidth + 'px) อาจแสดงผลเบลอ';
+          sizeWarnEl.style.color = 'var(--red)';
+        } else {
+          sizeWarnEl.textContent = '✓ ขนาดรูปกว้าง ' + originalWidth + 'px ใช้ได้ดี';
+          sizeWarnEl.style.color = '#1a7a3c';
+        }
       });
     };
     wrap.appendChild(fileInput);
+    wrap.appendChild(sizeWarnEl);
 
     var row2 = document.createElement('div');
     row2.className = 'row';

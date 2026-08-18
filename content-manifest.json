@@ -1,109 +1,608 @@
 [
-  { "id": "logo", "type": "image", "label": "โลโก้ร้าน", "group": "ทั่วไป" },
-  { "id": "img-home-hero-bg", "type": "image", "label": "รูปพื้นหลัง Hero หน้าแรก (บนสุดของเว็บ)", "group": "รูปพื้นหลัง Hero ทุกหน้า" },
-  { "id": "img-about-hero-bg", "type": "image", "label": "รูปพื้นหลัง Hero หน้าเกี่ยวกับเรา", "group": "รูปพื้นหลัง Hero ทุกหน้า" },
-  { "id": "img-branches-hero-bg", "type": "image", "label": "รูปพื้นหลัง Hero หน้าสาขา", "group": "รูปพื้นหลัง Hero ทุกหน้า" },
-  { "id": "img-menu-hero-bg", "type": "image", "label": "รูปพื้นหลัง Hero หน้าเมนู", "group": "รูปพื้นหลัง Hero ทุกหน้า" },
-  { "id": "img-promotion-hero-bg", "type": "image", "label": "รูปพื้นหลัง Hero หน้าโปรโมชั่น", "group": "รูปพื้นหลัง Hero ทุกหน้า" },
-  { "id": "img-reviews-hero-bg", "type": "image", "label": "รูปพื้นหลัง Hero หน้ารีวิว", "group": "รูปพื้นหลัง Hero ทุกหน้า" },
-  { "id": "img-contact-hero-bg", "type": "image", "label": "รูปพื้นหลัง Hero หน้าติดต่อเรา", "group": "รูปพื้นหลัง Hero ทุกหน้า" },
-  { "id": "home-hero-title", "type": "text", "label": "หัวข้อหลัก หน้าแรก", "group": "หน้าแรก" },
-  { "id": "home-hero-sub", "type": "text", "label": "คำโปรย หน้าแรก", "group": "หน้าแรก" },
-  { "id": "about-text", "type": "text", "label": "เรื่องราวร้าน (หน้าเกี่ยวกับเรา)", "group": "เกี่ยวกับเรา" },
-  { "id": "contact-phone", "type": "text", "label": "เบอร์โทรศัพท์", "group": "ติดต่อ" },
-  { "id": "contact-line", "type": "text", "label": "Line Official", "group": "ติดต่อ" },
-  { "id": "contact-fb", "type": "text", "label": "ชื่อ Facebook", "group": "ติดต่อ" },
-
-  { "id": "img-branch-1", "type": "image", "label": "รูปสาขา - บรรทัดทอง", "group": "รูปสาขา" },
-  { "id": "img-branch-2", "type": "image", "label": "รูปสาขา - พารากอน", "group": "รูปสาขา" },
-  { "id": "img-branch-3", "type": "image", "label": "รูปสาขา - เลียบทางด่วนรามอินทรา", "group": "รูปสาขา" },
-  { "id": "img-branch-4", "type": "image", "label": "รูปสาขา - ศรีนครินทร์ ด้านนอก", "group": "รูปสาขา" },
-  { "id": "img-branch-5", "type": "image", "label": "รูปสาขา - ศรีนครินทร์ ด้านใน", "group": "รูปสาขา" },
-
-  { "id": "branch-1-hours", "type": "text", "label": "บรรทัดทอง - เวลาเปิด", "group": "สาขา" },
-  { "id": "branch-1-phone", "type": "text", "label": "บรรทัดทอง - เบอร์โทร", "group": "สาขา" },
-  { "id": "branch-2-hours", "type": "text", "label": "พารากอน - เวลาเปิด", "group": "สาขา" },
-  { "id": "branch-2-phone", "type": "text", "label": "พารากอน - เบอร์โทร", "group": "สาขา" },
-  { "id": "branch-3-hours", "type": "text", "label": "เลียบทางด่วนรามอินทรา - เวลาเปิด", "group": "สาขา" },
-  { "id": "branch-3-phone", "type": "text", "label": "เลียบทางด่วนรามอินทรา - เบอร์โทร", "group": "สาขา" },
-  { "id": "branch-4-hours", "type": "text", "label": "ศรีนครินทร์ ด้านนอก - เวลาเปิด", "group": "สาขา" },
-  { "id": "branch-4-phone", "type": "text", "label": "ศรีนครินทร์ ด้านนอก - เบอร์โทร", "group": "สาขา" },
-  { "id": "branch-5-hours", "type": "text", "label": "ศรีนครินทร์ ด้านใน - เวลาเปิด", "group": "สาขา" },
-  { "id": "branch-5-phone", "type": "text", "label": "ศรีนครินทร์ ด้านใน - เบอร์โทร", "group": "สาขา" },
-  { "id": "img-menu-special-1", "type": "image", "label": "เมนูพิเศษ รูป 1", "group": "เมนู" },
-  { "id": "img-menu-special-2", "type": "image", "label": "เมนูพิเศษ รูป 2", "group": "เมนู" },
-  { "id": "img-menu-special-3", "type": "image", "label": "เมนูพิเศษ รูป 3", "group": "เมนู" },
-  { "id": "img-menu-special-4", "type": "image", "label": "เมนูพิเศษ รูป 4", "group": "เมนู" },
-  { "id": "img-menu-combo-1", "type": "image", "label": "คอมโบมิกซ์ กุ้ง", "group": "เมนู" },
-  { "id": "img-menu-combo-2", "type": "image", "label": "คอมโบมิกซ์ ปลา", "group": "เมนู" },
-  { "id": "img-menu-combo-3", "type": "image", "label": "คอมโบมิกซ์ ปลาหมึก", "group": "เมนู" },
-  { "id": "img-menu-combo-4", "type": "image", "label": "คอมโบมิกซ์ หอยแมลงภู่", "group": "เมนู" },
-  { "id": "img-menu-combo-5", "type": "image", "label": "คอมโบมิกซ์ ชุดรวม", "group": "เมนู" },
-
-  { "id": "img-promo-1", "type": "image", "label": "โปรโมชั่น รูป 1 (บัตรสมาชิก)", "group": "โปรโมชั่น" },
-  { "id": "img-promo-2", "type": "image", "label": "โปรโมชั่น รูป 2 (เมนูใหม่)", "group": "โปรโมชั่น" },
-  { "id": "img-promo-3", "type": "image", "label": "โปรโมชั่น รูป 3 (Lineman)", "group": "โปรโมชั่น" },
-  { "id": "img-promo-4", "type": "image", "label": "โปรโมชั่น รูป 4 (Oho)", "group": "โปรโมชั่น" },
-
-  { "id": "icon-menu", "type": "image", "label": "ไอคอน เมนู", "group": "ไอคอน (หน้าลิงก์รวม)" },
-  { "id": "icon-member", "type": "image", "label": "ไอคอน ระบบสมาชิก", "group": "ไอคอน (หน้าลิงก์รวม)" },
-  { "id": "icon-facebook", "type": "image", "label": "ไอคอน Facebook", "group": "ไอคอน (หน้าลิงก์รวม)" },
-  { "id": "icon-line", "type": "image", "label": "ไอคอน Line", "group": "ไอคอน (หน้าลิงก์รวม)" },
-  { "id": "icon-instagram", "type": "image", "label": "ไอคอน Instagram", "group": "ไอคอน (หน้าลิงก์รวม)" },
-  { "id": "icon-tiktok", "type": "image", "label": "ไอคอน Tiktok", "group": "ไอคอน (หน้าลิงก์รวม)" },
-  { "id": "icon-shopee", "type": "image", "label": "ไอคอน Shopee", "group": "ไอคอน (หน้าลิงก์รวม)" },
-  { "id": "icon-website", "type": "image", "label": "ไอคอน เว็บไซต์", "group": "ไอคอน (หน้าลิงก์รวม)" },
-  { "id": "icon-map", "type": "image", "label": "ไอคอน แผนที่", "group": "ไอคอน (หน้าลิงก์รวม)" },
-  { "id": "icon-lineman", "type": "image", "label": "ไอคอน Lineman", "group": "ไอคอน (หน้าลิงก์รวม)" },
-  { "id": "icon-grab", "type": "image", "label": "ไอคอน Grab", "group": "ไอคอน (หน้าลิงก์รวม)" },
-  { "id": "icon-shopeefood", "type": "image", "label": "ไอคอน ShopeeFood", "group": "ไอคอน (หน้าลิงก์รวม)" },
-  { "id": "icon-robinhood", "type": "image", "label": "ไอคอน Robinhood", "group": "ไอคอน (หน้าลิงก์รวม)" },
-
-  { "id": "video-review-1", "type": "link", "label": "วิดีโอรีวิว (วางลิงก์ YouTube ได้เลย เช่น https://www.youtube.com/watch?v=xxxx)", "group": "วิดีโอรีวิว" },
-  { "id": "video-review-1-title", "type": "text", "label": "หัวข้อ (บนวิดีโอ)", "group": "วิดีโอรีวิว" },
-  { "id": "video-review-1-subtitle", "type": "text", "label": "คำโปรย (ใต้หัวข้อวิดีโอ)", "group": "วิดีโอรีวิว" },
-
-  { "id": "link-member", "type": "link", "label": "ลิงก์ระบบสมาชิก", "group": "ลิงก์" },
-  { "id": "link-facebook", "type": "link", "label": "ลิงก์ Facebook", "group": "ลิงก์" },
-  { "id": "link-line", "type": "link", "label": "ลิงก์ Line Official", "group": "ลิงก์" },
-  { "id": "link-instagram", "type": "link", "label": "ลิงก์ Instagram", "group": "ลิงก์" },
-  { "id": "link-tiktok", "type": "link", "label": "ลิงก์ Tiktok", "group": "ลิงก์" },
-  { "id": "link-shopee", "type": "link", "label": "ลิงก์ Shopee Official", "group": "ลิงก์" },
-  { "id": "link-menu-flipbook-full", "type": "link", "label": "ลิงก์เมนูฉบับเต็ม (ทุกสาขา)", "group": "ลิงก์" },
-  { "id": "link-menu-flipbook-paragon", "type": "link", "label": "ลิงก์ Special Menu สาขาพารากอน", "group": "ลิงก์" },
-
-  { "id": "link-map-branch-1", "type": "link", "label": "แผนที่ - บรรทัดทอง", "group": "แผนที่สาขา" },
-  { "id": "link-map-branch-2", "type": "link", "label": "แผนที่ - พารากอน", "group": "แผนที่สาขา" },
-  { "id": "link-map-branch-3", "type": "link", "label": "แผนที่ - เลียบทางด่วนรามอินทรา", "group": "แผนที่สาขา" },
-  { "id": "link-map-branch-4", "type": "link", "label": "แผนที่ - ศรีนครินทร์ ด้านนอก", "group": "แผนที่สาขา" },
-  { "id": "link-map-branch-5", "type": "link", "label": "แผนที่ - ศรีนครินทร์ ด้านใน", "group": "แผนที่สาขา" },
-
-  { "id": "link-delivery-branch-1-lineman", "type": "link", "label": "บรรทัดทอง - Lineman", "group": "เดลิเวอรี่" },
-  { "id": "link-delivery-branch-1-grab", "type": "link", "label": "บรรทัดทอง - Grab", "group": "เดลิเวอรี่" },
-  { "id": "link-delivery-branch-1-shopeefood", "type": "link", "label": "บรรทัดทอง - ShopeeFood", "group": "เดลิเวอรี่" },
-  { "id": "link-delivery-branch-1-robinhood", "type": "link", "label": "บรรทัดทอง - Robinhood", "group": "เดลิเวอรี่" },
-
-  { "id": "link-delivery-branch-2-lineman", "type": "link", "label": "พารากอน - Lineman", "group": "เดลิเวอรี่" },
-
-  { "id": "link-delivery-branch-3-lineman", "type": "link", "label": "รามอินทรา - Lineman", "group": "เดลิเวอรี่" },
-  { "id": "link-delivery-branch-3-grab", "type": "link", "label": "รามอินทรา - Grab", "group": "เดลิเวอรี่" },
-  { "id": "link-delivery-branch-3-shopeefood", "type": "link", "label": "รามอินทรา - ShopeeFood", "group": "เดลิเวอรี่" },
-  { "id": "link-delivery-branch-3-robinhood", "type": "link", "label": "รามอินทรา - Robinhood", "group": "เดลิเวอรี่" },
-
-  { "id": "link-delivery-branch-4-lineman", "type": "link", "label": "ศรีนครินทร์ ด้านนอก - Lineman", "group": "เดลิเวอรี่" },
-  { "id": "link-delivery-branch-4-grab", "type": "link", "label": "ศรีนครินทร์ ด้านนอก - Grab", "group": "เดลิเวอรี่" },
-  { "id": "link-delivery-branch-4-shopeefood", "type": "link", "label": "ศรีนครินทร์ ด้านนอก - ShopeeFood", "group": "เดลิเวอรี่" },
-  { "id": "link-delivery-branch-4-robinhood", "type": "link", "label": "ศรีนครินทร์ ด้านนอก - Robinhood", "group": "เดลิเวอรี่" },
-
-  { "id": "link-delivery-branch-5-lineman", "type": "link", "label": "ศรีนครินทร์ ด้านใน - Lineman", "group": "เดลิเวอรี่" },
-  { "id": "link-delivery-branch-5-grab", "type": "link", "label": "ศรีนครินทร์ ด้านใน - Grab", "group": "เดลิเวอรี่" },
-  { "id": "link-delivery-branch-5-shopeefood", "type": "link", "label": "ศรีนครินทร์ ด้านใน - ShopeeFood", "group": "เดลิเวอรี่" },
-  { "id": "link-delivery-branch-5-robinhood", "type": "link", "label": "ศรีนครินทร์ ด้านใน - Robinhood", "group": "เดลิเวอรี่" },
-
-  { "id": "img-featured-promo-1", "type": "image", "label": "รูปโปรโมชั่นเด็ด #1", "group": "โปรโมชั่นเด่นประจำเดือน" },
-  { "id": "featured-promo-1-caption", "type": "text", "label": "คำโปรย โปรโมชั่นเด็ด #1", "group": "โปรโมชั่นเด่นประจำเดือน" },
-  { "id": "img-featured-promo-2", "type": "image", "label": "รูปโปรโมชั่นเด็ด #2", "group": "โปรโมชั่นเด่นประจำเดือน" },
-  { "id": "featured-promo-2-caption", "type": "text", "label": "คำโปรย โปรโมชั่นเด็ด #2", "group": "โปรโมชั่นเด่นประจำเดือน" },
-  { "id": "img-featured-promo-3", "type": "image", "label": "รูปโปรโมชั่นเด็ด #3", "group": "โปรโมชั่นเด่นประจำเดือน" },
-  { "id": "featured-promo-3-caption", "type": "text", "label": "คำโปรย โปรโมชั่นเด็ด #3", "group": "โปรโมชั่นเด่นประจำเดือน" }
+  {
+    "id": "logo",
+    "type": "image",
+    "label": "โลโก้ร้าน",
+    "group": "ทั่วไป",
+    "hint": "แนะนำ 400×400px ขึ้นไป (จัตุรัส) พื้นหลังขาว/โปร่งใส ไฟล์ไม่เกิน 1MB"
+  },
+  {
+    "id": "img-home-hero-bg",
+    "type": "image",
+    "label": "รูปพื้นหลัง Hero หน้าแรก (บนสุดของเว็บ)",
+    "group": "รูปพื้นหลัง Hero ทุกหน้า",
+    "hint": "แนะนำ 1600×900px ขึ้นไป แนวนอน (อัตราส่วน 16:9) — รูปเล็กเกินไปจะเบลอเมื่อขยายเต็มจอ"
+  },
+  {
+    "id": "img-about-hero-bg",
+    "type": "image",
+    "label": "รูปพื้นหลัง Hero หน้าเกี่ยวกับเรา",
+    "group": "รูปพื้นหลัง Hero ทุกหน้า",
+    "hint": "แนะนำ 1600×900px ขึ้นไป แนวนอน (อัตราส่วน 16:9) — รูปเล็กเกินไปจะเบลอเมื่อขยายเต็มจอ"
+  },
+  {
+    "id": "img-branches-hero-bg",
+    "type": "image",
+    "label": "รูปพื้นหลัง Hero หน้าสาขา",
+    "group": "รูปพื้นหลัง Hero ทุกหน้า",
+    "hint": "แนะนำ 1600×900px ขึ้นไป แนวนอน (อัตราส่วน 16:9) — รูปเล็กเกินไปจะเบลอเมื่อขยายเต็มจอ"
+  },
+  {
+    "id": "img-menu-hero-bg",
+    "type": "image",
+    "label": "รูปพื้นหลัง Hero หน้าเมนู",
+    "group": "รูปพื้นหลัง Hero ทุกหน้า",
+    "hint": "แนะนำ 1600×900px ขึ้นไป แนวนอน (อัตราส่วน 16:9) — รูปเล็กเกินไปจะเบลอเมื่อขยายเต็มจอ"
+  },
+  {
+    "id": "img-promotion-hero-bg",
+    "type": "image",
+    "label": "รูปพื้นหลัง Hero หน้าโปรโมชั่น",
+    "group": "รูปพื้นหลัง Hero ทุกหน้า",
+    "hint": "แนะนำ 1600×900px ขึ้นไป แนวนอน (อัตราส่วน 16:9) — รูปเล็กเกินไปจะเบลอเมื่อขยายเต็มจอ"
+  },
+  {
+    "id": "img-reviews-hero-bg",
+    "type": "image",
+    "label": "รูปพื้นหลัง Hero หน้ารีวิว",
+    "group": "รูปพื้นหลัง Hero ทุกหน้า",
+    "hint": "แนะนำ 1600×900px ขึ้นไป แนวนอน (อัตราส่วน 16:9) — รูปเล็กเกินไปจะเบลอเมื่อขยายเต็มจอ"
+  },
+  {
+    "id": "img-contact-hero-bg",
+    "type": "image",
+    "label": "รูปพื้นหลัง Hero หน้าติดต่อเรา",
+    "group": "รูปพื้นหลัง Hero ทุกหน้า",
+    "hint": "แนะนำ 1600×900px ขึ้นไป แนวนอน (อัตราส่วน 16:9) — รูปเล็กเกินไปจะเบลอเมื่อขยายเต็มจอ"
+  },
+  {
+    "id": "home-hero-title",
+    "type": "text",
+    "label": "หัวข้อหลัก หน้าแรก",
+    "group": "หน้าแรก"
+  },
+  {
+    "id": "home-hero-sub",
+    "type": "text",
+    "label": "คำโปรย หน้าแรก",
+    "group": "หน้าแรก"
+  },
+  {
+    "id": "about-text",
+    "type": "text",
+    "label": "เรื่องราวร้าน (หน้าเกี่ยวกับเรา)",
+    "group": "เกี่ยวกับเรา"
+  },
+  {
+    "id": "contact-phone",
+    "type": "text",
+    "label": "เบอร์โทรศัพท์",
+    "group": "ติดต่อ"
+  },
+  {
+    "id": "contact-line",
+    "type": "text",
+    "label": "Line Official",
+    "group": "ติดต่อ"
+  },
+  {
+    "id": "contact-fb",
+    "type": "text",
+    "label": "ชื่อ Facebook",
+    "group": "ติดต่อ"
+  },
+  {
+    "id": "img-branch-1",
+    "type": "image",
+    "label": "รูปสาขา - บรรทัดทอง",
+    "group": "รูปสาขา",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน"
+  },
+  {
+    "id": "img-branch-2",
+    "type": "image",
+    "label": "รูปสาขา - พารากอน",
+    "group": "รูปสาขา",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน"
+  },
+  {
+    "id": "img-branch-3",
+    "type": "image",
+    "label": "รูปสาขา - เลียบทางด่วนรามอินทรา",
+    "group": "รูปสาขา",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน"
+  },
+  {
+    "id": "img-branch-4",
+    "type": "image",
+    "label": "รูปสาขา - ศรีนครินทร์ ด้านนอก",
+    "group": "รูปสาขา",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน"
+  },
+  {
+    "id": "img-branch-5",
+    "type": "image",
+    "label": "รูปสาขา - ศรีนครินทร์ ด้านใน",
+    "group": "รูปสาขา",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน"
+  },
+  {
+    "id": "branch-1-hours",
+    "type": "text",
+    "label": "บรรทัดทอง - เวลาเปิด",
+    "group": "สาขา"
+  },
+  {
+    "id": "branch-1-phone",
+    "type": "text",
+    "label": "บรรทัดทอง - เบอร์โทร",
+    "group": "สาขา"
+  },
+  {
+    "id": "branch-2-hours",
+    "type": "text",
+    "label": "พารากอน - เวลาเปิด",
+    "group": "สาขา"
+  },
+  {
+    "id": "branch-2-phone",
+    "type": "text",
+    "label": "พารากอน - เบอร์โทร",
+    "group": "สาขา"
+  },
+  {
+    "id": "branch-3-hours",
+    "type": "text",
+    "label": "เลียบทางด่วนรามอินทรา - เวลาเปิด",
+    "group": "สาขา"
+  },
+  {
+    "id": "branch-3-phone",
+    "type": "text",
+    "label": "เลียบทางด่วนรามอินทรา - เบอร์โทร",
+    "group": "สาขา"
+  },
+  {
+    "id": "branch-4-hours",
+    "type": "text",
+    "label": "ศรีนครินทร์ ด้านนอก - เวลาเปิด",
+    "group": "สาขา"
+  },
+  {
+    "id": "branch-4-phone",
+    "type": "text",
+    "label": "ศรีนครินทร์ ด้านนอก - เบอร์โทร",
+    "group": "สาขา"
+  },
+  {
+    "id": "branch-5-hours",
+    "type": "text",
+    "label": "ศรีนครินทร์ ด้านใน - เวลาเปิด",
+    "group": "สาขา"
+  },
+  {
+    "id": "branch-5-phone",
+    "type": "text",
+    "label": "ศรีนครินทร์ ด้านใน - เบอร์โทร",
+    "group": "สาขา"
+  },
+  {
+    "id": "img-menu-special-1",
+    "type": "image",
+    "label": "เมนูพิเศษ รูป 1",
+    "group": "เมนู",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส"
+  },
+  {
+    "id": "img-menu-special-2",
+    "type": "image",
+    "label": "เมนูพิเศษ รูป 2",
+    "group": "เมนู",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส"
+  },
+  {
+    "id": "img-menu-special-3",
+    "type": "image",
+    "label": "เมนูพิเศษ รูป 3",
+    "group": "เมนู",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส"
+  },
+  {
+    "id": "img-menu-special-4",
+    "type": "image",
+    "label": "เมนูพิเศษ รูป 4",
+    "group": "เมนู",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส"
+  },
+  {
+    "id": "img-menu-combo-1",
+    "type": "image",
+    "label": "คอมโบมิกซ์ กุ้ง",
+    "group": "เมนู",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส"
+  },
+  {
+    "id": "img-menu-combo-2",
+    "type": "image",
+    "label": "คอมโบมิกซ์ ปลา",
+    "group": "เมนู",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส"
+  },
+  {
+    "id": "img-menu-combo-3",
+    "type": "image",
+    "label": "คอมโบมิกซ์ ปลาหมึก",
+    "group": "เมนู",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส"
+  },
+  {
+    "id": "img-menu-combo-4",
+    "type": "image",
+    "label": "คอมโบมิกซ์ หอยแมลงภู่",
+    "group": "เมนู",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส"
+  },
+  {
+    "id": "img-menu-combo-5",
+    "type": "image",
+    "label": "คอมโบมิกซ์ ชุดรวม",
+    "group": "เมนู",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส"
+  },
+  {
+    "id": "img-promo-1",
+    "type": "image",
+    "label": "โปรโมชั่น รูป 1 (บัตรสมาชิก)",
+    "group": "โปรโมชั่น",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน"
+  },
+  {
+    "id": "img-promo-2",
+    "type": "image",
+    "label": "โปรโมชั่น รูป 2 (เมนูใหม่)",
+    "group": "โปรโมชั่น",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน"
+  },
+  {
+    "id": "img-promo-3",
+    "type": "image",
+    "label": "โปรโมชั่น รูป 3 (Lineman)",
+    "group": "โปรโมชั่น",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน"
+  },
+  {
+    "id": "img-promo-4",
+    "type": "image",
+    "label": "โปรโมชั่น รูป 4 (Oho)",
+    "group": "โปรโมชั่น",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน"
+  },
+  {
+    "id": "icon-menu",
+    "type": "image",
+    "label": "ไอคอน เมนู",
+    "group": "ไอคอน (หน้าลิงก์รวม)",
+    "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG"
+  },
+  {
+    "id": "icon-member",
+    "type": "image",
+    "label": "ไอคอน ระบบสมาชิก",
+    "group": "ไอคอน (หน้าลิงก์รวม)",
+    "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG"
+  },
+  {
+    "id": "icon-facebook",
+    "type": "image",
+    "label": "ไอคอน Facebook",
+    "group": "ไอคอน (หน้าลิงก์รวม)",
+    "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG"
+  },
+  {
+    "id": "icon-line",
+    "type": "image",
+    "label": "ไอคอน Line",
+    "group": "ไอคอน (หน้าลิงก์รวม)",
+    "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG"
+  },
+  {
+    "id": "icon-instagram",
+    "type": "image",
+    "label": "ไอคอน Instagram",
+    "group": "ไอคอน (หน้าลิงก์รวม)",
+    "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG"
+  },
+  {
+    "id": "icon-tiktok",
+    "type": "image",
+    "label": "ไอคอน Tiktok",
+    "group": "ไอคอน (หน้าลิงก์รวม)",
+    "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG"
+  },
+  {
+    "id": "icon-shopee",
+    "type": "image",
+    "label": "ไอคอน Shopee",
+    "group": "ไอคอน (หน้าลิงก์รวม)",
+    "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG"
+  },
+  {
+    "id": "icon-website",
+    "type": "image",
+    "label": "ไอคอน เว็บไซต์",
+    "group": "ไอคอน (หน้าลิงก์รวม)",
+    "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG"
+  },
+  {
+    "id": "icon-map",
+    "type": "image",
+    "label": "ไอคอน แผนที่",
+    "group": "ไอคอน (หน้าลิงก์รวม)",
+    "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG"
+  },
+  {
+    "id": "icon-lineman",
+    "type": "image",
+    "label": "ไอคอน Lineman",
+    "group": "ไอคอน (หน้าลิงก์รวม)",
+    "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG"
+  },
+  {
+    "id": "icon-grab",
+    "type": "image",
+    "label": "ไอคอน Grab",
+    "group": "ไอคอน (หน้าลิงก์รวม)",
+    "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG"
+  },
+  {
+    "id": "icon-shopeefood",
+    "type": "image",
+    "label": "ไอคอน ShopeeFood",
+    "group": "ไอคอน (หน้าลิงก์รวม)",
+    "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG"
+  },
+  {
+    "id": "icon-robinhood",
+    "type": "image",
+    "label": "ไอคอน Robinhood",
+    "group": "ไอคอน (หน้าลิงก์รวม)",
+    "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG"
+  },
+  {
+    "id": "video-review-1",
+    "type": "link",
+    "label": "วิดีโอรีวิว (วางลิงก์ YouTube ได้เลย เช่น https://www.youtube.com/watch?v=xxxx)",
+    "group": "วิดีโอรีวิว"
+  },
+  {
+    "id": "video-review-1-title",
+    "type": "text",
+    "label": "หัวข้อ (บนวิดีโอ)",
+    "group": "วิดีโอรีวิว"
+  },
+  {
+    "id": "video-review-1-subtitle",
+    "type": "text",
+    "label": "คำโปรย (ใต้หัวข้อวิดีโอ)",
+    "group": "วิดีโอรีวิว"
+  },
+  {
+    "id": "link-member",
+    "type": "link",
+    "label": "ลิงก์ระบบสมาชิก",
+    "group": "ลิงก์"
+  },
+  {
+    "id": "link-facebook",
+    "type": "link",
+    "label": "ลิงก์ Facebook",
+    "group": "ลิงก์"
+  },
+  {
+    "id": "link-line",
+    "type": "link",
+    "label": "ลิงก์ Line Official",
+    "group": "ลิงก์"
+  },
+  {
+    "id": "link-instagram",
+    "type": "link",
+    "label": "ลิงก์ Instagram",
+    "group": "ลิงก์"
+  },
+  {
+    "id": "link-tiktok",
+    "type": "link",
+    "label": "ลิงก์ Tiktok",
+    "group": "ลิงก์"
+  },
+  {
+    "id": "link-shopee",
+    "type": "link",
+    "label": "ลิงก์ Shopee Official",
+    "group": "ลิงก์"
+  },
+  {
+    "id": "link-menu-flipbook-full",
+    "type": "link",
+    "label": "ลิงก์เมนูฉบับเต็ม (ทุกสาขา)",
+    "group": "ลิงก์"
+  },
+  {
+    "id": "link-menu-flipbook-paragon",
+    "type": "link",
+    "label": "ลิงก์ Special Menu สาขาพารากอน",
+    "group": "ลิงก์"
+  },
+  {
+    "id": "link-map-branch-1",
+    "type": "link",
+    "label": "แผนที่ - บรรทัดทอง",
+    "group": "แผนที่สาขา"
+  },
+  {
+    "id": "link-map-branch-2",
+    "type": "link",
+    "label": "แผนที่ - พารากอน",
+    "group": "แผนที่สาขา"
+  },
+  {
+    "id": "link-map-branch-3",
+    "type": "link",
+    "label": "แผนที่ - เลียบทางด่วนรามอินทรา",
+    "group": "แผนที่สาขา"
+  },
+  {
+    "id": "link-map-branch-4",
+    "type": "link",
+    "label": "แผนที่ - ศรีนครินทร์ ด้านนอก",
+    "group": "แผนที่สาขา"
+  },
+  {
+    "id": "link-map-branch-5",
+    "type": "link",
+    "label": "แผนที่ - ศรีนครินทร์ ด้านใน",
+    "group": "แผนที่สาขา"
+  },
+  {
+    "id": "link-delivery-branch-1-lineman",
+    "type": "link",
+    "label": "บรรทัดทอง - Lineman",
+    "group": "เดลิเวอรี่"
+  },
+  {
+    "id": "link-delivery-branch-1-grab",
+    "type": "link",
+    "label": "บรรทัดทอง - Grab",
+    "group": "เดลิเวอรี่"
+  },
+  {
+    "id": "link-delivery-branch-1-shopeefood",
+    "type": "link",
+    "label": "บรรทัดทอง - ShopeeFood",
+    "group": "เดลิเวอรี่"
+  },
+  {
+    "id": "link-delivery-branch-1-robinhood",
+    "type": "link",
+    "label": "บรรทัดทอง - Robinhood",
+    "group": "เดลิเวอรี่"
+  },
+  {
+    "id": "link-delivery-branch-2-lineman",
+    "type": "link",
+    "label": "พารากอน - Lineman",
+    "group": "เดลิเวอรี่"
+  },
+  {
+    "id": "link-delivery-branch-3-lineman",
+    "type": "link",
+    "label": "รามอินทรา - Lineman",
+    "group": "เดลิเวอรี่"
+  },
+  {
+    "id": "link-delivery-branch-3-grab",
+    "type": "link",
+    "label": "รามอินทรา - Grab",
+    "group": "เดลิเวอรี่"
+  },
+  {
+    "id": "link-delivery-branch-3-shopeefood",
+    "type": "link",
+    "label": "รามอินทรา - ShopeeFood",
+    "group": "เดลิเวอรี่"
+  },
+  {
+    "id": "link-delivery-branch-3-robinhood",
+    "type": "link",
+    "label": "รามอินทรา - Robinhood",
+    "group": "เดลิเวอรี่"
+  },
+  {
+    "id": "link-delivery-branch-4-lineman",
+    "type": "link",
+    "label": "ศรีนครินทร์ ด้านนอก - Lineman",
+    "group": "เดลิเวอรี่"
+  },
+  {
+    "id": "link-delivery-branch-4-grab",
+    "type": "link",
+    "label": "ศรีนครินทร์ ด้านนอก - Grab",
+    "group": "เดลิเวอรี่"
+  },
+  {
+    "id": "link-delivery-branch-4-shopeefood",
+    "type": "link",
+    "label": "ศรีนครินทร์ ด้านนอก - ShopeeFood",
+    "group": "เดลิเวอรี่"
+  },
+  {
+    "id": "link-delivery-branch-4-robinhood",
+    "type": "link",
+    "label": "ศรีนครินทร์ ด้านนอก - Robinhood",
+    "group": "เดลิเวอรี่"
+  },
+  {
+    "id": "link-delivery-branch-5-lineman",
+    "type": "link",
+    "label": "ศรีนครินทร์ ด้านใน - Lineman",
+    "group": "เดลิเวอรี่"
+  },
+  {
+    "id": "link-delivery-branch-5-grab",
+    "type": "link",
+    "label": "ศรีนครินทร์ ด้านใน - Grab",
+    "group": "เดลิเวอรี่"
+  },
+  {
+    "id": "link-delivery-branch-5-shopeefood",
+    "type": "link",
+    "label": "ศรีนครินทร์ ด้านใน - ShopeeFood",
+    "group": "เดลิเวอรี่"
+  },
+  {
+    "id": "link-delivery-branch-5-robinhood",
+    "type": "link",
+    "label": "ศรีนครินทร์ ด้านใน - Robinhood",
+    "group": "เดลิเวอรี่"
+  },
+  {
+    "id": "img-featured-promo-1",
+    "type": "image",
+    "label": "รูปโปรโมชั่นเด็ด #1",
+    "group": "โปรโมชั่นเด่นประจำเดือน",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน"
+  },
+  {
+    "id": "featured-promo-1-caption",
+    "type": "text",
+    "label": "คำโปรย โปรโมชั่นเด็ด #1",
+    "group": "โปรโมชั่นเด่นประจำเดือน"
+  },
+  {
+    "id": "img-featured-promo-2",
+    "type": "image",
+    "label": "รูปโปรโมชั่นเด็ด #2",
+    "group": "โปรโมชั่นเด่นประจำเดือน",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน"
+  },
+  {
+    "id": "featured-promo-2-caption",
+    "type": "text",
+    "label": "คำโปรย โปรโมชั่นเด็ด #2",
+    "group": "โปรโมชั่นเด่นประจำเดือน"
+  },
+  {
+    "id": "img-featured-promo-3",
+    "type": "image",
+    "label": "รูปโปรโมชั่นเด็ด #3",
+    "group": "โปรโมชั่นเด่นประจำเดือน",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน"
+  },
+  {
+    "id": "featured-promo-3-caption",
+    "type": "text",
+    "label": "คำโปรย โปรโมชั่นเด็ด #3",
+    "group": "โปรโมชั่นเด่นประจำเดือน"
+  }
 ]
