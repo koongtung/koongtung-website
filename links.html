@@ -68,9 +68,7 @@
   <h1 class="linkbio-name">@koongtung</h1>
   <p class="linkbio-tagline">ร้านกุ้งถังเจ้าแรกในเมืองไทย SINCE 2015<br>รสชาติสไตล์อเมริกัน ผสมผสานสไตล์ไทย 100%</p>
 
-  <div id="linksContainer">
-    <p class="linkbio-empty">กำลังโหลดลิงก์...</p>
-  </div>
+  <div id="linksContainer"></div>
 
   <a class="back-home" href="index.html">← กลับหน้าเว็บไซต์หลัก</a>
 </div>
@@ -168,15 +166,18 @@ function renderLinks(items, overrides) {
   });
 }
 
+// Render the known default set immediately — no loading flash, no blank state.
+renderLinks(DEFAULT_LINKS, {});
+
+// Then quietly reconcile with whatever is actually saved on the server (custom edits, icon swaps).
+// If nothing has changed, this just re-renders the same content.
 Promise.all([
   fetch('/api/links', { cache: 'no-store' }).then(function (res) { return res.ok ? res.json() : null; }).catch(function () { return null; }),
   fetch('/api/content', { cache: 'no-store' }).then(function (res) { return res.ok ? res.json() : {}; }).catch(function () { return {}; })
 ]).then(function (results) {
   var items = (results[0] && results[0].length) ? results[0] : DEFAULT_LINKS;
   renderLinks(items, results[1]);
-}).catch(function () {
-  renderLinks(DEFAULT_LINKS, {});
-});
+}).catch(function () { /* keep the already-rendered defaults */ });
 </script>
 
 <script src="js/main.js"></script>

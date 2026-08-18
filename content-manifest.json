@@ -1,6 +1,12 @@
 [
   { "id": "logo", "type": "image", "label": "โลโก้ร้าน", "group": "ทั่วไป" },
-  { "id": "img-home-hero-bg", "type": "image", "label": "รูปพื้นหลัง Hero หน้าแรก (บนสุดของเว็บ)", "group": "หน้าแรก" },
+  { "id": "img-home-hero-bg", "type": "image", "label": "รูปพื้นหลัง Hero หน้าแรก (บนสุดของเว็บ)", "group": "รูปพื้นหลัง Hero ทุกหน้า" },
+  { "id": "img-about-hero-bg", "type": "image", "label": "รูปพื้นหลัง Hero หน้าเกี่ยวกับเรา", "group": "รูปพื้นหลัง Hero ทุกหน้า" },
+  { "id": "img-branches-hero-bg", "type": "image", "label": "รูปพื้นหลัง Hero หน้าสาขา", "group": "รูปพื้นหลัง Hero ทุกหน้า" },
+  { "id": "img-menu-hero-bg", "type": "image", "label": "รูปพื้นหลัง Hero หน้าเมนู", "group": "รูปพื้นหลัง Hero ทุกหน้า" },
+  { "id": "img-promotion-hero-bg", "type": "image", "label": "รูปพื้นหลัง Hero หน้าโปรโมชั่น", "group": "รูปพื้นหลัง Hero ทุกหน้า" },
+  { "id": "img-reviews-hero-bg", "type": "image", "label": "รูปพื้นหลัง Hero หน้ารีวิว", "group": "รูปพื้นหลัง Hero ทุกหน้า" },
+  { "id": "img-contact-hero-bg", "type": "image", "label": "รูปพื้นหลัง Hero หน้าติดต่อเรา", "group": "รูปพื้นหลัง Hero ทุกหน้า" },
   { "id": "home-hero-title", "type": "text", "label": "หัวข้อหลัก หน้าแรก", "group": "หน้าแรก" },
   { "id": "home-hero-sub", "type": "text", "label": "คำโปรย หน้าแรก", "group": "หน้าแรก" },
   { "id": "about-text", "type": "text", "label": "เรื่องราวร้าน (หน้าเกี่ยวกับเรา)", "group": "เกี่ยวกับเรา" },
