@@ -66,10 +66,12 @@
   <div class="tab-btns">
     <button id="tabContentBtn" class="active" onclick="showTab('content')">✏️ แก้ไขเนื้อหา</button>
     <button id="tabLinksBtn" onclick="showTab('links')">🔗 จัดการลิงก์ทั้งหมด</button>
+    <button id="tabCreatorBtn" onclick="showTab('creator')">🎬 รีวิวครีเอเตอร์</button>
     <button id="tabStatsBtn" onclick="showTab('stats')">📊 สถิติการคลิกลิงก์</button>
   </div>
   <div id="contentTab"></div>
   <div id="linksTab" style="display:none;"></div>
+  <div id="creatorTab" style="display:none;"></div>
   <div id="statsTab" style="display:none;"></div>
 </div>
 
@@ -303,12 +305,169 @@ function renderField(field) {
 function showTab(name) {
   document.getElementById('contentTab').style.display = name === 'content' ? 'block' : 'none';
   document.getElementById('linksTab').style.display = name === 'links' ? 'block' : 'none';
+  document.getElementById('creatorTab').style.display = name === 'creator' ? 'block' : 'none';
   document.getElementById('statsTab').style.display = name === 'stats' ? 'block' : 'none';
   document.getElementById('tabContentBtn').className = name === 'content' ? 'active' : '';
   document.getElementById('tabLinksBtn').className = name === 'links' ? 'active' : '';
+  document.getElementById('tabCreatorBtn').className = name === 'creator' ? 'active' : '';
   document.getElementById('tabStatsBtn').className = name === 'stats' ? 'active' : '';
   if (name === 'stats') loadStats();
   if (name === 'links') loadLinksManager();
+  if (name === 'creator') loadCreatorManager();
+}
+
+var PLATFORM_OPTIONS = ['youtube', 'tiktok', 'facebook', 'instagram'];
+var creatorData = null;
+
+function loadCreatorManager() {
+  var el = document.getElementById('creatorTab');
+  if (creatorData) { renderCreatorManager(); return; }
+  el.innerHTML = '<div class="group">กำลังโหลด...</div>';
+  fetch('/api/creator-reviews', { cache: 'no-store' })
+    .then(function (res) { return res.json(); })
+    .then(function (items) {
+      creatorData = items && items.length ? items : [];
+      renderCreatorManager();
+    })
+    .catch(function () { el.innerHTML = '<div class="group">โหลดข้อมูลไม่สำเร็จ</div>'; });
+}
+
+function renderCreatorManager() {
+  var el = document.getElementById('creatorTab');
+  el.innerHTML = '';
+
+  var infoBox = document.createElement('div');
+  infoBox.className = 'group';
+  infoBox.innerHTML = '<p style="margin:0;color:var(--muted);font-size:.9rem;">จัดการรีวิวจากครีเอเตอร์/อินฟลูเอนเซอร์ที่แสดงในหน้า <a href="/creator-reviews.html" target="_blank">/creator-reviews.html</a> — เพิ่ม/ลบ/แก้ไขได้อิสระ ถ้าเป็นลิงก์ YouTube ระบบจะฝังวิดีโอให้อัตโนมัติ แพลตฟอร์มอื่นจะแสดงเป็นการ์ดพร้อมปุ่ม "ดูคลิปเต็ม"</p>';
+  el.appendChild(infoBox);
+
+  var listGroup = document.createElement('div');
+  listGroup.className = 'group';
+  var h2 = document.createElement('h2');
+  h2.textContent = 'รายการรีวิวครีเอเตอร์ (' + creatorData.length + ')';
+  listGroup.appendChild(h2);
+
+  creatorData.forEach(function (item, idx) {
+    listGroup.appendChild(renderCreatorRow(item, idx));
+  });
+
+  var addBtn = document.createElement('button');
+  addBtn.className = 'save-btn';
+  addBtn.style.marginTop = '14px';
+  addBtn.textContent = '+ เพิ่มรีวิวครีเอเตอร์ใหม่';
+  addBtn.onclick = function () {
+    creatorData.push({ id: 'cr-' + Date.now(), creator: 'ชื่อครีเอเตอร์ใหม่', platform: 'youtube', videoUrl: 'https://www.youtube.com/watch?v=', caption: 'คำโปรย/หัวข้อ' });
+    renderCreatorManager();
+  };
+  listGroup.appendChild(addBtn);
+
+  var saveRow = document.createElement('div');
+  saveRow.style.marginTop = '18px';
+  var saveAllBtn = document.createElement('button');
+  saveAllBtn.className = 'save-btn';
+  saveAllBtn.textContent = '💾 บันทึกการเปลี่ยนแปลงทั้งหมด';
+  var statusEl = document.createElement('span');
+  statusEl.className = 'status';
+  statusEl.style.marginLeft = '10px';
+  saveAllBtn.onclick = function () {
+    statusEl.textContent = 'กำลังบันทึก...';
+    statusEl.className = 'status';
+    fetch('/api/creator-reviews', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-admin-password': PASSWORD },
+      body: JSON.stringify({ items: creatorData })
+    }).then(function (res) {
+      if (res.status === 401) {
+        statusEl.textContent = 'รหัสผ่านไม่ถูกต้อง กรุณาโหลดหน้านี้ใหม่';
+        statusEl.className = 'status err';
+        return;
+      }
+      return res.json();
+    }).then(function (json) {
+      if (json && json.ok) {
+        statusEl.textContent = 'บันทึกแล้ว ✓ (หน้ารีวิวครีเอเตอร์จะอัปเดตทันที)';
+        statusEl.className = 'status ok';
+      }
+    }).catch(function () {
+      statusEl.textContent = 'บันทึกไม่สำเร็จ ลองใหม่อีกครั้ง';
+      statusEl.className = 'status err';
+    });
+  };
+  saveRow.appendChild(saveAllBtn);
+  saveRow.appendChild(statusEl);
+  listGroup.appendChild(saveRow);
+
+  el.appendChild(listGroup);
+}
+
+function renderCreatorRow(item, idx) {
+  var row = document.createElement('div');
+  row.className = 'field';
+  row.style.background = '#faf7f2';
+  row.style.borderRadius = '10px';
+  row.style.padding = '14px';
+  row.style.marginBottom = '12px';
+
+  function makeField(labelText, value, onChange, placeholder) {
+    var wrap = document.createElement('div');
+    wrap.style.marginBottom = '8px';
+    var label = document.createElement('label');
+    label.textContent = labelText;
+    label.style.fontSize = '.78rem';
+    label.style.fontWeight = '600';
+    label.style.display = 'block';
+    label.style.marginBottom = '3px';
+    var input = document.createElement('input');
+    input.type = 'text';
+    input.value = value || '';
+    if (placeholder) input.placeholder = placeholder;
+    input.oninput = function () { onChange(input.value); };
+    wrap.appendChild(label);
+    wrap.appendChild(input);
+    return wrap;
+  }
+
+  row.appendChild(makeField('ชื่อครีเอเตอร์ / เพจ', item.creator, function (v) { item.creator = v; }, 'เช่น ชื่อช่อง TikTok/YouTube'));
+
+  var platWrap = document.createElement('div');
+  platWrap.style.marginBottom = '8px';
+  var platLabel = document.createElement('label');
+  platLabel.textContent = 'แพลตฟอร์ม';
+  platLabel.style.fontSize = '.78rem';
+  platLabel.style.fontWeight = '600';
+  platLabel.style.display = 'block';
+  platLabel.style.marginBottom = '3px';
+  var platSelect = document.createElement('select');
+  platSelect.style.width = '100%';
+  platSelect.style.padding = '10px';
+  platSelect.style.borderRadius = '8px';
+  platSelect.style.border = '1px solid #ddd';
+  PLATFORM_OPTIONS.forEach(function (opt) {
+    var o = document.createElement('option');
+    o.value = opt;
+    o.textContent = opt;
+    if (item.platform === opt) o.selected = true;
+    platSelect.appendChild(o);
+  });
+  platSelect.onchange = function () { item.platform = platSelect.value; };
+  platWrap.appendChild(platLabel);
+  platWrap.appendChild(platSelect);
+  row.appendChild(platWrap);
+
+  row.appendChild(makeField('ลิงก์วิดีโอ/โพสต์ (ถ้าเป็น YouTube จะฝังคลิปอัตโนมัติ)', item.videoUrl, function (v) { item.videoUrl = v; }, 'https://...'));
+  row.appendChild(makeField('คำโปรย / หัวข้อ', item.caption, function (v) { item.caption = v; }, 'เช่น รีวิวบรรยากาศและเมนูเด็ด'));
+
+  var delBtn = document.createElement('button');
+  delBtn.className = 'reset-btn';
+  delBtn.textContent = '🗑 ลบรีวิวนี้';
+  delBtn.onclick = function () {
+    var i = creatorData.indexOf(item);
+    if (i > -1) creatorData.splice(i, 1);
+    renderCreatorManager();
+  };
+  row.appendChild(delBtn);
+
+  return row;
 }
 
 var ICON_OPTIONS = ['menu','member','facebook','line','instagram','tiktok','shopee','website','map','lineman','grab','shopeefood','robinhood'];
@@ -572,6 +731,7 @@ window.__KOONGTUNG_DEFAULTS__ = {
   "img-promotion-hero-bg": "../assets/images/review-2.jpg",
   "img-reviews-hero-bg": "../assets/images/review-5.jpg",
   "img-contact-hero-bg": "../assets/images/review-1.jpg",
+  "img-creator-reviews-hero-bg": "../assets/images/review-3.jpg",
   "home-hero-title": "First Boiling Seafood in Thailand\nSince 2015",
   "home-hero-sub": "Fresh Seafood, Great Spices delivered right to your table — เครื่องเทศนำเข้ากว่า 15 ชนิด ผสมผสานสไตล์ไทยจนกลายเป็นรสชาติที่เป็นเอกลักษณ์ กุ้งถัง KOONGTUNG",
   "about-text": "กุ้งถัง KOONGTUNG คือ Bar & Seafood Restaurant สไตล์แคลิฟอร์เนีย ร้าน Seafood Boil (ซีฟู้ดบอยล์) เจ้าแรกในเมืองไทย ตั้งแต่ปี 2015 คัดสรรวัตถุดิบพรีเมียม ทั้งกุ้งขาว กุ้งแม่น้ำ หอยตลับ หอยแมลงภู่นิวซีแลนด์ ปูม้า ปลาหมึก และวัตถุดิบพิเศษตามฤดูกาล เสิร์ฟคู่กับซอส Bang Bang สูตรลับเฉพาะร้านที่คิดค้นขึ้นเอง ยังคงกลิ่นอายความเป็นออริจินัลจากอเมริกา แต่ผสานเครื่องเทศไทยเข้าไปอย่างกลมกล่อม ถูกปากทั้งคนไทยและชาวต่างชาติ ปรับระดับความเผ็ดได้ตามใจคุณ ภายใต้คอนเซปต์ 'Eat with your hands' ให้ลูกค้าได้สัมผัสรสชาติแบบเต็มอิ่มด้วยมือของตัวเอง",
