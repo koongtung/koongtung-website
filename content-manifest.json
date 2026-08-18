@@ -60,6 +60,8 @@
   { "id": "icon-robinhood", "type": "image", "label": "ไอคอน Robinhood", "group": "ไอคอน (หน้าลิงก์รวม)" },
 
   { "id": "video-review-1", "type": "link", "label": "วิดีโอรีวิว (วางลิงก์ YouTube ได้เลย เช่น https://www.youtube.com/watch?v=xxxx)", "group": "วิดีโอรีวิว" },
+  { "id": "video-review-1-title", "type": "text", "label": "หัวข้อ (บนวิดีโอ)", "group": "วิดีโอรีวิว" },
+  { "id": "video-review-1-subtitle", "type": "text", "label": "คำโปรย (ใต้หัวข้อวิดีโอ)", "group": "วิดีโอรีวิว" },
 
   { "id": "link-member", "type": "link", "label": "ลิงก์ระบบสมาชิก", "group": "ลิงก์" },
   { "id": "link-facebook", "type": "link", "label": "ลิงก์ Facebook", "group": "ลิงก์" },
