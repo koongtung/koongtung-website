@@ -65,9 +65,11 @@
 <div id="app" class="wrap">
   <div class="tab-btns">
     <button id="tabContentBtn" class="active" onclick="showTab('content')">✏️ แก้ไขเนื้อหา</button>
+    <button id="tabLinksBtn" onclick="showTab('links')">🔗 จัดการลิงก์ทั้งหมด</button>
     <button id="tabStatsBtn" onclick="showTab('stats')">📊 สถิติการคลิกลิงก์</button>
   </div>
   <div id="contentTab"></div>
+  <div id="linksTab" style="display:none;"></div>
   <div id="statsTab" style="display:none;"></div>
 </div>
 
@@ -278,10 +280,168 @@ function renderField(field) {
 
 function showTab(name) {
   document.getElementById('contentTab').style.display = name === 'content' ? 'block' : 'none';
+  document.getElementById('linksTab').style.display = name === 'links' ? 'block' : 'none';
   document.getElementById('statsTab').style.display = name === 'stats' ? 'block' : 'none';
   document.getElementById('tabContentBtn').className = name === 'content' ? 'active' : '';
+  document.getElementById('tabLinksBtn').className = name === 'links' ? 'active' : '';
   document.getElementById('tabStatsBtn').className = name === 'stats' ? 'active' : '';
   if (name === 'stats') loadStats();
+  if (name === 'links') loadLinksManager();
+}
+
+var ICON_OPTIONS = ['menu','member','facebook','line','instagram','tiktok','shopee','website','map','lineman','grab','shopeefood','robinhood'];
+var linksData = null;
+
+function loadLinksManager() {
+  var el = document.getElementById('linksTab');
+  if (linksData) { renderLinksManager(); return; }
+  el.innerHTML = '<div class="group">กำลังโหลด...</div>';
+  fetch('/api/links', { cache: 'no-store' })
+    .then(function (res) { return res.json(); })
+    .then(function (items) {
+      linksData = items && items.length ? items : [];
+      renderLinksManager();
+    })
+    .catch(function () { el.innerHTML = '<div class="group">โหลดข้อมูลไม่สำเร็จ</div>'; });
+}
+
+function renderLinksManager() {
+  var el = document.getElementById('linksTab');
+  el.innerHTML = '';
+
+  var infoBox = document.createElement('div');
+  infoBox.className = 'group';
+  infoBox.innerHTML = '<p style="margin:0;color:var(--muted);font-size:.9rem;">จัดการลิงก์ทั้งหมดที่แสดงในหน้า <a href="/links.html" target="_blank">/links.html</a> — เพิ่ม/ลบ/แก้ไขได้อิสระ ไอคอนเลือกจากคลังไอคอนที่มี (แก้ไอคอนจริงได้ที่แท็บ "แก้ไขเนื้อหา" กลุ่ม "ไอคอน")</p>';
+  el.appendChild(infoBox);
+
+  var listGroup = document.createElement('div');
+  listGroup.className = 'group';
+  var h2 = document.createElement('h2');
+  h2.textContent = 'รายการลิงก์ (' + linksData.length + ')';
+  listGroup.appendChild(h2);
+
+  linksData.forEach(function (item, idx) {
+    listGroup.appendChild(renderLinkRow(item, idx));
+  });
+
+  var addBtn = document.createElement('button');
+  addBtn.className = 'save-btn';
+  addBtn.style.marginTop = '14px';
+  addBtn.textContent = '+ เพิ่มลิงก์ใหม่';
+  addBtn.onclick = function () {
+    linksData.push({ id: 'link-' + Date.now(), section: 'ℹ️ Information', subtitle: '', icon: 'website', label: 'ลิงก์ใหม่', url: 'https://' });
+    renderLinksManager();
+  };
+  listGroup.appendChild(addBtn);
+
+  var saveRow = document.createElement('div');
+  saveRow.style.marginTop = '18px';
+  var saveAllBtn = document.createElement('button');
+  saveAllBtn.className = 'save-btn';
+  saveAllBtn.textContent = '💾 บันทึกการเปลี่ยนแปลงทั้งหมด';
+  var statusEl = document.createElement('span');
+  statusEl.className = 'status';
+  statusEl.style.marginLeft = '10px';
+  saveAllBtn.onclick = function () {
+    statusEl.textContent = 'กำลังบันทึก...';
+    statusEl.className = 'status';
+    fetch('/api/links', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-admin-password': PASSWORD },
+      body: JSON.stringify({ items: linksData })
+    }).then(function (res) {
+      if (res.status === 401) {
+        statusEl.textContent = 'รหัสผ่านไม่ถูกต้อง กรุณาโหลดหน้านี้ใหม่';
+        statusEl.className = 'status err';
+        return;
+      }
+      return res.json();
+    }).then(function (json) {
+      if (json && json.ok) {
+        statusEl.textContent = 'บันทึกแล้ว ✓ (หน้าลิงก์จะอัปเดตทันที)';
+        statusEl.className = 'status ok';
+      }
+    }).catch(function () {
+      statusEl.textContent = 'บันทึกไม่สำเร็จ ลองใหม่อีกครั้ง';
+      statusEl.className = 'status err';
+    });
+  };
+  saveRow.appendChild(saveAllBtn);
+  saveRow.appendChild(statusEl);
+  listGroup.appendChild(saveRow);
+
+  el.appendChild(listGroup);
+}
+
+function renderLinkRow(item, idx) {
+  var row = document.createElement('div');
+  row.className = 'field';
+  row.style.background = '#faf7f2';
+  row.style.borderRadius = '10px';
+  row.style.padding = '14px';
+  row.style.marginBottom = '12px';
+
+  function makeField(labelText, value, onChange, placeholder) {
+    var wrap = document.createElement('div');
+    wrap.style.marginBottom = '8px';
+    var label = document.createElement('label');
+    label.textContent = labelText;
+    label.style.fontSize = '.78rem';
+    label.style.fontWeight = '600';
+    label.style.display = 'block';
+    label.style.marginBottom = '3px';
+    var input = document.createElement('input');
+    input.type = 'text';
+    input.value = value || '';
+    if (placeholder) input.placeholder = placeholder;
+    input.oninput = function () { onChange(input.value); };
+    wrap.appendChild(label);
+    wrap.appendChild(input);
+    return wrap;
+  }
+
+  row.appendChild(makeField('หัวข้อกลุ่ม (Section)', item.section, function (v) { item.section = v; }, 'เช่น ℹ️ Information'));
+  row.appendChild(makeField('หัวข้อย่อย (ไม่บังคับ เช่น ชื่อสาขา)', item.subtitle, function (v) { item.subtitle = v; }, 'เว้นว่างได้'));
+
+  var iconWrap = document.createElement('div');
+  iconWrap.style.marginBottom = '8px';
+  var iconLabel = document.createElement('label');
+  iconLabel.textContent = 'ไอคอน';
+  iconLabel.style.fontSize = '.78rem';
+  iconLabel.style.fontWeight = '600';
+  iconLabel.style.display = 'block';
+  iconLabel.style.marginBottom = '3px';
+  var iconSelect = document.createElement('select');
+  iconSelect.style.width = '100%';
+  iconSelect.style.padding = '10px';
+  iconSelect.style.borderRadius = '8px';
+  iconSelect.style.border = '1px solid #ddd';
+  ICON_OPTIONS.forEach(function (opt) {
+    var o = document.createElement('option');
+    o.value = opt;
+    o.textContent = opt;
+    if (item.icon === opt) o.selected = true;
+    iconSelect.appendChild(o);
+  });
+  iconSelect.onchange = function () { item.icon = iconSelect.value; };
+  iconWrap.appendChild(iconLabel);
+  iconWrap.appendChild(iconSelect);
+  row.appendChild(iconWrap);
+
+  row.appendChild(makeField('ข้อความปุ่ม (Label)', item.label, function (v) { item.label = v; }, 'เช่น Lineman - บรรทัดทอง'));
+  row.appendChild(makeField('URL ปลายทาง', item.url, function (v) { item.url = v; }, 'https://...'));
+
+  var delBtn = document.createElement('button');
+  delBtn.className = 'reset-btn';
+  delBtn.textContent = '🗑 ลบลิงก์นี้';
+  delBtn.onclick = function () {
+    var i = linksData.indexOf(item);
+    if (i > -1) linksData.splice(i, 1);
+    renderLinksManager();
+  };
+  row.appendChild(delBtn);
+
+  return row;
 }
 
 var TRACK_LABELS = {
@@ -383,6 +543,7 @@ function boot() {
 // Default values (fallback content) captured from the original site — used for "คืนค่าเดิม" and initial preview
 window.__KOONGTUNG_DEFAULTS__ = {
   "logo": "../assets/images/logo.jpg",
+  "img-home-hero-bg": "../assets/images/branch-1.jpg",
   "home-hero-title": "First Boiling Seafood in Thailand\nSince 2015",
   "home-hero-sub": "Fresh Seafood, Great Spices delivered right to your table — เครื่องเทศนำเข้ากว่า 15 ชนิด ผสมผสานสไตล์ไทยจนกลายเป็นรสชาติที่เป็นเอกลักษณ์ กุ้งถัง KOONGTUNG",
   "about-text": "กุ้งถัง KOONGTUNG คือ Bar & Seafood Restaurant สไตล์แคลิฟอร์เนีย ร้าน Seafood Boil (ซีฟู้ดบอยล์) เจ้าแรกในเมืองไทย ตั้งแต่ปี 2015 คัดสรรวัตถุดิบพรีเมียม ทั้งกุ้งขาว กุ้งแม่น้ำ หอยตลับ หอยแมลงภู่นิวซีแลนด์ ปูม้า ปลาหมึก และวัตถุดิบพิเศษตามฤดูกาล เสิร์ฟคู่กับซอส Bang Bang สูตรลับเฉพาะร้านที่คิดค้นขึ้นเอง ยังคงกลิ่นอายความเป็นออริจินัลจากอเมริกา แต่ผสานเครื่องเทศไทยเข้าไปอย่างกลมกล่อม ถูกปากทั้งคนไทยและชาวต่างชาติ ปรับระดับความเผ็ดได้ตามใจคุณ ภายใต้คอนเซปต์ 'Eat with your hands' ให้ลูกค้าได้สัมผัสรสชาติแบบเต็มอิ่มด้วยมือของตัวเอง",
@@ -418,6 +579,20 @@ window.__KOONGTUNG_DEFAULTS__ = {
   "img-promo-2": "../assets/images/promo-1.jpg",
   "img-promo-3": "../assets/images/promo-4.jpg",
   "img-promo-4": "../assets/images/promo-5.jpg",
+
+  "icon-menu": "../icon/menu.png",
+  "icon-member": "../icon/member.png",
+  "icon-facebook": "../icon/facebook.png",
+  "icon-line": "../icon/line.png",
+  "icon-instagram": "../icon/instagram.png",
+  "icon-tiktok": "../icon/tiktok.png",
+  "icon-shopee": "../icon/shopee.png",
+  "icon-website": "../icon/website.png",
+  "icon-map": "../icon/map.png",
+  "icon-lineman": "../icon/lineman.png",
+  "icon-grab": "../icon/grab.png",
+  "icon-shopeefood": "../icon/shopeefood.png",
+  "icon-robinhood": "../icon/robinhood.png",
 
   "link-member": "https://liff.line.me/2000733931-wPdEZX0R/channels/5000048775/crm/member/dashboard",
   "link-facebook": "https://www.facebook.com/Koongtung/",

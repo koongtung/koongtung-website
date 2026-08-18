@@ -1,5 +1,6 @@
 [
   { "id": "logo", "type": "image", "label": "โลโก้ร้าน", "group": "ทั่วไป" },
+  { "id": "img-home-hero-bg", "type": "image", "label": "รูปพื้นหลัง Hero หน้าแรก (บนสุดของเว็บ)", "group": "หน้าแรก" },
   { "id": "home-hero-title", "type": "text", "label": "หัวข้อหลัก หน้าแรก", "group": "หน้าแรก" },
   { "id": "home-hero-sub", "type": "text", "label": "คำโปรย หน้าแรก", "group": "หน้าแรก" },
   { "id": "about-text", "type": "text", "label": "เรื่องราวร้าน (หน้าเกี่ยวกับเรา)", "group": "เกี่ยวกับเรา" },
@@ -37,6 +38,20 @@
   { "id": "img-promo-2", "type": "image", "label": "โปรโมชั่น รูป 2 (เมนูใหม่)", "group": "โปรโมชั่น" },
   { "id": "img-promo-3", "type": "image", "label": "โปรโมชั่น รูป 3 (Lineman)", "group": "โปรโมชั่น" },
   { "id": "img-promo-4", "type": "image", "label": "โปรโมชั่น รูป 4 (Oho)", "group": "โปรโมชั่น" },
+
+  { "id": "icon-menu", "type": "image", "label": "ไอคอน เมนู", "group": "ไอคอน (หน้าลิงก์รวม)" },
+  { "id": "icon-member", "type": "image", "label": "ไอคอน ระบบสมาชิก", "group": "ไอคอน (หน้าลิงก์รวม)" },
+  { "id": "icon-facebook", "type": "image", "label": "ไอคอน Facebook", "group": "ไอคอน (หน้าลิงก์รวม)" },
+  { "id": "icon-line", "type": "image", "label": "ไอคอน Line", "group": "ไอคอน (หน้าลิงก์รวม)" },
+  { "id": "icon-instagram", "type": "image", "label": "ไอคอน Instagram", "group": "ไอคอน (หน้าลิงก์รวม)" },
+  { "id": "icon-tiktok", "type": "image", "label": "ไอคอน Tiktok", "group": "ไอคอน (หน้าลิงก์รวม)" },
+  { "id": "icon-shopee", "type": "image", "label": "ไอคอน Shopee", "group": "ไอคอน (หน้าลิงก์รวม)" },
+  { "id": "icon-website", "type": "image", "label": "ไอคอน เว็บไซต์", "group": "ไอคอน (หน้าลิงก์รวม)" },
+  { "id": "icon-map", "type": "image", "label": "ไอคอน แผนที่", "group": "ไอคอน (หน้าลิงก์รวม)" },
+  { "id": "icon-lineman", "type": "image", "label": "ไอคอน Lineman", "group": "ไอคอน (หน้าลิงก์รวม)" },
+  { "id": "icon-grab", "type": "image", "label": "ไอคอน Grab", "group": "ไอคอน (หน้าลิงก์รวม)" },
+  { "id": "icon-shopeefood", "type": "image", "label": "ไอคอน ShopeeFood", "group": "ไอคอน (หน้าลิงก์รวม)" },
+  { "id": "icon-robinhood", "type": "image", "label": "ไอคอน Robinhood", "group": "ไอคอน (หน้าลิงก์รวม)" },
 
   { "id": "link-member", "type": "link", "label": "ลิงก์ระบบสมาชิก", "group": "ลิงก์" },
   { "id": "link-facebook", "type": "link", "label": "ลิงก์ Facebook", "group": "ลิงก์" },
