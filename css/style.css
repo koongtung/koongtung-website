@@ -190,6 +190,18 @@ nav.main-nav a.active {
   font-size: 2.6rem;
   color: #fff;
 }
+.tiktok-embed-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  padding-top: 14px;
+  color: var(--muted);
+  font-size: .85rem;
+  overflow: hidden;
+}
+.tiktok-embed-wrap blockquote.tiktok-embed { margin: 0 auto !important; }
+
 .ph-youtube, .creator-platform-badge.ph-youtube { background: #ff0000; }
 .ph-tiktok, .creator-platform-badge.ph-tiktok { background: #010101; }
 .ph-facebook, .creator-platform-badge.ph-facebook { background: linear-gradient(135deg, #1877f2, #0d47a1); }

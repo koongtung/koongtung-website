@@ -30,7 +30,6 @@
         <li><a href="menu.html">เมนู</a></li>
         <li><a href="promotion.html">โปรโมชั่น &amp; สมาชิก</a></li>
         <li><a href="reviews.html" class="active">รีวิว</a></li>
-        <li><a href="creator-reviews.html">รีวิวครีเอเตอร์</a></li>
         <li><a href="contact.html">ติดต่อเรา</a></li>
         <li><a href="links.html">ลิงก์ทั้งหมด</a></li>
       </ul>
@@ -40,16 +39,16 @@
 
 <section class="hero" style="min-height:30vh; background-image:url('assets/images/review-5.jpg')" data-cms-id="img-reviews-hero-bg" data-cms-bg="true">
   <div class="container hero-content">
-    <span class="hero-badge">Review</span>
-    <h1>รีวิวจากลูกค้า</h1>
-    <p>บรรยากาศและความประทับใจจากลูกค้าที่มาทานที่ร้าน</p>
+    <span class="hero-badge" data-cms-id="reviews-hero-badge">Review</span>
+    <h1 data-cms-id="reviews-hero-title">รีวิวจากลูกค้า</h1>
+    <p data-cms-id="reviews-hero-subtitle">บรรยากาศและความประทับใจจากลูกค้าที่มาทานที่ร้าน</p>
   </div>
 </section>
 
 <section class="section-alt">
   <div class="container">
     <div class="section-head">
-      <span class="video-badge">🎥 Video Review</span>
+      <span class="video-badge" data-cms-id="video-review-badge">🎥 Video Review</span>
       <h2 style="margin-top:14px;" data-cms-id="video-review-1-title">ชมคลิปวิดีโอจากลูกค้า</h2>
       <p data-cms-id="video-review-1-subtitle">บรรยากาศจริง รสชาติจริง จากลูกค้าที่มาสัมผัสประสบการณ์กุ้งถัง</p>
     </div>
@@ -79,8 +78,28 @@
       <img src="assets/images/menu-gallery-3.jpg" alt="บรรยากาศร้านกุ้งถัง 3">
     </div>
     <div style="text-align:center; margin-top:34px;">
-      <a href="https://www.facebook.com/Koongtung/" target="_blank" rel="noopener" class="btn btn-navy">ดูรีวิวเพิ่มเติมบน Facebook</a>
+      <a href="https://www.facebook.com/Koongtung/" target="_blank" rel="noopener" class="btn btn-navy" data-track-id="reviews-fb-button" data-cms-id="link-facebook" data-cms-link="true">
+        <span data-cms-id="reviews-fb-button-text">ดูรีวิวเพิ่มเติมบน Facebook</span>
+      </a>
     </div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="video-badge" data-cms-id="creator-section-badge">🎬 Creator Reviews</span>
+      <h2 style="margin-top:14px;" data-cms-id="creator-section-title">เรื่องราวและมุมมองจากครีเอเตอร์</h2>
+      <p data-cms-id="creator-section-subtitle">บรรยากาศจริง ปฏิกิริยาจริง ดูสิ่งที่ครีเอเตอร์และอินฟลูเอนเซอร์พูดถึงกุ้งถัง KOONGTUNG</p>
+    </div>
+    <div class="creator-filter-bar" id="creatorFilterBar">
+      <button class="creator-filter-btn active" data-filter="all">ทั้งหมด</button>
+      <button class="creator-filter-btn" data-filter="youtube">YouTube</button>
+      <button class="creator-filter-btn" data-filter="tiktok">TikTok</button>
+      <button class="creator-filter-btn" data-filter="facebook">Facebook</button>
+      <button class="creator-filter-btn" data-filter="instagram">Instagram</button>
+    </div>
+    <div class="creator-grid" id="creatorGrid"></div>
   </div>
 </section>
 
@@ -118,6 +137,155 @@
     </div>
   </div>
 </footer>
+<script>
+var DEFAULT_CREATOR_REVIEWS = [
+  { "id": "cr-1", "creator": "รีวิวจาก TikTok #1", "platform": "tiktok", "videoUrl": "https://vt.tiktok.com/ZSVkdDuAe/", "caption": "คลิปรีวิวจากลูกค้า — แก้ไขชื่อ/คำโปรยได้ที่ระบบหลังบ้าน /admin" },
+  { "id": "cr-2", "creator": "รีวิวจาก TikTok #2", "platform": "tiktok", "videoUrl": "https://vt.tiktok.com/ZSVkdDMdn/", "caption": "คลิปรีวิวจากลูกค้า — แก้ไขชื่อ/คำโปรยได้ที่ระบบหลังบ้าน /admin" },
+  { "id": "cr-3", "creator": "รีวิวจาก TikTok #3", "platform": "tiktok", "videoUrl": "https://vt.tiktok.com/ZSVkdVBmV/", "caption": "คลิปรีวิวจากลูกค้า — แก้ไขชื่อ/คำโปรยได้ที่ระบบหลังบ้าน /admin" }
+];
+
+var PLATFORM_META = {
+  youtube: { label: "YouTube", cls: "ph-youtube", icon: "▶" },
+  tiktok: { label: "TikTok", cls: "ph-tiktok", icon: "🎵" },
+  facebook: { label: "Facebook", cls: "ph-facebook", icon: "f" },
+  instagram: { label: "Instagram", cls: "ph-instagram", icon: "📷" }
+};
+
+function crToYouTubeEmbed(url) {
+  if (!url) return null;
+  var idMatch = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  if (!idMatch) return null;
+  var id = idMatch[1];
+  var params = [];
+  var tMatch = url.match(/[?&]t=(\d+)/);
+  if (tMatch) params.push('start=' + tMatch[1]);
+  return 'https://www.youtube.com/embed/' + id + (params.length ? '?' + params.join('&') : '');
+}
+
+function crRenderPlaceholder(card, meta) {
+  var ph = document.createElement('div');
+  ph.className = 'creator-placeholder ' + meta.cls;
+  ph.innerHTML = '<span>' + meta.icon + '</span>';
+  card.insertBefore(ph, card.firstChild);
+}
+
+function crReloadTikTokScript() {
+  var existing = document.getElementById('tiktok-embed-script');
+  if (existing) existing.remove();
+  var s = document.createElement('script');
+  s.id = 'tiktok-embed-script';
+  s.async = true;
+  s.src = 'https://www.tiktok.com/embed.js';
+  document.body.appendChild(s);
+}
+
+var crCurrentFilter = 'all';
+var crCurrentItems = DEFAULT_CREATOR_REVIEWS;
+
+function renderCreatorGrid() {
+  var grid = document.getElementById('creatorGrid');
+  grid.innerHTML = '';
+  var items = crCurrentItems.filter(function (it) { return crCurrentFilter === 'all' || it.platform === crCurrentFilter; });
+  if (!items.length) {
+    grid.innerHTML = '<p style="color:var(--muted);grid-column:1/-1;text-align:center;">ยังไม่มีรีวิวครีเอเตอร์ในหมวดนี้</p>';
+    return;
+  }
+  var tiktokPromises = [];
+  items.forEach(function (item) {
+    var card = document.createElement('div');
+    card.className = 'creator-card';
+
+    var meta = PLATFORM_META[item.platform] || PLATFORM_META.youtube;
+    var embed = item.platform === 'youtube' ? crToYouTubeEmbed(item.videoUrl) : null;
+
+    if (embed) {
+      var frame = document.createElement('div');
+      frame.className = 'video-frame';
+      var iframe = document.createElement('iframe');
+      iframe.src = embed;
+      iframe.title = item.creator;
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+      frame.appendChild(iframe);
+      card.appendChild(frame);
+    } else if (item.platform === 'tiktok') {
+      var tkWrap = document.createElement('div');
+      tkWrap.className = 'tiktok-embed-wrap';
+      tkWrap.textContent = 'กำลังโหลดคลิป TikTok...';
+      card.appendChild(tkWrap);
+      var p = fetch('/api/tiktok-oembed?url=' + encodeURIComponent(item.videoUrl))
+        .then(function (res) { return res.ok ? res.json() : null; })
+        .then(function (data) {
+          if (data && data.html) {
+            tkWrap.innerHTML = data.html;
+          } else {
+            tkWrap.remove();
+            crRenderPlaceholder(card, meta);
+          }
+        })
+        .catch(function () {
+          tkWrap.remove();
+          crRenderPlaceholder(card, meta);
+        });
+      tiktokPromises.push(p);
+    } else {
+      crRenderPlaceholder(card, meta);
+    }
+
+    var body = document.createElement('div');
+    body.className = 'creator-card-body';
+    var badge = document.createElement('span');
+    badge.className = 'creator-platform-badge ' + meta.cls;
+    badge.textContent = meta.label;
+    body.appendChild(badge);
+    var name = document.createElement('h3');
+    name.className = 'creator-name';
+    name.textContent = item.creator;
+    body.appendChild(name);
+    var caption = document.createElement('p');
+    caption.className = 'creator-caption';
+    caption.textContent = item.caption;
+    body.appendChild(caption);
+    if (!embed) {
+      var link = document.createElement('a');
+      link.href = item.videoUrl;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      link.className = 'btn btn-navy';
+      link.style.fontSize = '.85rem';
+      link.setAttribute('data-track-id', 'creator-review-' + item.id);
+      link.textContent = 'ดูคลิปเต็ม ↗';
+      body.appendChild(link);
+    }
+    card.appendChild(body);
+    grid.appendChild(card);
+  });
+  if (tiktokPromises.length) {
+    Promise.all(tiktokPromises).then(crReloadTikTokScript);
+  }
+}
+
+document.getElementById('creatorFilterBar').addEventListener('click', function (e) {
+  var btn = e.target.closest('.creator-filter-btn');
+  if (!btn) return;
+  crCurrentFilter = btn.getAttribute('data-filter');
+  document.querySelectorAll('.creator-filter-btn').forEach(function (b) { b.classList.toggle('active', b === btn); });
+  renderCreatorGrid();
+});
+
+renderCreatorGrid();
+
+fetch('/api/creator-reviews', { cache: 'no-store' })
+  .then(function (res) { return res.ok ? res.json() : null; })
+  .then(function (items) {
+    if (items && items.length) {
+      crCurrentItems = items;
+      renderCreatorGrid();
+    }
+  })
+  .catch(function () { /* keep defaults */ });
+</script>
+
 <script src="js/main.js"></script>
 <script src="js/cms.js"></script>
 <script src="js/track.js"></script>

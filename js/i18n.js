@@ -6,7 +6,6 @@ var KOONGTUNG_TRANSLATIONS = {
     "nav.menu": "Menu",
     "nav.promotion": "Promotions & Membership",
     "nav.reviews": "Reviews",
-    "nav.creatorReviews": "Creator Reviews",
     "nav.contact": "Contact",
     "nav.links": "All Links",
 
@@ -49,14 +48,7 @@ var KOONGTUNG_TRANSLATIONS = {
     "footer.contactTitle": "Contact",
     "footer.phoneLabel": "Tel",
     "footer.lineLabel": "Line",
-    "footer.fbLabel": "Facebook",
-
-    "cr.badge": "Creator Reviews",
-    "cr.title": "Stories & Perspectives from Creators",
-    "cr.subtitle": "Real visits, real reactions — see what creators and influencers say about KOONGTUNG",
-    "cr.filter.all": "All",
-    "cr.watchFull": "Watch Full Video ↗",
-    "cr.empty": "No creator reviews yet — set them up in the /admin panel"
+    "footer.fbLabel": "Facebook"
   },
   zh: {
     "nav.home": "首页",
@@ -65,7 +57,6 @@ var KOONGTUNG_TRANSLATIONS = {
     "nav.menu": "菜单",
     "nav.promotion": "优惠与会员",
     "nav.reviews": "评价",
-    "nav.creatorReviews": "达人评价",
     "nav.contact": "联系我们",
     "nav.links": "全部链接",
 
@@ -108,14 +99,7 @@ var KOONGTUNG_TRANSLATIONS = {
     "footer.contactTitle": "联系方式",
     "footer.phoneLabel": "电话",
     "footer.lineLabel": "Line",
-    "footer.fbLabel": "Facebook",
-
-    "cr.badge": "达人评价",
-    "cr.title": "来自达人的故事与视角",
-    "cr.subtitle": "真实探店，真实反馈——看看达人和网红怎么评价KOONGTUNG",
-    "cr.filter.all": "全部",
-    "cr.watchFull": "观看完整视频 ↗",
-    "cr.empty": "暂无达人评价 — 请在 /admin 后台设置"
+    "footer.fbLabel": "Facebook"
   }
 };
 

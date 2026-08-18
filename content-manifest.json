@@ -56,13 +56,6 @@
     "hint": "แนะนำ 1600×900px ขึ้นไป แนวนอน (อัตราส่วน 16:9) — รูปเล็กเกินไปจะเบลอเมื่อขยายเต็มจอ"
   },
   {
-    "id": "img-creator-reviews-hero-bg",
-    "type": "image",
-    "label": "รูปพื้นหลัง Hero หน้ารีวิวครีเอเตอร์",
-    "group": "รูปพื้นหลัง Hero ทุกหน้า",
-    "hint": "แนะนำ 1600×900px ขึ้นไป แนวนอน (อัตราส่วน 16:9) — รูปเล็กเกินไปจะเบลอเมื่อขยายเต็มจอ"
-  },
-  {
     "id": "home-hero-title",
     "type": "text",
     "label": "หัวข้อหลัก หน้าแรก",
@@ -376,6 +369,12 @@
     "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG"
   },
   {
+    "id": "video-review-badge",
+    "type": "text",
+    "label": "ป้ายข้อความเหนือหัวข้อวิดีโอ",
+    "group": "วิดีโอรีวิว"
+  },
+  {
     "id": "video-review-1",
     "type": "link",
     "label": "วิดีโอรีวิว (วางลิงก์ YouTube ได้เลย เช่น https://www.youtube.com/watch?v=xxxx)",
@@ -392,6 +391,48 @@
     "type": "text",
     "label": "คำโปรย (ใต้หัวข้อวิดีโอ)",
     "group": "วิดีโอรีวิว"
+  },
+  {
+    "id": "reviews-hero-badge",
+    "type": "text",
+    "label": "ป้ายข้อความ Hero หน้ารีวิว",
+    "group": "หน้ารีวิว"
+  },
+  {
+    "id": "reviews-hero-title",
+    "type": "text",
+    "label": "หัวข้อหลัก หน้ารีวิว",
+    "group": "หน้ารีวิว"
+  },
+  {
+    "id": "reviews-hero-subtitle",
+    "type": "text",
+    "label": "คำโปรย หน้ารีวิว",
+    "group": "หน้ารีวิว"
+  },
+  {
+    "id": "reviews-fb-button-text",
+    "type": "text",
+    "label": "ข้อความปุ่ม \"ดูรีวิวเพิ่มเติมบน Facebook\"",
+    "group": "หน้ารีวิว"
+  },
+  {
+    "id": "creator-section-badge",
+    "type": "text",
+    "label": "ป้ายข้อความ หัวข้อรีวิวครีเอเตอร์",
+    "group": "รีวิวครีเอเตอร์ (ในหน้ารีวิว)"
+  },
+  {
+    "id": "creator-section-title",
+    "type": "text",
+    "label": "หัวข้อหลัก รีวิวครีเอเตอร์",
+    "group": "รีวิวครีเอเตอร์ (ในหน้ารีวิว)"
+  },
+  {
+    "id": "creator-section-subtitle",
+    "type": "text",
+    "label": "คำโปรย รีวิวครีเอเตอร์",
+    "group": "รีวิวครีเอเตอร์ (ในหน้ารีวิว)"
   },
   {
     "id": "link-member",
