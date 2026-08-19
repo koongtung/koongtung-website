@@ -97,6 +97,20 @@
   </div>
 </section>
 
+<section class="section-alt blog-teaser-section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Blog</span>
+      <h2>บทความ &amp; ข่าวสารกุ้งถัง</h2>
+      <p>เรื่องราวเบื้องหลัง บทสัมภาษณ์ และรีวิวจากสื่อต่าง ๆ ที่เคยพูดถึงเรา</p>
+    </div>
+    <div class="blog-teaser-grid" id="blogTeaserGrid"></div>
+    <div style="text-align:center;">
+      <a href="blog.html" class="btn btn-navy">อ่านบทความทั้งหมด</a>
+    </div>
+  </div>
+</section>
+
 <section class="cta-band">
   <div class="container">
     <h2 data-cms-id="about-cta-title">สนใจแฟรนไชส์ กุ้งถัง KOONGTUNG?</h2>
@@ -141,6 +155,57 @@
     </div>
   </div>
 </footer>
+<script>
+var DEFAULT_BLOG_TEASERS = [
+  { "id": "post-2", "title": "รีวิวจากลูกค้า: กุ้งถังเจ้าแรกในเมืองไทย อร่อยขนาดไหน?", "date": "2025-08-29", "coverImage": "assets/images/review-3.jpg", "excerpt": "รีวิวจากผู้มาเยือนสาขาตลาดรถไฟศรีนครินทร์ พร้อมเมนูเด็ดอย่างชุดรวมซีฟู้ดและกุ้งดองซีอิ๊วเกาหลี" },
+  { "id": "post-1", "title": "จุดเริ่มต้นกุ้งถัง: จากไอเดียอาหารทะเลอเมริกัน สู่ร้าน Seafood Boil เจ้าแรกในไทย", "date": "2015-12-07", "coverImage": "assets/images/about-story.jpg", "excerpt": "ย้อนเรื่องราวจุดเริ่มต้นของกุ้งถัง จากแรงบันดาลใจอาหารทะเลสไตล์อเมริกัน สู่ร้าน Seafood Boil เจ้าแรกในเมืองไทย" }
+];
+
+function formatThaiDateShort(iso) {
+  var months = ["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."];
+  var d = new Date(iso);
+  if (isNaN(d.getTime())) return iso;
+  return d.getDate() + ' ' + months[d.getMonth()] + ' ' + (d.getFullYear() + 543);
+}
+
+function renderBlogTeasers(items) {
+  var grid = document.getElementById('blogTeaserGrid');
+  grid.innerHTML = '';
+  items.slice().reverse().slice(0, 3).forEach(function (post) {
+    var card = document.createElement('a');
+    card.className = 'blog-card';
+    card.href = 'blog-post.html?id=' + encodeURIComponent(post.id);
+    var img = document.createElement('img');
+    img.src = post.coverImage;
+    img.alt = post.title;
+    card.appendChild(img);
+    var body = document.createElement('div');
+    body.className = 'blog-card-body';
+    var date = document.createElement('span');
+    date.className = 'blog-date';
+    date.textContent = formatThaiDateShort(post.date);
+    body.appendChild(date);
+    var title = document.createElement('h3');
+    title.textContent = post.title;
+    body.appendChild(title);
+    var excerpt = document.createElement('p');
+    excerpt.textContent = post.excerpt;
+    body.appendChild(excerpt);
+    card.appendChild(body);
+    grid.appendChild(card);
+  });
+}
+
+renderBlogTeasers(DEFAULT_BLOG_TEASERS);
+
+fetch('/api/blog', { cache: 'no-store' })
+  .then(function (res) { return res.ok ? res.json() : null; })
+  .then(function (items) {
+    if (items && items.length) renderBlogTeasers(items);
+  })
+  .catch(function () { /* keep defaults */ });
+</script>
+
 <script src="js/main.js"></script>
 <script src="js/cms.js"></script>
 <script src="js/track.js"></script>

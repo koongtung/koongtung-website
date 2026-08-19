@@ -81,12 +81,14 @@
     <button id="tabLinksBtn" onclick="showTab('links')">🔗 จัดการลิงก์ทั้งหมด</button>
     <button id="tabCreatorBtn" onclick="showTab('creator')">🎬 รีวิวครีเอเตอร์</button>
     <button id="tabGalleryBtn" onclick="showTab('gallery')">🖼 แกลเลอรี่รูปภาพ</button>
+    <button id="tabBlogBtn" onclick="showTab('blog')">📝 จัดการบทความ</button>
     <button id="tabStatsBtn" onclick="showTab('stats')">📊 สถิติการคลิกลิงก์</button>
   </div>
   <div id="contentTab"></div>
   <div id="linksTab" style="display:none;"></div>
   <div id="creatorTab" style="display:none;"></div>
   <div id="galleryTab" style="display:none;"></div>
+  <div id="blogTab" style="display:none;"></div>
   <div id="statsTab" style="display:none;"></div>
 </div>
 
@@ -322,16 +324,216 @@ function showTab(name) {
   document.getElementById('linksTab').style.display = name === 'links' ? 'block' : 'none';
   document.getElementById('creatorTab').style.display = name === 'creator' ? 'block' : 'none';
   document.getElementById('galleryTab').style.display = name === 'gallery' ? 'block' : 'none';
+  document.getElementById('blogTab').style.display = name === 'blog' ? 'block' : 'none';
   document.getElementById('statsTab').style.display = name === 'stats' ? 'block' : 'none';
   document.getElementById('tabContentBtn').className = name === 'content' ? 'active' : '';
   document.getElementById('tabLinksBtn').className = name === 'links' ? 'active' : '';
   document.getElementById('tabCreatorBtn').className = name === 'creator' ? 'active' : '';
   document.getElementById('tabGalleryBtn').className = name === 'gallery' ? 'active' : '';
+  document.getElementById('tabBlogBtn').className = name === 'blog' ? 'active' : '';
   document.getElementById('tabStatsBtn').className = name === 'stats' ? 'active' : '';
   if (name === 'stats') loadStats();
   if (name === 'links') loadLinksManager();
   if (name === 'creator') loadCreatorManager();
   if (name === 'gallery') loadGalleryManager();
+  if (name === 'blog') loadBlogManager();
+}
+
+var blogData = null;
+
+function loadBlogManager() {
+  var el = document.getElementById('blogTab');
+  if (blogData) { renderBlogManager(); return; }
+  el.innerHTML = '<div class="group">กำลังโหลด...</div>';
+  fetch('/api/blog', { cache: 'no-store' })
+    .then(function (res) { return res.json(); })
+    .then(function (items) {
+      blogData = items && items.length ? items : [];
+      renderBlogManager();
+    })
+    .catch(function () { el.innerHTML = '<div class="group">โหลดข้อมูลไม่สำเร็จ</div>'; });
+}
+
+function renderBlogManager() {
+  var el = document.getElementById('blogTab');
+  el.innerHTML = '';
+
+  var infoBox = document.createElement('div');
+  infoBox.className = 'group';
+  infoBox.innerHTML = '<p style="margin:0;color:var(--muted);font-size:.9rem;">จัดการบทความที่แสดงในหน้า <a href="/blog.html" target="_blank">/blog.html</a> และการ์ดแนะนำในหน้า <a href="/about.html" target="_blank">/about.html</a> — เพิ่ม/ลบ/แก้ได้อิสระ เนื้อหาขึ้นย่อหน้าใหม่ให้เว้นบรรทัดว่าง 1 บรรทัด</p>';
+  el.appendChild(infoBox);
+
+  var listGroup = document.createElement('div');
+  listGroup.className = 'group';
+  var h2 = document.createElement('h2');
+  h2.textContent = 'บทความทั้งหมด (' + blogData.length + ')';
+  listGroup.appendChild(h2);
+
+  blogData.forEach(function (post, idx) {
+    listGroup.appendChild(renderBlogRow(post, idx));
+  });
+
+  var addBtn = document.createElement('button');
+  addBtn.className = 'save-btn';
+  addBtn.style.marginTop = '14px';
+  addBtn.textContent = '+ เพิ่มบทความใหม่';
+  addBtn.onclick = function () {
+    blogData.push({
+      id: 'post-' + Date.now(), title: 'หัวข้อบทความใหม่', date: new Date().toISOString().slice(0, 10),
+      coverImage: '', excerpt: 'คำโปรยย่อ', body: 'เนื้อหาบทความ', sourceUrl: '', sourceName: ''
+    });
+    renderBlogManager();
+  };
+  listGroup.appendChild(addBtn);
+
+  var saveRow = document.createElement('div');
+  saveRow.style.marginTop = '18px';
+  var saveAllBtn = document.createElement('button');
+  saveAllBtn.className = 'save-btn';
+  saveAllBtn.textContent = '💾 บันทึกการเปลี่ยนแปลงทั้งหมด';
+  var statusEl = document.createElement('span');
+  statusEl.className = 'status';
+  statusEl.style.marginLeft = '10px';
+  saveAllBtn.onclick = function () {
+    statusEl.textContent = 'กำลังบันทึก...';
+    statusEl.className = 'status';
+    fetch('/api/blog', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-admin-password': PASSWORD },
+      body: JSON.stringify({ items: blogData })
+    }).then(function (res) {
+      if (res.status === 401) {
+        statusEl.textContent = 'รหัสผ่านไม่ถูกต้อง กรุณาโหลดหน้านี้ใหม่';
+        statusEl.className = 'status err';
+        return;
+      }
+      return res.json();
+    }).then(function (json) {
+      if (json && json.ok) {
+        statusEl.textContent = 'บันทึกแล้ว ✓ (หน้าบทความจะอัปเดตทันที)';
+        statusEl.className = 'status ok';
+      }
+    }).catch(function () {
+      statusEl.textContent = 'บันทึกไม่สำเร็จ ลองใหม่อีกครั้ง';
+      statusEl.className = 'status err';
+    });
+  };
+  saveRow.appendChild(saveAllBtn);
+  saveRow.appendChild(statusEl);
+  listGroup.appendChild(saveRow);
+
+  el.appendChild(listGroup);
+}
+
+function renderBlogRow(post, idx) {
+  var row = document.createElement('div');
+  row.className = 'field';
+  row.style.background = '#faf7f2';
+  row.style.borderRadius = '10px';
+  row.style.padding = '14px';
+  row.style.marginBottom = '12px';
+
+  function makeField(labelText, value, onChange, placeholder) {
+    var wrap = document.createElement('div');
+    wrap.style.marginBottom = '8px';
+    var label = document.createElement('label');
+    label.textContent = labelText;
+    label.style.fontSize = '.78rem';
+    label.style.fontWeight = '600';
+    label.style.display = 'block';
+    label.style.marginBottom = '3px';
+    var input = document.createElement('input');
+    input.type = 'text';
+    input.value = value || '';
+    if (placeholder) input.placeholder = placeholder;
+    input.oninput = function () { onChange(input.value); };
+    wrap.appendChild(label);
+    wrap.appendChild(input);
+    return wrap;
+  }
+
+  row.appendChild(makeField('หัวข้อบทความ', post.title, function (v) { post.title = v; }, 'หัวข้อบทความ'));
+  row.appendChild(makeField('วันที่ (YYYY-MM-DD)', post.date, function (v) { post.date = v; }, '2026-01-01'));
+
+  var imgLabel = document.createElement('label');
+  imgLabel.textContent = 'รูปปก';
+  imgLabel.style.fontSize = '.78rem';
+  imgLabel.style.fontWeight = '600';
+  imgLabel.style.display = 'block';
+  imgLabel.style.marginBottom = '3px';
+  row.appendChild(imgLabel);
+  if (post.coverImage) {
+    var preview = document.createElement('img');
+    preview.src = post.coverImage;
+    preview.style.maxWidth = '220px';
+    preview.style.maxHeight = '140px';
+    preview.style.objectFit = 'cover';
+    preview.style.borderRadius = '8px';
+    preview.style.display = 'block';
+    preview.style.marginBottom = '8px';
+    row.appendChild(preview);
+  }
+  var fileInput = document.createElement('input');
+  fileInput.type = 'file';
+  fileInput.accept = 'image/*';
+  fileInput.style.marginBottom = '8px';
+  fileInput.onchange = function () {
+    if (!fileInput.files[0]) return;
+    resizeImage(fileInput.files[0], function (dataUrl) {
+      post.coverImage = dataUrl;
+      renderBlogManager();
+    });
+  };
+  row.appendChild(fileInput);
+
+  row.appendChild(makeField('คำโปรยย่อ', post.excerpt, function (v) { post.excerpt = v; }, 'คำโปรยสั้น ๆ ใต้หัวข้อ'));
+
+  var bodyWrap = document.createElement('div');
+  bodyWrap.style.marginBottom = '8px';
+  var bodyLabel = document.createElement('label');
+  bodyLabel.textContent = 'เนื้อหาบทความ (เว้นบรรทัดว่างเพื่อขึ้นย่อหน้าใหม่)';
+  bodyLabel.style.fontSize = '.78rem';
+  bodyLabel.style.fontWeight = '600';
+  bodyLabel.style.display = 'block';
+  bodyLabel.style.marginBottom = '3px';
+  var bodyTextarea = document.createElement('textarea');
+  bodyTextarea.value = post.body || '';
+  bodyTextarea.style.minHeight = '160px';
+  bodyTextarea.style.width = '100%';
+  bodyTextarea.style.padding = '10px';
+  bodyTextarea.style.borderRadius = '8px';
+  bodyTextarea.style.border = '1px solid #ddd';
+  bodyTextarea.style.fontFamily = 'inherit';
+  bodyTextarea.oninput = function () { post.body = bodyTextarea.value; };
+  bodyWrap.appendChild(bodyLabel);
+  bodyWrap.appendChild(bodyTextarea);
+  row.appendChild(bodyWrap);
+
+  row.appendChild(makeField('ลิงก์ต้นฉบับ (ไม่บังคับ)', post.sourceUrl, function (v) { post.sourceUrl = v; }, 'https://...'));
+  row.appendChild(makeField('ชื่อสื่อ/แหล่งที่มา (ไม่บังคับ)', post.sourceName, function (v) { post.sourceName = v; }, 'เช่น MGR Online'));
+
+  var previewLink = document.createElement('a');
+  previewLink.href = '/blog-post.html?id=' + encodeURIComponent(post.id);
+  previewLink.target = '_blank';
+  previewLink.rel = 'noopener';
+  previewLink.className = 'test-link';
+  previewLink.textContent = 'ดูตัวอย่างบทความ ↗';
+  previewLink.style.display = 'inline-block';
+  previewLink.style.marginBottom = '8px';
+  row.appendChild(previewLink);
+  row.appendChild(document.createElement('br'));
+
+  var delBtn = document.createElement('button');
+  delBtn.className = 'reset-btn';
+  delBtn.textContent = '🗑 ลบบทความนี้';
+  delBtn.onclick = function () {
+    var i = blogData.indexOf(post);
+    if (i > -1) blogData.splice(i, 1);
+    renderBlogManager();
+  };
+  row.appendChild(delBtn);
+
+  return row;
 }
 
 var GALLERY_DEFS = [
