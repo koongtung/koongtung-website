@@ -110,16 +110,7 @@
       <h2 data-cms-id="menu-gallery-title">รีวิว เมนู เพิ่มเติม</h2>
       <p data-cms-id="menu-gallery-subtitle">บรรยากาศและเมนูซีฟู้ดสด ๆ จากร้านกุ้งถัง</p>
     </div>
-    <div class="gallery">
-      <img src="assets/images/menu-gallery-1.jpg" alt="เมนูกุ้งถัง 1" data-cms-id="img-menu-gallery-1">
-      <img src="assets/images/menu-gallery-2.jpg" alt="เมนูกุ้งถัง 2" data-cms-id="img-menu-gallery-2">
-      <img src="assets/images/menu-gallery-3.jpg" alt="เมนูกุ้งถัง 3" data-cms-id="img-menu-gallery-3">
-      <img src="assets/images/menu-gallery-4.jpg" alt="เมนูกุ้งถัง 4" data-cms-id="img-menu-gallery-4">
-      <img src="assets/images/menu-gallery-5.jpg" alt="เมนูกุ้งถัง 5" data-cms-id="img-menu-gallery-5">
-      <img src="assets/images/menu-gallery-6.jpg" alt="เมนูกุ้งถัง 6" data-cms-id="img-menu-gallery-6">
-      <img src="assets/images/menu-combo-5.jpg" alt="คอมโบมิกซ์ ชุดรวม" data-cms-id="img-menu-combo-5">
-      <img src="assets/images/menu-special-5.jpg" alt="เมนูพิเศษกุ้งถัง" data-cms-id="img-menu-gallery-7">
-    </div>
+    <div class="gallery" id="menuGalleryGrid"></div>
   </div>
 </section>
 
@@ -168,6 +159,39 @@
     </div>
   </div>
 </footer>
+<script>
+var DEFAULT_MENU_GALLERY = [
+  "assets/images/menu-gallery-1.jpg",
+  "assets/images/menu-gallery-2.jpg",
+  "assets/images/menu-gallery-3.jpg",
+  "assets/images/menu-gallery-4.jpg",
+  "assets/images/menu-gallery-5.jpg",
+  "assets/images/menu-gallery-6.jpg",
+  "assets/images/menu-combo-5.jpg",
+  "assets/images/menu-special-5.jpg"
+];
+
+function renderGallery(containerId, items) {
+  var container = document.getElementById(containerId);
+  container.innerHTML = '';
+  items.forEach(function (src, i) {
+    var img = document.createElement('img');
+    img.src = src;
+    img.alt = 'เมนูกุ้งถัง ' + (i + 1);
+    container.appendChild(img);
+  });
+}
+
+renderGallery('menuGalleryGrid', DEFAULT_MENU_GALLERY);
+
+fetch('/api/gallery?name=menu', { cache: 'no-store' })
+  .then(function (res) { return res.ok ? res.json() : null; })
+  .then(function (items) {
+    if (items && items.length) renderGallery('menuGalleryGrid', items);
+  })
+  .catch(function () { /* keep defaults */ });
+</script>
+
 <script src="js/main.js"></script>
 <script src="js/cms.js"></script>
 <script src="js/track.js"></script>

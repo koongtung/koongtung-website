@@ -67,16 +67,7 @@
 
 <section>
   <div class="container">
-    <div class="gallery">
-      <img src="assets/images/review-1.jpg" alt="รีวิวกุ้งถัง 1">
-      <img src="assets/images/review-2.jpg" alt="รีวิวกุ้งถัง 2">
-      <img src="assets/images/review-3.jpg" alt="รีวิวกุ้งถัง 3">
-      <img src="assets/images/review-4.jpg" alt="รีวิวกุ้งถัง 4">
-      <img src="assets/images/review-5.jpg" alt="รีวิวกุ้งถัง 5">
-      <img src="assets/images/menu-gallery-1.jpg" alt="บรรยากาศร้านกุ้งถัง 1">
-      <img src="assets/images/menu-gallery-2.jpg" alt="บรรยากาศร้านกุ้งถัง 2">
-      <img src="assets/images/menu-gallery-3.jpg" alt="บรรยากาศร้านกุ้งถัง 3">
-    </div>
+    <div class="gallery" id="reviewsGalleryGrid"></div>
     <div style="text-align:center; margin-top:34px;">
       <a href="https://www.facebook.com/Koongtung/" target="_blank" rel="noopener" class="btn btn-navy" data-track-id="reviews-fb-button" data-cms-id="link-facebook" data-cms-link="true">
         <span data-cms-id="reviews-fb-button-text">ดูรีวิวเพิ่มเติมบน Facebook</span>
@@ -138,6 +129,37 @@
   </div>
 </footer>
 <script>
+var DEFAULT_REVIEWS_GALLERY = [
+  "assets/images/review-1.jpg",
+  "assets/images/review-2.jpg",
+  "assets/images/review-3.jpg",
+  "assets/images/review-4.jpg",
+  "assets/images/review-5.jpg",
+  "assets/images/menu-gallery-1.jpg",
+  "assets/images/menu-gallery-2.jpg",
+  "assets/images/menu-gallery-3.jpg"
+];
+
+function renderGallery(containerId, items) {
+  var container = document.getElementById(containerId);
+  container.innerHTML = '';
+  items.forEach(function (src, i) {
+    var img = document.createElement('img');
+    img.src = src;
+    img.alt = 'รีวิวกุ้งถัง ' + (i + 1);
+    container.appendChild(img);
+  });
+}
+
+renderGallery('reviewsGalleryGrid', DEFAULT_REVIEWS_GALLERY);
+
+fetch('/api/gallery?name=reviews', { cache: 'no-store' })
+  .then(function (res) { return res.ok ? res.json() : null; })
+  .then(function (items) {
+    if (items && items.length) renderGallery('reviewsGalleryGrid', items);
+  })
+  .catch(function () { /* keep defaults */ });
+
 var DEFAULT_CREATOR_REVIEWS = [
   { "id": "cr-1", "creator": "รีวิวจาก TikTok #1", "platform": "tiktok", "videoUrl": "https://vt.tiktok.com/ZSVkdDuAe/", "caption": "คลิปรีวิวจากลูกค้า — แก้ไขชื่อ/คำโปรยได้ที่ระบบหลังบ้าน /admin" },
   { "id": "cr-2", "creator": "รีวิวจาก TikTok #2", "platform": "tiktok", "videoUrl": "https://vt.tiktok.com/ZSVkdDMdn/", "caption": "คลิปรีวิวจากลูกค้า — แก้ไขชื่อ/คำโปรยได้ที่ระบบหลังบ้าน /admin" },

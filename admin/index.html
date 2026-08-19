@@ -43,9 +43,22 @@
   table.stats td.count { font-weight:700; color:var(--red); text-align:right; }
   .bar-bg { background:#f0ede7; border-radius:6px; height:8px; margin-top:4px; overflow:hidden; }
   .bar-fill { background:var(--navy); height:100%; }
-  .tab-btns { display:flex; gap:10px; margin-bottom:20px; }
+  .tab-btns { display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap; }
   .tab-btns button { padding:10px 20px; border-radius:8px; border:none; font-family:inherit; cursor:pointer; background:#eee; font-weight:600; }
   .tab-btns button.active { background:var(--navy); color:#fff; }
+  .gallery-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(120px, 1fr)); gap:12px; margin-bottom:16px; }
+  .gallery-thumb { position:relative; border-radius:8px; overflow:hidden; box-shadow:var(--shadow); aspect-ratio:1; }
+  .gallery-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+  .gallery-thumb .del-btn {
+    position:absolute; top:4px; right:4px; background:rgba(0,0,0,.65); color:#fff; border:none;
+    width:26px; height:26px; border-radius:50%; cursor:pointer; font-size:.85rem; line-height:1;
+  }
+  .gallery-thumb .del-btn:hover { background:var(--red); }
+  .gallery-add-tile {
+    aspect-ratio:1; border:2px dashed #ccc; border-radius:8px; display:flex; align-items:center; justify-content:center;
+    color:var(--muted); font-size:.82rem; text-align:center; cursor:pointer; position:relative; overflow:hidden;
+  }
+  .gallery-add-tile input[type="file"] { position:absolute; inset:0; opacity:0; cursor:pointer; }
 </style>
 </head>
 <body>
@@ -67,11 +80,13 @@
     <button id="tabContentBtn" class="active" onclick="showTab('content')">✏️ แก้ไขเนื้อหา</button>
     <button id="tabLinksBtn" onclick="showTab('links')">🔗 จัดการลิงก์ทั้งหมด</button>
     <button id="tabCreatorBtn" onclick="showTab('creator')">🎬 รีวิวครีเอเตอร์</button>
+    <button id="tabGalleryBtn" onclick="showTab('gallery')">🖼 แกลเลอรี่รูปภาพ</button>
     <button id="tabStatsBtn" onclick="showTab('stats')">📊 สถิติการคลิกลิงก์</button>
   </div>
   <div id="contentTab"></div>
   <div id="linksTab" style="display:none;"></div>
   <div id="creatorTab" style="display:none;"></div>
+  <div id="galleryTab" style="display:none;"></div>
   <div id="statsTab" style="display:none;"></div>
 </div>
 
@@ -306,14 +321,126 @@ function showTab(name) {
   document.getElementById('contentTab').style.display = name === 'content' ? 'block' : 'none';
   document.getElementById('linksTab').style.display = name === 'links' ? 'block' : 'none';
   document.getElementById('creatorTab').style.display = name === 'creator' ? 'block' : 'none';
+  document.getElementById('galleryTab').style.display = name === 'gallery' ? 'block' : 'none';
   document.getElementById('statsTab').style.display = name === 'stats' ? 'block' : 'none';
   document.getElementById('tabContentBtn').className = name === 'content' ? 'active' : '';
   document.getElementById('tabLinksBtn').className = name === 'links' ? 'active' : '';
   document.getElementById('tabCreatorBtn').className = name === 'creator' ? 'active' : '';
+  document.getElementById('tabGalleryBtn').className = name === 'gallery' ? 'active' : '';
   document.getElementById('tabStatsBtn').className = name === 'stats' ? 'active' : '';
   if (name === 'stats') loadStats();
   if (name === 'links') loadLinksManager();
   if (name === 'creator') loadCreatorManager();
+  if (name === 'gallery') loadGalleryManager();
+}
+
+var GALLERY_DEFS = [
+  { name: 'menu', label: 'แกลเลอรี่หน้าเมนู (menu.html)', pageUrl: '/menu.html' },
+  { name: 'reviews', label: 'แกลเลอรี่รูปภาพหน้ารีวิว (reviews.html)', pageUrl: '/reviews.html' }
+];
+var galleryData = {};
+
+function loadGalleryManager() {
+  var el = document.getElementById('galleryTab');
+  if (Object.keys(galleryData).length) { renderGalleryTab(); return; }
+  el.innerHTML = '<div class="group">กำลังโหลด...</div>';
+  Promise.all(GALLERY_DEFS.map(function (def) {
+    return fetch('/api/gallery?name=' + def.name, { cache: 'no-store' })
+      .then(function (res) { return res.json(); })
+      .then(function (items) { galleryData[def.name] = (items && items.length) ? items : []; });
+  })).then(renderGalleryTab)
+    .catch(function () { el.innerHTML = '<div class="group">โหลดข้อมูลไม่สำเร็จ</div>'; });
+}
+
+function saveGallerySection(name) {
+  var statusEl = document.getElementById('gallery-status-' + name);
+  if (!statusEl) return;
+  statusEl.textContent = 'กำลังบันทึก...';
+  statusEl.className = 'status';
+  fetch('/api/gallery', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'x-admin-password': PASSWORD },
+    body: JSON.stringify({ name: name, items: galleryData[name] })
+  }).then(function (res) {
+    if (res.status === 401) {
+      statusEl.textContent = 'รหัสผ่านไม่ถูกต้อง กรุณาโหลดหน้านี้ใหม่';
+      statusEl.className = 'status err';
+      return;
+    }
+    return res.json();
+  }).then(function (json) {
+    if (json && json.ok) {
+      statusEl.textContent = 'บันทึกแล้ว ✓';
+      statusEl.className = 'status ok';
+    }
+  }).catch(function () {
+    statusEl.textContent = 'บันทึกไม่สำเร็จ ลองใหม่อีกครั้ง';
+    statusEl.className = 'status err';
+  });
+}
+
+function renderGalleryTab() {
+  var el = document.getElementById('galleryTab');
+  el.innerHTML = '';
+
+  var infoBox = document.createElement('div');
+  infoBox.className = 'group';
+  infoBox.innerHTML = '<p style="margin:0;color:var(--muted);font-size:.9rem;">เพิ่ม/ลบรูปในแกลเลอรี่ได้อิสระ ไม่จำกัดจำนวน — อัปโหลดแล้วบันทึกทันที ระบบจะปรับขนาดรูปให้อัตโนมัติ</p>';
+  el.appendChild(infoBox);
+
+  GALLERY_DEFS.forEach(function (def) {
+    var group = document.createElement('div');
+    group.className = 'group';
+    var h2 = document.createElement('h2');
+    h2.textContent = def.label + ' (' + galleryData[def.name].length + ' รูป)';
+    group.appendChild(h2);
+
+    var grid = document.createElement('div');
+    grid.className = 'gallery-grid';
+
+    galleryData[def.name].forEach(function (src, idx) {
+      var thumb = document.createElement('div');
+      thumb.className = 'gallery-thumb';
+      var img = document.createElement('img');
+      img.src = src;
+      thumb.appendChild(img);
+      var delBtn = document.createElement('button');
+      delBtn.className = 'del-btn';
+      delBtn.textContent = '✕';
+      delBtn.onclick = function () {
+        galleryData[def.name].splice(idx, 1);
+        renderGalleryTab();
+        saveGallerySection(def.name);
+      };
+      thumb.appendChild(delBtn);
+      grid.appendChild(thumb);
+    });
+
+    var addTile = document.createElement('div');
+    addTile.className = 'gallery-add-tile';
+    addTile.innerHTML = '+ เพิ่มรูป';
+    var fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = 'image/*';
+    fileInput.onchange = function () {
+      if (!fileInput.files[0]) return;
+      resizeImage(fileInput.files[0], function (dataUrl) {
+        galleryData[def.name].push(dataUrl);
+        renderGalleryTab();
+        saveGallerySection(def.name);
+      });
+    };
+    addTile.appendChild(fileInput);
+    grid.appendChild(addTile);
+
+    var statusEl = document.createElement('span');
+    statusEl.className = 'status';
+    statusEl.id = 'gallery-status-' + def.name;
+
+    group.appendChild(grid);
+    group.appendChild(statusEl);
+    el.appendChild(group);
+  });
 }
 
 var PLATFORM_OPTIONS = ['youtube', 'tiktok', 'facebook', 'instagram'];
@@ -898,13 +1025,6 @@ window.__KOONGTUNG_DEFAULTS__ = {
   "menu-gallery-eyebrow": "Gallery",
   "menu-gallery-title": "รีวิว เมนู เพิ่มเติม",
   "menu-gallery-subtitle": "บรรยากาศและเมนูซีฟู้ดสด ๆ จากร้านกุ้งถัง",
-  "img-menu-gallery-1": "../assets/images/menu-gallery-1.jpg",
-  "img-menu-gallery-2": "../assets/images/menu-gallery-2.jpg",
-  "img-menu-gallery-3": "../assets/images/menu-gallery-3.jpg",
-  "img-menu-gallery-4": "../assets/images/menu-gallery-4.jpg",
-  "img-menu-gallery-5": "../assets/images/menu-gallery-5.jpg",
-  "img-menu-gallery-6": "../assets/images/menu-gallery-6.jpg",
-  "img-menu-gallery-7": "../assets/images/menu-special-5.jpg",
   "menu-cta-title": "อยากทานเมนูไหนวันนี้?",
   "menu-cta-subtitle": "โทรสั่งล่วงหน้าหรือดูสาขาใกล้คุณได้เลย",
 

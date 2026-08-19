@@ -713,13 +713,6 @@
   { "id": "menu-gallery-eyebrow", "type": "text", "label": "ป้ายข้อความ Gallery", "group": "เมนู" },
   { "id": "menu-gallery-title", "type": "text", "label": "หัวข้อ รีวิวเมนูเพิ่มเติม", "group": "เมนู" },
   { "id": "menu-gallery-subtitle", "type": "text", "label": "คำโปรย รีวิวเมนูเพิ่มเติม", "group": "เมนู" },
-  { "id": "img-menu-gallery-1", "type": "image", "label": "แกลเลอรี่เมนู รูป 1", "group": "เมนู", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส" },
-  { "id": "img-menu-gallery-2", "type": "image", "label": "แกลเลอรี่เมนู รูป 2", "group": "เมนู", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส" },
-  { "id": "img-menu-gallery-3", "type": "image", "label": "แกลเลอรี่เมนู รูป 3", "group": "เมนู", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส" },
-  { "id": "img-menu-gallery-4", "type": "image", "label": "แกลเลอรี่เมนู รูป 4", "group": "เมนู", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส" },
-  { "id": "img-menu-gallery-5", "type": "image", "label": "แกลเลอรี่เมนู รูป 5", "group": "เมนู", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส" },
-  { "id": "img-menu-gallery-6", "type": "image", "label": "แกลเลอรี่เมนู รูป 6", "group": "เมนู", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส" },
-  { "id": "img-menu-gallery-7", "type": "image", "label": "แกลเลอรี่เมนู รูป 7", "group": "เมนู", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส" },
   { "id": "menu-cta-title", "type": "text", "label": "หัวข้อ แถบ CTA ท้ายหน้าเมนู", "group": "เมนู" },
   { "id": "menu-cta-subtitle", "type": "text", "label": "คำโปรย แถบ CTA ท้ายหน้าเมนู", "group": "เมนู" },
 
