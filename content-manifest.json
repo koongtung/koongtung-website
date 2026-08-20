@@ -2,8 +2,24 @@
   { "id": "logo", "type": "image", "label": "โลโก้ร้าน", "group": "ทั่วไป", "hint": "แนะนำ 400×400px ขึ้นไป (จัตุรัส) พื้นหลังขาว/โปร่งใส ไฟล์ไม่เกิน 1MB" },
 
   { "id": "img-home-hero-bg", "type": "image", "label": "รูปพื้นหลัง Hero หน้าแรก", "group": "หน้าแรก", "hint": "แนะนำ 1600×900px ขึ้นไป แนวนอน (อัตราส่วน 16:9) — รูปเล็กเกินไปจะเบลอเมื่อขยายเต็มจอ" },
+  { "id": "home-hero-badge", "type": "text", "label": "ป้ายข้อความ Hero", "group": "หน้าแรก" },
   { "id": "home-hero-title", "type": "text", "label": "หัวข้อหลัก หน้าแรก", "group": "หน้าแรก" },
   { "id": "home-hero-sub", "type": "text", "label": "คำโปรย หน้าแรก", "group": "หน้าแรก" },
+  { "id": "home-info-branches", "type": "text", "label": "แถบข้อมูลด่วน - ข้อความจำนวนสาขา", "group": "หน้าแรก" },
+  { "id": "home-info-opendaily", "type": "text", "label": "แถบข้อมูลด่วน - ข้อความเวลาเปิด", "group": "หน้าแรก" },
+
+  { "id": "home-story-eyebrow", "type": "text", "label": "ป้ายข้อความ Our Story", "group": "หน้าแรก - เรื่องราวย่อ" },
+  { "id": "home-story-title", "type": "text", "label": "หัวข้อ เรื่องราวย่อ", "group": "หน้าแรก - เรื่องราวย่อ" },
+  { "id": "home-story-text", "type": "text", "label": "เนื้อหา เรื่องราวย่อ", "group": "หน้าแรก - เรื่องราวย่อ" },
+  { "id": "home-story-li1", "type": "text", "label": "รายการที่ 1", "group": "หน้าแรก - เรื่องราวย่อ" },
+  { "id": "home-story-li2", "type": "text", "label": "รายการที่ 2", "group": "หน้าแรก - เรื่องราวย่อ" },
+  { "id": "home-story-li3", "type": "text", "label": "รายการที่ 3", "group": "หน้าแรก - เรื่องราวย่อ" },
+  { "id": "home-story-btn-text", "type": "text", "label": "ข้อความปุ่ม \"อ่านเรื่องราวของเรา\"", "group": "หน้าแรก - เรื่องราวย่อ" },
+
+  { "id": "home-cta-title", "type": "text", "label": "หัวข้อ แถบ CTA ปิดท้ายหน้าแรก", "group": "หน้าแรก - CTA ปิดท้าย" },
+  { "id": "home-cta-subtitle", "type": "text", "label": "คำโปรย แถบ CTA ปิดท้ายหน้าแรก", "group": "หน้าแรก - CTA ปิดท้าย" },
+  { "id": "home-cta-btn-promo-text", "type": "text", "label": "ข้อความปุ่ม \"ดูโปรโมชั่น & เดลิเวอรี่\"", "group": "หน้าแรก - CTA ปิดท้าย" },
+  { "id": "home-cta-btn-contact-text", "type": "text", "label": "ข้อความปุ่ม \"ติดต่อเรา\"", "group": "หน้าแรก - CTA ปิดท้าย" },
 
   { "id": "food-category-eyebrow", "type": "text", "label": "ป้ายข้อความ หมวดอาหาร", "group": "หน้าแรก - ไฮไลท์หมวดอาหาร" },
   { "id": "food-category-title", "type": "text", "label": "หัวข้อ ไฮไลท์หมวดอาหาร", "group": "หน้าแรก - ไฮไลท์หมวดอาหาร" },
@@ -238,6 +254,15 @@
   { "id": "link-instagram", "type": "link", "label": "ลิงก์ Instagram", "group": "ลิงก์หลัก (ใช้หลายจุดในเว็บ)" },
   { "id": "link-tiktok", "type": "link", "label": "ลิงก์ Tiktok", "group": "ลิงก์หลัก (ใช้หลายจุดในเว็บ)" },
   { "id": "link-shopee", "type": "link", "label": "ลิงก์ Shopee Official", "group": "ลิงก์หลัก (ใช้หลายจุดในเว็บ)" },
+
+  { "id": "footer-desc", "type": "text", "label": "คำโปรยท้ายเว็บ (Footer) — ใช้ทุกหน้า แก้ที่เดียวอัปเดตทุกหน้า", "group": "Footer (ใช้ทุกหน้า)" },
+
+  { "id": "links-page-name", "type": "text", "label": "ชื่อบัญชี (หน้าลิงก์รวม)", "group": "ลิงก์รวม (links.html)" },
+  { "id": "links-page-tagline", "type": "text", "label": "คำโปรยใต้ชื่อ (หน้าลิงก์รวม)", "group": "ลิงก์รวม (links.html)" },
+
+  { "id": "blog-hero-badge", "type": "text", "label": "ป้ายข้อความ Hero", "group": "บทความ (Blog) - Hero" },
+  { "id": "blog-hero-title", "type": "text", "label": "หัวข้อหลัก Hero", "group": "บทความ (Blog) - Hero" },
+  { "id": "blog-hero-subtitle", "type": "text", "label": "คำโปรย Hero", "group": "บทความ (Blog) - Hero" },
 
   { "id": "icon-menu", "type": "image", "label": "ไอคอน เมนู", "group": "ไอคอน (หน้าลิงก์รวม)", "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG" },
   { "id": "icon-member", "type": "image", "label": "ไอคอน ระบบสมาชิก", "group": "ไอคอน (หน้าลิงก์รวม)", "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG" },

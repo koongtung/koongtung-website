@@ -2,7 +2,8 @@ import {
   escapeHtml,
   formatThaiDate,
   renderPageShell,
-  getBlogPosts
+  getBlogPosts,
+  getOverrides
 } from "./_shared/blog-helpers.js";
 
 function renderGrid(posts) {
@@ -23,6 +24,10 @@ function renderGrid(posts) {
 
 export async function onRequestGet(context) {
   const posts = await getBlogPosts(context.env);
+  const overrides = await getOverrides(context.env);
+  const heroBadge = overrides["blog-hero-badge"] || "Blog";
+  const heroTitle = overrides["blog-hero-title"] || "บทความ & ข่าวสาร";
+  const heroSubtitle = overrides["blog-hero-subtitle"] || "เรื่องราวเบื้องหลัง บทสัมภาษณ์ และรีวิวจากสื่อต่าง ๆ ที่เคยพูดถึงกุ้งถัง";
 
   const headExtra = `<title>บทความ | KOONGTUNG กุ้งถัง Seafood Boil</title>
 <meta name="description" content="บทความและข่าวสารจากร้าน Seafood Boil กุ้งถัง KOONGTUNG เรื่องราวเบื้องหลัง บทสัมภาษณ์ และรีวิวที่เคยออกสื่อ">
@@ -30,9 +35,9 @@ export async function onRequestGet(context) {
 
   const bodyHtml = `<section class="hero" style="min-height:30vh; background-image:url('/assets/images/about-story.jpg')">
   <div class="container hero-content">
-    <span class="hero-badge">Blog</span>
-    <h1>บทความ &amp; ข่าวสาร</h1>
-    <p>เรื่องราวเบื้องหลัง บทสัมภาษณ์ และรีวิวจากสื่อต่าง ๆ ที่เคยพูดถึงกุ้งถัง</p>
+    <span class="hero-badge">${escapeHtml(heroBadge)}</span>
+    <h1>${escapeHtml(heroTitle)}</h1>
+    <p>${escapeHtml(heroSubtitle)}</p>
   </div>
 </section>
 <section>

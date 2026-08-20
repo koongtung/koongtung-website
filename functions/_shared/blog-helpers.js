@@ -118,3 +118,8 @@ export async function getBlogPosts(env) {
   const raw = await env.CONTENT.get("blog-posts");
   return raw ? JSON.parse(raw) : [];
 }
+
+export async function getOverrides(env) {
+  const raw = await env.CONTENT.get("overrides");
+  return raw ? JSON.parse(raw) : {};
+}
