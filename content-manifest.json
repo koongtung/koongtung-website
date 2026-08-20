@@ -250,6 +250,10 @@
   { "id": "contact-channels-title", "type": "text", "label": "หัวข้อ ทุกช่องทางของกุ้งถัง", "group": "ติดต่อ - ทุกช่องทาง" },
   { "id": "contact-channels-subtitle", "type": "text", "label": "คำโปรย ทุกช่องทางของกุ้งถัง", "group": "ติดต่อ - ทุกช่องทาง" },
 
+  { "id": "contact-form-eyebrow", "type": "text", "label": "ป้ายข้อความ Message Us", "group": "ติดต่อ - ฟอร์มติดต่อ" },
+  { "id": "contact-form-title", "type": "text", "label": "หัวข้อ ฟอร์มติดต่อ", "group": "ติดต่อ - ฟอร์มติดต่อ" },
+  { "id": "contact-form-subtitle", "type": "text", "label": "คำโปรย ฟอร์มติดต่อ", "group": "ติดต่อ - ฟอร์มติดต่อ" },
+
   { "id": "link-facebook", "type": "link", "label": "ลิงก์ Facebook (ใช้ในหลายจุดของเว็บ)", "group": "ลิงก์หลัก (ใช้หลายจุดในเว็บ)" },
   { "id": "link-line", "type": "link", "label": "ลิงก์ Line Official (ใช้ในหลายจุดของเว็บ)", "group": "ลิงก์หลัก (ใช้หลายจุดในเว็บ)" },
   { "id": "link-instagram", "type": "link", "label": "ลิงก์ Instagram", "group": "ลิงก์หลัก (ใช้หลายจุดในเว็บ)" },

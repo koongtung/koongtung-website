@@ -104,6 +104,7 @@
     <button id="tabCreatorBtn" onclick="showTab('creator')">🎬 รีวิวครีเอเตอร์</button>
     <button id="tabGalleryBtn" onclick="showTab('gallery')">🖼 แกลเลอรี่รูปภาพ</button>
     <button id="tabBlogBtn" onclick="showTab('blog')">📝 จัดการบทความ</button>
+    <button id="tabLeadsBtn" onclick="showTab('leads')">📋 ข้อความติดต่อ</button>
     <button id="tabStatsBtn" onclick="showTab('stats')">📊 สถิติการคลิกลิงก์</button>
   </div>
   <div id="contentTab"></div>
@@ -111,6 +112,7 @@
   <div id="creatorTab" style="display:none;"></div>
   <div id="galleryTab" style="display:none;"></div>
   <div id="blogTab" style="display:none;"></div>
+  <div id="leadsTab" style="display:none;"></div>
   <div id="statsTab" style="display:none;"></div>
 </div>
 
@@ -347,18 +349,118 @@ function showTab(name) {
   document.getElementById('creatorTab').style.display = name === 'creator' ? 'block' : 'none';
   document.getElementById('galleryTab').style.display = name === 'gallery' ? 'block' : 'none';
   document.getElementById('blogTab').style.display = name === 'blog' ? 'block' : 'none';
+  document.getElementById('leadsTab').style.display = name === 'leads' ? 'block' : 'none';
   document.getElementById('statsTab').style.display = name === 'stats' ? 'block' : 'none';
   document.getElementById('tabContentBtn').className = name === 'content' ? 'active' : '';
   document.getElementById('tabLinksBtn').className = name === 'links' ? 'active' : '';
   document.getElementById('tabCreatorBtn').className = name === 'creator' ? 'active' : '';
   document.getElementById('tabGalleryBtn').className = name === 'gallery' ? 'active' : '';
   document.getElementById('tabBlogBtn').className = name === 'blog' ? 'active' : '';
+  document.getElementById('tabLeadsBtn').className = name === 'leads' ? 'active' : '';
   document.getElementById('tabStatsBtn').className = name === 'stats' ? 'active' : '';
   if (name === 'stats') loadStats();
   if (name === 'links') loadLinksManager();
   if (name === 'creator') loadCreatorManager();
   if (name === 'gallery') loadGalleryManager();
   if (name === 'blog') loadBlogManager();
+  if (name === 'leads') loadLeadsManager();
+}
+
+var leadsData = null;
+
+function loadLeadsManager() {
+  var el = document.getElementById('leadsTab');
+  el.innerHTML = '<div class="group">กำลังโหลด...</div>';
+  fetch('/api/leads', { headers: { 'x-admin-password': PASSWORD } })
+    .then(function (res) { return res.json(); })
+    .then(function (items) {
+      leadsData = items || [];
+      renderLeadsManager();
+    })
+    .catch(function () { el.innerHTML = '<div class="group">โหลดข้อมูลไม่สำเร็จ</div>'; });
+}
+
+function formatLeadDate(iso) {
+  var d = new Date(iso);
+  if (isNaN(d.getTime())) return iso;
+  var months = ['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
+  var pad = function (n) { return n < 10 ? '0' + n : n; };
+  return d.getDate() + ' ' + months[d.getMonth()] + ' ' + (d.getFullYear() + 543) + ' เวลา ' + pad(d.getHours()) + ':' + pad(d.getMinutes()) + ' น.';
+}
+
+function renderLeadsManager() {
+  var el = document.getElementById('leadsTab');
+  el.innerHTML = '';
+
+  var infoBox = document.createElement('div');
+  infoBox.className = 'group';
+  infoBox.innerHTML = '<p style="margin:0;color:var(--muted);font-size:.9rem;">ข้อความที่ลูกค้าส่งผ่านแบบฟอร์มในหน้า <a href="/contact.html" target="_blank">/contact.html</a></p>';
+  el.appendChild(infoBox);
+
+  var listGroup = document.createElement('div');
+  listGroup.className = 'group';
+  var h2 = document.createElement('h2');
+  h2.textContent = 'ข้อความติดต่อ (' + leadsData.length + ')';
+  listGroup.appendChild(h2);
+
+  if (!leadsData.length) {
+    var emptyP = document.createElement('p');
+    emptyP.style.color = 'var(--muted)';
+    emptyP.textContent = 'ยังไม่มีข้อความเข้ามาครับ';
+    listGroup.appendChild(emptyP);
+  }
+
+  leadsData.slice().reverse().forEach(function (lead) {
+    var row = document.createElement('div');
+    row.className = 'field';
+    row.style.background = '#faf7f2';
+    row.style.borderRadius = '10px';
+    row.style.padding = '14px';
+    row.style.marginBottom = '12px';
+
+    var top = document.createElement('div');
+    top.style.display = 'flex';
+    top.style.justifyContent = 'space-between';
+    top.style.flexWrap = 'wrap';
+    top.style.gap = '8px';
+    top.style.marginBottom = '8px';
+    var nameEl = document.createElement('strong');
+    nameEl.textContent = lead.name + (lead.phone ? ' — ' + lead.phone : '');
+    var dateEl = document.createElement('span');
+    dateEl.className = 'status';
+    dateEl.textContent = formatLeadDate(lead.submittedAt);
+    top.appendChild(nameEl);
+    top.appendChild(dateEl);
+    row.appendChild(top);
+
+    var msgEl = document.createElement('p');
+    msgEl.style.margin = '0 0 10px';
+    msgEl.style.whiteSpace = 'pre-wrap';
+    msgEl.textContent = lead.message;
+    row.appendChild(msgEl);
+
+    var delBtn = document.createElement('button');
+    delBtn.className = 'reset-btn';
+    delBtn.textContent = '🗑 ลบข้อความนี้';
+    delBtn.onclick = function () {
+      fetch('/api/leads', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json', 'x-admin-password': PASSWORD },
+        body: JSON.stringify({ id: lead.id })
+      }).then(function (res) { return res.json(); })
+        .then(function (json) {
+          if (json && json.ok) {
+            leadsData = leadsData.filter(function (l) { return l.id !== lead.id; });
+            renderLeadsManager();
+          }
+        });
+    };
+    row.appendChild(delBtn);
+
+    listGroup.appendChild(row);
+  });
+
+  el.appendChild(listGroup);
 }
 
 var blogData = null;
@@ -1472,7 +1574,10 @@ window.__KOONGTUNG_DEFAULTS__ = {
   "contact-branch-summary": "มี 5 สาขาทั่วกรุงเทพฯ",
   "contact-channels-eyebrow": "Every Channel",
   "contact-channels-title": "ทุกช่องทางของกุ้งถัง",
-  "contact-channels-subtitle": "ตามข่าวสาร โปรโมชั่น และสั่งซื้อได้จากทุกช่องทางด้านล่าง"
+  "contact-channels-subtitle": "ตามข่าวสาร โปรโมชั่น และสั่งซื้อได้จากทุกช่องทางด้านล่าง",
+  "contact-form-eyebrow": "Message Us",
+  "contact-form-title": "ส่งข้อความถึงเรา",
+  "contact-form-subtitle": "กรอกแบบฟอร์มด้านล่าง ทีมงานจะติดต่อกลับโดยเร็วที่สุด"
 };
 
 var saved = sessionStorage.getItem('koongtung_admin_pw');

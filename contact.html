@@ -8,7 +8,7 @@
 <link rel="icon" href="assets/images/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=4">
+<link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body>
 
@@ -97,6 +97,33 @@
 </section>
 
 <section class="section-alt">
+  <div class="container" style="max-width:640px;">
+    <div class="section-head">
+      <span class="eyebrow" data-cms-id="contact-form-eyebrow">Message Us</span>
+      <h2 data-cms-id="contact-form-title">ส่งข้อความถึงเรา</h2>
+      <p data-cms-id="contact-form-subtitle">กรอกแบบฟอร์มด้านล่าง ทีมงานจะติดต่อกลับโดยเร็วที่สุด</p>
+    </div>
+    <form id="contactForm" class="contact-form">
+      <div class="form-field">
+        <label for="cf-name">ชื่อ *</label>
+        <input type="text" id="cf-name" name="name" required>
+      </div>
+      <div class="form-field">
+        <label for="cf-phone">เบอร์โทร / LINE (ถ้ามี)</label>
+        <input type="text" id="cf-phone" name="phone">
+      </div>
+      <div class="form-field">
+        <label for="cf-message">ข้อความ *</label>
+        <textarea id="cf-message" name="message" required></textarea>
+      </div>
+      <input type="text" name="website" id="cf-website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit" class="btn btn-primary" id="cfSubmitBtn">ส่งข้อความ</button>
+      <p id="cfStatus" class="form-status"></p>
+    </form>
+  </div>
+</section>
+
+<section>
   <div class="container">
     <div class="section-head">
       <span class="eyebrow" data-cms-id="contact-channels-eyebrow">Every Channel</span>
@@ -150,6 +177,44 @@
     </div>
   </div>
 </footer>
+<script>
+document.getElementById('contactForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var statusEl = document.getElementById('cfStatus');
+  var submitBtn = document.getElementById('cfSubmitBtn');
+  var payload = {
+    name: document.getElementById('cf-name').value,
+    phone: document.getElementById('cf-phone').value,
+    message: document.getElementById('cf-message').value,
+    website: document.getElementById('cf-website').value
+  };
+  submitBtn.disabled = true;
+  statusEl.textContent = 'กำลังส่ง...';
+  statusEl.className = 'form-status';
+  fetch('/api/leads', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  }).then(function (res) { return res.json(); })
+    .then(function (json) {
+      submitBtn.disabled = false;
+      if (json && json.ok) {
+        statusEl.textContent = 'ส่งข้อความเรียบร้อย ✓ ทีมงานจะติดต่อกลับโดยเร็วที่สุดครับ';
+        statusEl.className = 'form-status ok';
+        document.getElementById('contactForm').reset();
+      } else {
+        statusEl.textContent = 'กรอกชื่อและข้อความให้ครบก่อนส่งนะครับ';
+        statusEl.className = 'form-status err';
+      }
+    })
+    .catch(function () {
+      submitBtn.disabled = false;
+      statusEl.textContent = 'ส่งข้อความไม่สำเร็จ ลองใหม่อีกครั้ง หรือติดต่อผ่าน LINE/โทรแทนได้ครับ';
+      statusEl.className = 'form-status err';
+    });
+});
+</script>
+
 <script src="js/main.js"></script>
 <script src="js/cms.js?v=2"></script>
 <script src="js/track.js"></script>

@@ -320,6 +320,26 @@ nav.main-nav a.active {
   margin-right: 4px;
 }
 
+/* Contact form */
+.contact-form { display: flex; flex-direction: column; gap: 18px; }
+.form-field { display: flex; flex-direction: column; gap: 6px; }
+.form-field label { font-weight: 600; font-size: .92rem; }
+.form-field input, .form-field textarea {
+  padding: 12px 14px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: .95rem;
+}
+.form-field textarea { min-height: 120px; resize: vertical; }
+.form-field input:focus, .form-field textarea:focus { outline: 2px solid var(--navy); outline-offset: 1px; }
+.hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.contact-form .btn { align-self: flex-start; border: none; cursor: pointer; }
+.contact-form .btn:disabled { opacity: .6; cursor: not-allowed; }
+.form-status { font-size: .9rem; margin: 0; }
+.form-status.ok { color: #1a7a3c; }
+.form-status.err { color: var(--red); }
+
 @media (max-width: 900px) {
   .food-category-grid { grid-template-columns: repeat(3, 1fr); }
 }
