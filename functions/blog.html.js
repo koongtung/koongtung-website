@@ -12,7 +12,7 @@ function renderGrid(posts) {
   }
   return posts.slice().reverse().map(function (post) {
     return `<a class="blog-card" href="/blog/${escapeHtml(post.slug)}">
-      <img src="${escapeHtml(post.coverImage)}" alt="${escapeHtml(post.title)}">
+      <img loading="lazy" src="${escapeHtml(post.coverImage)}" alt="${escapeHtml(post.title)}">
       <div class="blog-card-body">
         <span class="blog-date">${formatThaiDate(post.date)}</span>
         <h3>${escapeHtml(post.title)}</h3>

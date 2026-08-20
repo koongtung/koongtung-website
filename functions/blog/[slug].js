@@ -12,7 +12,7 @@ function renderRelated(related) {
   if (!related.length) return "";
   var cards = related.map(function (p) {
     return `<a class="blog-card" href="/blog/${escapeHtml(p.slug)}">
-      <img src="${escapeHtml(p.coverImage)}" alt="${escapeHtml(p.title)}">
+      <img loading="lazy" src="${escapeHtml(p.coverImage)}" alt="${escapeHtml(p.title)}">
       <div class="blog-card-body">
         <span class="blog-date">${formatThaiDate(p.date)}</span>
         <h3>${escapeHtml(p.title)}</h3>

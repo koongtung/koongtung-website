@@ -157,6 +157,7 @@ function renderGallery(containerId, items) {
   container.innerHTML = '';
   items.forEach(function (src, i) {
     var img = document.createElement('img');
+    img.loading = 'lazy';
     img.src = src;
     img.alt = 'รีวิวกุ้งถัง ' + (i + 1);
     container.appendChild(img);

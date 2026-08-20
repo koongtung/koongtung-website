@@ -59,7 +59,7 @@
 <section class="section-alt">
   <div class="container about-flex">
     <figure>
-      <img src="assets/images/about-1.jpg" alt="บรรยากาศร้านกุ้งถัง" data-cms-id="img-about-story">
+      <img loading="lazy" src="assets/images/about-1.jpg" alt="บรรยากาศร้านกุ้งถัง" data-cms-id="img-about-story">
     </figure>
     <div class="about-copy">
       <span class="eyebrow" data-cms-id="about-story-eyebrow">Our Story</span>
@@ -188,7 +188,8 @@ function renderBlogTeasers(items) {
     card.className = 'blog-card';
     card.href = '/blog/' + encodeURIComponent(post.slug || post.id);
     var img = document.createElement('img');
-    img.src = post.coverImage;
+    img.loading = 'lazy';
+      img.src = post.coverImage;
     img.alt = post.title;
     card.appendChild(img);
     var body = document.createElement('div');

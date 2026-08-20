@@ -78,10 +78,10 @@
       <p data-cms-id="menu-special-subtitle" data-i18n="menuPage.specialSubtitle">เมนูซิกเนเจอร์ที่ลูกค้าสั่งซ้ำมากที่สุด</p>
     </div>
     <div class="gallery">
-      <img src="assets/images/menu-special-1.jpg" alt="กุ้งดองซีอิ๊วสูตรเฉพาะร้าน 1" data-cms-id="img-menu-special-1">
-      <img src="assets/images/menu-special-2.jpg" alt="กุ้งดองซีอิ๊วสูตรเฉพาะร้าน 2" data-cms-id="img-menu-special-2">
-      <img src="assets/images/menu-special-3.jpg" alt="กุ้งดองซีอิ๊วสูตรเฉพาะร้าน 3" data-cms-id="img-menu-special-3">
-      <img src="assets/images/menu-special-4.jpg" alt="กุ้งดองซีอิ๊วสูตรเฉพาะร้าน 4" data-cms-id="img-menu-special-4">
+      <img loading="lazy" src="assets/images/menu-special-1.jpg" alt="กุ้งดองซีอิ๊วสูตรเฉพาะร้าน 1" data-cms-id="img-menu-special-1">
+      <img loading="lazy" src="assets/images/menu-special-2.jpg" alt="กุ้งดองซีอิ๊วสูตรเฉพาะร้าน 2" data-cms-id="img-menu-special-2">
+      <img loading="lazy" src="assets/images/menu-special-3.jpg" alt="กุ้งดองซีอิ๊วสูตรเฉพาะร้าน 3" data-cms-id="img-menu-special-3">
+      <img loading="lazy" src="assets/images/menu-special-4.jpg" alt="กุ้งดองซีอิ๊วสูตรเฉพาะร้าน 4" data-cms-id="img-menu-special-4">
     </div>
   </div>
 </section>
@@ -95,19 +95,19 @@
     </div>
     <div class="grid cols-4">
       <div class="card">
-        <img src="assets/images/menu-combo-1.jpg" alt="คอมโบมิกซ์กุ้ง" data-cms-id="img-menu-combo-1">
+        <img loading="lazy" src="assets/images/menu-combo-1.jpg" alt="คอมโบมิกซ์กุ้ง" data-cms-id="img-menu-combo-1">
         <div class="card-body"><h3 data-cms-id="combo-1-name" data-i18n="combo1.name">คอมโบมิกซ์ กุ้ง</h3></div>
       </div>
       <div class="card">
-        <img src="assets/images/menu-combo-2.jpg" alt="คอมโบมิกซ์ปลา" data-cms-id="img-menu-combo-2">
+        <img loading="lazy" src="assets/images/menu-combo-2.jpg" alt="คอมโบมิกซ์ปลา" data-cms-id="img-menu-combo-2">
         <div class="card-body"><h3 data-cms-id="combo-2-name" data-i18n="combo2.name">คอมโบมิกซ์ ปลา</h3></div>
       </div>
       <div class="card">
-        <img src="assets/images/menu-combo-3.jpg" alt="คอมโบมิกซ์ปลาหมึก" data-cms-id="img-menu-combo-3">
+        <img loading="lazy" src="assets/images/menu-combo-3.jpg" alt="คอมโบมิกซ์ปลาหมึก" data-cms-id="img-menu-combo-3">
         <div class="card-body"><h3 data-cms-id="combo-3-name" data-i18n="combo3.name">คอมโบมิกซ์ ปลาหมึก</h3></div>
       </div>
       <div class="card">
-        <img src="assets/images/menu-combo-4.jpg" alt="คอมโบมิกซ์หอยแมลงภู่" data-cms-id="img-menu-combo-4">
+        <img loading="lazy" src="assets/images/menu-combo-4.jpg" alt="คอมโบมิกซ์หอยแมลงภู่" data-cms-id="img-menu-combo-4">
         <div class="card-body"><h3 data-cms-id="combo-4-name" data-i18n="combo4.name">คอมโบมิกซ์ หอยแมลงภู่</h3></div>
       </div>
     </div>
@@ -188,6 +188,7 @@ function renderGallery(containerId, items) {
   container.innerHTML = '';
   items.forEach(function (src, i) {
     var img = document.createElement('img');
+    img.loading = 'lazy';
     img.src = src;
     img.alt = 'เมนูกุ้งถัง ' + (i + 1);
     container.appendChild(img);
