@@ -768,6 +768,8 @@ footer.site-footer {
   font-size: .85rem;
   color: #8a8a8a;
 }
+.footer-bottom a { text-decoration: underline; }
+.footer-bottom a:hover { color: var(--red); }
 
 /* CTA band */
 .cta-band {
