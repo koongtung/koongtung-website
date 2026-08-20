@@ -102,9 +102,9 @@ export function renderFooter() {
   </div>
 </footer>
 <script src="/js/main.js?v=2"></script>
-<script src="/js/cms.js?v=2"></script>
+<script src="/js/cms.js?v=3"></script>
 <script src="/js/track.js"></script>
-<script src="/js/i18n.js?v=2"></script>`;
+<script src="/js/i18n.js?v=3"></script>`;
 }
 
 export function renderPageShell(headExtra, bodyHtml) {
@@ -117,7 +117,7 @@ ${headExtra}
 <link rel="icon" href="/assets/images/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/style.css?v=8">
+<link rel="stylesheet" href="/css/style.css?v=9">
 </head>
 <body>
 ${renderHeader()}

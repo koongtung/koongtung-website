@@ -367,7 +367,16 @@ var KOONGTUNG_TRANSLATIONS = {
 
 function koongtungApplyLanguage(lang) {
   document.querySelectorAll("[data-i18n]").forEach(function (el) {
-    if (lang === "th") return; // Thai is the default markup content, nothing to swap
+    // Cache the original Thai markup text the first time this element is seen,
+    // so switching back to "th" later (after viewing en/zh) can restore it —
+    // without this, once translated the element could never return to Thai.
+    if (!el.hasAttribute("data-i18n-original")) {
+      el.setAttribute("data-i18n-original", el.textContent);
+    }
+    if (lang === "th") {
+      el.textContent = el.getAttribute("data-i18n-original");
+      return;
+    }
     var dict = KOONGTUNG_TRANSLATIONS[lang];
     var key = el.getAttribute("data-i18n");
     if (dict && dict[key]) el.textContent = dict[key];

@@ -44,6 +44,13 @@ function koongtungLoadGA4(measurementId) {
         });
       });
       koongtungLoadGA4(overrides['ga4-measurement-id']);
+
+      // Re-apply the user's selected language on top of the freshly-loaded CMS
+      // overrides. Without this, a non-Thai override arriving after i18n.js has
+      // already run would silently flash Thai text back into an EN/ZH page.
+      if (typeof koongtungApplyLanguage === 'function') {
+        koongtungApplyLanguage(localStorage.getItem('koongtung-lang') || 'th');
+      }
     })
     .catch(function () { /* if it fails, page just shows default content */ });
 })();

@@ -33,7 +33,17 @@ export async function onRequestGet(context) {
 
   const headExtra = `<title>บทความ | KOONGTUNG กุ้งถัง Seafood Boil</title>
 <meta name="description" content="บทความและข่าวสารจากร้าน Seafood Boil กุ้งถัง KOONGTUNG เรื่องราวเบื้องหลัง บทสัมภาษณ์ และรีวิวที่เคยออกสื่อ">
-<link rel="canonical" href="https://koongtungseafood.com/blog.html">`;
+<link rel="canonical" href="https://koongtungseafood.com/blog.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="บทความ | KOONGTUNG กุ้งถัง Seafood Boil">
+<meta property="og:description" content="บทความและข่าวสารจากร้าน Seafood Boil กุ้งถัง KOONGTUNG เรื่องราวเบื้องหลัง บทสัมภาษณ์ และรีวิวที่เคยออกสื่อ">
+<meta property="og:image" content="https://koongtungseafood.com/assets/images/about-story.jpg">
+<meta property="og:url" content="https://koongtungseafood.com/blog.html">
+<meta property="og:site_name" content="KOONGTUNG กุ้งถัง">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="บทความ | KOONGTUNG กุ้งถัง Seafood Boil">
+<meta name="twitter:description" content="บทความและข่าวสารจากร้าน Seafood Boil กุ้งถัง KOONGTUNG เรื่องราวเบื้องหลัง บทสัมภาษณ์ และรีวิวที่เคยออกสื่อ">
+<meta name="twitter:image" content="https://koongtungseafood.com/assets/images/about-story.jpg">`;
 
   const bodyHtml = `<section class="hero" style="min-height:30vh; background-image:url('/assets/images/about-story.jpg')">
   <div class="container hero-content">
