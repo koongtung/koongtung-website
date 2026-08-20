@@ -85,7 +85,7 @@ export function renderFooter() {
       </div>
     </div>
     <div class="footer-bottom">
-      Copyright © 2015 KOONGTUNG Co.,Ltd. All rights reserved. · <a href="/privacy.html">นโยบายความเป็นส่วนตัว</a>
+      Copyright © 2015 KOONGTUNG Co.,Ltd. All rights reserved.
     </div>
   </div>
 </footer>
