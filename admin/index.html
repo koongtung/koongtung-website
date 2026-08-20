@@ -1035,6 +1035,7 @@ function loadStats() {
 
 var PAGE_META = [
   { test: function (g) { return g === 'ทั่วไป'; }, icon: '⚙️', color: '#6b6459', label: 'ทั่วไป' },
+  { test: function (g) { return /^การวิเคราะห์/.test(g); }, icon: '📈', color: '#136c6c', label: 'การวิเคราะห์' },
   { test: function (g) { return /^หน้าแรก/.test(g); }, icon: '🏠', color: '#e2231a', label: 'หน้าแรก' },
   { test: function (g) { return /^เกี่ยวกับเรา/.test(g); }, icon: 'ℹ️', color: '#17356b', label: 'เกี่ยวกับเรา' },
   { test: function (g) { return /^สาขา/.test(g); }, icon: '📍', color: '#136c6c', label: 'สาขา' },
@@ -1206,6 +1207,7 @@ function boot() {
 // Default values (fallback content) captured from the original site — used for "คืนค่าเดิม" and initial preview
 window.__KOONGTUNG_DEFAULTS__ = {
   "logo": "../assets/images/logo.jpg",
+  "ga4-measurement-id": "",
   "img-home-hero-bg": "../assets/images/branch-1.jpg",
   "img-about-hero-bg": "../assets/images/branch-3.jpg",
   "img-branches-hero-bg": "../assets/images/branch-4.jpg",

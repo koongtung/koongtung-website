@@ -90,7 +90,7 @@ export function renderFooter() {
   </div>
 </footer>
 <script src="/js/main.js"></script>
-<script src="/js/cms.js"></script>
+<script src="/js/cms.js?v=2"></script>
 <script src="/js/track.js"></script>`;
 }
 

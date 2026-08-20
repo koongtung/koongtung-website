@@ -9,6 +9,20 @@ function koongtungToYouTubeEmbed(url) {
   return 'https://www.youtube.com/embed/' + id + (params.length ? '?' + params.join('&') : '');
 }
 
+function koongtungLoadGA4(measurementId) {
+  if (!measurementId || window.__koongtungGaLoaded) return;
+  window.__koongtungGaLoaded = true;
+  var script = document.createElement('script');
+  script.async = true;
+  script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(measurementId);
+  document.head.appendChild(script);
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', measurementId);
+}
+
 (function () {
   fetch('/api/content', { cache: 'no-store' })
     .then(function (res) { return res.ok ? res.json() : {}; })
@@ -29,6 +43,7 @@ function koongtungToYouTubeEmbed(url) {
           }
         });
       });
+      koongtungLoadGA4(overrides['ga4-measurement-id']);
     })
     .catch(function () { /* if it fails, page just shows default content */ });
 })();

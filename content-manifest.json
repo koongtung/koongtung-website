@@ -1,5 +1,6 @@
 [
   { "id": "logo", "type": "image", "label": "โลโก้ร้าน", "group": "ทั่วไป", "hint": "แนะนำ 400×400px ขึ้นไป (จัตุรัส) พื้นหลังขาว/โปร่งใส ไฟล์ไม่เกิน 1MB" },
+  { "id": "ga4-measurement-id", "type": "text", "label": "Google Analytics 4 Measurement ID (เช่น G-XXXXXXXXXX — เว้นว่างไว้ถ้ายังไม่มี)", "group": "การวิเคราะห์ (Analytics)" },
 
   { "id": "img-home-hero-bg", "type": "image", "label": "รูปพื้นหลัง Hero หน้าแรก", "group": "หน้าแรก", "hint": "แนะนำ 1600×900px ขึ้นไป แนวนอน (อัตราส่วน 16:9) — รูปเล็กเกินไปจะเบลอเมื่อขยายเต็มจอ" },
   { "id": "home-hero-badge", "type": "text", "label": "ป้ายข้อความ Hero", "group": "หน้าแรก" },
