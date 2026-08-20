@@ -360,7 +360,7 @@ function renderBlogManager() {
 
   var infoBox = document.createElement('div');
   infoBox.className = 'group';
-  infoBox.innerHTML = '<p style="margin:0;color:var(--muted);font-size:.9rem;">จัดการบทความที่แสดงในหน้า <a href="/blog.html" target="_blank">/blog.html</a> และการ์ดแนะนำในหน้า <a href="/about.html" target="_blank">/about.html</a> — เพิ่ม/ลบ/แก้ได้อิสระ เนื้อหาขึ้นย่อหน้าใหม่ให้เว้นบรรทัดว่าง 1 บรรทัด</p>';
+  infoBox.innerHTML = '<p style="margin:0;color:var(--muted);font-size:.9rem;">จัดการบทความที่แสดงในหน้า <a href="/blog.html" target="_blank">/blog.html</a> และการ์ดแนะนำในหน้า <a href="/about.html" target="_blank">/about.html</a> — เพิ่ม/ลบ/แก้ได้อิสระ เนื้อหาขึ้นย่อหน้าใหม่ให้เว้นบรรทัดว่าง 1 บรรทัด<br>แต่ละบทความมีลิงก์ของตัวเอง (/blog/ตาม Slug ที่ตั้ง) พร้อม SEO meta tags และ sitemap.xml อัปเดตให้อัตโนมัติทุกครั้งที่บันทึก</p>';
   el.appendChild(infoBox);
 
   var listGroup = document.createElement('div');
@@ -378,8 +378,9 @@ function renderBlogManager() {
   addBtn.style.marginTop = '14px';
   addBtn.textContent = '+ เพิ่มบทความใหม่';
   addBtn.onclick = function () {
+    var newId = 'post-' + Date.now();
     blogData.push({
-      id: 'post-' + Date.now(), title: 'หัวข้อบทความใหม่', date: new Date().toISOString().slice(0, 10),
+      id: newId, slug: newId, title: 'หัวข้อบทความใหม่', date: new Date().toISOString().slice(0, 10),
       coverImage: '', excerpt: 'คำโปรยย่อ', body: 'เนื้อหาบทความ', sourceUrl: '', sourceName: ''
     });
     renderBlogManager();
@@ -453,6 +454,7 @@ function renderBlogRow(post, idx) {
   }
 
   row.appendChild(makeField('หัวข้อบทความ', post.title, function (v) { post.title = v; }, 'หัวข้อบทความ'));
+  row.appendChild(makeField('Slug (ใช้ตัวอักษรอังกฤษ ตัวเลข และ - เท่านั้น — เป็นส่วนหนึ่งของลิงก์บทความ /blog/slug)', post.slug, function (v) { post.slug = v; }, 'เช่น my-article-title'));
   row.appendChild(makeField('วันที่ (YYYY-MM-DD)', post.date, function (v) { post.date = v; }, '2026-01-01'));
 
   var imgLabel = document.createElement('label');
@@ -513,7 +515,7 @@ function renderBlogRow(post, idx) {
   row.appendChild(makeField('ชื่อสื่อ/แหล่งที่มา (ไม่บังคับ)', post.sourceName, function (v) { post.sourceName = v; }, 'เช่น MGR Online'));
 
   var previewLink = document.createElement('a');
-  previewLink.href = '/blog-post.html?id=' + encodeURIComponent(post.id);
+  previewLink.href = '/blog/' + encodeURIComponent(post.slug || post.id);
   previewLink.target = '_blank';
   previewLink.rel = 'noopener';
   previewLink.className = 'test-link';

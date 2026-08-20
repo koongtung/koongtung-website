@@ -157,8 +157,8 @@
 </footer>
 <script>
 var DEFAULT_BLOG_TEASERS = [
-  { "id": "post-2", "title": "รีวิวจากลูกค้า: กุ้งถังเจ้าแรกในเมืองไทย อร่อยขนาดไหน?", "date": "2025-08-29", "coverImage": "assets/images/review-3.jpg", "excerpt": "รีวิวจากผู้มาเยือนสาขาตลาดรถไฟศรีนครินทร์ พร้อมเมนูเด็ดอย่างชุดรวมซีฟู้ดและกุ้งดองซีอิ๊วเกาหลี" },
-  { "id": "post-1", "title": "จุดเริ่มต้นกุ้งถัง: จากไอเดียอาหารทะเลอเมริกัน สู่ร้าน Seafood Boil เจ้าแรกในไทย", "date": "2015-12-07", "coverImage": "assets/images/about-story.jpg", "excerpt": "ย้อนเรื่องราวจุดเริ่มต้นของกุ้งถัง จากแรงบันดาลใจอาหารทะเลสไตล์อเมริกัน สู่ร้าน Seafood Boil เจ้าแรกในเมืองไทย" }
+  { "id": "post-2", "slug": "customer-review-koongtung-first-seafood-boil-thailand", "title": "รีวิวจากลูกค้า: กุ้งถังเจ้าแรกในเมืองไทย อร่อยขนาดไหน?", "date": "2025-08-29", "coverImage": "assets/images/review-3.jpg", "excerpt": "รีวิวจากผู้มาเยือนสาขาตลาดรถไฟศรีนครินทร์ พร้อมเมนูเด็ดอย่างชุดรวมซีฟู้ดและกุ้งดองซีอิ๊วเกาหลี" },
+  { "id": "post-1", "slug": "origin-story-koongtung-seafood-boil", "title": "จุดเริ่มต้นกุ้งถัง: จากไอเดียอาหารทะเลอเมริกัน สู่ร้าน Seafood Boil เจ้าแรกในไทย", "date": "2015-12-07", "coverImage": "assets/images/about-story.jpg", "excerpt": "ย้อนเรื่องราวจุดเริ่มต้นของกุ้งถัง จากแรงบันดาลใจอาหารทะเลสไตล์อเมริกัน สู่ร้าน Seafood Boil เจ้าแรกในเมืองไทย" }
 ];
 
 function formatThaiDateShort(iso) {
@@ -174,7 +174,7 @@ function renderBlogTeasers(items) {
   items.slice().reverse().slice(0, 3).forEach(function (post) {
     var card = document.createElement('a');
     card.className = 'blog-card';
-    card.href = 'blog-post.html?id=' + encodeURIComponent(post.id);
+    card.href = '/blog/' + encodeURIComponent(post.slug || post.id);
     var img = document.createElement('img');
     img.src = post.coverImage;
     img.alt = post.title;
