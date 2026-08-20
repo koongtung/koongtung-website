@@ -276,7 +276,7 @@ nav.main-nav a.active {
   display: block;
   border-radius: 14px;
   overflow: hidden;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 3 / 5;
   box-shadow: var(--shadow);
   transition: transform .2s;
 }
