@@ -16,15 +16,37 @@
   header { background:var(--dark); color:#fff; padding:18px 24px; display:flex; align-items:center; justify-content:space-between; }
   header h1 { font-size:1.2rem; margin:0; }
   header a { color:#f0c0bd; font-size:.85rem; }
-  .wrap { max-width:900px; margin:0 auto; padding:24px; }
+  .wrap { max-width:1140px; margin:0 auto; padding:24px; }
   #gate { max-width:420px; margin:80px auto; background:#fff; padding:32px; border-radius:14px; box-shadow:var(--shadow); text-align:center; }
   #gate input { width:100%; padding:12px; font-size:1rem; border:1px solid #ddd; border-radius:8px; margin:14px 0; font-family:inherit; }
   #gate button, .save-btn, .reset-btn { background:var(--red); color:#fff; border:none; padding:10px 20px; border-radius:8px; font-family:inherit; font-size:.9rem; cursor:pointer; }
   .reset-btn { background:#888; margin-left:8px; }
   #gate button:hover, .save-btn:hover { opacity:.9; }
   #app { display:none; }
-  .group { background:#fff; border-radius:14px; box-shadow:var(--shadow); padding:22px 24px; margin-bottom:24px; }
-  .group h2 { font-size:1.1rem; margin-top:0; color:var(--navy); border-bottom:2px solid #eee; padding-bottom:10px; }
+  .content-toolbar { margin-bottom:16px; }
+  #contentSearch { width:100%; padding:13px 18px; border:1px solid #ddd; border-radius:12px; font-family:inherit; font-size:.95rem; box-shadow:var(--shadow); }
+  #contentSearch:focus { outline:2px solid var(--navy); outline-offset:1px; }
+  .content-layout { display:flex; gap:20px; align-items:flex-start; }
+  .content-sidebar { flex:0 0 230px; position:sticky; top:16px; max-height:calc(100vh - 32px); overflow-y:auto; background:#fff; border-radius:14px; box-shadow:var(--shadow); padding:14px 8px; }
+  .sidebar-list { list-style:none; margin:0; padding:0; }
+  .sidebar-page-head { display:flex; align-items:center; gap:6px; font-weight:700; font-size:.78rem; text-transform:uppercase; letter-spacing:.4px; color:var(--muted); margin:16px 0 4px; padding:4px 8px; border-left:3px solid #ccc; }
+  .sidebar-page-head:first-child { margin-top:0; }
+  .sidebar-link { display:block; padding:6px 8px 6px 18px; font-size:.84rem; color:#444; border-radius:6px; text-decoration:none; }
+  .sidebar-link:hover { background:#f0ede7; color:var(--navy); }
+  .content-groups { flex:1; min-width:0; }
+  .group { background:#fff; border-radius:14px; box-shadow:var(--shadow); margin-bottom:16px; border-left:5px solid #ccc; overflow:hidden; scroll-margin-top:16px; }
+  .group-header { display:flex; align-items:center; gap:10px; padding:16px 20px; cursor:pointer; user-select:none; }
+  .group-header:hover { background:#faf9f7; }
+  .group-icon { font-size:1.2rem; flex-shrink:0; }
+  .group-header h2 { flex:1; font-size:1.05rem; margin:0; color:var(--navy); }
+  .chevron { color:var(--muted); transition:transform .2s; flex-shrink:0; }
+  .group.open .chevron { transform:rotate(180deg); }
+  .group-body { display:none; padding:0 24px 20px; }
+  .group.open .group-body { display:block; }
+  @media (max-width:820px) {
+    .content-layout { flex-direction:column; }
+    .content-sidebar { position:static; width:100%; max-height:260px; }
+  }
   .field { padding:16px 0; border-bottom:1px solid #f0ede7; }
   .field:last-child { border-bottom:none; }
   .field label { display:block; font-weight:600; margin-bottom:8px; font-size:.92rem; }
@@ -1011,25 +1033,154 @@ function loadStats() {
     .catch(function () { el.innerHTML = '<div class="group">โหลดข้อมูลไม่สำเร็จ</div>'; });
 }
 
+var PAGE_META = [
+  { test: function (g) { return g === 'ทั่วไป'; }, icon: '⚙️', color: '#6b6459', label: 'ทั่วไป' },
+  { test: function (g) { return /^หน้าแรก/.test(g); }, icon: '🏠', color: '#e2231a', label: 'หน้าแรก' },
+  { test: function (g) { return /^เกี่ยวกับเรา/.test(g); }, icon: 'ℹ️', color: '#17356b', label: 'เกี่ยวกับเรา' },
+  { test: function (g) { return /^สาขา/.test(g); }, icon: '📍', color: '#136c6c', label: 'สาขา' },
+  { test: function (g) { return /^เมนู/.test(g); }, icon: '🍤', color: '#b8860b', label: 'เมนู' },
+  { test: function (g) { return /^โปรโมชั่น/.test(g); }, icon: '🎉', color: '#e2231a', label: 'โปรโมชั่น' },
+  { test: function (g) { return /^รีวิว/.test(g); }, icon: '⭐', color: '#8134af', label: 'รีวิว' },
+  { test: function (g) { return /^ติดต่อ/.test(g); }, icon: '☎️', color: '#17356b', label: 'ติดต่อ' },
+  { test: function (g) { return g === 'Footer (ใช้ทุกหน้า)'; }, icon: '🔻', color: '#6b6459', label: 'Footer' },
+  { test: function (g) { return /^ลิงก์รวม/.test(g); }, icon: '📱', color: '#555555', label: 'ลิงก์รวม' },
+  { test: function (g) { return /^บทความ/.test(g); }, icon: '📝', color: '#b8860b', label: 'บทความ' },
+  { test: function (g) { return /^ลิงก์หลัก/.test(g); }, icon: '🔗', color: '#555555', label: 'ลิงก์หลัก' },
+  { test: function (g) { return /^ไอคอน/.test(g); }, icon: '🎨', color: '#555555', label: 'ไอคอน' }
+];
+
+function getPageMeta(groupName) {
+  for (var i = 0; i < PAGE_META.length; i++) {
+    if (PAGE_META[i].test(groupName)) return PAGE_META[i];
+  }
+  return { icon: '📄', color: '#999999', label: groupName };
+}
+
+function shortGroupLabel(groupName, meta) {
+  var prefix = meta.label + ' - ';
+  if (groupName.indexOf(prefix) === 0) return groupName.slice(prefix.length);
+  var m = groupName.match(/^สาขา\s+(.+)$/);
+  if (m) return m[1];
+  return groupName;
+}
+
+function toggleGroup(groupId, forceOpen) {
+  var el = document.getElementById(groupId);
+  if (!el) return;
+  if (forceOpen) el.classList.add('open');
+  else el.classList.toggle('open');
+}
+
+function filterContent(query) {
+  query = (query || '').trim().toLowerCase();
+  var groupEls = document.querySelectorAll('#contentGroups .group');
+  var sidebarLinks = document.querySelectorAll('#contentSidebar .sidebar-link');
+  var matchedIds = {};
+  groupEls.forEach(function (el) {
+    var text = el.getAttribute('data-search-text') || '';
+    var match = !query || text.indexOf(query) > -1;
+    el.style.display = match ? '' : 'none';
+    if (match && query) { el.classList.add('open'); matchedIds[el.id] = true; }
+  });
+  sidebarLinks.forEach(function (link) {
+    var target = link.getAttribute('data-target');
+    var text = (link.textContent || '').toLowerCase();
+    var groupMatch = !query || (document.getElementById(target) && document.getElementById(target).style.display !== 'none');
+    link.parentElement.style.display = groupMatch ? '' : 'none';
+  });
+}
+
 function render() {
   var app = document.getElementById('contentTab');
   app.innerHTML = '';
+
+  var toolbar = document.createElement('div');
+  toolbar.className = 'content-toolbar';
+  var searchInput = document.createElement('input');
+  searchInput.type = 'text';
+  searchInput.id = 'contentSearch';
+  searchInput.placeholder = '🔍 ค้นหาหัวข้อที่ต้องการแก้ไข เช่น "โปรโมชั่น", "เบอร์โทร", "รูปสาขา"';
+  searchInput.oninput = function () { filterContent(searchInput.value); };
+  toolbar.appendChild(searchInput);
+  app.appendChild(toolbar);
+
+  var layout = document.createElement('div');
+  layout.className = 'content-layout';
+
+  var sidebar = document.createElement('nav');
+  sidebar.className = 'content-sidebar';
+  sidebar.id = 'contentSidebar';
+
+  var groupsWrap = document.createElement('div');
+  groupsWrap.className = 'content-groups';
+  groupsWrap.id = 'contentGroups';
+
   var groups = {};
+  var groupOrder = [];
   manifest.forEach(function (f) {
-    if (!groups[f.group]) groups[f.group] = [];
+    if (!groups[f.group]) { groups[f.group] = []; groupOrder.push(f.group); }
     groups[f.group].push(f);
   });
-  Object.keys(groups).forEach(function (groupName) {
+
+  var lastPageLabel = null;
+  var sidebarList = document.createElement('ul');
+  sidebarList.className = 'sidebar-list';
+
+  groupOrder.forEach(function (groupName, idx) {
+    var meta = getPageMeta(groupName);
+    var groupId = 'group-' + idx;
+
+    if (meta.label !== lastPageLabel) {
+      var pageHeadLi = document.createElement('li');
+      pageHeadLi.className = 'sidebar-page-head';
+      pageHeadLi.innerHTML = '<span class="sidebar-page-icon">' + meta.icon + '</span> ' + meta.label;
+      pageHeadLi.style.borderLeftColor = meta.color;
+      sidebarList.appendChild(pageHeadLi);
+      lastPageLabel = meta.label;
+    }
+
+    var li = document.createElement('li');
+    var a = document.createElement('a');
+    a.href = 'javascript:void(0)';
+    a.className = 'sidebar-link';
+    a.setAttribute('data-target', groupId);
+    a.textContent = shortGroupLabel(groupName, meta);
+    a.onclick = function () {
+      toggleGroup(groupId, true);
+      document.getElementById(groupId).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+    li.appendChild(a);
+    sidebarList.appendChild(li);
+
     var section = document.createElement('div');
     section.className = 'group';
-    var h2 = document.createElement('h2');
-    h2.textContent = groupName;
-    section.appendChild(h2);
+    section.id = groupId;
+    section.style.borderLeftColor = meta.color;
+
+    var searchTextParts = [groupName];
+    groups[groupName].forEach(function (f) { searchTextParts.push(f.label); });
+    section.setAttribute('data-search-text', searchTextParts.join(' ').toLowerCase());
+
+    var header = document.createElement('div');
+    header.className = 'group-header';
+    header.onclick = function () { toggleGroup(groupId); };
+    header.innerHTML = '<span class="group-icon">' + meta.icon + '</span><h2>' + groupName + '</h2><span class="chevron">▾</span>';
+    section.appendChild(header);
+
+    var body = document.createElement('div');
+    body.className = 'group-body';
     groups[groupName].forEach(function (field) {
-      section.appendChild(renderField(field));
+      body.appendChild(renderField(field));
     });
-    app.appendChild(section);
+    section.appendChild(body);
+
+    groupsWrap.appendChild(section);
   });
+
+  sidebar.appendChild(sidebarList);
+  layout.appendChild(sidebar);
+  layout.appendChild(groupsWrap);
+  app.appendChild(layout);
 }
 
 function boot() {
