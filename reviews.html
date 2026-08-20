@@ -7,11 +7,17 @@
 <meta name="description" content="รวมรีวิวและบรรยากาศจากลูกค้าร้าน Seafood Boil กุ้งถัง KOONGTUNG">
 <link rel="icon" href="assets/images/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=6">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=7">
 </head>
 <body>
 
+<div class="announce-bar" id="announceBar">
+  <div class="container">
+    <a href="https://liff.line.me/2000733931-wPdEZX0R/channels/5000048775/crm/member/dashboard" target="_blank" rel="noopener" data-cms-id="link-member" data-cms-link="true"><span data-cms-id="announcement-bar-text">🎉 สมัคร JOIN KOONGTUNG CLUB วันนี้ รับสิทธิพิเศษทันที</span></a>
+    <button type="button" class="announce-close" aria-label="ปิด">✕</button>
+  </div>
+</div>
 <header class="site-header">
   <div class="container">
     <a href="index.html" class="brand">
@@ -104,6 +110,7 @@
           <a href="https://www.facebook.com/Koongtung/" target="_blank" rel="noopener" aria-label="Facebook" data-track-id="social-facebook" data-cms-id="link-facebook" data-cms-link="true">f</a>
           <a href="https://page.line.me/koongtung" target="_blank" rel="noopener" aria-label="Line" data-track-id="social-line" data-cms-id="link-line" data-cms-link="true">L</a>
         </div>
+        <a href="https://liff.line.me/2000733931-wPdEZX0R/channels/5000048775/crm/member/dashboard" target="_blank" rel="noopener" class="btn-join-club" data-track-id="footer-join-club" data-cms-id="link-member" data-cms-link="true"><span data-cms-id="footer-member-btn-text">JOIN KOONGTUNG CLUB</span></a>
       </div>
       <div>
         <h4>เมนูลัด</h4>
@@ -308,7 +315,7 @@ fetch('/api/creator-reviews', { cache: 'no-store' })
   .catch(function () { /* keep defaults */ });
 </script>
 
-<script src="js/main.js"></script>
+<script src="js/main.js?v=2"></script>
 <script src="js/cms.js?v=2"></script>
 <script src="js/track.js"></script>
 </body>

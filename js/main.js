@@ -6,4 +6,12 @@ document.addEventListener('DOMContentLoaded', function () {
       nav.classList.toggle('open');
     });
   }
+
+  var announceClose = document.querySelector('.announce-close');
+  var announceBar = document.querySelector('.announce-bar');
+  if (announceClose && announceBar) {
+    announceClose.addEventListener('click', function () {
+      announceBar.classList.add('hidden');
+    });
+  }
 });

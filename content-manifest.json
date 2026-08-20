@@ -1,285 +1,1547 @@
 [
-  { "id": "logo", "type": "image", "label": "โลโก้ร้าน", "group": "ทั่วไป", "hint": "แนะนำ 400×400px ขึ้นไป (จัตุรัส) พื้นหลังขาว/โปร่งใส ไฟล์ไม่เกิน 1MB" },
-  { "id": "ga4-measurement-id", "type": "text", "label": "Google Analytics 4 Measurement ID (เช่น G-XXXXXXXXXX — เว้นว่างไว้ถ้ายังไม่มี)", "group": "การวิเคราะห์ (Analytics)" },
-
-  { "id": "img-home-hero-bg", "type": "image", "label": "รูปพื้นหลัง Hero หน้าแรก", "group": "หน้าแรก", "hint": "แนะนำ 1600×900px ขึ้นไป แนวนอน (อัตราส่วน 16:9) — รูปเล็กเกินไปจะเบลอเมื่อขยายเต็มจอ" },
-  { "id": "home-hero-badge", "type": "text", "label": "ป้ายข้อความ Hero", "group": "หน้าแรก" },
-  { "id": "home-hero-title", "type": "text", "label": "หัวข้อหลัก หน้าแรก", "group": "หน้าแรก" },
-  { "id": "home-hero-sub", "type": "text", "label": "คำโปรย หน้าแรก", "group": "หน้าแรก" },
-  { "id": "home-info-branches", "type": "text", "label": "แถบข้อมูลด่วน - ข้อความจำนวนสาขา", "group": "หน้าแรก" },
-  { "id": "home-info-opendaily", "type": "text", "label": "แถบข้อมูลด่วน - ข้อความเวลาเปิด", "group": "หน้าแรก" },
-
-  { "id": "home-story-eyebrow", "type": "text", "label": "ป้ายข้อความ Our Story", "group": "หน้าแรก - เรื่องราวย่อ" },
-  { "id": "home-story-title", "type": "text", "label": "หัวข้อ เรื่องราวย่อ", "group": "หน้าแรก - เรื่องราวย่อ" },
-  { "id": "home-story-text", "type": "text", "label": "เนื้อหา เรื่องราวย่อ", "group": "หน้าแรก - เรื่องราวย่อ" },
-  { "id": "home-story-li1", "type": "text", "label": "รายการที่ 1", "group": "หน้าแรก - เรื่องราวย่อ" },
-  { "id": "home-story-li2", "type": "text", "label": "รายการที่ 2", "group": "หน้าแรก - เรื่องราวย่อ" },
-  { "id": "home-story-li3", "type": "text", "label": "รายการที่ 3", "group": "หน้าแรก - เรื่องราวย่อ" },
-  { "id": "home-story-btn-text", "type": "text", "label": "ข้อความปุ่ม \"อ่านเรื่องราวของเรา\"", "group": "หน้าแรก - เรื่องราวย่อ" },
-
-  { "id": "home-cta-title", "type": "text", "label": "หัวข้อ แถบ CTA ปิดท้ายหน้าแรก", "group": "หน้าแรก - CTA ปิดท้าย" },
-  { "id": "home-cta-subtitle", "type": "text", "label": "คำโปรย แถบ CTA ปิดท้ายหน้าแรก", "group": "หน้าแรก - CTA ปิดท้าย" },
-  { "id": "home-cta-btn-promo-text", "type": "text", "label": "ข้อความปุ่ม \"ดูโปรโมชั่น & เดลิเวอรี่\"", "group": "หน้าแรก - CTA ปิดท้าย" },
-  { "id": "home-cta-btn-contact-text", "type": "text", "label": "ข้อความปุ่ม \"ติดต่อเรา\"", "group": "หน้าแรก - CTA ปิดท้าย" },
-
-  { "id": "food-category-eyebrow", "type": "text", "label": "ป้ายข้อความ หมวดอาหาร", "group": "หน้าแรก - ไฮไลท์หมวดอาหาร" },
-  { "id": "food-category-title", "type": "text", "label": "หัวข้อ ไฮไลท์หมวดอาหาร", "group": "หน้าแรก - ไฮไลท์หมวดอาหาร" },
-  { "id": "food-category-subtitle", "type": "text", "label": "คำโปรย ไฮไลท์หมวดอาหาร", "group": "หน้าแรก - ไฮไลท์หมวดอาหาร" },
-  { "id": "img-food-category-1", "type": "image", "label": "หมวด 1 - รูป", "group": "หน้าแรก - ไฮไลท์หมวดอาหาร", "hint": "แนะนำ 700×1150px ขึ้นไป แนวตั้ง (สัดส่วนสูง เหมือนโปสเตอร์)" },
-  { "id": "food-category-1-name", "type": "text", "label": "หมวด 1 - ชื่อ", "group": "หน้าแรก - ไฮไลท์หมวดอาหาร" },
-  { "id": "img-food-category-2", "type": "image", "label": "หมวด 2 - รูป", "group": "หน้าแรก - ไฮไลท์หมวดอาหาร", "hint": "แนะนำ 700×1150px ขึ้นไป แนวตั้ง (สัดส่วนสูง เหมือนโปสเตอร์)" },
-  { "id": "food-category-2-name", "type": "text", "label": "หมวด 2 - ชื่อ", "group": "หน้าแรก - ไฮไลท์หมวดอาหาร" },
-  { "id": "img-food-category-3", "type": "image", "label": "หมวด 3 - รูป", "group": "หน้าแรก - ไฮไลท์หมวดอาหาร", "hint": "แนะนำ 700×1150px ขึ้นไป แนวตั้ง (สัดส่วนสูง เหมือนโปสเตอร์)" },
-  { "id": "food-category-3-name", "type": "text", "label": "หมวด 3 - ชื่อ", "group": "หน้าแรก - ไฮไลท์หมวดอาหาร" },
-  { "id": "img-food-category-4", "type": "image", "label": "หมวด 4 - รูป", "group": "หน้าแรก - ไฮไลท์หมวดอาหาร", "hint": "แนะนำ 700×1150px ขึ้นไป แนวตั้ง (สัดส่วนสูง เหมือนโปสเตอร์)" },
-  { "id": "food-category-4-name", "type": "text", "label": "หมวด 4 - ชื่อ", "group": "หน้าแรก - ไฮไลท์หมวดอาหาร" },
-  { "id": "img-food-category-5", "type": "image", "label": "หมวด 5 - รูป", "group": "หน้าแรก - ไฮไลท์หมวดอาหาร", "hint": "แนะนำ 700×1150px ขึ้นไป แนวตั้ง (สัดส่วนสูง เหมือนโปสเตอร์)" },
-  { "id": "food-category-5-name", "type": "text", "label": "หมวด 5 - ชื่อ", "group": "หน้าแรก - ไฮไลท์หมวดอาหาร" },
-
-  { "id": "delivery-channels-eyebrow", "type": "text", "label": "ป้ายข้อความ ช่องทางเดลิเวอรี่", "group": "หน้าแรก - ช่องทางเดลิเวอรี่" },
-  { "id": "delivery-channels-title", "type": "text", "label": "หัวข้อ ช่องทางเดลิเวอรี่", "group": "หน้าแรก - ช่องทางเดลิเวอรี่" },
-  { "id": "delivery-channels-subtitle", "type": "text", "label": "คำโปรย ช่องทางเดลิเวอรี่", "group": "หน้าแรก - ช่องทางเดลิเวอรี่" },
-  { "id": "img-delivery-ch-1", "type": "image", "label": "LINE Official Account - รูป", "group": "หน้าแรก - ช่องทางเดลิเวอรี่", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน" },
-  { "id": "delivery-ch-1-desc", "type": "text", "label": "LINE Official Account - คำอธิบาย", "group": "หน้าแรก - ช่องทางเดลิเวอรี่" },
-  { "id": "delivery-ch-1-link", "type": "link", "label": "LINE Official Account - ลิงก์เมื่อกดการ์ด", "group": "หน้าแรก - ช่องทางเดลิเวอรี่" },
-  { "id": "img-delivery-ch-2", "type": "image", "label": "Lineman - รูป", "group": "หน้าแรก - ช่องทางเดลิเวอรี่", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน" },
-  { "id": "delivery-ch-2-desc", "type": "text", "label": "Lineman - คำอธิบาย", "group": "หน้าแรก - ช่องทางเดลิเวอรี่" },
-  { "id": "delivery-ch-2-link", "type": "link", "label": "Lineman - ลิงก์เมื่อกดการ์ด", "group": "หน้าแรก - ช่องทางเดลิเวอรี่" },
-  { "id": "img-delivery-ch-3", "type": "image", "label": "GrabFood - รูป", "group": "หน้าแรก - ช่องทางเดลิเวอรี่", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน" },
-  { "id": "delivery-ch-3-desc", "type": "text", "label": "GrabFood - คำอธิบาย", "group": "หน้าแรก - ช่องทางเดลิเวอรี่" },
-  { "id": "delivery-ch-3-link", "type": "link", "label": "GrabFood - ลิงก์เมื่อกดการ์ด", "group": "หน้าแรก - ช่องทางเดลิเวอรี่" },
-  { "id": "img-delivery-ch-4", "type": "image", "label": "ShopeeFood - รูป", "group": "หน้าแรก - ช่องทางเดลิเวอรี่", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน" },
-  { "id": "delivery-ch-4-desc", "type": "text", "label": "ShopeeFood - คำอธิบาย", "group": "หน้าแรก - ช่องทางเดลิเวอรี่" },
-  { "id": "delivery-ch-4-link", "type": "link", "label": "ShopeeFood - ลิงก์เมื่อกดการ์ด", "group": "หน้าแรก - ช่องทางเดลิเวอรี่" },
-
-  { "id": "img-about-hero-bg", "type": "image", "label": "รูปพื้นหลัง Hero", "group": "เกี่ยวกับเรา - Hero", "hint": "แนะนำ 1600×900px ขึ้นไป แนวนอน (อัตราส่วน 16:9) — รูปเล็กเกินไปจะเบลอเมื่อขยายเต็มจอ" },
-  { "id": "about-hero-badge", "type": "text", "label": "ป้ายข้อความ Hero", "group": "เกี่ยวกับเรา - Hero" },
-  { "id": "about-hero-title", "type": "text", "label": "หัวข้อหลัก Hero", "group": "เกี่ยวกับเรา - Hero" },
-  { "id": "about-hero-subtitle", "type": "text", "label": "คำโปรย Hero", "group": "เกี่ยวกับเรา - Hero" },
-
-  { "id": "img-about-story", "type": "image", "label": "รูปเรื่องราวร้าน (ข้าง Our Story)", "group": "เกี่ยวกับเรา - เรื่องราวร้าน", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน" },
-  { "id": "about-story-eyebrow", "type": "text", "label": "ป้ายข้อความ Our Story", "group": "เกี่ยวกับเรา - เรื่องราวร้าน" },
-  { "id": "about-story-title", "type": "text", "label": "หัวข้อ เรื่องราวร้าน", "group": "เกี่ยวกับเรา - เรื่องราวร้าน" },
-  { "id": "about-text", "type": "text", "label": "เนื้อหาเรื่องราวร้าน", "group": "เกี่ยวกับเรา - เรื่องราวร้าน" },
-
-  { "id": "about-offer-eyebrow", "type": "text", "label": "ป้ายข้อความ What we offer", "group": "เกี่ยวกับเรา - บริการของเรา" },
-  { "id": "about-offer-title", "type": "text", "label": "หัวข้อ บริการของเรา", "group": "เกี่ยวกับเรา - บริการของเรา" },
-  { "id": "about-offer-1-tag", "type": "text", "label": "การ์ด 1 - ป้าย (Dine-in)", "group": "เกี่ยวกับเรา - บริการของเรา" },
-  { "id": "about-offer-1-title", "type": "text", "label": "การ์ด 1 - ชื่อ (ทานที่ร้าน)", "group": "เกี่ยวกับเรา - บริการของเรา" },
-  { "id": "about-offer-1-desc", "type": "text", "label": "การ์ด 1 - คำอธิบาย", "group": "เกี่ยวกับเรา - บริการของเรา" },
-  { "id": "about-offer-2-tag", "type": "text", "label": "การ์ด 2 - ป้าย (Delivery)", "group": "เกี่ยวกับเรา - บริการของเรา" },
-  { "id": "about-offer-2-title", "type": "text", "label": "การ์ด 2 - ชื่อ (เดลิเวอรี่)", "group": "เกี่ยวกับเรา - บริการของเรา" },
-  { "id": "about-offer-2-desc", "type": "text", "label": "การ์ด 2 - คำอธิบาย", "group": "เกี่ยวกับเรา - บริการของเรา" },
-  { "id": "about-offer-3-tag", "type": "text", "label": "การ์ด 3 - ป้าย (Box Set)", "group": "เกี่ยวกับเรา - บริการของเรา" },
-  { "id": "about-offer-3-title", "type": "text", "label": "การ์ด 3 - ชื่อ (เซ็ตกล่อง)", "group": "เกี่ยวกับเรา - บริการของเรา" },
-  { "id": "about-offer-3-desc", "type": "text", "label": "การ์ด 3 - คำอธิบาย", "group": "เกี่ยวกับเรา - บริการของเรา" },
-  { "id": "about-offer-4-tag", "type": "text", "label": "การ์ด 4 - ป้าย (Catering)", "group": "เกี่ยวกับเรา - บริการของเรา" },
-  { "id": "about-offer-4-title", "type": "text", "label": "การ์ด 4 - ชื่อ (จัดเลี้ยงนอกสถานที่)", "group": "เกี่ยวกับเรา - บริการของเรา" },
-  { "id": "about-offer-4-desc", "type": "text", "label": "การ์ด 4 - คำอธิบาย", "group": "เกี่ยวกับเรา - บริการของเรา" },
-
-  { "id": "about-cta-title", "type": "text", "label": "หัวข้อ แถบ CTA แฟรนไชส์", "group": "เกี่ยวกับเรา - CTA แฟรนไชส์" },
-  { "id": "about-cta-subtitle", "type": "text", "label": "คำโปรย แถบ CTA แฟรนไชส์", "group": "เกี่ยวกับเรา - CTA แฟรนไชส์" },
-
-  { "id": "img-branches-hero-bg", "type": "image", "label": "รูปพื้นหลัง Hero", "group": "สาขา - Hero", "hint": "แนะนำ 1600×900px ขึ้นไป แนวนอน (อัตราส่วน 16:9) — รูปเล็กเกินไปจะเบลอเมื่อขยายเต็มจอ" },
-  { "id": "branches-hero-badge", "type": "text", "label": "ป้ายข้อความ Hero", "group": "สาขา - Hero" },
-  { "id": "branches-hero-title", "type": "text", "label": "หัวข้อหลัก Hero", "group": "สาขา - Hero" },
-  { "id": "branches-hero-subtitle", "type": "text", "label": "คำโปรย Hero", "group": "สาขา - Hero" },
-
-  { "id": "img-branch-1", "type": "image", "label": "รูปสาขา", "group": "สาขา 1: บรรทัดทอง", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน" },
-  { "id": "branch-1-name", "type": "text", "label": "ชื่อสาขา", "group": "สาขา 1: บรรทัดทอง" },
-  { "id": "branch-1-address", "type": "text", "label": "ที่ตั้ง", "group": "สาขา 1: บรรทัดทอง" },
-  { "id": "branch-1-hours", "type": "text", "label": "เวลาเปิด", "group": "สาขา 1: บรรทัดทอง" },
-  { "id": "branch-1-phone", "type": "text", "label": "เบอร์โทร", "group": "สาขา 1: บรรทัดทอง" },
-  { "id": "branch-1-parking-note", "type": "text", "label": "หมายเหตุที่จอดรถ", "group": "สาขา 1: บรรทัดทอง" },
-  { "id": "link-map-branch-1", "type": "link", "label": "ลิงก์แผนที่", "group": "สาขา 1: บรรทัดทอง" },
-  { "id": "link-delivery-branch-1-lineman", "type": "link", "label": "ลิงก์ Lineman", "group": "สาขา 1: บรรทัดทอง" },
-  { "id": "link-delivery-branch-1-grab", "type": "link", "label": "ลิงก์ Grab", "group": "สาขา 1: บรรทัดทอง" },
-  { "id": "link-delivery-branch-1-shopeefood", "type": "link", "label": "ลิงก์ ShopeeFood", "group": "สาขา 1: บรรทัดทอง" },
-  { "id": "link-delivery-branch-1-robinhood", "type": "link", "label": "ลิงก์ Robinhood", "group": "สาขา 1: บรรทัดทอง" },
-
-  { "id": "img-branch-2", "type": "image", "label": "รูปสาขา", "group": "สาขา 2: พารากอน", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน" },
-  { "id": "branch-2-name", "type": "text", "label": "ชื่อสาขา", "group": "สาขา 2: พารากอน" },
-  { "id": "branch-2-address", "type": "text", "label": "ที่ตั้ง", "group": "สาขา 2: พารากอน" },
-  { "id": "branch-2-hours", "type": "text", "label": "เวลาเปิด", "group": "สาขา 2: พารากอน" },
-  { "id": "branch-2-phone", "type": "text", "label": "เบอร์โทร", "group": "สาขา 2: พารากอน" },
-  { "id": "link-map-branch-2", "type": "link", "label": "ลิงก์แผนที่", "group": "สาขา 2: พารากอน" },
-  { "id": "link-delivery-branch-2-lineman", "type": "link", "label": "ลิงก์ Lineman", "group": "สาขา 2: พารากอน" },
-
-  { "id": "img-branch-3", "type": "image", "label": "รูปสาขา", "group": "สาขา 3: เลียบทางด่วนรามอินทรา", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน" },
-  { "id": "branch-3-name", "type": "text", "label": "ชื่อสาขา", "group": "สาขา 3: เลียบทางด่วนรามอินทรา" },
-  { "id": "branch-3-hours", "type": "text", "label": "เวลาเปิด", "group": "สาขา 3: เลียบทางด่วนรามอินทรา" },
-  { "id": "branch-3-phone", "type": "text", "label": "เบอร์โทร", "group": "สาขา 3: เลียบทางด่วนรามอินทรา" },
-  { "id": "link-map-branch-3", "type": "link", "label": "ลิงก์แผนที่", "group": "สาขา 3: เลียบทางด่วนรามอินทรา" },
-  { "id": "link-delivery-branch-3-lineman", "type": "link", "label": "ลิงก์ Lineman", "group": "สาขา 3: เลียบทางด่วนรามอินทรา" },
-  { "id": "link-delivery-branch-3-grab", "type": "link", "label": "ลิงก์ Grab", "group": "สาขา 3: เลียบทางด่วนรามอินทรา" },
-  { "id": "link-delivery-branch-3-shopeefood", "type": "link", "label": "ลิงก์ ShopeeFood", "group": "สาขา 3: เลียบทางด่วนรามอินทรา" },
-  { "id": "link-delivery-branch-3-robinhood", "type": "link", "label": "ลิงก์ Robinhood", "group": "สาขา 3: เลียบทางด่วนรามอินทรา" },
-
-  { "id": "img-branch-4", "type": "image", "label": "รูปสาขา", "group": "สาขา 4: ศรีนครินทร์ ด้านนอก", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน" },
-  { "id": "branch-4-name", "type": "text", "label": "ชื่อสาขา", "group": "สาขา 4: ศรีนครินทร์ ด้านนอก" },
-  { "id": "branch-4-address", "type": "text", "label": "ที่ตั้ง", "group": "สาขา 4: ศรีนครินทร์ ด้านนอก" },
-  { "id": "branch-4-hours", "type": "text", "label": "เวลาเปิด", "group": "สาขา 4: ศรีนครินทร์ ด้านนอก" },
-  { "id": "branch-4-phone", "type": "text", "label": "เบอร์โทร", "group": "สาขา 4: ศรีนครินทร์ ด้านนอก" },
-  { "id": "branch-4-parking-note", "type": "text", "label": "หมายเหตุที่จอดรถ", "group": "สาขา 4: ศรีนครินทร์ ด้านนอก" },
-  { "id": "link-map-branch-4", "type": "link", "label": "ลิงก์แผนที่", "group": "สาขา 4: ศรีนครินทร์ ด้านนอก" },
-  { "id": "link-delivery-branch-4-lineman", "type": "link", "label": "ลิงก์ Lineman", "group": "สาขา 4: ศรีนครินทร์ ด้านนอก" },
-  { "id": "link-delivery-branch-4-grab", "type": "link", "label": "ลิงก์ Grab", "group": "สาขา 4: ศรีนครินทร์ ด้านนอก" },
-  { "id": "link-delivery-branch-4-shopeefood", "type": "link", "label": "ลิงก์ ShopeeFood", "group": "สาขา 4: ศรีนครินทร์ ด้านนอก" },
-  { "id": "link-delivery-branch-4-robinhood", "type": "link", "label": "ลิงก์ Robinhood", "group": "สาขา 4: ศรีนครินทร์ ด้านนอก" },
-
-  { "id": "img-branch-5", "type": "image", "label": "รูปสาขา", "group": "สาขา 5: ศรีนครินทร์ ด้านใน", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน" },
-  { "id": "branch-5-name", "type": "text", "label": "ชื่อสาขา", "group": "สาขา 5: ศรีนครินทร์ ด้านใน" },
-  { "id": "branch-5-address", "type": "text", "label": "ที่ตั้ง", "group": "สาขา 5: ศรีนครินทร์ ด้านใน" },
-  { "id": "branch-5-hours", "type": "text", "label": "เวลาเปิด", "group": "สาขา 5: ศรีนครินทร์ ด้านใน" },
-  { "id": "branch-5-phone", "type": "text", "label": "เบอร์โทร", "group": "สาขา 5: ศรีนครินทร์ ด้านใน" },
-  { "id": "link-map-branch-5", "type": "link", "label": "ลิงก์แผนที่", "group": "สาขา 5: ศรีนครินทร์ ด้านใน" },
-  { "id": "link-delivery-branch-5-lineman", "type": "link", "label": "ลิงก์ Lineman", "group": "สาขา 5: ศรีนครินทร์ ด้านใน" },
-  { "id": "link-delivery-branch-5-grab", "type": "link", "label": "ลิงก์ Grab", "group": "สาขา 5: ศรีนครินทร์ ด้านใน" },
-  { "id": "link-delivery-branch-5-shopeefood", "type": "link", "label": "ลิงก์ ShopeeFood", "group": "สาขา 5: ศรีนครินทร์ ด้านใน" },
-  { "id": "link-delivery-branch-5-robinhood", "type": "link", "label": "ลิงก์ Robinhood", "group": "สาขา 5: ศรีนครินทร์ ด้านใน" },
-
-  { "id": "branch-6-tag", "type": "text", "label": "ป้าย (ปิดให้บริการแล้ว)", "group": "สาขา 6: U-Village รังสิต (ปิดแล้ว)" },
-  { "id": "branch-6-name", "type": "text", "label": "ชื่อสาขา", "group": "สาขา 6: U-Village รังสิต (ปิดแล้ว)" },
-  { "id": "branch-6-note", "type": "text", "label": "ข้อความแจ้งปิด", "group": "สาขา 6: U-Village รังสิต (ปิดแล้ว)" },
-
-  { "id": "img-menu-hero-bg", "type": "image", "label": "รูปพื้นหลัง Hero", "group": "เมนู - Hero", "hint": "แนะนำ 1600×900px ขึ้นไป แนวนอน (อัตราส่วน 16:9) — รูปเล็กเกินไปจะเบลอเมื่อขยายเต็มจอ" },
-  { "id": "menu-hero-badge", "type": "text", "label": "ป้ายข้อความ Hero", "group": "เมนู - Hero" },
-  { "id": "menu-hero-title", "type": "text", "label": "หัวข้อหลัก Hero", "group": "เมนู - Hero" },
-  { "id": "menu-hero-subtitle", "type": "text", "label": "คำโปรย Hero", "group": "เมนู - Hero" },
-
-  { "id": "menu-fullmenu-eyebrow", "type": "text", "label": "ป้ายข้อความ Full Menu", "group": "เมนู - เมนูฉบับเต็ม" },
-  { "id": "menu-fullmenu-title", "type": "text", "label": "หัวข้อ ดูเมนูฉบับเต็ม", "group": "เมนู - เมนูฉบับเต็ม" },
-  { "id": "menu-fullmenu-subtitle", "type": "text", "label": "คำโปรย ดูเมนูฉบับเต็ม", "group": "เมนู - เมนูฉบับเต็ม" },
-  { "id": "link-menu-flipbook-full", "type": "link", "label": "ลิงก์เมนูฉบับเต็ม (ทุกสาขา)", "group": "เมนู - เมนูฉบับเต็ม" },
-  { "id": "link-menu-flipbook-paragon", "type": "link", "label": "ลิงก์ Special Menu สาขาพารากอน", "group": "เมนู - เมนูฉบับเต็ม" },
-
-  { "id": "menu-special-eyebrow", "type": "text", "label": "ป้ายข้อความ Special", "group": "เมนู - กุ้งดองซีอิ๊ว" },
-  { "id": "menu-special-title", "type": "text", "label": "หัวข้อ กุ้งดองซีอิ๊ว", "group": "เมนู - กุ้งดองซีอิ๊ว" },
-  { "id": "menu-special-subtitle", "type": "text", "label": "คำโปรย กุ้งดองซีอิ๊ว", "group": "เมนู - กุ้งดองซีอิ๊ว" },
-  { "id": "img-menu-special-1", "type": "image", "label": "รูป 1", "group": "เมนู - กุ้งดองซีอิ๊ว", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส" },
-  { "id": "img-menu-special-2", "type": "image", "label": "รูป 2", "group": "เมนู - กุ้งดองซีอิ๊ว", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส" },
-  { "id": "img-menu-special-3", "type": "image", "label": "รูป 3", "group": "เมนู - กุ้งดองซีอิ๊ว", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส" },
-  { "id": "img-menu-special-4", "type": "image", "label": "รูป 4", "group": "เมนู - กุ้งดองซีอิ๊ว", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส" },
-
-  { "id": "menu-combo-eyebrow", "type": "text", "label": "ป้ายข้อความ Lunch Set", "group": "เมนู - เซ็ตคอมโบ" },
-  { "id": "menu-combo-title", "type": "text", "label": "หัวข้อ เซ็ตคอมโบสุดคุ้ม", "group": "เมนู - เซ็ตคอมโบ" },
-  { "id": "menu-combo-subtitle", "type": "text", "label": "คำโปรย เซ็ตคอมโบสุดคุ้ม", "group": "เมนู - เซ็ตคอมโบ" },
-  { "id": "img-menu-combo-1", "type": "image", "label": "รูปคอมโบ 1", "group": "เมนู - เซ็ตคอมโบ", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส" },
-  { "id": "combo-1-name", "type": "text", "label": "ชื่อคอมโบ 1", "group": "เมนู - เซ็ตคอมโบ" },
-  { "id": "img-menu-combo-2", "type": "image", "label": "รูปคอมโบ 2", "group": "เมนู - เซ็ตคอมโบ", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส" },
-  { "id": "combo-2-name", "type": "text", "label": "ชื่อคอมโบ 2", "group": "เมนู - เซ็ตคอมโบ" },
-  { "id": "img-menu-combo-3", "type": "image", "label": "รูปคอมโบ 3", "group": "เมนู - เซ็ตคอมโบ", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส" },
-  { "id": "combo-3-name", "type": "text", "label": "ชื่อคอมโบ 3", "group": "เมนู - เซ็ตคอมโบ" },
-  { "id": "img-menu-combo-4", "type": "image", "label": "รูปคอมโบ 4", "group": "เมนู - เซ็ตคอมโบ", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส" },
-  { "id": "combo-4-name", "type": "text", "label": "ชื่อคอมโบ 4", "group": "เมนู - เซ็ตคอมโบ" },
-
-  { "id": "menu-gallery-eyebrow", "type": "text", "label": "ป้ายข้อความ Gallery", "group": "เมนู - แกลเลอรี่ & CTA" },
-  { "id": "menu-gallery-title", "type": "text", "label": "หัวข้อ รีวิวเมนูเพิ่มเติม", "group": "เมนู - แกลเลอรี่ & CTA" },
-  { "id": "menu-gallery-subtitle", "type": "text", "label": "คำโปรย รีวิวเมนูเพิ่มเติม (รูปแกลเลอรี่จัดการที่แท็บ 🖼 แกลเลอรี่รูปภาพ)", "group": "เมนู - แกลเลอรี่ & CTA" },
-  { "id": "menu-cta-title", "type": "text", "label": "หัวข้อ แถบ CTA ท้ายหน้าเมนู", "group": "เมนู - แกลเลอรี่ & CTA" },
-  { "id": "menu-cta-subtitle", "type": "text", "label": "คำโปรย แถบ CTA ท้ายหน้าเมนู", "group": "เมนู - แกลเลอรี่ & CTA" },
-
-  { "id": "img-promotion-hero-bg", "type": "image", "label": "รูปพื้นหลัง Hero", "group": "โปรโมชั่น - Hero", "hint": "แนะนำ 1600×900px ขึ้นไป แนวนอน (อัตราส่วน 16:9) — รูปเล็กเกินไปจะเบลอเมื่อขยายเต็มจอ" },
-  { "id": "promotion-hero-badge", "type": "text", "label": "ป้ายข้อความ Hero", "group": "โปรโมชั่น - Hero" },
-  { "id": "promotion-hero-title", "type": "text", "label": "หัวข้อหลัก Hero", "group": "โปรโมชั่น - Hero" },
-  { "id": "promotion-hero-subtitle", "type": "text", "label": "คำโปรย Hero", "group": "โปรโมชั่น - Hero" },
-
-  { "id": "featuredpromo-eyebrow", "type": "text", "label": "ป้ายข้อความ This Month's Special", "group": "โปรโมชั่น - โปรโมชั่นเด่นประจำเดือน" },
-  { "id": "featuredpromo-title", "type": "text", "label": "หัวข้อ โปรโมชั่นเด็ดประจำเดือน", "group": "โปรโมชั่น - โปรโมชั่นเด่นประจำเดือน" },
-  { "id": "featuredpromo-subtitle", "type": "text", "label": "คำโปรย โปรโมชั่นเด็ดประจำเดือน", "group": "โปรโมชั่น - โปรโมชั่นเด่นประจำเดือน" },
-  { "id": "img-featured-promo-1", "type": "image", "label": "รูป #1", "group": "โปรโมชั่น - โปรโมชั่นเด่นประจำเดือน", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน" },
-  { "id": "featured-promo-1-caption", "type": "text", "label": "คำโปรย #1", "group": "โปรโมชั่น - โปรโมชั่นเด่นประจำเดือน" },
-  { "id": "img-featured-promo-2", "type": "image", "label": "รูป #2", "group": "โปรโมชั่น - โปรโมชั่นเด่นประจำเดือน", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน" },
-  { "id": "featured-promo-2-caption", "type": "text", "label": "คำโปรย #2", "group": "โปรโมชั่น - โปรโมชั่นเด่นประจำเดือน" },
-  { "id": "img-featured-promo-3", "type": "image", "label": "รูป #3", "group": "โปรโมชั่น - โปรโมชั่นเด่นประจำเดือน", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน" },
-  { "id": "featured-promo-3-caption", "type": "text", "label": "คำโปรย #3", "group": "โปรโมชั่น - โปรโมชั่นเด่นประจำเดือน" },
-
-  { "id": "membercard-eyebrow", "type": "text", "label": "ป้ายข้อความ Member Card", "group": "โปรโมชั่น - บัตรสมาชิก" },
-  { "id": "membercard-title", "type": "text", "label": "หัวข้อ บัตรสมาชิกกุ้งถัง", "group": "โปรโมชั่น - บัตรสมาชิก" },
-  { "id": "membercard-subtitle", "type": "text", "label": "คำโปรย บัตรสมาชิกกุ้งถัง", "group": "โปรโมชั่น - บัตรสมาชิก" },
-  { "id": "img-promo-1", "type": "image", "label": "การ์ด 1 - รูป (บัตรสมาชิก)", "group": "โปรโมชั่น - บัตรสมาชิก", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน" },
-  { "id": "membercard-1-title", "type": "text", "label": "การ์ด 1 - ชื่อ", "group": "โปรโมชั่น - บัตรสมาชิก" },
-  { "id": "membercard-1-desc", "type": "text", "label": "การ์ด 1 - คำอธิบาย", "group": "โปรโมชั่น - บัตรสมาชิก" },
-  { "id": "img-promo-2", "type": "image", "label": "การ์ด 2 - รูป (เมนูใหม่)", "group": "โปรโมชั่น - บัตรสมาชิก", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน" },
-  { "id": "membercard-2-title", "type": "text", "label": "การ์ด 2 - ชื่อ", "group": "โปรโมชั่น - บัตรสมาชิก" },
-  { "id": "membercard-2-desc", "type": "text", "label": "การ์ด 2 - คำอธิบาย", "group": "โปรโมชั่น - บัตรสมาชิก" },
-  { "id": "membercard-3-title", "type": "text", "label": "การ์ด 3 - ชื่อ (ระบบสมาชิกออนไลน์)", "group": "โปรโมชั่น - บัตรสมาชิก" },
-  { "id": "membercard-3-desc", "type": "text", "label": "การ์ด 3 - คำอธิบาย", "group": "โปรโมชั่น - บัตรสมาชิก" },
-  { "id": "membercard-3-cta-text", "type": "text", "label": "การ์ด 3 - ข้อความปุ่ม", "group": "โปรโมชั่น - บัตรสมาชิก" },
-  { "id": "link-member", "type": "link", "label": "ลิงก์ระบบสมาชิก", "group": "โปรโมชั่น - บัตรสมาชิก" },
-  { "id": "membercard-bottom-cta-text", "type": "text", "label": "ข้อความปุ่มสมัครสมาชิก (ด้านล่าง)", "group": "โปรโมชั่น - บัตรสมาชิก" },
-
-  { "id": "delivery-eyebrow", "type": "text", "label": "ป้ายข้อความ Delivery", "group": "โปรโมชั่น - เดลิเวอรี่" },
-  { "id": "delivery-title", "type": "text", "label": "หัวข้อ สั่งเดลิเวอรี่ผ่านช่องทางไหนก็ได้", "group": "โปรโมชั่น - เดลิเวอรี่" },
-  { "id": "delivery-subtitle", "type": "text", "label": "คำโปรย สั่งเดลิเวอรี่", "group": "โปรโมชั่น - เดลิเวอรี่" },
-  { "id": "img-promo-3", "type": "image", "label": "การ์ด 1 - รูป (Lineman)", "group": "โปรโมชั่น - เดลิเวอรี่", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน" },
-  { "id": "delivery-1-title", "type": "text", "label": "การ์ด 1 - ชื่อ", "group": "โปรโมชั่น - เดลิเวอรี่" },
-  { "id": "delivery-1-desc", "type": "text", "label": "การ์ด 1 - คำอธิบาย", "group": "โปรโมชั่น - เดลิเวอรี่" },
-  { "id": "img-promo-4", "type": "image", "label": "การ์ด 2 - รูป (Oho)", "group": "โปรโมชั่น - เดลิเวอรี่", "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน" },
-  { "id": "delivery-2-title", "type": "text", "label": "การ์ด 2 - ชื่อ", "group": "โปรโมชั่น - เดลิเวอรี่" },
-  { "id": "delivery-2-desc", "type": "text", "label": "การ์ด 2 - คำอธิบาย", "group": "โปรโมชั่น - เดลิเวอรี่" },
-  { "id": "delivery-fb-cta-text", "type": "text", "label": "ข้อความปุ่ม ติดตามโปรใหม่ทาง Facebook", "group": "โปรโมชั่น - เดลิเวอรี่" },
-
-  { "id": "img-reviews-hero-bg", "type": "image", "label": "รูปพื้นหลัง Hero", "group": "รีวิว - Hero", "hint": "แนะนำ 1600×900px ขึ้นไป แนวนอน (อัตราส่วน 16:9) — รูปเล็กเกินไปจะเบลอเมื่อขยายเต็มจอ" },
-  { "id": "reviews-hero-badge", "type": "text", "label": "ป้ายข้อความ Hero", "group": "รีวิว - Hero" },
-  { "id": "reviews-hero-title", "type": "text", "label": "หัวข้อหลัก Hero", "group": "รีวิว - Hero" },
-  { "id": "reviews-hero-subtitle", "type": "text", "label": "คำโปรย Hero", "group": "รีวิว - Hero" },
-
-  { "id": "video-review-badge", "type": "text", "label": "ป้ายข้อความเหนือหัวข้อวิดีโอ", "group": "รีวิว - วิดีโอรีวิว" },
-  { "id": "video-review-1-title", "type": "text", "label": "หัวข้อ (บนวิดีโอ)", "group": "รีวิว - วิดีโอรีวิว" },
-  { "id": "video-review-1-subtitle", "type": "text", "label": "คำโปรย (ใต้หัวข้อวิดีโอ)", "group": "รีวิว - วิดีโอรีวิว" },
-  { "id": "video-review-1", "type": "link", "label": "วิดีโอรีวิว (วางลิงก์ YouTube ได้เลย เช่น https://www.youtube.com/watch?v=xxxx)", "group": "รีวิว - วิดีโอรีวิว" },
-  { "id": "reviews-fb-button-text", "type": "text", "label": "ข้อความปุ่ม \"ดูรีวิวเพิ่มเติมบน Facebook\" (รูปแกลเลอรี่จัดการที่แท็บ 🖼 แกลเลอรี่รูปภาพ)", "group": "รีวิว - วิดีโอรีวิว" },
-
-  { "id": "creator-section-badge", "type": "text", "label": "ป้ายข้อความ หัวข้อรีวิวครีเอเตอร์", "group": "รีวิว - รีวิวครีเอเตอร์ (หัวข้อ)" },
-  { "id": "creator-section-title", "type": "text", "label": "หัวข้อหลัก รีวิวครีเอเตอร์", "group": "รีวิว - รีวิวครีเอเตอร์ (หัวข้อ)" },
-  { "id": "creator-section-subtitle", "type": "text", "label": "คำโปรย รีวิวครีเอเตอร์ (รายการคลิปจัดการที่แท็บ 🎬 รีวิวครีเอเตอร์)", "group": "รีวิว - รีวิวครีเอเตอร์ (หัวข้อ)" },
-
-  { "id": "img-contact-hero-bg", "type": "image", "label": "รูปพื้นหลัง Hero", "group": "ติดต่อ - Hero", "hint": "แนะนำ 1600×900px ขึ้นไป แนวนอน (อัตราส่วน 16:9) — รูปเล็กเกินไปจะเบลอเมื่อขยายเต็มจอ" },
-  { "id": "contact-hero-badge", "type": "text", "label": "ป้ายข้อความ Hero", "group": "ติดต่อ - Hero" },
-  { "id": "contact-hero-title", "type": "text", "label": "หัวข้อหลัก Hero", "group": "ติดต่อ - Hero" },
-  { "id": "contact-hero-subtitle", "type": "text", "label": "คำโปรย Hero", "group": "ติดต่อ - Hero" },
-
-  { "id": "contact-phone", "type": "text", "label": "เบอร์โทรศัพท์", "group": "ติดต่อ - ข้อมูลติดต่อ" },
-  { "id": "contact-line", "type": "text", "label": "Line Official", "group": "ติดต่อ - ข้อมูลติดต่อ" },
-  { "id": "contact-fb", "type": "text", "label": "ชื่อ Facebook", "group": "ติดต่อ - ข้อมูลติดต่อ" },
-  { "id": "contact-website-text", "type": "text", "label": "ข้อความชื่อเว็บไซต์", "group": "ติดต่อ - ข้อมูลติดต่อ" },
-  { "id": "contact-branch-summary", "type": "text", "label": "ข้อความสรุปจำนวนสาขา", "group": "ติดต่อ - ข้อมูลติดต่อ" },
-
-  { "id": "contact-channels-eyebrow", "type": "text", "label": "ป้ายข้อความ Every Channel", "group": "ติดต่อ - ทุกช่องทาง" },
-  { "id": "contact-channels-title", "type": "text", "label": "หัวข้อ ทุกช่องทางของกุ้งถัง", "group": "ติดต่อ - ทุกช่องทาง" },
-  { "id": "contact-channels-subtitle", "type": "text", "label": "คำโปรย ทุกช่องทางของกุ้งถัง", "group": "ติดต่อ - ทุกช่องทาง" },
-
-  { "id": "contact-form-eyebrow", "type": "text", "label": "ป้ายข้อความ Message Us", "group": "ติดต่อ - ฟอร์มติดต่อ" },
-  { "id": "contact-form-title", "type": "text", "label": "หัวข้อ ฟอร์มติดต่อ", "group": "ติดต่อ - ฟอร์มติดต่อ" },
-  { "id": "contact-form-subtitle", "type": "text", "label": "คำโปรย ฟอร์มติดต่อ", "group": "ติดต่อ - ฟอร์มติดต่อ" },
-
-  { "id": "link-facebook", "type": "link", "label": "ลิงก์ Facebook (ใช้ในหลายจุดของเว็บ)", "group": "ลิงก์หลัก (ใช้หลายจุดในเว็บ)" },
-  { "id": "link-line", "type": "link", "label": "ลิงก์ Line Official (ใช้ในหลายจุดของเว็บ)", "group": "ลิงก์หลัก (ใช้หลายจุดในเว็บ)" },
-  { "id": "link-instagram", "type": "link", "label": "ลิงก์ Instagram", "group": "ลิงก์หลัก (ใช้หลายจุดในเว็บ)" },
-  { "id": "link-tiktok", "type": "link", "label": "ลิงก์ Tiktok", "group": "ลิงก์หลัก (ใช้หลายจุดในเว็บ)" },
-  { "id": "link-shopee", "type": "link", "label": "ลิงก์ Shopee Official", "group": "ลิงก์หลัก (ใช้หลายจุดในเว็บ)" },
-
-  { "id": "footer-desc", "type": "text", "label": "คำโปรยท้ายเว็บ (Footer) — ใช้ทุกหน้า แก้ที่เดียวอัปเดตทุกหน้า", "group": "Footer (ใช้ทุกหน้า)" },
-
-  { "id": "links-page-name", "type": "text", "label": "ชื่อบัญชี (หน้าลิงก์รวม)", "group": "ลิงก์รวม (links.html)" },
-  { "id": "links-page-tagline", "type": "text", "label": "คำโปรยใต้ชื่อ (หน้าลิงก์รวม)", "group": "ลิงก์รวม (links.html)" },
-
-  { "id": "blog-hero-badge", "type": "text", "label": "ป้ายข้อความ Hero", "group": "บทความ (Blog) - Hero" },
-  { "id": "blog-hero-title", "type": "text", "label": "หัวข้อหลัก Hero", "group": "บทความ (Blog) - Hero" },
-  { "id": "blog-hero-subtitle", "type": "text", "label": "คำโปรย Hero", "group": "บทความ (Blog) - Hero" },
-
-  { "id": "icon-menu", "type": "image", "label": "ไอคอน เมนู", "group": "ไอคอน (หน้าลิงก์รวม)", "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG" },
-  { "id": "icon-member", "type": "image", "label": "ไอคอน ระบบสมาชิก", "group": "ไอคอน (หน้าลิงก์รวม)", "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG" },
-  { "id": "icon-facebook", "type": "image", "label": "ไอคอน Facebook", "group": "ไอคอน (หน้าลิงก์รวม)", "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG" },
-  { "id": "icon-line", "type": "image", "label": "ไอคอน Line", "group": "ไอคอน (หน้าลิงก์รวม)", "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG" },
-  { "id": "icon-instagram", "type": "image", "label": "ไอคอน Instagram", "group": "ไอคอน (หน้าลิงก์รวม)", "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG" },
-  { "id": "icon-tiktok", "type": "image", "label": "ไอคอน Tiktok", "group": "ไอคอน (หน้าลิงก์รวม)", "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG" },
-  { "id": "icon-shopee", "type": "image", "label": "ไอคอน Shopee", "group": "ไอคอน (หน้าลิงก์รวม)", "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG" },
-  { "id": "icon-website", "type": "image", "label": "ไอคอน เว็บไซต์", "group": "ไอคอน (หน้าลิงก์รวม)", "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG" },
-  { "id": "icon-map", "type": "image", "label": "ไอคอน แผนที่", "group": "ไอคอน (หน้าลิงก์รวม)", "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG" },
-  { "id": "icon-lineman", "type": "image", "label": "ไอคอน Lineman", "group": "ไอคอน (หน้าลิงก์รวม)", "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG" },
-  { "id": "icon-grab", "type": "image", "label": "ไอคอน Grab", "group": "ไอคอน (หน้าลิงก์รวม)", "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG" },
-  { "id": "icon-shopeefood", "type": "image", "label": "ไอคอน ShopeeFood", "group": "ไอคอน (หน้าลิงก์รวม)", "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG" },
-  { "id": "icon-robinhood", "type": "image", "label": "ไอคอน Robinhood", "group": "ไอคอน (หน้าลิงก์รวม)", "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG" }
+  {
+    "id": "logo",
+    "type": "image",
+    "label": "โลโก้ร้าน",
+    "group": "ทั่วไป",
+    "hint": "แนะนำ 400×400px ขึ้นไป (จัตุรัส) พื้นหลังขาว/โปร่งใส ไฟล์ไม่เกิน 1MB"
+  },
+  {
+    "id": "ga4-measurement-id",
+    "type": "text",
+    "label": "Google Analytics 4 Measurement ID (เช่น G-XXXXXXXXXX — เว้นว่างไว้ถ้ายังไม่มี)",
+    "group": "การวิเคราะห์ (Analytics)"
+  },
+  {
+    "id": "img-home-hero-bg",
+    "type": "image",
+    "label": "รูปพื้นหลัง Hero หน้าแรก",
+    "group": "หน้าแรก",
+    "hint": "แนะนำ 1600×900px ขึ้นไป แนวนอน (อัตราส่วน 16:9) — รูปเล็กเกินไปจะเบลอเมื่อขยายเต็มจอ"
+  },
+  {
+    "id": "home-hero-badge",
+    "type": "text",
+    "label": "ป้ายข้อความ Hero",
+    "group": "หน้าแรก"
+  },
+  {
+    "id": "home-hero-title",
+    "type": "text",
+    "label": "หัวข้อหลัก หน้าแรก",
+    "group": "หน้าแรก"
+  },
+  {
+    "id": "home-hero-sub",
+    "type": "text",
+    "label": "คำโปรย หน้าแรก",
+    "group": "หน้าแรก"
+  },
+  {
+    "id": "home-info-branches",
+    "type": "text",
+    "label": "แถบข้อมูลด่วน - ข้อความจำนวนสาขา",
+    "group": "หน้าแรก"
+  },
+  {
+    "id": "home-info-opendaily",
+    "type": "text",
+    "label": "แถบข้อมูลด่วน - ข้อความเวลาเปิด",
+    "group": "หน้าแรก"
+  },
+  {
+    "id": "home-story-eyebrow",
+    "type": "text",
+    "label": "ป้ายข้อความ Our Story",
+    "group": "หน้าแรก - เรื่องราวย่อ"
+  },
+  {
+    "id": "home-story-title",
+    "type": "text",
+    "label": "หัวข้อ เรื่องราวย่อ",
+    "group": "หน้าแรก - เรื่องราวย่อ"
+  },
+  {
+    "id": "home-story-text",
+    "type": "text",
+    "label": "เนื้อหา เรื่องราวย่อ",
+    "group": "หน้าแรก - เรื่องราวย่อ"
+  },
+  {
+    "id": "home-story-li1",
+    "type": "text",
+    "label": "รายการที่ 1",
+    "group": "หน้าแรก - เรื่องราวย่อ"
+  },
+  {
+    "id": "home-story-li2",
+    "type": "text",
+    "label": "รายการที่ 2",
+    "group": "หน้าแรก - เรื่องราวย่อ"
+  },
+  {
+    "id": "home-story-li3",
+    "type": "text",
+    "label": "รายการที่ 3",
+    "group": "หน้าแรก - เรื่องราวย่อ"
+  },
+  {
+    "id": "home-story-btn-text",
+    "type": "text",
+    "label": "ข้อความปุ่ม \"อ่านเรื่องราวของเรา\"",
+    "group": "หน้าแรก - เรื่องราวย่อ"
+  },
+  {
+    "id": "home-cta-title",
+    "type": "text",
+    "label": "หัวข้อ แถบ CTA ปิดท้ายหน้าแรก",
+    "group": "หน้าแรก - CTA ปิดท้าย"
+  },
+  {
+    "id": "home-cta-subtitle",
+    "type": "text",
+    "label": "คำโปรย แถบ CTA ปิดท้ายหน้าแรก",
+    "group": "หน้าแรก - CTA ปิดท้าย"
+  },
+  {
+    "id": "home-cta-btn-promo-text",
+    "type": "text",
+    "label": "ข้อความปุ่ม \"ดูโปรโมชั่น & เดลิเวอรี่\"",
+    "group": "หน้าแรก - CTA ปิดท้าย"
+  },
+  {
+    "id": "home-cta-btn-contact-text",
+    "type": "text",
+    "label": "ข้อความปุ่ม \"ติดต่อเรา\"",
+    "group": "หน้าแรก - CTA ปิดท้าย"
+  },
+  {
+    "id": "food-category-eyebrow",
+    "type": "text",
+    "label": "ป้ายข้อความ หมวดอาหาร",
+    "group": "หน้าแรก - ไฮไลท์หมวดอาหาร"
+  },
+  {
+    "id": "food-category-title",
+    "type": "text",
+    "label": "หัวข้อ ไฮไลท์หมวดอาหาร",
+    "group": "หน้าแรก - ไฮไลท์หมวดอาหาร"
+  },
+  {
+    "id": "food-category-subtitle",
+    "type": "text",
+    "label": "คำโปรย ไฮไลท์หมวดอาหาร",
+    "group": "หน้าแรก - ไฮไลท์หมวดอาหาร"
+  },
+  {
+    "id": "img-food-category-1",
+    "type": "image",
+    "label": "หมวด 1 - รูป",
+    "group": "หน้าแรก - ไฮไลท์หมวดอาหาร",
+    "hint": "แนะนำ 700×1150px ขึ้นไป แนวตั้ง (สัดส่วนสูง เหมือนโปสเตอร์)"
+  },
+  {
+    "id": "food-category-1-name",
+    "type": "text",
+    "label": "หมวด 1 - ชื่อ",
+    "group": "หน้าแรก - ไฮไลท์หมวดอาหาร"
+  },
+  {
+    "id": "img-food-category-2",
+    "type": "image",
+    "label": "หมวด 2 - รูป",
+    "group": "หน้าแรก - ไฮไลท์หมวดอาหาร",
+    "hint": "แนะนำ 700×1150px ขึ้นไป แนวตั้ง (สัดส่วนสูง เหมือนโปสเตอร์)"
+  },
+  {
+    "id": "food-category-2-name",
+    "type": "text",
+    "label": "หมวด 2 - ชื่อ",
+    "group": "หน้าแรก - ไฮไลท์หมวดอาหาร"
+  },
+  {
+    "id": "img-food-category-3",
+    "type": "image",
+    "label": "หมวด 3 - รูป",
+    "group": "หน้าแรก - ไฮไลท์หมวดอาหาร",
+    "hint": "แนะนำ 700×1150px ขึ้นไป แนวตั้ง (สัดส่วนสูง เหมือนโปสเตอร์)"
+  },
+  {
+    "id": "food-category-3-name",
+    "type": "text",
+    "label": "หมวด 3 - ชื่อ",
+    "group": "หน้าแรก - ไฮไลท์หมวดอาหาร"
+  },
+  {
+    "id": "img-food-category-4",
+    "type": "image",
+    "label": "หมวด 4 - รูป",
+    "group": "หน้าแรก - ไฮไลท์หมวดอาหาร",
+    "hint": "แนะนำ 700×1150px ขึ้นไป แนวตั้ง (สัดส่วนสูง เหมือนโปสเตอร์)"
+  },
+  {
+    "id": "food-category-4-name",
+    "type": "text",
+    "label": "หมวด 4 - ชื่อ",
+    "group": "หน้าแรก - ไฮไลท์หมวดอาหาร"
+  },
+  {
+    "id": "img-food-category-5",
+    "type": "image",
+    "label": "หมวด 5 - รูป",
+    "group": "หน้าแรก - ไฮไลท์หมวดอาหาร",
+    "hint": "แนะนำ 700×1150px ขึ้นไป แนวตั้ง (สัดส่วนสูง เหมือนโปสเตอร์)"
+  },
+  {
+    "id": "food-category-5-name",
+    "type": "text",
+    "label": "หมวด 5 - ชื่อ",
+    "group": "หน้าแรก - ไฮไลท์หมวดอาหาร"
+  },
+  {
+    "id": "delivery-channels-eyebrow",
+    "type": "text",
+    "label": "ป้ายข้อความ ช่องทางเดลิเวอรี่",
+    "group": "หน้าแรก - ช่องทางเดลิเวอรี่"
+  },
+  {
+    "id": "delivery-channels-title",
+    "type": "text",
+    "label": "หัวข้อ ช่องทางเดลิเวอรี่",
+    "group": "หน้าแรก - ช่องทางเดลิเวอรี่"
+  },
+  {
+    "id": "delivery-channels-subtitle",
+    "type": "text",
+    "label": "คำโปรย ช่องทางเดลิเวอรี่",
+    "group": "หน้าแรก - ช่องทางเดลิเวอรี่"
+  },
+  {
+    "id": "img-delivery-ch-1",
+    "type": "image",
+    "label": "LINE Official Account - รูป",
+    "group": "หน้าแรก - ช่องทางเดลิเวอรี่",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน"
+  },
+  {
+    "id": "delivery-ch-1-desc",
+    "type": "text",
+    "label": "LINE Official Account - คำอธิบาย",
+    "group": "หน้าแรก - ช่องทางเดลิเวอรี่"
+  },
+  {
+    "id": "delivery-ch-1-link",
+    "type": "link",
+    "label": "LINE Official Account - ลิงก์เมื่อกดการ์ด",
+    "group": "หน้าแรก - ช่องทางเดลิเวอรี่"
+  },
+  {
+    "id": "img-delivery-ch-2",
+    "type": "image",
+    "label": "Lineman - รูป",
+    "group": "หน้าแรก - ช่องทางเดลิเวอรี่",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน"
+  },
+  {
+    "id": "delivery-ch-2-desc",
+    "type": "text",
+    "label": "Lineman - คำอธิบาย",
+    "group": "หน้าแรก - ช่องทางเดลิเวอรี่"
+  },
+  {
+    "id": "delivery-ch-2-link",
+    "type": "link",
+    "label": "Lineman - ลิงก์เมื่อกดการ์ด",
+    "group": "หน้าแรก - ช่องทางเดลิเวอรี่"
+  },
+  {
+    "id": "img-delivery-ch-3",
+    "type": "image",
+    "label": "GrabFood - รูป",
+    "group": "หน้าแรก - ช่องทางเดลิเวอรี่",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน"
+  },
+  {
+    "id": "delivery-ch-3-desc",
+    "type": "text",
+    "label": "GrabFood - คำอธิบาย",
+    "group": "หน้าแรก - ช่องทางเดลิเวอรี่"
+  },
+  {
+    "id": "delivery-ch-3-link",
+    "type": "link",
+    "label": "GrabFood - ลิงก์เมื่อกดการ์ด",
+    "group": "หน้าแรก - ช่องทางเดลิเวอรี่"
+  },
+  {
+    "id": "img-delivery-ch-4",
+    "type": "image",
+    "label": "ShopeeFood - รูป",
+    "group": "หน้าแรก - ช่องทางเดลิเวอรี่",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน"
+  },
+  {
+    "id": "delivery-ch-4-desc",
+    "type": "text",
+    "label": "ShopeeFood - คำอธิบาย",
+    "group": "หน้าแรก - ช่องทางเดลิเวอรี่"
+  },
+  {
+    "id": "delivery-ch-4-link",
+    "type": "link",
+    "label": "ShopeeFood - ลิงก์เมื่อกดการ์ด",
+    "group": "หน้าแรก - ช่องทางเดลิเวอรี่"
+  },
+  {
+    "id": "img-about-hero-bg",
+    "type": "image",
+    "label": "รูปพื้นหลัง Hero",
+    "group": "เกี่ยวกับเรา - Hero",
+    "hint": "แนะนำ 1600×900px ขึ้นไป แนวนอน (อัตราส่วน 16:9) — รูปเล็กเกินไปจะเบลอเมื่อขยายเต็มจอ"
+  },
+  {
+    "id": "about-hero-badge",
+    "type": "text",
+    "label": "ป้ายข้อความ Hero",
+    "group": "เกี่ยวกับเรา - Hero"
+  },
+  {
+    "id": "about-hero-title",
+    "type": "text",
+    "label": "หัวข้อหลัก Hero",
+    "group": "เกี่ยวกับเรา - Hero"
+  },
+  {
+    "id": "about-hero-subtitle",
+    "type": "text",
+    "label": "คำโปรย Hero",
+    "group": "เกี่ยวกับเรา - Hero"
+  },
+  {
+    "id": "img-about-story",
+    "type": "image",
+    "label": "รูปเรื่องราวร้าน (ข้าง Our Story)",
+    "group": "เกี่ยวกับเรา - เรื่องราวร้าน",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน"
+  },
+  {
+    "id": "about-story-eyebrow",
+    "type": "text",
+    "label": "ป้ายข้อความ Our Story",
+    "group": "เกี่ยวกับเรา - เรื่องราวร้าน"
+  },
+  {
+    "id": "about-story-title",
+    "type": "text",
+    "label": "หัวข้อ เรื่องราวร้าน",
+    "group": "เกี่ยวกับเรา - เรื่องราวร้าน"
+  },
+  {
+    "id": "about-text",
+    "type": "text",
+    "label": "เนื้อหาเรื่องราวร้าน",
+    "group": "เกี่ยวกับเรา - เรื่องราวร้าน"
+  },
+  {
+    "id": "about-offer-eyebrow",
+    "type": "text",
+    "label": "ป้ายข้อความ What we offer",
+    "group": "เกี่ยวกับเรา - บริการของเรา"
+  },
+  {
+    "id": "about-offer-title",
+    "type": "text",
+    "label": "หัวข้อ บริการของเรา",
+    "group": "เกี่ยวกับเรา - บริการของเรา"
+  },
+  {
+    "id": "about-offer-1-tag",
+    "type": "text",
+    "label": "การ์ด 1 - ป้าย (Dine-in)",
+    "group": "เกี่ยวกับเรา - บริการของเรา"
+  },
+  {
+    "id": "about-offer-1-title",
+    "type": "text",
+    "label": "การ์ด 1 - ชื่อ (ทานที่ร้าน)",
+    "group": "เกี่ยวกับเรา - บริการของเรา"
+  },
+  {
+    "id": "about-offer-1-desc",
+    "type": "text",
+    "label": "การ์ด 1 - คำอธิบาย",
+    "group": "เกี่ยวกับเรา - บริการของเรา"
+  },
+  {
+    "id": "about-offer-2-tag",
+    "type": "text",
+    "label": "การ์ด 2 - ป้าย (Delivery)",
+    "group": "เกี่ยวกับเรา - บริการของเรา"
+  },
+  {
+    "id": "about-offer-2-title",
+    "type": "text",
+    "label": "การ์ด 2 - ชื่อ (เดลิเวอรี่)",
+    "group": "เกี่ยวกับเรา - บริการของเรา"
+  },
+  {
+    "id": "about-offer-2-desc",
+    "type": "text",
+    "label": "การ์ด 2 - คำอธิบาย",
+    "group": "เกี่ยวกับเรา - บริการของเรา"
+  },
+  {
+    "id": "about-offer-3-tag",
+    "type": "text",
+    "label": "การ์ด 3 - ป้าย (Box Set)",
+    "group": "เกี่ยวกับเรา - บริการของเรา"
+  },
+  {
+    "id": "about-offer-3-title",
+    "type": "text",
+    "label": "การ์ด 3 - ชื่อ (เซ็ตกล่อง)",
+    "group": "เกี่ยวกับเรา - บริการของเรา"
+  },
+  {
+    "id": "about-offer-3-desc",
+    "type": "text",
+    "label": "การ์ด 3 - คำอธิบาย",
+    "group": "เกี่ยวกับเรา - บริการของเรา"
+  },
+  {
+    "id": "about-offer-4-tag",
+    "type": "text",
+    "label": "การ์ด 4 - ป้าย (Catering)",
+    "group": "เกี่ยวกับเรา - บริการของเรา"
+  },
+  {
+    "id": "about-offer-4-title",
+    "type": "text",
+    "label": "การ์ด 4 - ชื่อ (จัดเลี้ยงนอกสถานที่)",
+    "group": "เกี่ยวกับเรา - บริการของเรา"
+  },
+  {
+    "id": "about-offer-4-desc",
+    "type": "text",
+    "label": "การ์ด 4 - คำอธิบาย",
+    "group": "เกี่ยวกับเรา - บริการของเรา"
+  },
+  {
+    "id": "about-cta-title",
+    "type": "text",
+    "label": "หัวข้อ แถบ CTA แฟรนไชส์",
+    "group": "เกี่ยวกับเรา - CTA แฟรนไชส์"
+  },
+  {
+    "id": "about-cta-subtitle",
+    "type": "text",
+    "label": "คำโปรย แถบ CTA แฟรนไชส์",
+    "group": "เกี่ยวกับเรา - CTA แฟรนไชส์"
+  },
+  {
+    "id": "img-branches-hero-bg",
+    "type": "image",
+    "label": "รูปพื้นหลัง Hero",
+    "group": "สาขา - Hero",
+    "hint": "แนะนำ 1600×900px ขึ้นไป แนวนอน (อัตราส่วน 16:9) — รูปเล็กเกินไปจะเบลอเมื่อขยายเต็มจอ"
+  },
+  {
+    "id": "branches-hero-badge",
+    "type": "text",
+    "label": "ป้ายข้อความ Hero",
+    "group": "สาขา - Hero"
+  },
+  {
+    "id": "branches-hero-title",
+    "type": "text",
+    "label": "หัวข้อหลัก Hero",
+    "group": "สาขา - Hero"
+  },
+  {
+    "id": "branches-hero-subtitle",
+    "type": "text",
+    "label": "คำโปรย Hero",
+    "group": "สาขา - Hero"
+  },
+  {
+    "id": "img-branch-1",
+    "type": "image",
+    "label": "รูปสาขา",
+    "group": "สาขา 1: บรรทัดทอง",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน"
+  },
+  {
+    "id": "branch-1-name",
+    "type": "text",
+    "label": "ชื่อสาขา",
+    "group": "สาขา 1: บรรทัดทอง"
+  },
+  {
+    "id": "branch-1-address",
+    "type": "text",
+    "label": "ที่ตั้ง",
+    "group": "สาขา 1: บรรทัดทอง"
+  },
+  {
+    "id": "branch-1-hours",
+    "type": "text",
+    "label": "เวลาเปิด",
+    "group": "สาขา 1: บรรทัดทอง"
+  },
+  {
+    "id": "branch-1-phone",
+    "type": "text",
+    "label": "เบอร์โทร",
+    "group": "สาขา 1: บรรทัดทอง"
+  },
+  {
+    "id": "branch-1-parking-note",
+    "type": "text",
+    "label": "หมายเหตุที่จอดรถ",
+    "group": "สาขา 1: บรรทัดทอง"
+  },
+  {
+    "id": "link-map-branch-1",
+    "type": "link",
+    "label": "ลิงก์แผนที่",
+    "group": "สาขา 1: บรรทัดทอง"
+  },
+  {
+    "id": "link-delivery-branch-1-lineman",
+    "type": "link",
+    "label": "ลิงก์ Lineman",
+    "group": "สาขา 1: บรรทัดทอง"
+  },
+  {
+    "id": "link-delivery-branch-1-grab",
+    "type": "link",
+    "label": "ลิงก์ Grab",
+    "group": "สาขา 1: บรรทัดทอง"
+  },
+  {
+    "id": "link-delivery-branch-1-shopeefood",
+    "type": "link",
+    "label": "ลิงก์ ShopeeFood",
+    "group": "สาขา 1: บรรทัดทอง"
+  },
+  {
+    "id": "link-delivery-branch-1-robinhood",
+    "type": "link",
+    "label": "ลิงก์ Robinhood",
+    "group": "สาขา 1: บรรทัดทอง"
+  },
+  {
+    "id": "img-branch-2",
+    "type": "image",
+    "label": "รูปสาขา",
+    "group": "สาขา 2: พารากอน",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน"
+  },
+  {
+    "id": "branch-2-name",
+    "type": "text",
+    "label": "ชื่อสาขา",
+    "group": "สาขา 2: พารากอน"
+  },
+  {
+    "id": "branch-2-address",
+    "type": "text",
+    "label": "ที่ตั้ง",
+    "group": "สาขา 2: พารากอน"
+  },
+  {
+    "id": "branch-2-hours",
+    "type": "text",
+    "label": "เวลาเปิด",
+    "group": "สาขา 2: พารากอน"
+  },
+  {
+    "id": "branch-2-phone",
+    "type": "text",
+    "label": "เบอร์โทร",
+    "group": "สาขา 2: พารากอน"
+  },
+  {
+    "id": "link-map-branch-2",
+    "type": "link",
+    "label": "ลิงก์แผนที่",
+    "group": "สาขา 2: พารากอน"
+  },
+  {
+    "id": "link-delivery-branch-2-lineman",
+    "type": "link",
+    "label": "ลิงก์ Lineman",
+    "group": "สาขา 2: พารากอน"
+  },
+  {
+    "id": "img-branch-3",
+    "type": "image",
+    "label": "รูปสาขา",
+    "group": "สาขา 3: เลียบทางด่วนรามอินทรา",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน"
+  },
+  {
+    "id": "branch-3-name",
+    "type": "text",
+    "label": "ชื่อสาขา",
+    "group": "สาขา 3: เลียบทางด่วนรามอินทรา"
+  },
+  {
+    "id": "branch-3-hours",
+    "type": "text",
+    "label": "เวลาเปิด",
+    "group": "สาขา 3: เลียบทางด่วนรามอินทรา"
+  },
+  {
+    "id": "branch-3-phone",
+    "type": "text",
+    "label": "เบอร์โทร",
+    "group": "สาขา 3: เลียบทางด่วนรามอินทรา"
+  },
+  {
+    "id": "link-map-branch-3",
+    "type": "link",
+    "label": "ลิงก์แผนที่",
+    "group": "สาขา 3: เลียบทางด่วนรามอินทรา"
+  },
+  {
+    "id": "link-delivery-branch-3-lineman",
+    "type": "link",
+    "label": "ลิงก์ Lineman",
+    "group": "สาขา 3: เลียบทางด่วนรามอินทรา"
+  },
+  {
+    "id": "link-delivery-branch-3-grab",
+    "type": "link",
+    "label": "ลิงก์ Grab",
+    "group": "สาขา 3: เลียบทางด่วนรามอินทรา"
+  },
+  {
+    "id": "link-delivery-branch-3-shopeefood",
+    "type": "link",
+    "label": "ลิงก์ ShopeeFood",
+    "group": "สาขา 3: เลียบทางด่วนรามอินทรา"
+  },
+  {
+    "id": "link-delivery-branch-3-robinhood",
+    "type": "link",
+    "label": "ลิงก์ Robinhood",
+    "group": "สาขา 3: เลียบทางด่วนรามอินทรา"
+  },
+  {
+    "id": "img-branch-4",
+    "type": "image",
+    "label": "รูปสาขา",
+    "group": "สาขา 4: ศรีนครินทร์ ด้านนอก",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน"
+  },
+  {
+    "id": "branch-4-name",
+    "type": "text",
+    "label": "ชื่อสาขา",
+    "group": "สาขา 4: ศรีนครินทร์ ด้านนอก"
+  },
+  {
+    "id": "branch-4-address",
+    "type": "text",
+    "label": "ที่ตั้ง",
+    "group": "สาขา 4: ศรีนครินทร์ ด้านนอก"
+  },
+  {
+    "id": "branch-4-hours",
+    "type": "text",
+    "label": "เวลาเปิด",
+    "group": "สาขา 4: ศรีนครินทร์ ด้านนอก"
+  },
+  {
+    "id": "branch-4-phone",
+    "type": "text",
+    "label": "เบอร์โทร",
+    "group": "สาขา 4: ศรีนครินทร์ ด้านนอก"
+  },
+  {
+    "id": "branch-4-parking-note",
+    "type": "text",
+    "label": "หมายเหตุที่จอดรถ",
+    "group": "สาขา 4: ศรีนครินทร์ ด้านนอก"
+  },
+  {
+    "id": "link-map-branch-4",
+    "type": "link",
+    "label": "ลิงก์แผนที่",
+    "group": "สาขา 4: ศรีนครินทร์ ด้านนอก"
+  },
+  {
+    "id": "link-delivery-branch-4-lineman",
+    "type": "link",
+    "label": "ลิงก์ Lineman",
+    "group": "สาขา 4: ศรีนครินทร์ ด้านนอก"
+  },
+  {
+    "id": "link-delivery-branch-4-grab",
+    "type": "link",
+    "label": "ลิงก์ Grab",
+    "group": "สาขา 4: ศรีนครินทร์ ด้านนอก"
+  },
+  {
+    "id": "link-delivery-branch-4-shopeefood",
+    "type": "link",
+    "label": "ลิงก์ ShopeeFood",
+    "group": "สาขา 4: ศรีนครินทร์ ด้านนอก"
+  },
+  {
+    "id": "link-delivery-branch-4-robinhood",
+    "type": "link",
+    "label": "ลิงก์ Robinhood",
+    "group": "สาขา 4: ศรีนครินทร์ ด้านนอก"
+  },
+  {
+    "id": "img-branch-5",
+    "type": "image",
+    "label": "รูปสาขา",
+    "group": "สาขา 5: ศรีนครินทร์ ด้านใน",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน"
+  },
+  {
+    "id": "branch-5-name",
+    "type": "text",
+    "label": "ชื่อสาขา",
+    "group": "สาขา 5: ศรีนครินทร์ ด้านใน"
+  },
+  {
+    "id": "branch-5-address",
+    "type": "text",
+    "label": "ที่ตั้ง",
+    "group": "สาขา 5: ศรีนครินทร์ ด้านใน"
+  },
+  {
+    "id": "branch-5-hours",
+    "type": "text",
+    "label": "เวลาเปิด",
+    "group": "สาขา 5: ศรีนครินทร์ ด้านใน"
+  },
+  {
+    "id": "branch-5-phone",
+    "type": "text",
+    "label": "เบอร์โทร",
+    "group": "สาขา 5: ศรีนครินทร์ ด้านใน"
+  },
+  {
+    "id": "link-map-branch-5",
+    "type": "link",
+    "label": "ลิงก์แผนที่",
+    "group": "สาขา 5: ศรีนครินทร์ ด้านใน"
+  },
+  {
+    "id": "link-delivery-branch-5-lineman",
+    "type": "link",
+    "label": "ลิงก์ Lineman",
+    "group": "สาขา 5: ศรีนครินทร์ ด้านใน"
+  },
+  {
+    "id": "link-delivery-branch-5-grab",
+    "type": "link",
+    "label": "ลิงก์ Grab",
+    "group": "สาขา 5: ศรีนครินทร์ ด้านใน"
+  },
+  {
+    "id": "link-delivery-branch-5-shopeefood",
+    "type": "link",
+    "label": "ลิงก์ ShopeeFood",
+    "group": "สาขา 5: ศรีนครินทร์ ด้านใน"
+  },
+  {
+    "id": "link-delivery-branch-5-robinhood",
+    "type": "link",
+    "label": "ลิงก์ Robinhood",
+    "group": "สาขา 5: ศรีนครินทร์ ด้านใน"
+  },
+  {
+    "id": "branch-6-tag",
+    "type": "text",
+    "label": "ป้าย (ปิดให้บริการแล้ว)",
+    "group": "สาขา 6: U-Village รังสิต (ปิดแล้ว)"
+  },
+  {
+    "id": "branch-6-name",
+    "type": "text",
+    "label": "ชื่อสาขา",
+    "group": "สาขา 6: U-Village รังสิต (ปิดแล้ว)"
+  },
+  {
+    "id": "branch-6-note",
+    "type": "text",
+    "label": "ข้อความแจ้งปิด",
+    "group": "สาขา 6: U-Village รังสิต (ปิดแล้ว)"
+  },
+  {
+    "id": "img-menu-hero-bg",
+    "type": "image",
+    "label": "รูปพื้นหลัง Hero",
+    "group": "เมนู - Hero",
+    "hint": "แนะนำ 1600×900px ขึ้นไป แนวนอน (อัตราส่วน 16:9) — รูปเล็กเกินไปจะเบลอเมื่อขยายเต็มจอ"
+  },
+  {
+    "id": "menu-hero-badge",
+    "type": "text",
+    "label": "ป้ายข้อความ Hero",
+    "group": "เมนู - Hero"
+  },
+  {
+    "id": "menu-hero-title",
+    "type": "text",
+    "label": "หัวข้อหลัก Hero",
+    "group": "เมนู - Hero"
+  },
+  {
+    "id": "menu-hero-subtitle",
+    "type": "text",
+    "label": "คำโปรย Hero",
+    "group": "เมนู - Hero"
+  },
+  {
+    "id": "menu-fullmenu-eyebrow",
+    "type": "text",
+    "label": "ป้ายข้อความ Full Menu",
+    "group": "เมนู - เมนูฉบับเต็ม"
+  },
+  {
+    "id": "menu-fullmenu-title",
+    "type": "text",
+    "label": "หัวข้อ ดูเมนูฉบับเต็ม",
+    "group": "เมนู - เมนูฉบับเต็ม"
+  },
+  {
+    "id": "menu-fullmenu-subtitle",
+    "type": "text",
+    "label": "คำโปรย ดูเมนูฉบับเต็ม",
+    "group": "เมนู - เมนูฉบับเต็ม"
+  },
+  {
+    "id": "link-menu-flipbook-full",
+    "type": "link",
+    "label": "ลิงก์เมนูฉบับเต็ม (ทุกสาขา)",
+    "group": "เมนู - เมนูฉบับเต็ม"
+  },
+  {
+    "id": "link-menu-flipbook-paragon",
+    "type": "link",
+    "label": "ลิงก์ Special Menu สาขาพารากอน",
+    "group": "เมนู - เมนูฉบับเต็ม"
+  },
+  {
+    "id": "menu-special-eyebrow",
+    "type": "text",
+    "label": "ป้ายข้อความ Special",
+    "group": "เมนู - กุ้งดองซีอิ๊ว"
+  },
+  {
+    "id": "menu-special-title",
+    "type": "text",
+    "label": "หัวข้อ กุ้งดองซีอิ๊ว",
+    "group": "เมนู - กุ้งดองซีอิ๊ว"
+  },
+  {
+    "id": "menu-special-subtitle",
+    "type": "text",
+    "label": "คำโปรย กุ้งดองซีอิ๊ว",
+    "group": "เมนู - กุ้งดองซีอิ๊ว"
+  },
+  {
+    "id": "img-menu-special-1",
+    "type": "image",
+    "label": "รูป 1",
+    "group": "เมนู - กุ้งดองซีอิ๊ว",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส"
+  },
+  {
+    "id": "img-menu-special-2",
+    "type": "image",
+    "label": "รูป 2",
+    "group": "เมนู - กุ้งดองซีอิ๊ว",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส"
+  },
+  {
+    "id": "img-menu-special-3",
+    "type": "image",
+    "label": "รูป 3",
+    "group": "เมนู - กุ้งดองซีอิ๊ว",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส"
+  },
+  {
+    "id": "img-menu-special-4",
+    "type": "image",
+    "label": "รูป 4",
+    "group": "เมนู - กุ้งดองซีอิ๊ว",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส"
+  },
+  {
+    "id": "menu-combo-eyebrow",
+    "type": "text",
+    "label": "ป้ายข้อความ Lunch Set",
+    "group": "เมนู - เซ็ตคอมโบ"
+  },
+  {
+    "id": "menu-combo-title",
+    "type": "text",
+    "label": "หัวข้อ เซ็ตคอมโบสุดคุ้ม",
+    "group": "เมนู - เซ็ตคอมโบ"
+  },
+  {
+    "id": "menu-combo-subtitle",
+    "type": "text",
+    "label": "คำโปรย เซ็ตคอมโบสุดคุ้ม",
+    "group": "เมนู - เซ็ตคอมโบ"
+  },
+  {
+    "id": "img-menu-combo-1",
+    "type": "image",
+    "label": "รูปคอมโบ 1",
+    "group": "เมนู - เซ็ตคอมโบ",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส"
+  },
+  {
+    "id": "combo-1-name",
+    "type": "text",
+    "label": "ชื่อคอมโบ 1",
+    "group": "เมนู - เซ็ตคอมโบ"
+  },
+  {
+    "id": "img-menu-combo-2",
+    "type": "image",
+    "label": "รูปคอมโบ 2",
+    "group": "เมนู - เซ็ตคอมโบ",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส"
+  },
+  {
+    "id": "combo-2-name",
+    "type": "text",
+    "label": "ชื่อคอมโบ 2",
+    "group": "เมนู - เซ็ตคอมโบ"
+  },
+  {
+    "id": "img-menu-combo-3",
+    "type": "image",
+    "label": "รูปคอมโบ 3",
+    "group": "เมนู - เซ็ตคอมโบ",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส"
+  },
+  {
+    "id": "combo-3-name",
+    "type": "text",
+    "label": "ชื่อคอมโบ 3",
+    "group": "เมนู - เซ็ตคอมโบ"
+  },
+  {
+    "id": "img-menu-combo-4",
+    "type": "image",
+    "label": "รูปคอมโบ 4",
+    "group": "เมนู - เซ็ตคอมโบ",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส"
+  },
+  {
+    "id": "combo-4-name",
+    "type": "text",
+    "label": "ชื่อคอมโบ 4",
+    "group": "เมนู - เซ็ตคอมโบ"
+  },
+  {
+    "id": "menu-gallery-eyebrow",
+    "type": "text",
+    "label": "ป้ายข้อความ Gallery",
+    "group": "เมนู - แกลเลอรี่ & CTA"
+  },
+  {
+    "id": "menu-gallery-title",
+    "type": "text",
+    "label": "หัวข้อ รีวิวเมนูเพิ่มเติม",
+    "group": "เมนู - แกลเลอรี่ & CTA"
+  },
+  {
+    "id": "menu-gallery-subtitle",
+    "type": "text",
+    "label": "คำโปรย รีวิวเมนูเพิ่มเติม (รูปแกลเลอรี่จัดการที่แท็บ 🖼 แกลเลอรี่รูปภาพ)",
+    "group": "เมนู - แกลเลอรี่ & CTA"
+  },
+  {
+    "id": "menu-cta-title",
+    "type": "text",
+    "label": "หัวข้อ แถบ CTA ท้ายหน้าเมนู",
+    "group": "เมนู - แกลเลอรี่ & CTA"
+  },
+  {
+    "id": "menu-cta-subtitle",
+    "type": "text",
+    "label": "คำโปรย แถบ CTA ท้ายหน้าเมนู",
+    "group": "เมนู - แกลเลอรี่ & CTA"
+  },
+  {
+    "id": "img-promotion-hero-bg",
+    "type": "image",
+    "label": "รูปพื้นหลัง Hero",
+    "group": "โปรโมชั่น - Hero",
+    "hint": "แนะนำ 1600×900px ขึ้นไป แนวนอน (อัตราส่วน 16:9) — รูปเล็กเกินไปจะเบลอเมื่อขยายเต็มจอ"
+  },
+  {
+    "id": "promotion-hero-badge",
+    "type": "text",
+    "label": "ป้ายข้อความ Hero",
+    "group": "โปรโมชั่น - Hero"
+  },
+  {
+    "id": "promotion-hero-title",
+    "type": "text",
+    "label": "หัวข้อหลัก Hero",
+    "group": "โปรโมชั่น - Hero"
+  },
+  {
+    "id": "promotion-hero-subtitle",
+    "type": "text",
+    "label": "คำโปรย Hero",
+    "group": "โปรโมชั่น - Hero"
+  },
+  {
+    "id": "featuredpromo-eyebrow",
+    "type": "text",
+    "label": "ป้ายข้อความ This Month's Special",
+    "group": "โปรโมชั่น - โปรโมชั่นเด่นประจำเดือน"
+  },
+  {
+    "id": "featuredpromo-title",
+    "type": "text",
+    "label": "หัวข้อ โปรโมชั่นเด็ดประจำเดือน",
+    "group": "โปรโมชั่น - โปรโมชั่นเด่นประจำเดือน"
+  },
+  {
+    "id": "featuredpromo-subtitle",
+    "type": "text",
+    "label": "คำโปรย โปรโมชั่นเด็ดประจำเดือน",
+    "group": "โปรโมชั่น - โปรโมชั่นเด่นประจำเดือน"
+  },
+  {
+    "id": "img-featured-promo-1",
+    "type": "image",
+    "label": "รูป #1",
+    "group": "โปรโมชั่น - โปรโมชั่นเด่นประจำเดือน",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน"
+  },
+  {
+    "id": "featured-promo-1-caption",
+    "type": "text",
+    "label": "คำโปรย #1",
+    "group": "โปรโมชั่น - โปรโมชั่นเด่นประจำเดือน"
+  },
+  {
+    "id": "img-featured-promo-2",
+    "type": "image",
+    "label": "รูป #2",
+    "group": "โปรโมชั่น - โปรโมชั่นเด่นประจำเดือน",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน"
+  },
+  {
+    "id": "featured-promo-2-caption",
+    "type": "text",
+    "label": "คำโปรย #2",
+    "group": "โปรโมชั่น - โปรโมชั่นเด่นประจำเดือน"
+  },
+  {
+    "id": "img-featured-promo-3",
+    "type": "image",
+    "label": "รูป #3",
+    "group": "โปรโมชั่น - โปรโมชั่นเด่นประจำเดือน",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน"
+  },
+  {
+    "id": "featured-promo-3-caption",
+    "type": "text",
+    "label": "คำโปรย #3",
+    "group": "โปรโมชั่น - โปรโมชั่นเด่นประจำเดือน"
+  },
+  {
+    "id": "membercard-eyebrow",
+    "type": "text",
+    "label": "ป้ายข้อความ Member Card",
+    "group": "โปรโมชั่น - บัตรสมาชิก"
+  },
+  {
+    "id": "membercard-title",
+    "type": "text",
+    "label": "หัวข้อ บัตรสมาชิกกุ้งถัง",
+    "group": "โปรโมชั่น - บัตรสมาชิก"
+  },
+  {
+    "id": "membercard-subtitle",
+    "type": "text",
+    "label": "คำโปรย บัตรสมาชิกกุ้งถัง",
+    "group": "โปรโมชั่น - บัตรสมาชิก"
+  },
+  {
+    "id": "img-promo-1",
+    "type": "image",
+    "label": "การ์ด 1 - รูป (บัตรสมาชิก)",
+    "group": "โปรโมชั่น - บัตรสมาชิก",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน"
+  },
+  {
+    "id": "membercard-1-title",
+    "type": "text",
+    "label": "การ์ด 1 - ชื่อ",
+    "group": "โปรโมชั่น - บัตรสมาชิก"
+  },
+  {
+    "id": "membercard-1-desc",
+    "type": "text",
+    "label": "การ์ด 1 - คำอธิบาย",
+    "group": "โปรโมชั่น - บัตรสมาชิก"
+  },
+  {
+    "id": "img-promo-2",
+    "type": "image",
+    "label": "การ์ด 2 - รูป (เมนูใหม่)",
+    "group": "โปรโมชั่น - บัตรสมาชิก",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน"
+  },
+  {
+    "id": "membercard-2-title",
+    "type": "text",
+    "label": "การ์ด 2 - ชื่อ",
+    "group": "โปรโมชั่น - บัตรสมาชิก"
+  },
+  {
+    "id": "membercard-2-desc",
+    "type": "text",
+    "label": "การ์ด 2 - คำอธิบาย",
+    "group": "โปรโมชั่น - บัตรสมาชิก"
+  },
+  {
+    "id": "membercard-3-title",
+    "type": "text",
+    "label": "การ์ด 3 - ชื่อ (ระบบสมาชิกออนไลน์)",
+    "group": "โปรโมชั่น - บัตรสมาชิก"
+  },
+  {
+    "id": "membercard-3-desc",
+    "type": "text",
+    "label": "การ์ด 3 - คำอธิบาย",
+    "group": "โปรโมชั่น - บัตรสมาชิก"
+  },
+  {
+    "id": "membercard-3-cta-text",
+    "type": "text",
+    "label": "การ์ด 3 - ข้อความปุ่ม",
+    "group": "โปรโมชั่น - บัตรสมาชิก"
+  },
+  {
+    "id": "link-member",
+    "type": "link",
+    "label": "ลิงก์ระบบสมาชิก",
+    "group": "โปรโมชั่น - บัตรสมาชิก"
+  },
+  {
+    "id": "membercard-bottom-cta-text",
+    "type": "text",
+    "label": "ข้อความปุ่มสมัครสมาชิก (ด้านล่าง)",
+    "group": "โปรโมชั่น - บัตรสมาชิก"
+  },
+  {
+    "id": "delivery-eyebrow",
+    "type": "text",
+    "label": "ป้ายข้อความ Delivery",
+    "group": "โปรโมชั่น - เดลิเวอรี่"
+  },
+  {
+    "id": "delivery-title",
+    "type": "text",
+    "label": "หัวข้อ สั่งเดลิเวอรี่ผ่านช่องทางไหนก็ได้",
+    "group": "โปรโมชั่น - เดลิเวอรี่"
+  },
+  {
+    "id": "delivery-subtitle",
+    "type": "text",
+    "label": "คำโปรย สั่งเดลิเวอรี่",
+    "group": "โปรโมชั่น - เดลิเวอรี่"
+  },
+  {
+    "id": "img-promo-3",
+    "type": "image",
+    "label": "การ์ด 1 - รูป (Lineman)",
+    "group": "โปรโมชั่น - เดลิเวอรี่",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน"
+  },
+  {
+    "id": "delivery-1-title",
+    "type": "text",
+    "label": "การ์ด 1 - ชื่อ",
+    "group": "โปรโมชั่น - เดลิเวอรี่"
+  },
+  {
+    "id": "delivery-1-desc",
+    "type": "text",
+    "label": "การ์ด 1 - คำอธิบาย",
+    "group": "โปรโมชั่น - เดลิเวอรี่"
+  },
+  {
+    "id": "img-promo-4",
+    "type": "image",
+    "label": "การ์ด 2 - รูป (Oho)",
+    "group": "โปรโมชั่น - เดลิเวอรี่",
+    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอน"
+  },
+  {
+    "id": "delivery-2-title",
+    "type": "text",
+    "label": "การ์ด 2 - ชื่อ",
+    "group": "โปรโมชั่น - เดลิเวอรี่"
+  },
+  {
+    "id": "delivery-2-desc",
+    "type": "text",
+    "label": "การ์ด 2 - คำอธิบาย",
+    "group": "โปรโมชั่น - เดลิเวอรี่"
+  },
+  {
+    "id": "delivery-fb-cta-text",
+    "type": "text",
+    "label": "ข้อความปุ่ม ติดตามโปรใหม่ทาง Facebook",
+    "group": "โปรโมชั่น - เดลิเวอรี่"
+  },
+  {
+    "id": "img-reviews-hero-bg",
+    "type": "image",
+    "label": "รูปพื้นหลัง Hero",
+    "group": "รีวิว - Hero",
+    "hint": "แนะนำ 1600×900px ขึ้นไป แนวนอน (อัตราส่วน 16:9) — รูปเล็กเกินไปจะเบลอเมื่อขยายเต็มจอ"
+  },
+  {
+    "id": "reviews-hero-badge",
+    "type": "text",
+    "label": "ป้ายข้อความ Hero",
+    "group": "รีวิว - Hero"
+  },
+  {
+    "id": "reviews-hero-title",
+    "type": "text",
+    "label": "หัวข้อหลัก Hero",
+    "group": "รีวิว - Hero"
+  },
+  {
+    "id": "reviews-hero-subtitle",
+    "type": "text",
+    "label": "คำโปรย Hero",
+    "group": "รีวิว - Hero"
+  },
+  {
+    "id": "video-review-badge",
+    "type": "text",
+    "label": "ป้ายข้อความเหนือหัวข้อวิดีโอ",
+    "group": "รีวิว - วิดีโอรีวิว"
+  },
+  {
+    "id": "video-review-1-title",
+    "type": "text",
+    "label": "หัวข้อ (บนวิดีโอ)",
+    "group": "รีวิว - วิดีโอรีวิว"
+  },
+  {
+    "id": "video-review-1-subtitle",
+    "type": "text",
+    "label": "คำโปรย (ใต้หัวข้อวิดีโอ)",
+    "group": "รีวิว - วิดีโอรีวิว"
+  },
+  {
+    "id": "video-review-1",
+    "type": "link",
+    "label": "วิดีโอรีวิว (วางลิงก์ YouTube ได้เลย เช่น https://www.youtube.com/watch?v=xxxx)",
+    "group": "รีวิว - วิดีโอรีวิว"
+  },
+  {
+    "id": "reviews-fb-button-text",
+    "type": "text",
+    "label": "ข้อความปุ่ม \"ดูรีวิวเพิ่มเติมบน Facebook\" (รูปแกลเลอรี่จัดการที่แท็บ 🖼 แกลเลอรี่รูปภาพ)",
+    "group": "รีวิว - วิดีโอรีวิว"
+  },
+  {
+    "id": "creator-section-badge",
+    "type": "text",
+    "label": "ป้ายข้อความ หัวข้อรีวิวครีเอเตอร์",
+    "group": "รีวิว - รีวิวครีเอเตอร์ (หัวข้อ)"
+  },
+  {
+    "id": "creator-section-title",
+    "type": "text",
+    "label": "หัวข้อหลัก รีวิวครีเอเตอร์",
+    "group": "รีวิว - รีวิวครีเอเตอร์ (หัวข้อ)"
+  },
+  {
+    "id": "creator-section-subtitle",
+    "type": "text",
+    "label": "คำโปรย รีวิวครีเอเตอร์ (รายการคลิปจัดการที่แท็บ 🎬 รีวิวครีเอเตอร์)",
+    "group": "รีวิว - รีวิวครีเอเตอร์ (หัวข้อ)"
+  },
+  {
+    "id": "img-contact-hero-bg",
+    "type": "image",
+    "label": "รูปพื้นหลัง Hero",
+    "group": "ติดต่อ - Hero",
+    "hint": "แนะนำ 1600×900px ขึ้นไป แนวนอน (อัตราส่วน 16:9) — รูปเล็กเกินไปจะเบลอเมื่อขยายเต็มจอ"
+  },
+  {
+    "id": "contact-hero-badge",
+    "type": "text",
+    "label": "ป้ายข้อความ Hero",
+    "group": "ติดต่อ - Hero"
+  },
+  {
+    "id": "contact-hero-title",
+    "type": "text",
+    "label": "หัวข้อหลัก Hero",
+    "group": "ติดต่อ - Hero"
+  },
+  {
+    "id": "contact-hero-subtitle",
+    "type": "text",
+    "label": "คำโปรย Hero",
+    "group": "ติดต่อ - Hero"
+  },
+  {
+    "id": "contact-phone",
+    "type": "text",
+    "label": "เบอร์โทรศัพท์",
+    "group": "ติดต่อ - ข้อมูลติดต่อ"
+  },
+  {
+    "id": "contact-line",
+    "type": "text",
+    "label": "Line Official",
+    "group": "ติดต่อ - ข้อมูลติดต่อ"
+  },
+  {
+    "id": "contact-fb",
+    "type": "text",
+    "label": "ชื่อ Facebook",
+    "group": "ติดต่อ - ข้อมูลติดต่อ"
+  },
+  {
+    "id": "contact-website-text",
+    "type": "text",
+    "label": "ข้อความชื่อเว็บไซต์",
+    "group": "ติดต่อ - ข้อมูลติดต่อ"
+  },
+  {
+    "id": "contact-branch-summary",
+    "type": "text",
+    "label": "ข้อความสรุปจำนวนสาขา",
+    "group": "ติดต่อ - ข้อมูลติดต่อ"
+  },
+  {
+    "id": "contact-channels-eyebrow",
+    "type": "text",
+    "label": "ป้ายข้อความ Every Channel",
+    "group": "ติดต่อ - ทุกช่องทาง"
+  },
+  {
+    "id": "contact-channels-title",
+    "type": "text",
+    "label": "หัวข้อ ทุกช่องทางของกุ้งถัง",
+    "group": "ติดต่อ - ทุกช่องทาง"
+  },
+  {
+    "id": "contact-channels-subtitle",
+    "type": "text",
+    "label": "คำโปรย ทุกช่องทางของกุ้งถัง",
+    "group": "ติดต่อ - ทุกช่องทาง"
+  },
+  {
+    "id": "contact-form-eyebrow",
+    "type": "text",
+    "label": "ป้ายข้อความ Message Us",
+    "group": "ติดต่อ - ฟอร์มติดต่อ"
+  },
+  {
+    "id": "contact-form-title",
+    "type": "text",
+    "label": "หัวข้อ ฟอร์มติดต่อ",
+    "group": "ติดต่อ - ฟอร์มติดต่อ"
+  },
+  {
+    "id": "contact-form-subtitle",
+    "type": "text",
+    "label": "คำโปรย ฟอร์มติดต่อ",
+    "group": "ติดต่อ - ฟอร์มติดต่อ"
+  },
+  {
+    "id": "link-facebook",
+    "type": "link",
+    "label": "ลิงก์ Facebook (ใช้ในหลายจุดของเว็บ)",
+    "group": "ลิงก์หลัก (ใช้หลายจุดในเว็บ)"
+  },
+  {
+    "id": "link-line",
+    "type": "link",
+    "label": "ลิงก์ Line Official (ใช้ในหลายจุดของเว็บ)",
+    "group": "ลิงก์หลัก (ใช้หลายจุดในเว็บ)"
+  },
+  {
+    "id": "link-instagram",
+    "type": "link",
+    "label": "ลิงก์ Instagram",
+    "group": "ลิงก์หลัก (ใช้หลายจุดในเว็บ)"
+  },
+  {
+    "id": "link-tiktok",
+    "type": "link",
+    "label": "ลิงก์ Tiktok",
+    "group": "ลิงก์หลัก (ใช้หลายจุดในเว็บ)"
+  },
+  {
+    "id": "link-shopee",
+    "type": "link",
+    "label": "ลิงก์ Shopee Official",
+    "group": "ลิงก์หลัก (ใช้หลายจุดในเว็บ)"
+  },
+  {
+    "id": "footer-desc",
+    "type": "text",
+    "label": "คำโปรยท้ายเว็บ (Footer) — ใช้ทุกหน้า แก้ที่เดียวอัปเดตทุกหน้า",
+    "group": "Footer (ใช้ทุกหน้า)"
+  },
+  {
+    "id": "links-page-name",
+    "type": "text",
+    "label": "ชื่อบัญชี (หน้าลิงก์รวม)",
+    "group": "ลิงก์รวม (links.html)"
+  },
+  {
+    "id": "links-page-tagline",
+    "type": "text",
+    "label": "คำโปรยใต้ชื่อ (หน้าลิงก์รวม)",
+    "group": "ลิงก์รวม (links.html)"
+  },
+  {
+    "id": "blog-hero-badge",
+    "type": "text",
+    "label": "ป้ายข้อความ Hero",
+    "group": "บทความ (Blog) - Hero"
+  },
+  {
+    "id": "blog-hero-title",
+    "type": "text",
+    "label": "หัวข้อหลัก Hero",
+    "group": "บทความ (Blog) - Hero"
+  },
+  {
+    "id": "blog-hero-subtitle",
+    "type": "text",
+    "label": "คำโปรย Hero",
+    "group": "บทความ (Blog) - Hero"
+  },
+  {
+    "id": "icon-menu",
+    "type": "image",
+    "label": "ไอคอน เมนู",
+    "group": "ไอคอน (หน้าลิงก์รวม)",
+    "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG"
+  },
+  {
+    "id": "icon-member",
+    "type": "image",
+    "label": "ไอคอน ระบบสมาชิก",
+    "group": "ไอคอน (หน้าลิงก์รวม)",
+    "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG"
+  },
+  {
+    "id": "icon-facebook",
+    "type": "image",
+    "label": "ไอคอน Facebook",
+    "group": "ไอคอน (หน้าลิงก์รวม)",
+    "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG"
+  },
+  {
+    "id": "icon-line",
+    "type": "image",
+    "label": "ไอคอน Line",
+    "group": "ไอคอน (หน้าลิงก์รวม)",
+    "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG"
+  },
+  {
+    "id": "icon-instagram",
+    "type": "image",
+    "label": "ไอคอน Instagram",
+    "group": "ไอคอน (หน้าลิงก์รวม)",
+    "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG"
+  },
+  {
+    "id": "icon-tiktok",
+    "type": "image",
+    "label": "ไอคอน Tiktok",
+    "group": "ไอคอน (หน้าลิงก์รวม)",
+    "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG"
+  },
+  {
+    "id": "icon-shopee",
+    "type": "image",
+    "label": "ไอคอน Shopee",
+    "group": "ไอคอน (หน้าลิงก์รวม)",
+    "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG"
+  },
+  {
+    "id": "icon-website",
+    "type": "image",
+    "label": "ไอคอน เว็บไซต์",
+    "group": "ไอคอน (หน้าลิงก์รวม)",
+    "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG"
+  },
+  {
+    "id": "icon-map",
+    "type": "image",
+    "label": "ไอคอน แผนที่",
+    "group": "ไอคอน (หน้าลิงก์รวม)",
+    "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG"
+  },
+  {
+    "id": "icon-lineman",
+    "type": "image",
+    "label": "ไอคอน Lineman",
+    "group": "ไอคอน (หน้าลิงก์รวม)",
+    "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG"
+  },
+  {
+    "id": "icon-grab",
+    "type": "image",
+    "label": "ไอคอน Grab",
+    "group": "ไอคอน (หน้าลิงก์รวม)",
+    "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG"
+  },
+  {
+    "id": "icon-shopeefood",
+    "type": "image",
+    "label": "ไอคอน ShopeeFood",
+    "group": "ไอคอน (หน้าลิงก์รวม)",
+    "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG"
+  },
+  {
+    "id": "icon-robinhood",
+    "type": "image",
+    "label": "ไอคอน Robinhood",
+    "group": "ไอคอน (หน้าลิงก์รวม)",
+    "hint": "แนะนำ 200×200px (จัตุรัส) พื้นหลังโปร่งใส ไฟล์ PNG"
+  },
+  {
+    "id": "announcement-bar-text",
+    "type": "text",
+    "label": "ข้อความแถบประกาศบนสุด (ใช้ทุกหน้า) — ลิงก์ไปหน้าสมัครสมาชิก",
+    "group": "ทั่วไป"
+  },
+  {
+    "id": "home-hashtag-line",
+    "type": "text",
+    "label": "แฮชแท็กแบรนด์ (แถบก่อน Footer)",
+    "group": "หน้าแรก - แฮชแท็กแบรนด์"
+  },
+  {
+    "id": "footer-member-btn-text",
+    "type": "text",
+    "label": "ข้อความปุ่มสมัครสมาชิกใน Footer (ใช้ทุกหน้า)",
+    "group": "Footer (ใช้ทุกหน้า)"
+  }
 ]
