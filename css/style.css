@@ -311,7 +311,7 @@ nav.main-nav a.active {
   flex-shrink: 0;
 }
 
-.delivery-ch-icon {
+.card-body h3 img.delivery-ch-icon {
   display: inline-block;
   width: 22px;
   height: 22px;
