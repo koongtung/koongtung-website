@@ -28,6 +28,8 @@ export async function onRequestGet(context) {
   const heroBadge = overrides["blog-hero-badge"] || "Blog";
   const heroTitle = overrides["blog-hero-title"] || "บทความ & ข่าวสาร";
   const heroSubtitle = overrides["blog-hero-subtitle"] || "เรื่องราวเบื้องหลัง บทสัมภาษณ์ และรีวิวจากสื่อต่าง ๆ ที่เคยพูดถึงกุ้งถัง";
+  const heroTitleI18n = overrides["blog-hero-title"] ? "" : ' data-i18n="blogPage.heroTitle"';
+  const heroSubtitleI18n = overrides["blog-hero-subtitle"] ? "" : ' data-i18n="blogPage.heroSubtitle"';
 
   const headExtra = `<title>บทความ | KOONGTUNG กุ้งถัง Seafood Boil</title>
 <meta name="description" content="บทความและข่าวสารจากร้าน Seafood Boil กุ้งถัง KOONGTUNG เรื่องราวเบื้องหลัง บทสัมภาษณ์ และรีวิวที่เคยออกสื่อ">
@@ -36,8 +38,8 @@ export async function onRequestGet(context) {
   const bodyHtml = `<section class="hero" style="min-height:30vh; background-image:url('/assets/images/about-story.jpg')">
   <div class="container hero-content">
     <span class="hero-badge">${escapeHtml(heroBadge)}</span>
-    <h1>${escapeHtml(heroTitle)}</h1>
-    <p>${escapeHtml(heroSubtitle)}</p>
+    <h1${heroTitleI18n}>${escapeHtml(heroTitle)}</h1>
+    <p${heroSubtitleI18n}>${escapeHtml(heroSubtitle)}</p>
   </div>
 </section>
 <section>

@@ -30,7 +30,7 @@ export function renderBodyHtml(body) {
 export function renderHeader() {
   return `<div class="announce-bar" id="announceBar">
   <div class="container">
-    <a href="https://liff.line.me/2000733931-wPdEZX0R/channels/5000048775/crm/member/dashboard" target="_blank" rel="noopener" data-cms-id="link-member" data-cms-link="true"><span data-cms-id="announcement-bar-text">🎉 สมัคร JOIN KOONGTUNG CLUB วันนี้ รับสิทธิพิเศษทันที</span></a>
+    <a href="https://liff.line.me/2000733931-wPdEZX0R/channels/5000048775/crm/member/dashboard" target="_blank" rel="noopener" data-cms-id="link-member" data-cms-link="true"><span data-cms-id="announcement-bar-text" data-i18n="announce.text">🎉 สมัคร JOIN KOONGTUNG CLUB วันนี้ รับสิทธิพิเศษทันที</span></a>
     <button type="button" class="announce-close" aria-label="ปิด">✕</button>
   </div>
 </div>
@@ -43,17 +43,22 @@ export function renderHeader() {
         <span class="brand-tagline">Eat with your hands</span>
       </span>
     </a>
+    <div class="lang-switch">
+      <button data-lang="th">TH</button>
+      <button data-lang="en">EN</button>
+      <button data-lang="zh">中文</button>
+    </div>
     <button class="nav-toggle" aria-label="เปิดเมนู">☰</button>
     <nav class="main-nav">
       <ul>
-        <li><a href="/index.html">หน้าแรก</a></li>
-        <li><a href="/about.html">เกี่ยวกับเรา</a></li>
-        <li><a href="/branches.html">สาขา</a></li>
-        <li><a href="/menu.html">เมนู</a></li>
-        <li><a href="/promotion.html">โปรโมชั่น &amp; สมาชิก</a></li>
-        <li><a href="/reviews.html">รีวิว</a></li>
-        <li><a href="/contact.html">ติดต่อเรา</a></li>
-        <li><a href="/links.html">ลิงก์ทั้งหมด</a></li>
+        <li><a href="/index.html" data-i18n="nav.home">หน้าแรก</a></li>
+        <li><a href="/about.html" data-i18n="nav.about">เกี่ยวกับเรา</a></li>
+        <li><a href="/branches.html" data-i18n="nav.branches">สาขา</a></li>
+        <li><a href="/menu.html" data-i18n="nav.menu">เมนู</a></li>
+        <li><a href="/promotion.html" data-i18n="nav.promotion">โปรโมชั่น &amp; สมาชิก</a></li>
+        <li><a href="/reviews.html" data-i18n="nav.reviews">รีวิว</a></li>
+        <li><a href="/contact.html" data-i18n="nav.contact">ติดต่อเรา</a></li>
+        <li><a href="/links.html" data-i18n="nav.links">ลิงก์ทั้งหมด</a></li>
       </ul>
     </nav>
   </div>
@@ -74,16 +79,16 @@ export function renderFooter() {
         <a href="https://liff.line.me/2000733931-wPdEZX0R/channels/5000048775/crm/member/dashboard" target="_blank" rel="noopener" class="btn-join-club" data-track-id="footer-join-club" data-cms-id="link-member" data-cms-link="true"><span data-cms-id="footer-member-btn-text">JOIN KOONGTUNG CLUB</span></a>
       </div>
       <div>
-        <h4>เมนูลัด</h4>
+        <h4 data-i18n="footer.quicklinks">เมนูลัด</h4>
         <ul>
-          <li><a href="/branches.html">สาขาทั้งหมด</a></li>
-          <li><a href="/menu.html">เมนูอาหาร</a></li>
-          <li><a href="/promotion.html">โปรโมชั่น</a></li>
-          <li><a href="/contact.html">ติดต่อเรา</a></li>
+          <li><a href="/branches.html" data-i18n="footer.linkBranches">สาขาทั้งหมด</a></li>
+          <li><a href="/menu.html" data-i18n="footer.linkMenu">เมนูอาหาร</a></li>
+          <li><a href="/promotion.html" data-i18n="footer.linkPromo">โปรโมชั่น</a></li>
+          <li><a href="/contact.html" data-i18n="footer.linkContact">ติดต่อเรา</a></li>
         </ul>
       </div>
       <div>
-        <h4>ติดต่อ</h4>
+        <h4 data-i18n="footer.contactTitle">ติดต่อ</h4>
         <ul>
           <li>โทร 086-761-5558</li>
           <li>Line: @koongtung</li>
@@ -98,7 +103,8 @@ export function renderFooter() {
 </footer>
 <script src="/js/main.js?v=2"></script>
 <script src="/js/cms.js?v=2"></script>
-<script src="/js/track.js"></script>`;
+<script src="/js/track.js"></script>
+<script src="/js/i18n.js?v=2"></script>`;
 }
 
 export function renderPageShell(headExtra, bodyHtml) {

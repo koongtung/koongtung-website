@@ -40,7 +40,7 @@
 
 <div class="announce-bar" id="announceBar">
   <div class="container">
-    <a href="https://liff.line.me/2000733931-wPdEZX0R/channels/5000048775/crm/member/dashboard" target="_blank" rel="noopener" data-cms-id="link-member" data-cms-link="true"><span data-cms-id="announcement-bar-text">🎉 สมัคร JOIN KOONGTUNG CLUB วันนี้ รับสิทธิพิเศษทันที</span></a>
+    <a href="https://liff.line.me/2000733931-wPdEZX0R/channels/5000048775/crm/member/dashboard" target="_blank" rel="noopener" data-cms-id="link-member" data-cms-link="true"><span data-cms-id="announcement-bar-text" data-i18n="announce.text">🎉 สมัคร JOIN KOONGTUNG CLUB วันนี้ รับสิทธิพิเศษทันที</span></a>
     <button type="button" class="announce-close" aria-label="ปิด">✕</button>
   </div>
 </div>
@@ -53,17 +53,22 @@
         <span class="brand-tagline">Eat with your hands</span>
       </span>
     </a>
+    <div class="lang-switch">
+      <button data-lang="th">TH</button>
+      <button data-lang="en">EN</button>
+      <button data-lang="zh">中文</button>
+    </div>
     <button class="nav-toggle" aria-label="เปิดเมนู">☰</button>
     <nav class="main-nav">
       <ul>
-        <li><a href="index.html">หน้าแรก</a></li>
-        <li><a href="about.html">เกี่ยวกับเรา</a></li>
-        <li><a href="branches.html">สาขา</a></li>
-        <li><a href="menu.html">เมนู</a></li>
-        <li><a href="promotion.html">โปรโมชั่น &amp; สมาชิก</a></li>
-        <li><a href="reviews.html">รีวิว</a></li>
-        <li><a href="contact.html">ติดต่อเรา</a></li>
-        <li><a href="links.html" class="active">ลิงก์ทั้งหมด</a></li>
+        <li><a href="index.html" data-i18n="nav.home">หน้าแรก</a></li>
+        <li><a href="about.html" data-i18n="nav.about">เกี่ยวกับเรา</a></li>
+        <li><a href="branches.html" data-i18n="nav.branches">สาขา</a></li>
+        <li><a href="menu.html" data-i18n="nav.menu">เมนู</a></li>
+        <li><a href="promotion.html" data-i18n="nav.promotion">โปรโมชั่น &amp; สมาชิก</a></li>
+        <li><a href="reviews.html" data-i18n="nav.reviews">รีวิว</a></li>
+        <li><a href="contact.html" data-i18n="nav.contact">ติดต่อเรา</a></li>
+        <li><a href="links.html" class="active" data-i18n="nav.links">ลิงก์ทั้งหมด</a></li>
       </ul>
     </nav>
   </div>
@@ -72,11 +77,11 @@
 <div class="linkbio-wrap">
   <img class="linkbio-avatar" src="assets/images/logo.jpg" alt="KOONGTUNG">
   <h1 class="linkbio-name" data-cms-id="links-page-name">@koongtung</h1>
-  <p class="linkbio-tagline" data-cms-id="links-page-tagline">ร้านกุ้งถังเจ้าแรกในเมืองไทย SINCE 2015<br>รสชาติสไตล์อเมริกัน ผสมผสานสไตล์ไทย 100%</p>
+  <p class="linkbio-tagline" data-cms-id="links-page-tagline" data-i18n="linksPage.tagline">ร้านกุ้งถังเจ้าแรกในเมืองไทย SINCE 2015<br>รสชาติสไตล์อเมริกัน ผสมผสานสไตล์ไทย 100%</p>
 
   <div id="linksContainer"></div>
 
-  <a class="back-home" href="index.html">← กลับหน้าเว็บไซต์หลัก</a>
+  <a class="back-home" href="index.html" data-i18n="linksPage.backHome">← กลับหน้าเว็บไซต์หลัก</a>
 </div>
 
 <script>
@@ -189,5 +194,6 @@ Promise.all([
 <script src="js/main.js?v=2"></script>
 <script src="js/cms.js?v=2"></script>
 <script src="js/track.js"></script>
+<script src="js/i18n.js?v=2"></script>
 </body>
 </html>

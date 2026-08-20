@@ -21,7 +21,7 @@ function renderRelated(related) {
     </a>`;
   }).join("");
   return `<div class="section-head" style="margin-top:50px;text-align:left;max-width:none;">
-    <h2 style="font-size:1.3rem;">บทความที่เกี่ยวข้อง</h2>
+    <h2 style="font-size:1.3rem;" data-i18n="blogPage.related">บทความที่เกี่ยวข้อง</h2>
   </div>
   <div class="blog-grid">${cards}</div>`;
 }
@@ -85,7 +85,7 @@ export async function onRequestGet(context) {
 
   const bodyHtml = `<section>
   <div class="container" style="max-width:760px; padding-top:44px;">
-    <a href="/blog.html" class="blog-back-link">← กลับไปหน้าบทความ</a>
+    <a href="/blog.html" class="blog-back-link" data-i18n="blogPage.backLink">← กลับไปหน้าบทความ</a>
     <div class="blog-post-date">${formatThaiDate(post.date)}</div>
     <h1 class="blog-post-title">${escapeHtml(post.title)}</h1>
     ${post.coverImage ? `<img class="blog-post-cover" src="${escapeHtml(post.coverImage)}" alt="${escapeHtml(post.title)}">` : ""}
