@@ -50,6 +50,13 @@
     "group": "หน้าแรก"
   },
   {
+    "id": "img-home-story",
+    "type": "image",
+    "label": "รูปเรื่องราวร้าน (ข้าง Our Story) - หน้าแรก",
+    "group": "หน้าแรก - เรื่องราวย่อ",
+    "hint": "แนะนำ 1000x700px ขึ้นไป"
+  },
+  {
     "id": "home-story-eyebrow",
     "type": "text",
     "label": "ป้ายข้อความ Our Story",
