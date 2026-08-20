@@ -795,6 +795,10 @@ section { padding: 64px 0; }
   margin: 0 0 10px;
   color: #fff;
 }
+.hashtag-line .accent-red {
+  -webkit-text-stroke: 1.5px #fff;
+  paint-order: stroke fill;
+}
 .hashtag-sub { margin: 0; font-size: .95rem; color: #d7e0f0; }
 .hashtag-sub a { text-decoration: underline; font-weight: 600; color: #fff; }
 .hashtag-sub a:hover { color: var(--red); }
