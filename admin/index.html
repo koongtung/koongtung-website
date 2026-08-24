@@ -774,6 +774,15 @@ function renderGalleryTab() {
 var PLATFORM_OPTIONS = ['youtube', 'tiktok', 'facebook', 'instagram'];
 var creatorData = null;
 
+// Matches the DEFAULT_CREATOR_REVIEWS fallback baked into reviews.html — used
+// here so the admin panel has something to show/edit even before anyone has
+// ever saved a custom list (the API returns null until the first save).
+var DEFAULT_CREATOR_REVIEWS = [
+  { "id": "cr-1", "creator": "รีวิวจาก TikTok #1", "platform": "tiktok", "videoUrl": "https://vt.tiktok.com/ZSVkdDuAe/", "caption": "คลิปรีวิวจากลูกค้า — แก้ไขชื่อ/คำโปรยได้ที่ระบบหลังบ้าน /admin" },
+  { "id": "cr-2", "creator": "รีวิวจาก TikTok #2", "platform": "tiktok", "videoUrl": "https://vt.tiktok.com/ZSVkdDMdn/", "caption": "คลิปรีวิวจากลูกค้า — แก้ไขชื่อ/คำโปรยได้ที่ระบบหลังบ้าน /admin" },
+  { "id": "cr-3", "creator": "รีวิวจาก TikTok #3", "platform": "tiktok", "videoUrl": "https://vt.tiktok.com/ZSVkdVBmV/", "caption": "คลิปรีวิวจากลูกค้า — แก้ไขชื่อ/คำโปรยได้ที่ระบบหลังบ้าน /admin" }
+];
+
 function loadCreatorManager() {
   var el = document.getElementById('creatorTab');
   if (creatorData) { renderCreatorManager(); return; }
@@ -781,7 +790,7 @@ function loadCreatorManager() {
   fetch('/api/creator-reviews', { cache: 'no-store' })
     .then(function (res) { return res.json(); })
     .then(function (items) {
-      creatorData = items && items.length ? items : [];
+      creatorData = (items && items.length) ? items : DEFAULT_CREATOR_REVIEWS.slice();
       renderCreatorManager();
     })
     .catch(function () { el.innerHTML = '<div class="group">โหลดข้อมูลไม่สำเร็จ</div>'; });
