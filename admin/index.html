@@ -102,7 +102,6 @@
     <button id="tabContentBtn" class="active" onclick="showTab('content')">✏️ แก้ไขเนื้อหา</button>
     <button id="tabLinksBtn" onclick="showTab('links')">🔗 จัดการลิงก์ทั้งหมด</button>
     <button id="tabCreatorBtn" onclick="showTab('creator')">🎬 รีวิวครีเอเตอร์</button>
-    <button id="tabGalleryBtn" onclick="showTab('gallery')">🖼 แกลเลอรี่รูปภาพ</button>
     <button id="tabBlogBtn" onclick="showTab('blog')">📝 จัดการบทความ</button>
     <button id="tabLeadsBtn" onclick="showTab('leads')">📋 ข้อความติดต่อ</button>
     <button id="tabStatsBtn" onclick="showTab('stats')">📊 สถิติการคลิกลิงก์</button>
@@ -110,7 +109,6 @@
   <div id="contentTab"></div>
   <div id="linksTab" style="display:none;"></div>
   <div id="creatorTab" style="display:none;"></div>
-  <div id="galleryTab" style="display:none;"></div>
   <div id="blogTab" style="display:none;"></div>
   <div id="leadsTab" style="display:none;"></div>
   <div id="statsTab" style="display:none;"></div>
@@ -357,21 +355,18 @@ function showTab(name) {
   document.getElementById('contentTab').style.display = name === 'content' ? 'block' : 'none';
   document.getElementById('linksTab').style.display = name === 'links' ? 'block' : 'none';
   document.getElementById('creatorTab').style.display = name === 'creator' ? 'block' : 'none';
-  document.getElementById('galleryTab').style.display = name === 'gallery' ? 'block' : 'none';
   document.getElementById('blogTab').style.display = name === 'blog' ? 'block' : 'none';
   document.getElementById('leadsTab').style.display = name === 'leads' ? 'block' : 'none';
   document.getElementById('statsTab').style.display = name === 'stats' ? 'block' : 'none';
   document.getElementById('tabContentBtn').className = name === 'content' ? 'active' : '';
   document.getElementById('tabLinksBtn').className = name === 'links' ? 'active' : '';
   document.getElementById('tabCreatorBtn').className = name === 'creator' ? 'active' : '';
-  document.getElementById('tabGalleryBtn').className = name === 'gallery' ? 'active' : '';
   document.getElementById('tabBlogBtn').className = name === 'blog' ? 'active' : '';
   document.getElementById('tabLeadsBtn').className = name === 'leads' ? 'active' : '';
   document.getElementById('tabStatsBtn').className = name === 'stats' ? 'active' : '';
   if (name === 'stats') loadStats();
   if (name === 'links') loadLinksManager();
   if (name === 'creator') loadCreatorManager();
-  if (name === 'gallery') loadGalleryManager();
   if (name === 'blog') loadBlogManager();
   if (name === 'leads') loadLeadsManager();
 }
@@ -672,23 +667,22 @@ function renderBlogRow(post, idx) {
   return row;
 }
 
+// Gallery-type fields (free add/remove, unlimited images) — rendered inline
+// inside the "แก้ไขเนื้อหา" tab, under the page group they belong to, right
+// alongside the regular single-image fields for that same page.
 var GALLERY_DEFS = [
-  { name: 'menu-fullcover', label: 'รูปเมนูฉบับเต็ม (ภาพใหญ่ใต้ปุ่มดาวน์โหลดเมนู — menu.html)', pageUrl: '/menu.html' },
-  { name: 'menu', label: 'แกลเลอรี่หน้าเมนู (menu.html)', pageUrl: '/menu.html' },
-  { name: 'reviews', label: 'แกลเลอรี่รูปภาพหน้ารีวิว (reviews.html)', pageUrl: '/reviews.html' }
+  { name: 'menu-fullcover', label: 'รูปเมนูฉบับเต็ม (ภาพใหญ่ใต้ปุ่มดาวน์โหลดเมนู)', group: 'เมนู - เมนูฉบับเต็ม' },
+  { name: 'menu', label: 'แกลเลอรี่ - รีวิวเมนูเพิ่มเติม', group: 'เมนู - แกลเลอรี่ & CTA' },
+  { name: 'reviews', label: 'แกลเลอรี่ภาพเพิ่มเติม', group: 'รีวิว - แกลเลอรี่ภาพเพิ่มเติม' }
 ];
 var galleryData = {};
 
-function loadGalleryManager() {
-  var el = document.getElementById('galleryTab');
-  if (Object.keys(galleryData).length) { renderGalleryTab(); return; }
-  el.innerHTML = '<div class="group">กำลังโหลด...</div>';
-  Promise.all(GALLERY_DEFS.map(function (def) {
+function loadAllGalleryData() {
+  return Promise.all(GALLERY_DEFS.map(function (def) {
     return fetch('/api/gallery?name=' + def.name, { cache: 'no-store' })
       .then(function (res) { return res.json(); })
       .then(function (items) { galleryData[def.name] = (items && items.length) ? items : []; });
-  })).then(renderGalleryTab)
-    .catch(function () { el.innerHTML = '<div class="group">โหลดข้อมูลไม่สำเร็จ</div>'; });
+  }));
 }
 
 function saveGallerySection(name) {
@@ -718,24 +712,30 @@ function saveGallerySection(name) {
   });
 }
 
-function renderGalleryTab() {
-  var el = document.getElementById('galleryTab');
-  el.innerHTML = '';
+function buildGallerySection(def) {
+  var wrap = document.createElement('div');
+  wrap.className = 'field';
 
-  var infoBox = document.createElement('div');
-  infoBox.className = 'group';
-  infoBox.innerHTML = '<p style="margin:0;color:var(--muted);font-size:.9rem;">เพิ่ม/ลบรูปในแกลเลอรี่ได้อิสระ ไม่จำกัดจำนวน — อัปโหลดแล้วบันทึกทันที ระบบจะปรับขนาดรูปให้อัตโนมัติ</p>';
-  el.appendChild(infoBox);
+  var label = document.createElement('label');
+  label.textContent = def.label;
+  wrap.appendChild(label);
 
-  GALLERY_DEFS.forEach(function (def) {
-    var group = document.createElement('div');
-    group.className = 'group';
-    var h2 = document.createElement('h2');
-    h2.textContent = def.label + ' (' + galleryData[def.name].length + ' รูป)';
-    group.appendChild(h2);
+  var countP = document.createElement('p');
+  countP.style.cssText = 'margin:0 0 10px;color:var(--muted);font-size:.82rem;';
+  wrap.appendChild(countP);
 
-    var grid = document.createElement('div');
-    grid.className = 'gallery-grid';
+  var grid = document.createElement('div');
+  grid.className = 'gallery-grid';
+  wrap.appendChild(grid);
+
+  var statusEl = document.createElement('span');
+  statusEl.className = 'status';
+  statusEl.id = 'gallery-status-' + def.name;
+  wrap.appendChild(statusEl);
+
+  function refresh() {
+    countP.textContent = 'เพิ่ม/ลบรูปได้อิสระ ไม่จำกัดจำนวน — อัปโหลดแล้วบันทึกทันที (' + galleryData[def.name].length + ' รูป)';
+    grid.innerHTML = '';
 
     galleryData[def.name].forEach(function (src, idx) {
       var thumb = document.createElement('div');
@@ -746,9 +746,10 @@ function renderGalleryTab() {
       var delBtn = document.createElement('button');
       delBtn.className = 'del-btn';
       delBtn.textContent = '✕';
+      delBtn.title = 'ลบรูปนี้';
       delBtn.onclick = function () {
         galleryData[def.name].splice(idx, 1);
-        renderGalleryTab();
+        refresh();
         saveGallerySection(def.name);
       };
       thumb.appendChild(delBtn);
@@ -765,21 +766,16 @@ function renderGalleryTab() {
       if (!fileInput.files[0]) return;
       resizeImage(fileInput.files[0], function (dataUrl) {
         galleryData[def.name].push(dataUrl);
-        renderGalleryTab();
+        refresh();
         saveGallerySection(def.name);
       });
     };
     addTile.appendChild(fileInput);
     grid.appendChild(addTile);
+  }
 
-    var statusEl = document.createElement('span');
-    statusEl.className = 'status';
-    statusEl.id = 'gallery-status-' + def.name;
-
-    group.appendChild(grid);
-    group.appendChild(statusEl);
-    el.appendChild(group);
-  });
+  refresh();
+  return wrap;
 }
 
 var PLATFORM_OPTIONS = ['youtube', 'tiktok', 'facebook', 'instagram'];
@@ -1245,6 +1241,22 @@ function render() {
     groups[f.group].push(f);
   });
 
+  // Fold gallery (free add/remove) sections into the same page groups as the
+  // regular single-image fields, so every image on a page — fixed slot or
+  // free gallery — shows up in one place instead of a separate hidden tab.
+  GALLERY_DEFS.forEach(function (def) {
+    if (!groups[def.group]) {
+      groups[def.group] = [];
+      var meta = getPageMeta(def.group);
+      var insertAt = groupOrder.length;
+      for (var gi = groupOrder.length - 1; gi >= 0; gi--) {
+        if (getPageMeta(groupOrder[gi]).label === meta.label) { insertAt = gi + 1; break; }
+      }
+      groupOrder.splice(insertAt, 0, def.group);
+    }
+    groups[def.group].push({ __gallery: true, galleryDef: def });
+  });
+
   var lastPageLabel = null;
   var sidebarList = document.createElement('ul');
   sidebarList.className = 'sidebar-list';
@@ -1281,7 +1293,7 @@ function render() {
     section.style.borderLeftColor = meta.color;
 
     var searchTextParts = [groupName];
-    groups[groupName].forEach(function (f) { searchTextParts.push(f.label); });
+    groups[groupName].forEach(function (f) { searchTextParts.push(f.__gallery ? f.galleryDef.label : f.label); });
     section.setAttribute('data-search-text', searchTextParts.join(' ').toLowerCase());
 
     var header = document.createElement('div');
@@ -1293,7 +1305,7 @@ function render() {
     var body = document.createElement('div');
     body.className = 'group-body';
     groups[groupName].forEach(function (field) {
-      body.appendChild(renderField(field));
+      body.appendChild(field.__gallery ? buildGallerySection(field.galleryDef) : renderField(field));
     });
     section.appendChild(body);
 
@@ -1309,7 +1321,8 @@ function render() {
 function boot() {
   Promise.all([
     fetch('/content-manifest.json').then(function (r) { return r.json(); }),
-    fetch('/api/content', { cache: 'no-store' }).then(function (r) { return r.json(); })
+    fetch('/api/content', { cache: 'no-store' }).then(function (r) { return r.json(); }),
+    loadAllGalleryData()
   ]).then(function (results) {
     manifest = results[0];
     overrides = results[1];
