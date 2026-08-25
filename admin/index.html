@@ -217,14 +217,76 @@ function resetField(id, statusEl, defaultValue, refreshFn) {
     });
 }
 
+function koongtungAbsDefault(path) {
+  var p = (path || '').replace(/^(\.\.\/)+/, '');
+  if (p.charAt(0) !== '/') p = '/' + p;
+  return p;
+}
+
+function saveImageField(id, dataUrl, statusEl, imgEl, absDefault) {
+  statusEl.textContent = 'กำลังบันทึก...';
+  statusEl.className = 'status';
+  fetch('/api/image/' + encodeURIComponent(id), {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'x-admin-password': PASSWORD },
+    body: JSON.stringify({ value: dataUrl })
+  }).then(function (res) {
+    if (res.status === 401) {
+      statusEl.textContent = 'รหัสผ่านไม่ถูกต้อง — กรุณาโหลดหน้านี้ใหม่แล้วกรอกรหัสผ่านอีกครั้ง';
+      statusEl.className = 'status err';
+      sessionStorage.removeItem('koongtung_admin_pw');
+      return;
+    }
+    return res.json();
+  }).then(function (json) {
+    if (json && json.ok) {
+      statusEl.textContent = 'บันทึกแล้ว ✓ (เว็บจะอัปเดตทันที ไม่ต้องรอโหลดซ้ำ)';
+      statusEl.className = 'status ok';
+      if (!overrides.__imageIds) overrides.__imageIds = [];
+      if (overrides.__imageIds.indexOf(id) === -1) overrides.__imageIds.push(id);
+      imgEl.src = '/api/image/' + encodeURIComponent(id) + '?default=' + encodeURIComponent(absDefault) + '&cb=' + Date.now();
+    }
+  }).catch(function () {
+    statusEl.textContent = 'บันทึกไม่สำเร็จ ลองใหม่อีกครั้ง';
+    statusEl.className = 'status err';
+  });
+}
+
+function resetImageField(id, statusEl, imgEl, absDefault) {
+  statusEl.textContent = 'กำลังคืนค่าเดิม...';
+  fetch('/api/image/' + encodeURIComponent(id), {
+    method: 'DELETE',
+    headers: { 'x-admin-password': PASSWORD }
+  }).then(function (res) { return res.json(); })
+    .then(function (json) {
+      if (json && json.ok) {
+        if (overrides.__imageIds) {
+          var idx = overrides.__imageIds.indexOf(id);
+          if (idx > -1) overrides.__imageIds.splice(idx, 1);
+        }
+        statusEl.textContent = 'คืนค่าเดิมแล้ว ✓';
+        statusEl.className = 'status ok';
+        imgEl.src = '/api/image/' + encodeURIComponent(id) + '?default=' + encodeURIComponent(absDefault) + '&cb=' + Date.now();
+      }
+    })
+    .catch(function () {
+      statusEl.textContent = 'คืนค่าเดิมไม่สำเร็จ ลองใหม่อีกครั้ง';
+      statusEl.className = 'status err';
+    });
+}
+
 function renderField(field) {
   var current = overrides.hasOwnProperty(field.id) ? overrides[field.id] : field.default;
   var wrap = document.createElement('div');
   wrap.className = 'field';
 
+  var isChanged = field.type === 'image'
+    ? (overrides.__imageIds || []).indexOf(field.id) > -1
+    : overrides.hasOwnProperty(field.id);
+
   var label = document.createElement('label');
   label.textContent = field.label;
-  if (overrides.hasOwnProperty(field.id)) {
+  if (isChanged) {
     var badge = document.createElement('span');
     badge.className = 'badge-changed';
     badge.textContent = 'แก้ไขแล้ว';
@@ -297,8 +359,9 @@ function renderField(field) {
     rowL.appendChild(statusEl);
     wrap.appendChild(rowL);
   } else if (field.type === 'image') {
+    var absDefault = koongtungAbsDefault(field.default);
     var img = document.createElement('img');
-    img.src = current;
+    img.src = '/api/image/' + encodeURIComponent(field.id) + '?default=' + encodeURIComponent(absDefault) + '&cb=' + Date.now();
     wrap.appendChild(img);
 
     var fileInput = document.createElement('input');
@@ -334,13 +397,14 @@ function renderField(field) {
     saveBtn2.textContent = 'บันทึกรูปนี้';
     saveBtn2.onclick = function () {
       if (!pendingValue) { statusEl.textContent = 'กรุณาเลือกรูปก่อน'; statusEl.className='status err'; return; }
-      saveField(field.id, pendingValue, statusEl);
+      saveImageField(field.id, pendingValue, statusEl, img, absDefault);
     };
     var resetBtn2 = document.createElement('button');
     resetBtn2.className = 'reset-btn';
     resetBtn2.textContent = 'คืนค่าเดิม';
     resetBtn2.onclick = function () {
-      resetField(field.id, statusEl, field.default, function (def) { img.src = def; pendingValue = null; });
+      resetImageField(field.id, statusEl, img, absDefault);
+      pendingValue = null;
     };
     row2.appendChild(saveBtn2);
     row2.appendChild(resetBtn2);

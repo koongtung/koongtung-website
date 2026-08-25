@@ -37,7 +37,7 @@ export function renderHeader() {
 <header class="site-header">
   <div class="container">
     <a href="/index.html" class="brand">
-      <img src="/assets/images/logo.jpg" alt="KoongTung logo" data-cms-id="logo">
+      <img src="/api/image/logo?default=/assets/images/logo.jpg" alt="KoongTung logo" data-cms-id="logo">
       <span>
         <span class="brand-name">KOONGTUNG</span>
         <span class="brand-tagline">Eat with your hands</span>

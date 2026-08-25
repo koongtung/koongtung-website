@@ -34,10 +34,15 @@ function koongtungLoadGA4(measurementId) {
             el.src = koongtungToYouTubeEmbed(value) || value;
           } else if (el.hasAttribute('data-cms-link')) {
             el.href = value;
-          } else if (el.tagName === 'IMG') {
-            el.src = value;
-          } else if (el.hasAttribute('data-cms-bg')) {
-            el.style.backgroundImage = "url('" + value + "')";
+          } else if (el.tagName === 'IMG' || el.hasAttribute('data-cms-bg')) {
+            // Single-image fields (hero backgrounds, card photos, etc.) no
+            // longer route through here — they're served directly by
+            // /api/image/:id so the correct version renders from the very
+            // first paint, with no client-side swap and no flash of an old
+            // image. This branch only remains as a harmless fallback for any
+            // legacy override that might still exist in the overrides blob.
+            if (el.tagName === 'IMG') el.src = value;
+            else el.style.backgroundImage = "url('" + value + "')";
           } else {
             el.textContent = value;
             // If this element is also a translated (data-i18n) field, refresh
