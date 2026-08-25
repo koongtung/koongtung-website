@@ -1,4 +1,4 @@
-const ALLOWED_NAMES = ["menu", "reviews"];
+const ALLOWED_NAMES = ["menu", "reviews", "menu-fullcover"];
 
 export async function onRequestGet(context) {
   const url = new URL(context.request.url);

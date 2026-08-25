@@ -20,7 +20,7 @@
 <link rel="icon" href="assets/images/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=9">
+<link rel="stylesheet" href="css/style.css?v=10">
 </head>
 <body>
 
@@ -79,6 +79,7 @@
       <a href="https://online.fliphtml5.com/ttukh/yrkw/" target="_blank" rel="noopener" class="btn btn-navy" data-track-id="menu-flipbook-full" data-cms-id="link-menu-flipbook-full" data-cms-link="true"><span data-i18n="menuPage.fullMenuBtn">📖 เมนูฉบับเต็ม (ทุกสาขา)</span></a>
       <a href="https://fliphtml5.com/jecnl/gipl/" target="_blank" rel="noopener" class="btn btn-navy" data-track-id="menu-flipbook-paragon" data-cms-id="link-menu-flipbook-paragon" data-cms-link="true"><span data-i18n="menuPage.paragonMenuBtn">📖 Special Menu เฉพาะสาขาพารากอน</span></a>
     </div>
+    <div class="menu-cover-gallery" id="menuFullcoverGrid"></div>
   </div>
 </section>
 
@@ -89,11 +90,10 @@
       <h2 data-cms-id="menu-special-title" data-i18n="menuPage.specialTitle">กุ้งดองซีอิ๊วสูตรเฉพาะร้านกุ้งถัง</h2>
       <p data-cms-id="menu-special-subtitle" data-i18n="menuPage.specialSubtitle">เมนูซิกเนเจอร์ที่ลูกค้าสั่งซ้ำมากที่สุด</p>
     </div>
-    <div class="gallery">
+    <div class="gallery gallery-3col">
       <img loading="lazy" src="assets/images/menu-special-1.jpg" alt="กุ้งดองซีอิ๊วสูตรเฉพาะร้าน 1" data-cms-id="img-menu-special-1">
       <img loading="lazy" src="assets/images/menu-special-2.jpg" alt="กุ้งดองซีอิ๊วสูตรเฉพาะร้าน 2" data-cms-id="img-menu-special-2">
       <img loading="lazy" src="assets/images/menu-special-3.jpg" alt="กุ้งดองซีอิ๊วสูตรเฉพาะร้าน 3" data-cms-id="img-menu-special-3">
-      <img loading="lazy" src="assets/images/menu-special-4.jpg" alt="กุ้งดองซีอิ๊วสูตรเฉพาะร้าน 4" data-cms-id="img-menu-special-4">
     </div>
   </div>
 </section>
@@ -208,6 +208,16 @@ function renderGallery(containerId, items) {
 }
 
 renderGallery('menuGalleryGrid', DEFAULT_MENU_GALLERY);
+
+var DEFAULT_MENU_FULLCOVER = ["assets/images/menu-special-5.jpg"];
+renderGallery('menuFullcoverGrid', DEFAULT_MENU_FULLCOVER);
+
+fetch('/api/gallery?name=menu-fullcover', { cache: 'no-store' })
+  .then(function (res) { return res.ok ? res.json() : null; })
+  .then(function (items) {
+    if (items && items.length) renderGallery('menuFullcoverGrid', items);
+  })
+  .catch(function () { /* keep defaults */ });
 
 fetch('/api/gallery?name=menu', { cache: 'no-store' })
   .then(function (res) { return res.ok ? res.json() : null; })

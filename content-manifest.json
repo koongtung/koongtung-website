@@ -876,13 +876,6 @@
     "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส"
   },
   {
-    "id": "img-menu-special-4",
-    "type": "image",
-    "label": "รูป 4",
-    "group": "เมนู - กุ้งดองซีอิ๊ว",
-    "hint": "แนะนำ 1000×750px ขึ้นไป แนวนอนหรือจัตุรัส"
-  },
-  {
     "id": "menu-combo-eyebrow",
     "type": "text",
     "label": "ป้ายข้อความ Lunch Set",
