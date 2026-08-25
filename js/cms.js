@@ -40,6 +40,15 @@ function koongtungLoadGA4(measurementId) {
             el.style.backgroundImage = "url('" + value + "')";
           } else {
             el.textContent = value;
+            // If this element is also a translated (data-i18n) field, refresh
+            // its cached "original Thai" text to this new CMS value. i18n.js
+            // caches that text the first time it runs — which happens before
+            // this fetch resolves — so without this refresh, re-applying the
+            // saved language just below would restore the stale pre-override
+            // default and silently wipe out the admin's edit.
+            if (el.hasAttribute('data-i18n')) {
+              el.setAttribute('data-i18n-original', value);
+            }
           }
         });
       });

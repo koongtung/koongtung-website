@@ -168,10 +168,18 @@ function resizeImage(file, cb) {
 function saveField(id, value, statusEl) {
   statusEl.textContent = 'กำลังบันทึก...';
   statusEl.className = 'status';
+  // Send our in-memory snapshot along with the change. KV reads are
+  // eventually consistent, so if the server re-fetched "overrides" fresh on
+  // every save, two saves made a few seconds apart could each read a stale
+  // copy and the second one would silently erase the first. Our snapshot is
+  // always current for this session, so the server uses it instead of
+  // re-reading from KV.
+  var merged = Object.assign({}, overrides);
+  merged[id] = value;
   fetch('/api/save', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'x-admin-password': PASSWORD },
-    body: JSON.stringify({ id: id, value: value })
+    body: JSON.stringify({ id: id, value: value, overrides: merged })
   }).then(function (res) {
     if (res.status === 401) {
       statusEl.textContent = 'รหัสผ่านไม่ถูกต้อง — กรุณาโหลดหน้านี้ใหม่แล้วกรอกรหัสผ่านอีกครั้ง';
@@ -184,7 +192,7 @@ function saveField(id, value, statusEl) {
     if (json && json.ok) {
       statusEl.textContent = 'บันทึกแล้ว ✓ (เว็บจะอัปเดตทันที)';
       statusEl.className = 'status ok';
-      overrides[id] = value;
+      overrides = merged;
     }
   }).catch(function () {
     statusEl.textContent = 'บันทึกไม่สำเร็จ ลองใหม่อีกครั้ง';
@@ -194,14 +202,16 @@ function saveField(id, value, statusEl) {
 
 function resetField(id, statusEl, defaultValue, refreshFn) {
   statusEl.textContent = 'กำลังคืนค่าเดิม...';
+  var merged = Object.assign({}, overrides);
+  delete merged[id];
   fetch('/api/reset', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'x-admin-password': PASSWORD },
-    body: JSON.stringify({ id: id })
+    body: JSON.stringify({ id: id, overrides: merged })
   }).then(function (res) { return res.json(); })
     .then(function (json) {
       if (json && json.ok) {
-        delete overrides[id];
+        overrides = merged;
         statusEl.textContent = 'คืนค่าเดิมแล้ว ✓';
         statusEl.className = 'status ok';
         if (refreshFn) refreshFn(defaultValue);

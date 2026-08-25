@@ -17,7 +17,7 @@ export async function onRequestPost(context) {
     });
   }
 
-  const { id } = body || {};
+  const { id, overrides } = body || {};
   if (!id) {
     return new Response(JSON.stringify({ error: "missing_id" }), {
       status: 400,
@@ -25,9 +25,18 @@ export async function onRequestPost(context) {
     });
   }
 
-  const raw = await context.env.CONTENT.get("overrides");
-  const data = raw ? JSON.parse(raw) : {};
-  delete data[id];
+  // Same reasoning as save.js: prefer the client's in-memory snapshot over a
+  // fresh KV read to avoid the eventual-consistency race between rapid
+  // sequential edits.
+  let data;
+  if (overrides && typeof overrides === "object" && !Array.isArray(overrides)) {
+    data = overrides;
+    delete data[id];
+  } else {
+    const raw = await context.env.CONTENT.get("overrides");
+    data = raw ? JSON.parse(raw) : {};
+    delete data[id];
+  }
   await context.env.CONTENT.put("overrides", JSON.stringify(data));
 
   return new Response(JSON.stringify({ ok: true }), {
