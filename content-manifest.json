@@ -1032,6 +1032,13 @@
     "group": "โปรโมชั่น - โปรโมชั่นเด่นประจำเดือน"
   },
   {
+    "id": "featured-promo-1-link",
+    "type": "link",
+    "label": "ลิงก์ปลายทาง #1 (คลิกการ์ดแล้วไปที่นี่)",
+    "group": "โปรโมชั่น - โปรโมชั่นเด่นประจำเดือน",
+    "hint": "ใส่ลิงก์เต็ม เช่น https://www.facebook.com/Koongtung/ เปิดแท็บใหม่อัตโนมัติ"
+  },
+  {
     "id": "img-featured-promo-2",
     "type": "image",
     "label": "รูป #2",
@@ -1045,6 +1052,13 @@
     "group": "โปรโมชั่น - โปรโมชั่นเด่นประจำเดือน"
   },
   {
+    "id": "featured-promo-2-link",
+    "type": "link",
+    "label": "ลิงก์ปลายทาง #2 (คลิกการ์ดแล้วไปที่นี่)",
+    "group": "โปรโมชั่น - โปรโมชั่นเด่นประจำเดือน",
+    "hint": "ใส่ลิงก์เต็ม เช่น https://www.facebook.com/Koongtung/ เปิดแท็บใหม่อัตโนมัติ"
+  },
+  {
     "id": "img-featured-promo-3",
     "type": "image",
     "label": "รูป #3",
@@ -1056,6 +1070,13 @@
     "type": "text",
     "label": "คำโปรย #3",
     "group": "โปรโมชั่น - โปรโมชั่นเด่นประจำเดือน"
+  },
+  {
+    "id": "featured-promo-3-link",
+    "type": "link",
+    "label": "ลิงก์ปลายทาง #3 (คลิกการ์ดแล้วไปที่นี่)",
+    "group": "โปรโมชั่น - โปรโมชั่นเด่นประจำเดือน",
+    "hint": "ใส่ลิงก์เต็ม เช่น https://www.facebook.com/Koongtung/ เปิดแท็บใหม่อัตโนมัติ"
   },
   {
     "id": "membercard-eyebrow",
