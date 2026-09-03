@@ -117,7 +117,7 @@ ${headExtra}
 <link rel="icon" href="/assets/images/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/style.css?v=10">
+<link rel="stylesheet" href="/css/style.css?v=11">
 </head>
 <body>
 ${renderHeader()}
