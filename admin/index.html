@@ -941,12 +941,108 @@ var GALLERY_DEFS = [
 ];
 var galleryData = {};
 
+var FAQ_DEFS = [
+  { name: 'branch-1-faq', label: 'คำถามที่พบบ่อย (FAQ) — หน้า SEO สาขานี้', group: 'สาขา 1: บรรทัดทอง' },
+  { name: 'branch-2-faq', label: 'คำถามที่พบบ่อย (FAQ) — หน้า SEO สาขานี้', group: 'สาขา 2: พารากอน' },
+  { name: 'branch-3-faq', label: 'คำถามที่พบบ่อย (FAQ) — หน้า SEO สาขานี้', group: 'สาขา 3: เลียบทางด่วนรามอินทรา' },
+  { name: 'branch-4-faq', label: 'คำถามที่พบบ่อย (FAQ) — หน้า SEO สาขานี้', group: 'สาขา 4: ศรีนครินทร์ ด้านนอก' },
+  { name: 'branch-5-faq', label: 'คำถามที่พบบ่อย (FAQ) — หน้า SEO สาขานี้', group: 'สาขา 5: ศรีนครินทร์ ด้านใน' },
+  { name: 'branch-7-faq', label: 'คำถามที่พบบ่อย (FAQ) — หน้า SEO สาขานี้', group: 'สาขา 7: (ยังไม่เปิดใช้งาน — กรอกข้อมูลแล้วเปลี่ยนสถานะเพื่อเปิดใช้)' },
+  { name: 'branch-8-faq', label: 'คำถามที่พบบ่อย (FAQ) — หน้า SEO สาขานี้', group: 'สาขา 8: (ยังไม่เปิดใช้งาน — กรอกข้อมูลแล้วเปลี่ยนสถานะเพื่อเปิดใช้)' },
+  { name: 'branch-9-faq', label: 'คำถามที่พบบ่อย (FAQ) — หน้า SEO สาขานี้', group: 'สาขา 9: (ยังไม่เปิดใช้งาน — กรอกข้อมูลแล้วเปลี่ยนสถานะเพื่อเปิดใช้)' },
+  { name: 'branch-10-faq', label: 'คำถามที่พบบ่อย (FAQ) — หน้า SEO สาขานี้', group: 'สาขา 10: (ยังไม่เปิดใช้งาน — กรอกข้อมูลแล้วเปลี่ยนสถานะเพื่อเปิดใช้)' },
+  { name: 'branch-11-faq', label: 'คำถามที่พบบ่อย (FAQ) — หน้า SEO สาขานี้', group: 'สาขา 11: (ยังไม่เปิดใช้งาน — กรอกข้อมูลแล้วเปลี่ยนสถานะเพื่อเปิดใช้)' },
+  { name: 'branch-12-faq', label: 'คำถามที่พบบ่อย (FAQ) — หน้า SEO สาขานี้', group: 'สาขา 12: (ยังไม่เปิดใช้งาน — กรอกข้อมูลแล้วเปลี่ยนสถานะเพื่อเปิดใช้)' },
+  { name: 'pillar-faq', label: 'คำถามที่พบบ่อย (FAQ) — หน้า Pillar Page', group: 'หน้า Seafood Boil Bangkok (Pillar Page — ซ่อนอยู่)' }
+];
+
 function loadAllGalleryData() {
-  return Promise.all(GALLERY_DEFS.map(function (def) {
+  return Promise.all(GALLERY_DEFS.concat(FAQ_DEFS).map(function (def) {
     return fetch('/api/gallery?name=' + def.name, { cache: 'no-store' })
       .then(function (res) { return res.json(); })
       .then(function (items) { galleryData[def.name] = (items && items.length) ? items : []; });
   }));
+}
+
+function buildFaqSection(def) {
+  var wrap = document.createElement('div');
+  wrap.className = 'field';
+
+  var label = document.createElement('label');
+  label.textContent = def.label;
+  wrap.appendChild(label);
+
+  var countP = document.createElement('p');
+  countP.style.cssText = 'margin:0 0 10px;color:var(--muted);font-size:.82rem;';
+  wrap.appendChild(countP);
+
+  var list = document.createElement('div');
+  wrap.appendChild(list);
+
+  var statusEl = document.createElement('span');
+  statusEl.className = 'status';
+  statusEl.id = 'faq-status-' + def.name;
+
+  var addBtn = document.createElement('button');
+  addBtn.className = 'save-btn';
+  addBtn.style.marginTop = '10px';
+  addBtn.textContent = '+ เพิ่มคำถาม';
+  addBtn.onclick = function () {
+    galleryData[def.name].push({ q: '', a: '' });
+    refresh();
+  };
+
+  function refresh() {
+    countP.textContent = 'เพิ่ม/ลบคำถามได้อิสระ ไม่จำกัดจำนวน (' + galleryData[def.name].length + ' ข้อ) — แก้แล้วกด "บันทึก FAQ" ด้านล่างสุด';
+    list.innerHTML = '';
+    galleryData[def.name].forEach(function (item, idx) {
+      var row = document.createElement('div');
+      row.style.cssText = 'background:#faf7f2;border-radius:10px;padding:14px;margin-bottom:10px;';
+
+      var qInput = document.createElement('input');
+      qInput.type = 'text';
+      qInput.placeholder = 'คำถาม';
+      qInput.value = item.q || '';
+      qInput.style.cssText = 'width:100%;padding:8px;border:1px solid #ddd;border-radius:8px;margin-bottom:6px;font-family:inherit;';
+      qInput.oninput = function () { galleryData[def.name][idx].q = qInput.value; };
+
+      var aInput = document.createElement('textarea');
+      aInput.placeholder = 'คำตอบ';
+      aInput.value = item.a || '';
+      aInput.style.cssText = 'width:100%;min-height:60px;padding:8px;border:1px solid #ddd;border-radius:8px;font-family:inherit;';
+      aInput.oninput = function () { galleryData[def.name][idx].a = aInput.value; };
+
+      var delBtn = document.createElement('button');
+      delBtn.className = 'reset-btn';
+      delBtn.style.marginTop = '6px';
+      delBtn.textContent = 'ลบคำถามนี้';
+      delBtn.onclick = function () {
+        galleryData[def.name].splice(idx, 1);
+        refresh();
+      };
+
+      row.appendChild(qInput);
+      row.appendChild(aInput);
+      row.appendChild(delBtn);
+      list.appendChild(row);
+    });
+  }
+
+  refresh();
+  wrap.appendChild(addBtn);
+
+  var saveBtn = document.createElement('button');
+  saveBtn.className = 'save-btn';
+  saveBtn.style.cssText = 'margin-top:10px;margin-left:8px;';
+  saveBtn.textContent = 'บันทึก FAQ';
+  saveBtn.onclick = function () { saveGallerySection(def.name); };
+
+  var row2 = document.createElement('div');
+  row2.appendChild(saveBtn);
+  row2.appendChild(statusEl);
+  wrap.appendChild(row2);
+
+  return wrap;
 }
 
 function saveGallerySection(name) {
@@ -1521,6 +1617,19 @@ function render() {
     groups[def.group].push({ __gallery: true, galleryDef: def });
   });
 
+  FAQ_DEFS.forEach(function (def) {
+    if (!groups[def.group]) {
+      groups[def.group] = [];
+      var meta2 = getPageMeta(def.group);
+      var insertAt2 = groupOrder.length;
+      for (var gj = groupOrder.length - 1; gj >= 0; gj--) {
+        if (getPageMeta(groupOrder[gj]).label === meta2.label) { insertAt2 = gj + 1; break; }
+      }
+      groupOrder.splice(insertAt2, 0, def.group);
+    }
+    groups[def.group].push({ __faq: true, faqDef: def });
+  });
+
   var lastPageLabel = null;
   var sidebarList = document.createElement('ul');
   sidebarList.className = 'sidebar-list';
@@ -1557,7 +1666,7 @@ function render() {
     section.style.borderLeftColor = meta.color;
 
     var searchTextParts = [groupName];
-    groups[groupName].forEach(function (f) { searchTextParts.push(f.__gallery ? f.galleryDef.label : f.label); });
+    groups[groupName].forEach(function (f) { searchTextParts.push(f.__gallery ? f.galleryDef.label : (f.__faq ? f.faqDef.label : f.label)); });
     section.setAttribute('data-search-text', searchTextParts.join(' ').toLowerCase());
 
     var header = document.createElement('div');
@@ -1569,7 +1678,7 @@ function render() {
     var body = document.createElement('div');
     body.className = 'group-body';
     groups[groupName].forEach(function (field) {
-      body.appendChild(field.__gallery ? buildGallerySection(field.galleryDef) : renderField(field));
+      body.appendChild(field.__gallery ? buildGallerySection(field.galleryDef) : (field.__faq ? buildFaqSection(field.faqDef) : renderField(field)));
     });
     section.appendChild(body);
 

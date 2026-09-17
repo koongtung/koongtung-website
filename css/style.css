@@ -610,6 +610,24 @@ section { padding: 64px 0; }
 }
 .branch-card.is-closed .closed-badge { display: inline-block; }
 
+.faq-item {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px 20px;
+  margin-bottom: 12px;
+}
+.faq-item summary {
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--navy);
+}
+.faq-item .faq-answer {
+  margin-top: 10px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
 .delivery-row {
   display: flex;
   flex-wrap: wrap;
