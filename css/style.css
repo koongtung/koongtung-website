@@ -134,6 +134,66 @@ nav.main-nav a.active {
   border-color: var(--red);
 }
 
+nav.main-nav a.nav-queue-link {
+  background: var(--red);
+  color: #fff;
+  border-radius: 20px;
+  padding: 8px 16px;
+  border-bottom: none;
+  font-weight: 600;
+}
+nav.main-nav a.nav-queue-link:hover {
+  background: var(--red-dark);
+  color: #fff;
+  border-color: transparent;
+}
+
+.queue-float-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 900;
+  background: var(--red);
+  color: #fff;
+  font-weight: 700;
+  font-size: .92rem;
+  padding: 14px 20px;
+  border-radius: 30px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform .2s, background .2s;
+}
+.queue-float-btn:hover { background: var(--red-dark); transform: translateY(-3px); }
+@media (max-width: 600px) {
+  .queue-float-btn { right: 14px; bottom: 14px; padding: 12px 16px; font-size: .85rem; }
+}
+
+.queue-banner {
+  background: linear-gradient(135deg, var(--red), var(--red-dark));
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 26px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.queue-banner h3 { margin: 0 0 4px; font-size: 1.25rem; }
+.queue-banner p { margin: 0; opacity: .9; font-size: .92rem; }
+.queue-banner .btn {
+  background: #fff;
+  color: var(--red);
+  font-weight: 700;
+  padding: 12px 22px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+.queue-banner .btn:hover { background: var(--dark); color: #fff; }
+
 .nav-toggle {
   display: none;
   background: none;

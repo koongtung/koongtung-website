@@ -4,6 +4,7 @@ var KOONGTUNG_TRANSLATIONS = {
     "nav.about": "About Us",
     "nav.branches": "Branches",
     "nav.menu": "Menu",
+    "nav.queue": "Book a Queue",
     "nav.promotion": "Promotions & Membership",
     "nav.reviews": "Reviews",
     "nav.contact": "Contact",
@@ -13,6 +14,10 @@ var KOONGTUNG_TRANSLATIONS = {
 
     "hero.badge": "5 Branches Across Bangkok & Greater Area",
     "btn.viewMenu": "View Menu",
+    "btn.bookQueue": "📅 Book a Queue",
+    "queue.bannerTitle": "📅 Book a queue in advance, skip the wait",
+    "queue.bannerText": "Pick a branch, date, and time — get instant confirmation",
+    "queue.bannerBtn": "Book Now",
     "btn.viewBranches": "View All Branches",
 
     "info.branches5": "5 Branches Across Bangkok",
@@ -186,6 +191,7 @@ var KOONGTUNG_TRANSLATIONS = {
     "nav.about": "关于我们",
     "nav.branches": "分店",
     "nav.menu": "菜单",
+    "nav.queue": "预约排队",
     "nav.promotion": "优惠与会员",
     "nav.reviews": "评价",
     "nav.contact": "联系我们",
@@ -195,6 +201,10 @@ var KOONGTUNG_TRANSLATIONS = {
 
     "hero.badge": "曼谷及周边地区5家分店",
     "btn.viewMenu": "查看菜单",
+    "btn.bookQueue": "📅 预约排队",
+    "queue.bannerTitle": "📅 提前预约排队，无需现场等候",
+    "queue.bannerText": "选择分店、日期和时间，系统立即确认",
+    "queue.bannerBtn": "立即预约",
     "btn.viewBranches": "查看所有分店",
 
     "info.branches5": "曼谷5家分店",
