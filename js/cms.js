@@ -29,6 +29,15 @@ function koongtungLoadGA4(measurementId) {
     .then(function (overrides) {
       Object.keys(overrides).forEach(function (id) {
         var value = overrides[id];
+        var branchStatusMatch = id.match(/^branch-(\w+)-status$/);
+        if (branchStatusMatch) {
+          var card = document.querySelector('[data-branch-card="' + branchStatusMatch[1] + '"]');
+          if (card) {
+            card.classList.remove('is-closed', 'is-hidden');
+            if (value === 'ปิดให้บริการชั่วคราว/ถาวร') card.classList.add('is-closed');
+            else if (value === 'ซ่อนสาขานี้') card.classList.add('is-hidden');
+          }
+        }
         document.querySelectorAll('[data-cms-id="' + id + '"]').forEach(function (el) {
           if (el.hasAttribute('data-cms-video')) {
             el.src = koongtungToYouTubeEmbed(value) || value;

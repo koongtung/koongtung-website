@@ -327,6 +327,37 @@ function renderField(field) {
     row.appendChild(resetBtn);
     row.appendChild(statusEl);
     wrap.appendChild(row);
+  } else if (field.type === 'select') {
+    var select = document.createElement('select');
+    select.style.width = '100%';
+    select.style.padding = '8px';
+    select.style.borderRadius = '8px';
+    select.style.border = '1px solid #ddd';
+    (field.options || []).forEach(function (opt) {
+      var o = document.createElement('option');
+      o.value = opt;
+      o.textContent = opt;
+      if ((current || field.default) === opt) o.selected = true;
+      select.appendChild(o);
+    });
+    wrap.appendChild(select);
+
+    var rowS = document.createElement('div');
+    rowS.className = 'row';
+    var saveBtnS = document.createElement('button');
+    saveBtnS.className = 'save-btn';
+    saveBtnS.textContent = 'บันทึก';
+    saveBtnS.onclick = function () { saveField(field.id, select.value, statusEl); };
+    var resetBtnS = document.createElement('button');
+    resetBtnS.className = 'reset-btn';
+    resetBtnS.textContent = 'คืนค่าเดิม';
+    resetBtnS.onclick = function () {
+      resetField(field.id, statusEl, field.default, function (def) { select.value = def; });
+    };
+    rowS.appendChild(saveBtnS);
+    rowS.appendChild(resetBtnS);
+    rowS.appendChild(statusEl);
+    wrap.appendChild(rowS);
   } else if (field.type === 'link') {
     var linkInput = document.createElement('input');
     linkInput.type = 'text';

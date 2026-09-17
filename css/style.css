@@ -548,6 +548,22 @@ section { padding: 64px 0; }
 }
 .branch-card .card-body a.map-link:hover { color: var(--red); }
 
+.branch-card.is-hidden { display: none; }
+.branch-card.is-closed { opacity: .6; filter: grayscale(.4); }
+.branch-card.is-closed .map-link,
+.branch-card.is-closed .delivery-row { pointer-events: none; opacity: .5; }
+.branch-card .closed-badge {
+  display: none;
+  background: var(--red);
+  color: #fff;
+  font-weight: 700;
+  font-size: .78rem;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+.branch-card.is-closed .closed-badge { display: inline-block; }
+
 .delivery-row {
   display: flex;
   flex-wrap: wrap;
