@@ -60,6 +60,28 @@ export async function onRequestPost(context) {
 
   await context.env.CONTENT.put("leads", JSON.stringify(leads));
 
+  // Best-effort email notification. Never let a provider hiccup block the
+  // lead from being saved — the admin panel is always the source of truth.
+  if (context.env.RESEND_API_KEY) {
+    try {
+      await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          "Authorization": "Bearer " + context.env.RESEND_API_KEY,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          from: "KOONGTUNG Website <onboarding@resend.dev>",
+          to: ["koongtung@gmail.com"],
+          subject: "มีข้อความติดต่อใหม่จาก " + name,
+          text: "ชื่อ: " + name + "\nเบอร์โทร: " + (phone || "-") + "\n\nข้อความ:\n" + message
+        })
+      });
+    } catch (e) {
+      // ignore — the lead is already saved in KV and visible in /admin
+    }
+  }
+
   return new Response(JSON.stringify({ ok: true }), {
     headers: { "content-type": "application/json; charset=utf-8" }
   });
