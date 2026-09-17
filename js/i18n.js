@@ -425,4 +425,20 @@ function koongtungT(key, fallback) {
   });
   var saved = localStorage.getItem("koongtung-lang") || "th";
   koongtungApplyLanguage(saved);
+
+  // Admin-edited translation overrides (from the "จัดการภาษา" admin tab) load
+  // after this static dictionary, so re-apply once they arrive — same
+  // pattern cms.js uses for text overrides. The static dictionary above
+  // already rendered a sensible default, so this only refines it.
+  fetch("/api/i18n", { cache: "no-store" })
+    .then(function (res) { return res.ok ? res.json() : {}; })
+    .then(function (overrides) {
+      Object.keys(overrides).forEach(function (key) {
+        var entry = overrides[key];
+        if (entry.en) KOONGTUNG_TRANSLATIONS.en[key] = entry.en;
+        if (entry.zh) KOONGTUNG_TRANSLATIONS.zh[key] = entry.zh;
+      });
+      koongtungApplyLanguage(localStorage.getItem("koongtung-lang") || "th");
+    })
+    .catch(function () { /* static dictionary already applied, fine as-is */ });
 })();

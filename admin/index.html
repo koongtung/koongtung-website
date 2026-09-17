@@ -105,6 +105,7 @@
     <button id="tabBlogBtn" onclick="showTab('blog')">📝 จัดการบทความ</button>
     <button id="tabLeadsBtn" onclick="showTab('leads')">📋 ข้อความติดต่อ</button>
     <button id="tabStatsBtn" onclick="showTab('stats')">📊 สถิติการคลิกลิงก์</button>
+    <button id="tabI18nBtn" onclick="showTab('i18n')">🌐 จัดการภาษา</button>
   </div>
   <div id="contentTab"></div>
   <div id="linksTab" style="display:none;"></div>
@@ -112,6 +113,7 @@
   <div id="blogTab" style="display:none;"></div>
   <div id="leadsTab" style="display:none;"></div>
   <div id="statsTab" style="display:none;"></div>
+  <div id="i18nTab" style="display:none;"></div>
 </div>
 
 <script>
@@ -453,17 +455,20 @@ function showTab(name) {
   document.getElementById('blogTab').style.display = name === 'blog' ? 'block' : 'none';
   document.getElementById('leadsTab').style.display = name === 'leads' ? 'block' : 'none';
   document.getElementById('statsTab').style.display = name === 'stats' ? 'block' : 'none';
+  document.getElementById('i18nTab').style.display = name === 'i18n' ? 'block' : 'none';
   document.getElementById('tabContentBtn').className = name === 'content' ? 'active' : '';
   document.getElementById('tabLinksBtn').className = name === 'links' ? 'active' : '';
   document.getElementById('tabCreatorBtn').className = name === 'creator' ? 'active' : '';
   document.getElementById('tabBlogBtn').className = name === 'blog' ? 'active' : '';
   document.getElementById('tabLeadsBtn').className = name === 'leads' ? 'active' : '';
   document.getElementById('tabStatsBtn').className = name === 'stats' ? 'active' : '';
+  document.getElementById('tabI18nBtn').className = name === 'i18n' ? 'active' : '';
   if (name === 'stats') loadStats();
   if (name === 'links') loadLinksManager();
   if (name === 'creator') loadCreatorManager();
   if (name === 'blog') loadBlogManager();
   if (name === 'leads') loadLeadsManager();
+  if (name === 'i18n') loadI18nManager();
 }
 
 var leadsData = null;
@@ -561,6 +566,170 @@ function renderLeadsManager() {
   });
 
   el.appendChild(listGroup);
+}
+
+var i18nManifest = null;
+var i18nOverrides = null;
+
+function loadI18nManager() {
+  var el = document.getElementById('i18nTab');
+  if (i18nManifest && i18nOverrides) { renderI18nManager(); return; }
+  el.innerHTML = '<div class="group">กำลังโหลด...</div>';
+  Promise.all([
+    fetch('/i18n-manifest.json', { cache: 'no-store' }).then(function (res) { return res.json(); }),
+    fetch('/api/i18n', { cache: 'no-store' }).then(function (res) { return res.json(); })
+  ]).then(function (results) {
+    i18nManifest = results[0] || [];
+    i18nOverrides = results[1] || {};
+    renderI18nManager();
+  }).catch(function () {
+    el.innerHTML = '<div class="group">โหลดข้อมูลไม่สำเร็จ</div>';
+  });
+}
+
+function renderI18nManager() {
+  var el = document.getElementById('i18nTab');
+  el.innerHTML = '';
+
+  var infoBox = document.createElement('div');
+  infoBox.className = 'group';
+  infoBox.innerHTML = '<p style="margin:0;color:var(--muted);font-size:.9rem;">แก้คำแปลภาษาอังกฤษ (EN) และจีน (中文) ของข้อความที่ใช้ระบบสลับภาษาบนเว็บ — คอลัมน์ "ไทย" คือข้อความต้นฉบับ (แก้ไม่ได้ที่นี่ ไปแก้ที่แท็บ "แก้ไขเนื้อหา" แทน) บันทึกแล้วเว็บจะแสดงคำแปลใหม่ทันทีตอนลูกค้าสลับภาษา</p>';
+  el.appendChild(infoBox);
+
+  var groups = {};
+  var groupOrder = [];
+  i18nManifest.forEach(function (item) {
+    if (!groups[item.group]) { groups[item.group] = []; groupOrder.push(item.group); }
+    groups[item.group].push(item);
+  });
+
+  groupOrder.forEach(function (groupName) {
+    var groupEl = document.createElement('div');
+    groupEl.className = 'group';
+    var h2 = document.createElement('h2');
+    h2.textContent = groupName;
+    groupEl.appendChild(h2);
+
+    groups[groupName].forEach(function (item) {
+      var current = i18nOverrides[item.key] || {};
+      var wrap = document.createElement('div');
+      wrap.className = 'field';
+
+      var label = document.createElement('label');
+      label.textContent = item.key;
+      if (current.en || current.zh) {
+        var badge = document.createElement('span');
+        badge.className = 'badge-changed';
+        badge.textContent = 'แก้ไขแล้ว';
+        label.appendChild(badge);
+      }
+      wrap.appendChild(label);
+
+      var thRef = document.createElement('div');
+      thRef.style.fontSize = '.85rem';
+      thRef.style.color = 'var(--muted)';
+      thRef.style.marginBottom = '8px';
+      thRef.textContent = '🇹🇭 ' + item.th;
+      wrap.appendChild(thRef);
+
+      var enWrap = document.createElement('div');
+      enWrap.style.marginBottom = '6px';
+      var enLabel = document.createElement('div');
+      enLabel.style.fontSize = '.78rem';
+      enLabel.style.fontWeight = '600';
+      enLabel.textContent = 'EN';
+      var enInput = document.createElement('textarea');
+      enInput.value = current.en || '';
+      enInput.placeholder = '(ยังไม่มีคำแปล — จะใช้คำแปลเริ่มต้นของระบบ)';
+      enWrap.appendChild(enLabel);
+      enWrap.appendChild(enInput);
+      wrap.appendChild(enWrap);
+
+      var zhWrap = document.createElement('div');
+      zhWrap.style.marginBottom = '6px';
+      var zhLabel = document.createElement('div');
+      zhLabel.style.fontSize = '.78rem';
+      zhLabel.style.fontWeight = '600';
+      zhLabel.textContent = '中文';
+      var zhInput = document.createElement('textarea');
+      zhInput.value = current.zh || '';
+      zhInput.placeholder = '(ยังไม่มีคำแปล — จะใช้คำแปลเริ่มต้นของระบบ)';
+      zhWrap.appendChild(zhLabel);
+      zhWrap.appendChild(zhInput);
+      wrap.appendChild(zhWrap);
+
+      var statusEl = document.createElement('span');
+      statusEl.className = 'status';
+
+      var row = document.createElement('div');
+      row.className = 'row';
+      var saveBtn = document.createElement('button');
+      saveBtn.className = 'save-btn';
+      saveBtn.textContent = 'บันทึก';
+      saveBtn.onclick = function () {
+        statusEl.textContent = 'กำลังบันทึก...';
+        statusEl.className = 'status';
+        fetch('/api/i18n', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-admin-password': PASSWORD },
+          body: JSON.stringify({ key: item.key, en: enInput.value, zh: zhInput.value })
+        }).then(function (res) {
+          if (res.status === 401) {
+            statusEl.textContent = 'รหัสผ่านไม่ถูกต้อง กรุณาโหลดหน้านี้ใหม่';
+            statusEl.className = 'status err';
+            return;
+          }
+          return res.json();
+        }).then(function (json) {
+          if (json && json.ok) {
+            i18nOverrides[item.key] = { en: enInput.value, zh: zhInput.value };
+            statusEl.textContent = 'บันทึกแล้ว ✓ (เว็บจะอัปเดตทันที)';
+            statusEl.className = 'status ok';
+            if (!label.querySelector('.badge-changed')) {
+              var b = document.createElement('span');
+              b.className = 'badge-changed';
+              b.textContent = 'แก้ไขแล้ว';
+              label.appendChild(b);
+            }
+          }
+        }).catch(function () {
+          statusEl.textContent = 'บันทึกไม่สำเร็จ ลองใหม่อีกครั้ง';
+          statusEl.className = 'status err';
+        });
+      };
+      var resetBtn = document.createElement('button');
+      resetBtn.className = 'reset-btn';
+      resetBtn.textContent = 'คืนค่าเดิม';
+      resetBtn.onclick = function () {
+        statusEl.textContent = 'กำลังคืนค่าเดิม...';
+        statusEl.className = 'status';
+        fetch('/api/i18n', {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json', 'x-admin-password': PASSWORD },
+          body: JSON.stringify({ key: item.key })
+        }).then(function (res) { return res.json(); })
+          .then(function (json) {
+            if (json && json.ok) {
+              delete i18nOverrides[item.key];
+              enInput.value = '';
+              zhInput.value = '';
+              statusEl.textContent = 'คืนค่าเดิมแล้ว ✓';
+              statusEl.className = 'status ok';
+              var badgeEl = label.querySelector('.badge-changed');
+              if (badgeEl) badgeEl.remove();
+            }
+          });
+      };
+      row.appendChild(saveBtn);
+      row.appendChild(resetBtn);
+      row.appendChild(statusEl);
+      wrap.appendChild(row);
+
+      groupEl.appendChild(wrap);
+    });
+
+    el.appendChild(groupEl);
+  });
 }
 
 var blogData = null;

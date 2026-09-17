@@ -1,0 +1,827 @@
+[
+  {
+    "key": "about.blogBtn",
+    "th": "อ่านบทความทั้งหมด",
+    "group": "หน้าแรก/เกี่ยวกับเรา"
+  },
+  {
+    "key": "about.blogSubtitle",
+    "th": "เรื่องราวเบื้องหลัง บทสัมภาษณ์ และรีวิวจากสื่อต่าง ๆ ที่เคยพูดถึงเรา",
+    "group": "หน้าแรก/เกี่ยวกับเรา"
+  },
+  {
+    "key": "about.blogTitle",
+    "th": "บทความ &amp; ข่าวสารกุ้งถัง",
+    "group": "หน้าแรก/เกี่ยวกับเรา"
+  },
+  {
+    "key": "about.btn",
+    "th": "อ่านเรื่องราวของเรา",
+    "group": "หน้าแรก/เกี่ยวกับเรา"
+  },
+  {
+    "key": "about.ctaSubtitle",
+    "th": "ติดต่อสอบถามข้อมูลแฟรนไชส์ได้ที่ 086-761-5558",
+    "group": "หน้าแรก/เกี่ยวกับเรา"
+  },
+  {
+    "key": "about.ctaTitle",
+    "th": "สนใจแฟรนไชส์ กุ้งถัง KOONGTUNG?",
+    "group": "หน้าแรก/เกี่ยวกับเรา"
+  },
+  {
+    "key": "about.fullText",
+    "th": "กุ้งถัง KOONGTUNG คือ Bar & Seafood Restaurant สไตล์แคลิฟอร์เนีย ร้าน Seafood Boil (ซีฟู้ดบอยล์) เจ้าแรกในเมืองไทย ตั้งแต่ปี 2015 คัดสรรวัตถุดิบพรีเมียม ทั้งกุ้งขาว กุ้งแม่น้ำ หอยตลับ หอยแมลงภู่นิวซีแลนด์ ปูม้า ปลาหมึก และวัตถุดิบพิเศษตามฤดูกาล เสิร์ฟคู่กับซอส Bang Bang สูตรลับเฉพาะร้านที่คิดค้นขึ้นเอง ยังคงกลิ่นอายความเป็นออริจินัลจากอเมริกา แต่ผสานเครื่องเทศไทยเข้าไปอย่างกลมกล่อม ถูกปากทั้งคนไทยและชาวต่างชาติ ปรับระดับความเผ็ดได้ตามใจคุณ ภายใต้คอนเซปต์ 'Eat with your hands' ให้ลูกค้าได้สัมผัสรสชาติแบบเต็มอิ่มด้วยมือของตัวเอง",
+    "group": "หน้าแรก/เกี่ยวกับเรา"
+  },
+  {
+    "key": "about.heroSubtitle",
+    "th": "First Boiling Seafood in Thailand — เรื่องราวของกุ้งถัง",
+    "group": "หน้าแรก/เกี่ยวกับเรา"
+  },
+  {
+    "key": "about.heroTitle",
+    "th": "เกี่ยวกับเรา",
+    "group": "หน้าแรก/เกี่ยวกับเรา"
+  },
+  {
+    "key": "about.li1",
+    "th": "วัตถุดิบพรีเมียม กุ้งขาว กุ้งแม่น้ำ หอยตลับ หอยแมลงภู่นิวซีแลนด์ ปูม้า ปลาหมึก และวัตถุดิบพิเศษตามฤดูกาล",
+    "group": "หน้าแรก/เกี่ยวกับเรา"
+  },
+  {
+    "key": "about.li2",
+    "th": "ซอส Bang Bang สูตรลับเฉพาะร้าน ปรับระดับความเผ็ดได้ตามชอบ",
+    "group": "หน้าแรก/เกี่ยวกับเรา"
+  },
+  {
+    "key": "about.li3",
+    "th": "บริการทานที่ร้าน เดลิเวอรี่ เซ็ตกล่อง และจัดเลี้ยงนอกสถานที่",
+    "group": "หน้าแรก/เกี่ยวกับเรา"
+  },
+  {
+    "key": "about.offer1Desc",
+    "th": "บรรยากาศ Seafood Boil สไตล์อเมริกัน เทลงถังทานกับมือ สนุกสไตล์ Eat with your hands",
+    "group": "หน้าแรก/เกี่ยวกับเรา"
+  },
+  {
+    "key": "about.offer1Title",
+    "th": "ทานที่ร้าน",
+    "group": "หน้าแรก/เกี่ยวกับเรา"
+  },
+  {
+    "key": "about.offer2Desc",
+    "th": "สั่งผ่าน Lineman, Oho หรือโทรสั่งล่วงหน้าได้โดยตรงกับทุกสาขา",
+    "group": "หน้าแรก/เกี่ยวกับเรา"
+  },
+  {
+    "key": "about.offer2Title",
+    "th": "เดลิเวอรี่",
+    "group": "หน้าแรก/เกี่ยวกับเรา"
+  },
+  {
+    "key": "about.offer3Desc",
+    "th": "เซ็ตสุดคุ้มพร้อมทาน เหมาะสำหรับปาร์ตี้หรือมื้อพิเศษกับครอบครัว",
+    "group": "หน้าแรก/เกี่ยวกับเรา"
+  },
+  {
+    "key": "about.offer3Title",
+    "th": "เซ็ตกล่อง",
+    "group": "หน้าแรก/เกี่ยวกับเรา"
+  },
+  {
+    "key": "about.offer4Desc",
+    "th": "รับจัดเลี้ยงงานอีเวนต์ งานเลี้ยง พร้อมทีมงานมืออาชีพ",
+    "group": "หน้าแรก/เกี่ยวกับเรา"
+  },
+  {
+    "key": "about.offer4Title",
+    "th": "จัดเลี้ยงนอกสถานที่",
+    "group": "หน้าแรก/เกี่ยวกับเรา"
+  },
+  {
+    "key": "about.offerTitle",
+    "th": "บริการของเรา",
+    "group": "หน้าแรก/เกี่ยวกับเรา"
+  },
+  {
+    "key": "about.p",
+    "th": "กุ้งถัง KOONGTUNG คือ Bar & Seafood Restaurant สไตล์แคลิฟอร์เนีย ร้านซีฟู้ดบอยล์เจ้าแรกในเมืองไทย ตั้งแต่ปี 2015 เสิร์ฟคู่กับซอส Bang Bang สูตรลับเฉพาะร้านที่คิดค้นขึ้นเอง ยังคงกลิ่นอายความเป็นออริจินัลจากอเมริกา แต่ผสานเครื่องเทศไทยเข้าไปอย่างกลมกล่อม ถูกปากทั้งคนไทยและชาวต่างชาติ",
+    "group": "หน้าแรก/เกี่ยวกับเรา"
+  },
+  {
+    "key": "about.title",
+    "th": "ร้าน Seafood Boil (ซีฟู้ดบอยล์) สไตล์อเมริกัน เจ้าแรกในไทย",
+    "group": "หน้าแรก/เกี่ยวกับเรา"
+  },
+  {
+    "key": "announce.text",
+    "th": "🎉 สมัคร JOIN KOONGTUNG CLUB วันนี้ รับสิทธิพิเศษทันที",
+    "group": "แถบประกาศด้านบน"
+  },
+  {
+    "key": "blogPage.backLink",
+    "th": "← กลับไปหน้าบทความ",
+    "group": "หน้าบทความ (Blog)"
+  },
+  {
+    "key": "blogPage.heroSubtitle",
+    "th": "เรื่องราวเบื้องหลัง บทสัมภาษณ์ และรีวิวจากสื่อต่าง ๆ ที่เคยพูดถึงกุ้งถัง",
+    "group": "หน้าบทความ (Blog)"
+  },
+  {
+    "key": "blogPage.heroTitle",
+    "th": "บทความ & ข่าวสาร",
+    "group": "หน้าบทความ (Blog)"
+  },
+  {
+    "key": "blogPage.related",
+    "th": "บทความที่เกี่ยวข้อง",
+    "group": "หน้าบทความ (Blog)"
+  },
+  {
+    "key": "br1.name",
+    "th": "สาขาบรรทัดทอง",
+    "group": "สาขา 1"
+  },
+  {
+    "key": "br2.name",
+    "th": "สาขาพารากอน Food Court",
+    "group": "สาขา 2"
+  },
+  {
+    "key": "br3.name",
+    "th": "สาขาตลาดนัดเลียบทางด่วนรามอินทรา",
+    "group": "สาขา 3"
+  },
+  {
+    "key": "br4.name",
+    "th": "สาขาตลาดนัดรถไฟศรีนครินทร์ (ด้านนอก)",
+    "group": "สาขา 4"
+  },
+  {
+    "key": "br5.name",
+    "th": "สาขาตลาดนัดรถไฟศรีนครินทร์ (ด้านใน)",
+    "group": "สาขา 5"
+  },
+  {
+    "key": "br6.name",
+    "th": "สาขา U-Village ม.ธรรมศาสตร์รังสิต",
+    "group": "สาขา 6"
+  },
+  {
+    "key": "br6.note",
+    "th": "ขออภัย สาขานี้ปิดให้บริการแล้ว เรียนเชิญใช้บริการที่อีก 5 สาขาของเราได้เลยครับ",
+    "group": "สาขา 6"
+  },
+  {
+    "key": "br6.tag",
+    "th": "ปิดให้บริการแล้ว",
+    "group": "สาขา 6"
+  },
+  {
+    "key": "branch.closedBadge",
+    "th": "ปิดให้บริการชั่วคราว",
+    "group": "สถานะสาขา"
+  },
+  {
+    "key": "branches.btnAll",
+    "th": "ดูสาขาทั้งหมด (5 สาขา)",
+    "group": "หน้าแรก/สาขา - หัวข้อ"
+  },
+  {
+    "key": "branches.btnAllShort",
+    "th": "ดูสาขาทั้งหมด",
+    "group": "หน้าแรก/สาขา - หัวข้อ"
+  },
+  {
+    "key": "branches.p",
+    "th": "เลือกสาขาที่ใกล้คุณที่สุด พร้อมเบอร์โทรสั่งล่วงหน้า",
+    "group": "หน้าแรก/สาขา - หัวข้อ"
+  },
+  {
+    "key": "branches.title",
+    "th": "สาขายอดนิยม",
+    "group": "หน้าแรก/สาขา - หัวข้อ"
+  },
+  {
+    "key": "branchesPage.heroBadge",
+    "th": "5 สาขา",
+    "group": "branchesPage"
+  },
+  {
+    "key": "branchesPage.heroSubtitle",
+    "th": "เลือกสาขาที่ใกล้คุณ พร้อมเวลาเปิด-ปิด และเบอร์โทรสั่งล่วงหน้า",
+    "group": "branchesPage"
+  },
+  {
+    "key": "branchesPage.heroTitle",
+    "th": "สาขาทั้งหมด",
+    "group": "branchesPage"
+  },
+  {
+    "key": "btn.bookQueue",
+    "th": "📅 จองคิวล่วงหน้า",
+    "group": "ปุ่มทั่วไป"
+  },
+  {
+    "key": "btn.viewBranches",
+    "th": "ดูสาขาทั้งหมด",
+    "group": "ปุ่มทั่วไป"
+  },
+  {
+    "key": "btn.viewMenu",
+    "th": "ดูเมนูอาหาร",
+    "group": "ปุ่มทั่วไป"
+  },
+  {
+    "key": "combo1.name",
+    "th": "คอมโบมิกซ์ กุ้ง",
+    "group": "combo1"
+  },
+  {
+    "key": "combo2.name",
+    "th": "คอมโบมิกซ์ ปลา",
+    "group": "combo2"
+  },
+  {
+    "key": "combo3.name",
+    "th": "คอมโบมิกซ์ ปลาหมึก",
+    "group": "combo3"
+  },
+  {
+    "key": "combo4.name",
+    "th": "คอมโบมิกซ์ หอยแมลงภู่",
+    "group": "combo4"
+  },
+  {
+    "key": "contactPage.branchLabel",
+    "th": "สาขา",
+    "group": "หน้าติดต่อเรา"
+  },
+  {
+    "key": "contactPage.branchPageLink",
+    "th": "หน้าสาขา",
+    "group": "หน้าติดต่อเรา"
+  },
+  {
+    "key": "contactPage.channelsSubtitle",
+    "th": "ตามข่าวสาร โปรโมชั่น และสั่งซื้อได้จากทุกช่องทางด้านล่าง",
+    "group": "หน้าติดต่อเรา"
+  },
+  {
+    "key": "contactPage.channelsTitle",
+    "th": "ทุกช่องทางของกุ้งถัง",
+    "group": "หน้าติดต่อเรา"
+  },
+  {
+    "key": "contactPage.fbLabelFull",
+    "th": "Facebook",
+    "group": "หน้าติดต่อเรา"
+  },
+  {
+    "key": "contactPage.formMessageLabel",
+    "th": "ข้อความ *",
+    "group": "หน้าติดต่อเรา"
+  },
+  {
+    "key": "contactPage.formNameLabel",
+    "th": "ชื่อ *",
+    "group": "หน้าติดต่อเรา"
+  },
+  {
+    "key": "contactPage.formPhoneLabel",
+    "th": "เบอร์โทร / LINE (ถ้ามี)",
+    "group": "หน้าติดต่อเรา"
+  },
+  {
+    "key": "contactPage.formSubmitBtn",
+    "th": "ส่งข้อความ",
+    "group": "หน้าติดต่อเรา"
+  },
+  {
+    "key": "contactPage.formSubtitle",
+    "th": "กรอกแบบฟอร์มด้านล่าง ทีมงานจะติดต่อกลับโดยเร็วที่สุด",
+    "group": "หน้าติดต่อเรา"
+  },
+  {
+    "key": "contactPage.formTitle",
+    "th": "ส่งข้อความถึงเรา",
+    "group": "หน้าติดต่อเรา"
+  },
+  {
+    "key": "contactPage.franchiseNote",
+    "th": "(K.GIFT / แฟรนไชส์)",
+    "group": "หน้าติดต่อเรา"
+  },
+  {
+    "key": "contactPage.heroSubtitle",
+    "th": "สอบถามข้อมูล สั่งล่วงหน้า หรือแฟรนไชส์ ติดต่อได้ทุกช่องทาง",
+    "group": "หน้าติดต่อเรา"
+  },
+  {
+    "key": "contactPage.heroTitle",
+    "th": "ติดต่อเรา",
+    "group": "หน้าติดต่อเรา"
+  },
+  {
+    "key": "contactPage.hubBranches",
+    "th": "สาขา &amp; เดลิเวอรี่",
+    "group": "หน้าติดต่อเรา"
+  },
+  {
+    "key": "contactPage.hubMember",
+    "th": "ระบบสมาชิก",
+    "group": "หน้าติดต่อเรา"
+  },
+  {
+    "key": "contactPage.hubMenuFlipbook",
+    "th": "เมนูฉบับเต็ม",
+    "group": "หน้าติดต่อเรา"
+  },
+  {
+    "key": "contactPage.lineLabelFull",
+    "th": "Line Official",
+    "group": "หน้าติดต่อเรา"
+  },
+  {
+    "key": "contactPage.phoneLabel",
+    "th": "โทรศัพท์",
+    "group": "หน้าติดต่อเรา"
+  },
+  {
+    "key": "contactPage.seeDetailsAt",
+    "th": "ดูรายละเอียดที่",
+    "group": "หน้าติดต่อเรา"
+  },
+  {
+    "key": "contactPage.sendError",
+    "th": "ส่งข้อความไม่สำเร็จ ลองใหม่อีกครั้ง หรือติดต่อผ่าน LINE/โทรแทนได้ครับ",
+    "group": "หน้าติดต่อเรา"
+  },
+  {
+    "key": "contactPage.sendMissingFields",
+    "th": "กรอกชื่อและข้อความให้ครบก่อนส่งนะครับ",
+    "group": "หน้าติดต่อเรา"
+  },
+  {
+    "key": "contactPage.sendSuccess",
+    "th": "ส่งข้อความเรียบร้อย ✓ ทีมงานจะติดต่อกลับโดยเร็วที่สุดครับ",
+    "group": "หน้าติดต่อเรา"
+  },
+  {
+    "key": "contactPage.sending",
+    "th": "กำลังส่ง...",
+    "group": "หน้าติดต่อเรา"
+  },
+  {
+    "key": "contactPage.websiteLabel",
+    "th": "เว็บไซต์",
+    "group": "หน้าติดต่อเรา"
+  },
+  {
+    "key": "cta.btnContact",
+    "th": "ติดต่อเรา",
+    "group": "หน้าแรก - CTA ปิดท้าย"
+  },
+  {
+    "key": "cta.btnPromo",
+    "th": "ดูโปรโมชั่น &amp; เดลิเวอรี่",
+    "group": "หน้าแรก - CTA ปิดท้าย"
+  },
+  {
+    "key": "cta.p",
+    "th": "สั่งผ่าน Lineman, Oho หรือโทรสั่งล่วงหน้าได้โดยตรงที่แต่ละสาขา",
+    "group": "หน้าแรก - CTA ปิดท้าย"
+  },
+  {
+    "key": "cta.title",
+    "th": "สั่งเดลิเวอรี่ได้ทุกสาขา",
+    "group": "หน้าแรก - CTA ปิดท้าย"
+  },
+  {
+    "key": "foodCat1.name",
+    "th": "เมนูหลัก",
+    "group": "หมวดอาหาร"
+  },
+  {
+    "key": "foodCat2.name",
+    "th": "ของทานเล่น",
+    "group": "หมวดอาหาร"
+  },
+  {
+    "key": "foodCat3.name",
+    "th": "เครื่องเคียง",
+    "group": "หมวดอาหาร"
+  },
+  {
+    "key": "foodCat4.name",
+    "th": "เมนูจานเดี่ยว",
+    "group": "หมวดอาหาร"
+  },
+  {
+    "key": "foodCat5.name",
+    "th": "เมนูพิเศษประจำเดือน",
+    "group": "หมวดอาหาร"
+  },
+  {
+    "key": "footer.contactTitle",
+    "th": "ติดต่อ",
+    "group": "Footer (ใช้ทุกหน้า)"
+  },
+  {
+    "key": "footer.desc",
+    "th": "ร้าน Seafood Boil (ซีฟู้ดบอยล์) สไตล์อเมริกันเจ้าแรกในไทย (Bar &amp; Seafood Restaurant · California Style) ตั้งแต่ปี 2015 เสิร์ฟคู่ซอส Bang Bang ออริจินอล 100% ปรับความเผ็ดได้ตามใจคุณ",
+    "group": "Footer (ใช้ทุกหน้า)"
+  },
+  {
+    "key": "footer.linkBranches",
+    "th": "สาขาทั้งหมด",
+    "group": "Footer (ใช้ทุกหน้า)"
+  },
+  {
+    "key": "footer.linkContact",
+    "th": "ติดต่อเรา",
+    "group": "Footer (ใช้ทุกหน้า)"
+  },
+  {
+    "key": "footer.linkMenu",
+    "th": "เมนูอาหาร",
+    "group": "Footer (ใช้ทุกหน้า)"
+  },
+  {
+    "key": "footer.linkPromo",
+    "th": "โปรโมชั่น",
+    "group": "Footer (ใช้ทุกหน้า)"
+  },
+  {
+    "key": "footer.quicklinks",
+    "th": "เมนูลัด",
+    "group": "Footer (ใช้ทุกหน้า)"
+  },
+  {
+    "key": "hero.badge",
+    "th": "5 สาขา ทั่วกรุงเทพฯ &amp; ปริมณฑล",
+    "group": "หน้าแรก - Hero"
+  },
+  {
+    "key": "home.and",
+    "th": "และ",
+    "group": "หน้าแรก - หมวดอื่นๆ"
+  },
+  {
+    "key": "home.deliveryCh1Desc",
+    "th": "เพิ่มเพื่อนรับโปรโมชั่นและข่าวสารก่อนใคร พร้อมสั่งซื้อได้สะดวก",
+    "group": "หน้าแรก - หมวดอื่นๆ"
+  },
+  {
+    "key": "home.deliveryCh2Desc",
+    "th": "สั่งง่าย จัดส่งรวดเร็ว ครอบคลุมทุกพื้นที่ใกล้สาขา",
+    "group": "หน้าแรก - หมวดอื่นๆ"
+  },
+  {
+    "key": "home.deliveryCh3Desc",
+    "th": "สั่งผ่านแอปคุ้นเคย พร้อมโปรโมชั่นส่วนลดจาก Grab",
+    "group": "หน้าแรก - หมวดอื่นๆ"
+  },
+  {
+    "key": "home.deliveryCh4Desc",
+    "th": "สะดวก จ่ายผ่าน Shopee ได้ พร้อมโค้ดส่วนลดพิเศษ",
+    "group": "หน้าแรก - หมวดอื่นๆ"
+  },
+  {
+    "key": "home.deliveryChSubtitle",
+    "th": "เลือกช่องทางที่คุณสะดวก แล้วสั่งกุ้งถังได้ทันที",
+    "group": "หน้าแรก - หมวดอื่นๆ"
+  },
+  {
+    "key": "home.deliveryChTitle",
+    "th": "สั่งง่าย ส่งไว ทุกช่องทาง",
+    "group": "หน้าแรก - หมวดอื่นๆ"
+  },
+  {
+    "key": "home.followUsAt",
+    "th": "ติดตามเราได้ที่",
+    "group": "หน้าแรก - หมวดอื่นๆ"
+  },
+  {
+    "key": "home.foodCatSubtitle",
+    "th": "เลือกดูเมนูตามหมวดที่คุณสนใจ",
+    "group": "หน้าแรก - หมวดอื่นๆ"
+  },
+  {
+    "key": "home.foodCatTitle",
+    "th": "ไฮไลท์หมวดอาหาร",
+    "group": "หน้าแรก - หมวดอื่นๆ"
+  },
+  {
+    "key": "home.viewAllPromo",
+    "th": "ดูโปรโมชั่นทั้งหมด",
+    "group": "หน้าแรก - หมวดอื่นๆ"
+  },
+  {
+    "key": "info.branches5",
+    "th": "5 สาขา ทั่วกรุงเทพฯ",
+    "group": "หน้าแรก - แถบข้อมูล"
+  },
+  {
+    "key": "info.openDaily",
+    "th": "เปิดบริการทุกวัน",
+    "group": "หน้าแรก - แถบข้อมูล"
+  },
+  {
+    "key": "linksPage.backHome",
+    "th": "← กลับหน้าเว็บไซต์หลัก",
+    "group": "หน้าลิงก์รวม"
+  },
+  {
+    "key": "linksPage.tagline",
+    "th": "ร้านกุ้งถังเจ้าแรกในเมืองไทย SINCE 2015",
+    "group": "หน้าลิงก์รวม"
+  },
+  {
+    "key": "menu.btnAll",
+    "th": "ดูเมนูทั้งหมด",
+    "group": "menu"
+  },
+  {
+    "key": "menuPage.comboSubtitle",
+    "th": "ปริมาณจุใจ วัตถุดิบคุณภาพ ซอสสูตรต้นตำรับ",
+    "group": "หน้าเมนู"
+  },
+  {
+    "key": "menuPage.comboTitle",
+    "th": "เซ็ตคอมโบสุดคุ้ม",
+    "group": "หน้าเมนู"
+  },
+  {
+    "key": "menuPage.ctaBtnCall",
+    "th": "โทร 086-761-5558",
+    "group": "หน้าเมนู"
+  },
+  {
+    "key": "menuPage.ctaSubtitle",
+    "th": "โทรสั่งล่วงหน้าหรือดูสาขาใกล้คุณได้เลย",
+    "group": "หน้าเมนู"
+  },
+  {
+    "key": "menuPage.ctaTitle",
+    "th": "อยากทานเมนูไหนวันนี้?",
+    "group": "หน้าเมนู"
+  },
+  {
+    "key": "menuPage.fullMenuBtn",
+    "th": "📖 เมนูฉบับเต็ม (ทุกสาขา)",
+    "group": "หน้าเมนู"
+  },
+  {
+    "key": "menuPage.fullMenuSubtitle",
+    "th": "เปิดดูเมนูแบบพลิกหน้าหนังสือ พร้อมราคาครบทุกรายการ",
+    "group": "หน้าเมนู"
+  },
+  {
+    "key": "menuPage.fullMenuTitle",
+    "th": "ดูเมนูฉบับเต็ม",
+    "group": "หน้าเมนู"
+  },
+  {
+    "key": "menuPage.gallerySubtitle",
+    "th": "บรรยากาศและเมนูซีฟู้ดสด ๆ จากร้านกุ้งถัง",
+    "group": "หน้าเมนู"
+  },
+  {
+    "key": "menuPage.galleryTitle",
+    "th": "รีวิว เมนู เพิ่มเติม",
+    "group": "หน้าเมนู"
+  },
+  {
+    "key": "menuPage.heroSubtitle",
+    "th": "กุ้งดองซีอิ๊วสูตรเฉพาะร้าน เซ็ตคอมโบสุดคุ้ม และซีฟู้ดสดใหม่ทุกวัน",
+    "group": "หน้าเมนู"
+  },
+  {
+    "key": "menuPage.heroTitle",
+    "th": "เมนูอาหาร",
+    "group": "หน้าเมนู"
+  },
+  {
+    "key": "menuPage.paragonMenuBtn",
+    "th": "📖 Special Menu เฉพาะสาขาพารากอน",
+    "group": "หน้าเมนู"
+  },
+  {
+    "key": "menuPage.specialSubtitle",
+    "th": "เมนูซิกเนเจอร์ที่ลูกค้าสั่งซ้ำมากที่สุด",
+    "group": "หน้าเมนู"
+  },
+  {
+    "key": "menuPage.specialTitle",
+    "th": "กุ้งดองซีอิ๊วสูตรเฉพาะร้านกุ้งถัง",
+    "group": "หน้าเมนู"
+  },
+  {
+    "key": "nav.about",
+    "th": "เกี่ยวกับเรา",
+    "group": "เมนูนำทาง (Nav)"
+  },
+  {
+    "key": "nav.branches",
+    "th": "สาขา",
+    "group": "เมนูนำทาง (Nav)"
+  },
+  {
+    "key": "nav.contact",
+    "th": "ติดต่อเรา",
+    "group": "เมนูนำทาง (Nav)"
+  },
+  {
+    "key": "nav.home",
+    "th": "หน้าแรก",
+    "group": "เมนูนำทาง (Nav)"
+  },
+  {
+    "key": "nav.links",
+    "th": "ลิงก์ทั้งหมด",
+    "group": "เมนูนำทาง (Nav)"
+  },
+  {
+    "key": "nav.menu",
+    "th": "เมนู",
+    "group": "เมนูนำทาง (Nav)"
+  },
+  {
+    "key": "nav.promotion",
+    "th": "โปรโมชั่น &amp; สมาชิก",
+    "group": "เมนูนำทาง (Nav)"
+  },
+  {
+    "key": "nav.reviews",
+    "th": "รีวิว",
+    "group": "เมนูนำทาง (Nav)"
+  },
+  {
+    "key": "promo.delivery1Desc",
+    "th": "สั่งผ่านแอป Lineman ได้ที่ทุกสาขา",
+    "group": "หน้าโปรโมชั่น"
+  },
+  {
+    "key": "promo.delivery2Desc",
+    "th": "โปรโมชั่นพิเศษสำหรับผู้ใช้ Oho",
+    "group": "หน้าโปรโมชั่น"
+  },
+  {
+    "key": "promo.deliveryFbCta",
+    "th": "ติดตามโปรใหม่ทาง Facebook",
+    "group": "หน้าโปรโมชั่น"
+  },
+  {
+    "key": "promo.deliverySubtitle",
+    "th": "ชี้เป้าก่อนสั่ง เลือกสาขาที่ใกล้คุณที่สุด",
+    "group": "หน้าโปรโมชั่น"
+  },
+  {
+    "key": "promo.deliveryTitle",
+    "th": "สั่งเดลิเวอรี่ผ่านช่องทางไหนก็ได้",
+    "group": "หน้าโปรโมชั่น"
+  },
+  {
+    "key": "promo.featured1Caption",
+    "th": "โปรสุดคุ้มประจำเดือนนี้ 🎉",
+    "group": "หน้าโปรโมชั่น"
+  },
+  {
+    "key": "promo.featured2Caption",
+    "th": "เซ็ตพิเศษ ลดสูงสุด 20%",
+    "group": "หน้าโปรโมชั่น"
+  },
+  {
+    "key": "promo.featured3Caption",
+    "th": "ซื้อ 1 แถม 1 เฉพาะเดือนนี้",
+    "group": "หน้าโปรโมชั่น"
+  },
+  {
+    "key": "promo.featuredSubtitle",
+    "th": "อัปเดตโปรใหม่ทุกเดือน ห้ามพลาด!",
+    "group": "หน้าโปรโมชั่น"
+  },
+  {
+    "key": "promo.featuredTitle",
+    "th": "🔥 โปรโมชั่นเด็ดประจำเดือน",
+    "group": "หน้าโปรโมชั่น"
+  },
+  {
+    "key": "promo.heroSubtitle",
+    "th": "ติดตามโปรโมชั่นใหม่ ๆ ได้ตลอดเวลา",
+    "group": "หน้าโปรโมชั่น"
+  },
+  {
+    "key": "promo.heroTitle",
+    "th": "โปรโมชั่น &amp; บัตรสมาชิก",
+    "group": "หน้าโปรโมชั่น"
+  },
+  {
+    "key": "promo.member1Desc",
+    "th": "สิทธิพิเศษสำหรับสมาชิกกุ้งถัง",
+    "group": "หน้าโปรโมชั่น"
+  },
+  {
+    "key": "promo.member1Title",
+    "th": "บัตรสมาชิก 2026",
+    "group": "หน้าโปรโมชั่น"
+  },
+  {
+    "key": "promo.member2Desc",
+    "th": "อัปเดตเมนูและโปรโมชั่นล่าสุด",
+    "group": "หน้าโปรโมชั่น"
+  },
+  {
+    "key": "promo.member2Title",
+    "th": "โปรโมชั่นเมนูใหม่",
+    "group": "หน้าโปรโมชั่น"
+  },
+  {
+    "key": "promo.member3Cta",
+    "th": "เข้าสู่ระบบสมาชิก",
+    "group": "หน้าโปรโมชั่น"
+  },
+  {
+    "key": "promo.member3Desc",
+    "th": "สมัคร/เข้าสู่ระบบสมาชิกกุ้งถังผ่าน Line ได้ทันที",
+    "group": "หน้าโปรโมชั่น"
+  },
+  {
+    "key": "promo.member3Title",
+    "th": "ระบบสมาชิกออนไลน์",
+    "group": "หน้าโปรโมชั่น"
+  },
+  {
+    "key": "promo.memberBottomCta",
+    "th": "🎫 สมัคร/เข้าสู่ระบบสมาชิกกุ้งถัง",
+    "group": "หน้าโปรโมชั่น"
+  },
+  {
+    "key": "promo.memberSubtitle",
+    "th": "สะสมสิทธิพิเศษ และส่วนลดเฉพาะสมาชิกเท่านั้น",
+    "group": "หน้าโปรโมชั่น"
+  },
+  {
+    "key": "promo.memberTitle",
+    "th": "บัตรสมาชิกกุ้งถัง",
+    "group": "หน้าโปรโมชั่น"
+  },
+  {
+    "key": "queue.bannerBtn",
+    "th": "จองคิวตอนนี้",
+    "group": "ระบบจองคิว"
+  },
+  {
+    "key": "queue.bannerText",
+    "th": "เลือกสาขา วันที่ และเวลาที่สะดวก ระบบยืนยันคิวให้ทันที",
+    "group": "ระบบจองคิว"
+  },
+  {
+    "key": "queue.bannerTitle",
+    "th": "📅 จองคิวล่วงหน้า ไม่ต้องรอคิวหน้าร้าน",
+    "group": "ระบบจองคิว"
+  },
+  {
+    "key": "reviewsPage.creatorSubtitle",
+    "th": "บรรยากาศจริง ปฏิกิริยาจริง ดูสิ่งที่ครีเอเตอร์และอินฟลูเอนเซอร์พูดถึงกุ้งถัง KOONGTUNG",
+    "group": "หน้ารีวิว"
+  },
+  {
+    "key": "reviewsPage.creatorTitle",
+    "th": "เรื่องราวและมุมมองจากครีเอเตอร์",
+    "group": "หน้ารีวิว"
+  },
+  {
+    "key": "reviewsPage.fbBtn",
+    "th": "ดูรีวิวเพิ่มเติมบน Facebook",
+    "group": "หน้ารีวิว"
+  },
+  {
+    "key": "reviewsPage.filterAll",
+    "th": "ทั้งหมด",
+    "group": "หน้ารีวิว"
+  },
+  {
+    "key": "reviewsPage.heroSubtitle",
+    "th": "บรรยากาศและความประทับใจจากลูกค้าที่มาทานที่ร้าน",
+    "group": "หน้ารีวิว"
+  },
+  {
+    "key": "reviewsPage.heroTitle",
+    "th": "รีวิวจากลูกค้า",
+    "group": "หน้ารีวิว"
+  },
+  {
+    "key": "reviewsPage.videoSubtitle",
+    "th": "บรรยากาศจริง รสชาติจริง จากลูกค้าที่มาสัมผัสประสบการณ์กุ้งถัง",
+    "group": "หน้ารีวิว"
+  },
+  {
+    "key": "reviewsPage.videoTitle",
+    "th": "ชมคลิปวิดีโอจากลูกค้า",
+    "group": "หน้ารีวิว"
+  }
+]
