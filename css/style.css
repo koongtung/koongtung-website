@@ -134,20 +134,6 @@ nav.main-nav a.active {
   border-color: var(--red);
 }
 
-nav.main-nav a.nav-queue-link {
-  background: var(--red);
-  color: #fff;
-  border-radius: 20px;
-  padding: 8px 16px;
-  border-bottom: none;
-  font-weight: 600;
-}
-nav.main-nav a.nav-queue-link:hover {
-  background: var(--red-dark);
-  color: #fff;
-  border-color: transparent;
-}
-
 .queue-float-btn {
   position: fixed;
   right: 20px;
