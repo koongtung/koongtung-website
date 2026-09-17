@@ -18,6 +18,10 @@ var KOONGTUNG_TRANSLATIONS = {
     "queue.bannerTitle": "📅 Book a queue in advance, skip the wait",
     "queue.bannerText": "Pick a branch, date, and time — get instant confirmation",
     "queue.bannerBtn": "Book Now",
+    "branch.closedBadge": "Temporarily Closed",
+    "contactPage.franchiseNote": "(K.GIFT / Franchise)",
+    "contactPage.seeDetailsAt": "See details at",
+    "contactPage.branchPageLink": "Branches page",
     "btn.viewBranches": "View All Branches",
 
     "info.branches5": "5 Branches Across Bangkok",
@@ -205,6 +209,10 @@ var KOONGTUNG_TRANSLATIONS = {
     "queue.bannerTitle": "📅 提前预约排队，无需现场等候",
     "queue.bannerText": "选择分店、日期和时间，系统立即确认",
     "queue.bannerBtn": "立即预约",
+    "branch.closedBadge": "暂停营业",
+    "contactPage.franchiseNote": "(K.GIFT / 加盟)",
+    "contactPage.seeDetailsAt": "详情请见",
+    "contactPage.branchPageLink": "分店页面",
     "btn.viewBranches": "查看所有分店",
 
     "info.branches5": "曼谷5家分店",

@@ -106,7 +106,7 @@ export function renderFooter() {
 <script src="/js/main.js?v=2"></script>
 <script src="/js/cms.js?v=5"></script>
 <script src="/js/track.js"></script>
-<script src="/js/i18n.js?v=4"></script>`;
+<script src="/js/i18n.js?v=5"></script>`;
 }
 
 export function renderPageShell(headExtra, bodyHtml) {
